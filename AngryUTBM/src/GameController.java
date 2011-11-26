@@ -1,7 +1,7 @@
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
-public class GameControler implements KeyListener {
+public class GameController implements KeyListener {
 	
 	@Override
 	public void keyPressed(KeyEvent e) {	
@@ -11,6 +11,12 @@ public class GameControler implements KeyListener {
 				break;
 			case KeyEvent.VK_LEFT:
 				System.out.println("j'vais à gauche");
+				break;
+			case KeyEvent.VK_UP:
+				System.out.println("j'vais à hauuut");
+				break;
+			case KeyEvent.VK_DOWN:
+				System.out.println("j'vais en baaaaas");
 				break;
 			default:
 				System.out.println("je gère pas cette touche !");		
