@@ -3,22 +3,19 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-
-public class ImagePanel extends JPanel
-{
+public class ImagePanel extends JPanel {
+	private static final long serialVersionUID = 1003478673077301230L;
+	
 	private Image img;
 	
-	public ImagePanel(String img)
-	{
+	public ImagePanel(String img) {
 		this(new ImageIcon(img).getImage());
 	}
 	
-	public ImagePanel(Image img)
-	{
+	public ImagePanel(Image img) {
 		this.img = img;
 		Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
 		setPreferredSize(size);
