@@ -19,7 +19,7 @@ public class GameController implements KeyListener {
 				System.out.println("j'vais en baaaaas");
 				break;
 			default:
-				System.out.println("je gère pas cette touche !");		
+				System.out.println("je gère pas cette touche ! Connard !");		
 		}
 	}
 
