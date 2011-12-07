@@ -6,11 +6,11 @@ import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class AngryView extends JPanel {
+public class GameView extends JPanel {
 	private Pigeon pige1;
 	private Level map;
 	
-	public AngryView(AngryController controller) {
+	public GameView(GameController controller) {
 
         addKeyListener(controller);
         setFocusable(true);

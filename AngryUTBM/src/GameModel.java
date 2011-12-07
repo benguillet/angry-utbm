@@ -1,18 +1,18 @@
 
-public class AngryModel {
-	private AngryView display;
+public class GameModel {
+	private GameView display;
 	private Level map;
 	private Pigeon pig1;
 	
-	public AngryModel() {
+	public GameModel() {
 		
 	}
 
-	public AngryView getDisplay() {
+	public GameView getDisplay() {
 		return display;
 	}
 
-	public void setDisplay(AngryView display) {
+	public void setDisplay(GameView display) {
 		this.display = display;
 	}
 

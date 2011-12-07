@@ -1,15 +1,13 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class AngryController implements KeyListener {
-	private AngryView angryView;
-	private AngryFrame angryFrame;
+public class GameController implements KeyListener {
+	private GameView angryView;
+	private GameFrame angryFrame;
 	private Pigeon pige1;
 	
-	public AngryController() {
-		angryFrame = new AngryFrame(this);
+	public GameController() {
+		angryFrame = new GameFrame(this);
 		angryView = angryFrame.getAngryView();
 		pige1 = angryView.getPige1();
 		

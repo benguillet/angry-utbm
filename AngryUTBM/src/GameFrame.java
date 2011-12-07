@@ -1,13 +1,11 @@
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 
 @SuppressWarnings("serial")
-public class AngryFrame extends JFrame {
-	private AngryView angryView;
+public class GameFrame extends JFrame {
+	private GameView angryView;
 	
-	public AngryFrame(AngryController controller) {
-		angryView = new AngryView(controller);
+	public GameFrame(GameController controller) {
+		angryView = new GameView(controller);
 		
 		this.add(angryView);
 		this.setTitle("AngryUTBM");
@@ -18,7 +16,7 @@ public class AngryFrame extends JFrame {
 		this.setVisible(true);
     }
 
-	public AngryView getAngryView() {
+	public GameView getAngryView() {
 		return angryView;
 	}
 }
