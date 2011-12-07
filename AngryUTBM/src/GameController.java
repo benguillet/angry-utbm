@@ -33,8 +33,14 @@ public class GameController implements KeyListener {
 				pige1.moveDown();
 				angryView.repaint();
 				break;
+			case KeyEvent.VK_SPACE:
+				pige1.fire();
+				break;
+			case KeyEvent.VK_R:
+				pige1.reload();
+				break;
 			default:
-				System.out.println("je gère pas cette touche ! Connard !");		
+				System.out.println("je gère pas cette touche ! Blaireau !");		
 		}
 	}
 
