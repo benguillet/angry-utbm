@@ -34,7 +34,7 @@ public class Pigeon extends Bird {
     public void fire() {
     	if (eggLeft > 0) {
     		eggs.add(new Egg(position.getX()-PIGEON_SIZE/4, position.getY()+PIGEON_SIZE/3));
-    		eggLeft--;
+    		--eggLeft;
     	}
     	else
     		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");

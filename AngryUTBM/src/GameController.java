@@ -40,7 +40,7 @@ public class GameController implements KeyListener {
 				pige1.reload();
 				break;
 			default:
-				System.out.println("je gère pas cette touche ! Blaireau !");		
+				System.out.println("je g√®re pas cette touche ! Blaireau !");		
 		}
 	}
 
