@@ -1,17 +1,37 @@
-import javax.swing.JPanel;
-import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 
-public class Pigeon extends JPanel implements Bird {
-	
-	private static final long serialVersionUID = 1586470091931386882L;
+public class Pigeon extends Bird {
+	public Pigeon() {
+	    imagePath = "res/images/pigeon.png";
+    	ImageIcon ii = new ImageIcon(imagePath);
+	    image = ii.getImage();
+	    position = new Position(40, 60);
+	    speed = 30;
+    }
 
-		
-	public void paintComponent(Graphics g) {
-     	g.fillOval(20, 20, 75, 75);
-	}
+    public void moveRight() {
+        position.setX(position.getX() + speed);
+    }
+    
+    public void moveLeft() {
+    	position.setX(position.getX() - speed);
+    }
+    
+    public void moveUp() {
+    	position.setY(position.getY() - speed);
+    }
+    
+    public void moveDown() {
+    	position.setY(position.getY() + speed);
+    }
 	
+	public Image getImage() {
+        return image;
+    }
 	
-	public void move() {
-		
+	public Position getPosition() {
+		return position;
 	}
+    
 }

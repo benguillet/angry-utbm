@@ -1,8 +1,13 @@
+import java.awt.Image;
 
-public interface Entity {
-	public short speed = 0;
-	public short position = 0;
-	public String image = "";
+abstract class Entity {
+	protected short speed;
+	protected Position position;
+	protected String imagePath;
+	protected Image image;
 	
-	public void move();
+	public abstract void moveRight();
+	public abstract void moveLeft();
+	public abstract Image getImage();
+	public abstract Position getPosition();
 }
