@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class GameView extends JPanel implements ActionListener {
 	private Pigeon pige1;
+	private Pig pig1;
 	private Level map;
 	private Timer timer;
 	
@@ -26,7 +27,8 @@ public class GameView extends JPanel implements ActionListener {
 
         timer = new Timer(5, this);
         map = new Level();
-        pige1 = new Pigeon();        
+        pige1 = new Pigeon();
+        pig1 = new Pig();
         
         timer.start();
 	}
@@ -37,6 +39,8 @@ public class GameView extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(map.getImage(), 0, 0, this);
         g2d.drawImage(pige1.getImage(), pige1.getPosition().getX(), pige1.getPosition().getY(), this);
+        g2d.drawImage(pig1.getImage(), pig1.getPosition().getX(), pig1.getPosition().getY(), this);
+
         
         ArrayList<Egg> eggs = pige1.getEggs();
 
