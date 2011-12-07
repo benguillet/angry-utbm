@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
 
 public class Pig extends Enemy {
 
@@ -12,6 +9,5 @@ public class Pig extends Enemy {
 	    position = new Position(100, 500);
 	    speed = 30;
 	}
-	
 	
 }
