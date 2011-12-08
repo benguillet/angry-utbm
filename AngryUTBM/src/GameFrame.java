@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -9,15 +10,14 @@ public class GameFrame extends JFrame {
 	private GameViewMenu angryViewMenu;
 	public boolean menuOn;
 	
-	public GameFrame(GameController controller) {
+	public GameFrame(GameController controller, ArrayList<Pigeon> pigeons, ArrayList<Pig> pigs) {
 		angryViewMenu = new GameViewMenu(controller);
-		angryView = new GameView(controller);
+		angryView = new GameView(controller, pigeons, pigs);
 		
-		
-		this.add(angryView);
 		this.add(angryViewMenu);
+		this.add(angryView);
 		
-		menuOn = true;
+		menuOn = false;
 		
 		this.setTitle("AngryUTBM");
 		this.setSize(800, 600);
