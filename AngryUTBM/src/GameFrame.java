@@ -14,10 +14,11 @@ public class GameFrame extends JFrame {
 		angryView = new GameView(controller);
 		
 		
-		this.add(angryView);
+		// Pour activer ou non le menu, il faut mettre menuOn a true ou false, et interchanger les 2 this.add(...)
 		this.add(angryViewMenu);
+		this.add(angryView);
 		
-		menuOn = true;
+		menuOn = false;
 		
 		this.setTitle("AngryUTBM");
 		this.setSize(800, 600);
