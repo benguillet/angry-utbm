@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -8,10 +9,9 @@ public class GameFrame extends JFrame {
 	private GameViewMenu angryViewMenu;
 	private boolean menuOn;
 	
-	public GameFrame(GameController controller) {
+	public GameFrame(GameController controller, ArrayList<Pigeon> pigeons, ArrayList<Pig> pigs) {
 		angryViewMenu = new GameViewMenu(controller);
-		angryView = new GameView(controller);
-		
+		angryView = new GameView(controller, pigeons, pigs);
 		
 		// Pour activer ou non le menu, il faut mettre menuOn a true ou false, et interchanger les 2 this.add(...)
 		this.add(angryViewMenu);

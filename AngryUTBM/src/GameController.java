@@ -2,57 +2,63 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 
 public class GameController implements KeyListener, ActionListener {
 	private GameView angryView;
 	private GameViewMenu angryMenu;
+	private GameModel angryModel;
 	private GameFrame angryFrame;
-	private Pigeon pige1;
 	private JButton startButton;
 	
+	private ArrayList<Pigeon> pigeons;
+	private ArrayList<Pig> pigs;
+	private ArrayList<Egg> eggs;
+	
 	public GameController() {
-		angryFrame = new GameFrame(this);
+		angryModel = new GameModel();
+		pigeons = angryModel.getPigeonList();
+		pigs = angryModel.getPigList();
+		
+		angryFrame = new GameFrame(this, pigeons, pigs);
 		angryMenu = angryFrame.getAngryViewMenu();
 		angryView = angryFrame.getAngryView();
-		pige1 = angryView.getPige1();
-		startButton = angryMenu.getStartButton();
 		
-	}
+		startButton = angryMenu.getStartButton();
 	
+		angryModel.setDisplay(angryView);
+	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
+		Pigeon p = (Pigeon) pigeons.get(0);
+		
 		switch (e.getKeyCode()) {
-			case KeyEvent.VK_RIGHT:
-				pige1.moveRight();
-				angryView.repaint();
-				break;
-			case KeyEvent.VK_LEFT:
-				pige1.moveLeft();
-				angryView.repaint();
-				break;
-			case KeyEvent.VK_UP:
-				pige1.moveUp();
-				angryView.repaint();
-				break;
-			case KeyEvent.VK_DOWN:
-				pige1.moveDown();
-				angryView.repaint();
-				break;
-			case KeyEvent.VK_SPACE:
-				pige1.fire();	
-				angryView.repaint();
-				break;
-			case KeyEvent.VK_ESCAPE:
-				angryFrame.setMenu();
-				break;
-			case KeyEvent.VK_R:
-				pige1.reload();
-				break;
-			default:
-				System.out.println("je gère pas cette touche ! Blaireau !");		
+		case KeyEvent.VK_RIGHT:
+			p.moveRight();
+			break;
+		case KeyEvent.VK_LEFT:
+			p.moveLeft();
+			break;
+		case KeyEvent.VK_UP:
+			p.moveUp();
+			break;
+		case KeyEvent.VK_DOWN:
+			p.moveDown();
+			break;
+		case KeyEvent.VK_SPACE:
+			p.fire();	
+			break;
+		case KeyEvent.VK_ESCAPE:
+			angryFrame.setMenu();
+			break;
+		case KeyEvent.VK_R:
+			p.reload();
+			break;
+		default:
+			System.out.println("je gère pas cette touche ! Blaireau !");		
 		}
 	}
 

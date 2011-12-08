@@ -14,12 +14,13 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class GameView extends JPanel implements ActionListener {
-	private Pigeon pige1;
-	private Pig pig1;
 	private Level map;
 	private Timer timer;
 	
-	public GameView(GameController controller) {
+	private ArrayList<Pigeon> pigeons;
+	private ArrayList<Pig> pigs;
+	
+	public GameView(GameController controller, ArrayList<Pigeon> pigeons2, ArrayList<Pig> pigs2) {
 
         addKeyListener(controller);
         setFocusable(true);
@@ -27,16 +28,11 @@ public class GameView extends JPanel implements ActionListener {
 
         timer = new Timer(5, this);
         map = new Level();
-        pige1 = new Pigeon();
         
+        pigeons = pigeons2;
+		pigs = pigs2;
         
-        pig1 = new Pig();
-        
-        // Activation du Thread
-        pig1.start();
-        
-        
-        timer.start();
+       	timer.start();
 	}
 	
 	public void paint(Graphics g) {
@@ -44,49 +40,39 @@ public class GameView extends JPanel implements ActionListener {
 
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(map.getImage(), 0, 0, this);
-        g2d.drawImage(pige1.getImage(), pige1.getPosition().getX(), pige1.getPosition().getY(), this);
-        g2d.drawImage(pig1.getImage(), pig1.getPosition().getX(), pig1.getPosition().getY(), this);
-
         
-        ArrayList<Egg> eggs = pige1.getEggs();
-
-        for (int i = 0; i < eggs.size(); ++i ) {
-            Egg e = (Egg) eggs.get(i);
-            g2d.drawImage(e.getImage(), e.getPosition().getX(), e.getPosition().getY(), this);
-            
+        for (int i = 0; i < pigeons.size(); ++i ) {
+        	Pigeon p = (Pigeon) pigeons.get(i);
+            g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
         }
         
-        for (int i = 0; i < pige1.eggLeft ; i++)
-        {
-        	g2d.drawImage(new ImageIcon("res/images/egg.png").getImage(),650+20*i,10, this);
+        for (int i = 0; i < pigs.size(); ++i ) {
+            Pig p = (Pig) pigs.get(i);
+            g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
         }
         
+        for (int i = 0; i < pigeons.size(); ++i ) {
+        	ArrayList<Egg> eggs = pigeons.get(i).getEggs();
+        	
+        	for (int j = 0; j < eggs.size(); ++j ) {
+        		Egg e = (Egg) eggs.get(j);
+        		g2d.drawImage(e.getImage(), e.getPosition().getX(), e.getPosition().getY(), this);
+        	}
+        }
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
+	
+	public void setEntityLists(ArrayList<Pigeon> pigeons2, ArrayList<Pig> pigs2) {
+		pigeons = pigeons2;
+		pigs = pigs2;
+	}
 
 	public void actionPerformed(ActionEvent event) {
-        ArrayList<Egg> eggs = pige1.getEggs();
-
-        for (int i = 0; i < eggs.size(); ++i ) {
-            Egg e = (Egg) eggs.get(i);
-            if (e.isVisible())
-            	e.move();
-            else
-            	eggs.remove(i);
-        }
-        
         repaint();
     }
 	
-	public Pigeon getPige1() {
-		return pige1;
-	}
-
-	public void setPige1(Pigeon pige1) {
-		this.pige1 = pige1;
-	}
 
 	public Level getMap() {
 		return map;
