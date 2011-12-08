@@ -1,5 +1,4 @@
 import java.awt.Dimension;
-import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
@@ -7,7 +6,7 @@ import javax.swing.JFrame;
 public class GameFrame extends JFrame {
 	private GameView angryView;
 	private GameViewMenu angryViewMenu;
-	public boolean menuOn;
+	private boolean menuOn;
 	
 	public GameFrame(GameController controller) {
 		angryViewMenu = new GameViewMenu(controller);
@@ -31,10 +30,12 @@ public class GameFrame extends JFrame {
 	public GameView getAngryView() {
 		return angryView;
 	}
+	
 	public GameViewMenu getAngryViewMenu()
 	{
 		return angryViewMenu;
 	}
+	
 	public void setMenu()
 	{
 		setContentPane(angryViewMenu);
@@ -42,6 +43,7 @@ public class GameFrame extends JFrame {
 		this.setSize(new Dimension(800, 600));
 		this.setVisible(true);
 	}
+	
 	public void setGame()
 	{
 		setContentPane(angryView);

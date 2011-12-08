@@ -1,7 +1,7 @@
 import java.awt.Image;
 
-abstract class Entity {
-	protected int speed;
+abstract class Entity extends Thread {
+	protected short speed;
 	protected Position position;
 	protected String imagePath;
 	protected Image image;

@@ -1,7 +1,6 @@
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,13 +23,18 @@ public class GameView extends JPanel implements ActionListener {
 
         addKeyListener(controller);
         setFocusable(true);
-        setBackground(Color.BLACK);
         setDoubleBuffered(true);
 
         timer = new Timer(5, this);
         map = new Level();
         pige1 = new Pigeon();
+        
+        
         pig1 = new Pig();
+        
+        // Activation du Thread
+        pig1.start();
+        
         
         timer.start();
 	}

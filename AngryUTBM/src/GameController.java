@@ -5,12 +5,10 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 
-import sun.net.www.http.KeepAliveCache;
-
 public class GameController implements KeyListener, ActionListener {
 	private GameView angryView;
 	private GameViewMenu angryMenu;
-	protected GameFrame angryFrame;
+	private GameFrame angryFrame;
 	private Pigeon pige1;
 	private JButton startButton;
 	
@@ -55,7 +53,7 @@ public class GameController implements KeyListener, ActionListener {
 				break;
 			default:
 				System.out.println("je gère pas cette touche ! Blaireau !");		
-				}
+		}
 	}
 
 	@Override

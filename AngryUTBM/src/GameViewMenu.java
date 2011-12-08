@@ -33,11 +33,12 @@ public class GameViewMenu extends JPanel  implements ActionListener{
         
         this.setVisible(true);
 	}
+	
 	public void paint(Graphics g) {
         super.paint(g);
         
         Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(image,0,0,this);
+        g2d.drawImage(image, 0, 0, this);
         
         
         Toolkit.getDefaultToolkit().sync();
