@@ -27,9 +27,9 @@ public class Pig extends Enemy {
 			if (position.getX() > frameSize.getWidth() - image.getWidth(null)) back = true;
 			
 			if (!back)
-				position.setX(++position.getX());
+				position.setX(position.getX() + speed);
 			else
-		    	position.setX(--position.getX());
+		    	position.setX(position.getX() - speed);
 			//repaint();
 		}
 	}
