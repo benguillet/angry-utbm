@@ -4,6 +4,7 @@ public class GameModel {
 	private Level map;
 	private Pigeon pig1;
 	
+	
 	public GameModel() {
 		
 	}

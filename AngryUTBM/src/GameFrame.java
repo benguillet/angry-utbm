@@ -1,13 +1,24 @@
+import java.awt.Dimension;
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class GameFrame extends JFrame {
 	private GameView angryView;
+	private GameViewMenu angryViewMenu;
+	public boolean menuOn;
 	
 	public GameFrame(GameController controller) {
+		angryViewMenu = new GameViewMenu(controller);
 		angryView = new GameView(controller);
 		
+		
 		this.add(angryView);
+		this.add(angryViewMenu);
+		
+		menuOn = true;
+		
 		this.setTitle("AngryUTBM");
 		this.setSize(800, 600);
 		this.setLocationRelativeTo(null);
@@ -18,5 +29,23 @@ public class GameFrame extends JFrame {
 
 	public GameView getAngryView() {
 		return angryView;
+	}
+	public GameViewMenu getAngryViewMenu()
+	{
+		return angryViewMenu;
+	}
+	public void setMenu()
+	{
+		setContentPane(angryViewMenu);
+		menuOn = true;
+		this.setSize(new Dimension(800, 600));
+		this.setVisible(true);
+	}
+	public void setGame()
+	{
+		setContentPane(angryView);
+		menuOn = false;
+		this.setSize(new Dimension(800, 600));
+		this.setVisible(true);
 	}
 }

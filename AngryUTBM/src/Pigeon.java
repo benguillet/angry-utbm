@@ -9,7 +9,7 @@ public class Pigeon extends Bird {
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
 	    position = new Position(40, 60);
-	    speed = 30;
+	    speed = 20;
 	    eggs = new ArrayList<Egg>();
 	    eggLeft = 3;
 	}

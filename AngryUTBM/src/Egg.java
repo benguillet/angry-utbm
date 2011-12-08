@@ -25,4 +25,6 @@ public class Egg extends Entity {
 		if (position.getY() > (int) frameSize.getHeight())
 			visible = false;
 	}
+	
+	
 }

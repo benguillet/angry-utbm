@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
 import javax.swing.JPanel;
 
@@ -47,7 +49,14 @@ public class GameView extends JPanel implements ActionListener {
         for (int i = 0; i < eggs.size(); ++i ) {
             Egg e = (Egg) eggs.get(i);
             g2d.drawImage(e.getImage(), e.getPosition().getX(), e.getPosition().getY(), this);
+            
         }
+        
+        for (int i = 0; i < pige1.eggLeft ; i++)
+        {
+        	g2d.drawImage(new ImageIcon("res/images/egg.png").getImage(),650+20*i,10, this);
+        }
+        
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();

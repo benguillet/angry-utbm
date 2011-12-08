@@ -1,21 +1,31 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GameController implements KeyListener {
+import javax.swing.JButton;
+
+import sun.net.www.http.KeepAliveCache;
+
+public class GameController implements KeyListener, ActionListener {
 	private GameView angryView;
-	private GameFrame angryFrame;
+	private GameViewMenu angryMenu;
+	protected GameFrame angryFrame;
 	private Pigeon pige1;
+	private JButton startButton;
 	
 	public GameController() {
 		angryFrame = new GameFrame(this);
+		angryMenu = angryFrame.getAngryViewMenu();
 		angryView = angryFrame.getAngryView();
 		pige1 = angryView.getPige1();
+		startButton = angryMenu.getStartButton();
 		
 	}
 	
 	
 	@Override
-	public void keyPressed(KeyEvent e) {	
+	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 			case KeyEvent.VK_RIGHT:
 				pige1.moveRight();
@@ -34,14 +44,18 @@ public class GameController implements KeyListener {
 				angryView.repaint();
 				break;
 			case KeyEvent.VK_SPACE:
-				pige1.fire();
+				pige1.fire();	
+				angryView.repaint();
+				break;
+			case KeyEvent.VK_ESCAPE:
+				angryFrame.setMenu();
 				break;
 			case KeyEvent.VK_R:
 				pige1.reload();
 				break;
 			default:
 				System.out.println("je gère pas cette touche ! Blaireau !");		
-		}
+				}
 	}
 
 	@Override
@@ -54,6 +68,16 @@ public class GameController implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource().equals("Start game"))
+		{
+			angryFrame.setGame();
+		}
 	}
 
 
