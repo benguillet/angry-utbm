@@ -15,7 +15,7 @@ public class GameFrame extends JFrame {
 		
 		
 		// Pour activer ou non le menu, il faut mettre menuOn a true ou false, et interchanger les 2 this.add(...)
-		this.add(angryViewMenu);
+		this.add(angryViewMenu);//bite
 		this.add(angryView);
 		
 		menuOn = false;
