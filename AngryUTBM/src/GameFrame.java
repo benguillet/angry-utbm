@@ -40,7 +40,6 @@ public class GameFrame extends JFrame {
 	{
 		setContentPane(angryViewMenu);
 		menuOn = true;
-		this.setSize(new Dimension(800, 600));
 		this.setVisible(true);
 	}
 	
@@ -48,7 +47,6 @@ public class GameFrame extends JFrame {
 	{
 		setContentPane(angryView);
 		menuOn = false;
-		this.setSize(new Dimension(800, 600));
 		this.setVisible(true);
 	}
 }

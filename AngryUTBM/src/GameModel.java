@@ -20,7 +20,7 @@ public class GameModel implements ActionListener {
 		eggs = pigeons.get(0).getEggs();
 		pigs = new ArrayList<Pig>();
 		pigs.add(new Pig());
-		
+		pigs.get(0).start();
 		timer = new Timer(5, this);
 		timer.start();
 	}

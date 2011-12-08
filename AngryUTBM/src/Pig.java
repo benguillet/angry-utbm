@@ -12,8 +12,6 @@ public class Pig extends Enemy {
 	    image = ii.getImage();
 	    position = new Position(100, 500);
 	    speed = 1;
-		frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-
 	}
 	
 	public void run() {
@@ -24,13 +22,23 @@ public class Pig extends Enemy {
 		boolean back = false;
 		
 		while(true) {
-			if (position.getX() > frameSize.getWidth() - image.getWidth(null)) back = true;
+			if (position.getX() > 800 - image.getWidth(null)) back = true;
+			if (position.getX() < 1) back = false;
+
 			
 			if (!back)
 				position.setX(position.getX() + speed);
 			else
 		    	position.setX(position.getX() - speed);
-			//repaint();
+			
+			// On ralentit le cochon...
+			 try {
+                 Thread.sleep(15);
+			 } catch (InterruptedException e) {
+                 e.printStackTrace();
+			 }
+			
+			
 		}
 	}
 }

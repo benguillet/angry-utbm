@@ -6,6 +6,12 @@ public class Egg extends Entity {
 	private boolean visible;
 	private Dimension frameSize;
 	
+	public Egg() {
+		imagePath = "res/images/egg.png";
+    	ImageIcon ii = new ImageIcon(imagePath);
+	    image = ii.getImage();
+	}
+	
 	public Egg(int x, int y) {
 		imagePath = "res/images/egg.png";
     	ImageIcon ii = new ImageIcon(imagePath);

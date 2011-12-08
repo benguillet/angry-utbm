@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.Timer;
 import javax.swing.JPanel;
 
@@ -20,7 +19,7 @@ public class GameView extends JPanel implements ActionListener {
 	private ArrayList<Pigeon> pigeons;
 	private ArrayList<Pig> pigs;
 	
-	public GameView(GameController controller, ArrayList<Pigeon> pigeons2, ArrayList<Pig> pigs2) {
+	public GameView(GameController controller, ArrayList<Pigeon> pigeons, ArrayList<Pig> pigs) {
 
         addKeyListener(controller);
         setFocusable(true);
@@ -29,8 +28,8 @@ public class GameView extends JPanel implements ActionListener {
         timer = new Timer(5, this);
         map = new Level();
         
-        pigeons = pigeons2;
-		pigs = pigs2;
+        this.pigeons = pigeons;
+		this.pigs = pigs;
         
        	timer.start();
 	}
@@ -41,16 +40,21 @@ public class GameView extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(map.getImage(), 0, 0, this);
         
+        
+        // On affiche les pigeons
         for (int i = 0; i < pigeons.size(); ++i ) {
         	Pigeon p = (Pigeon) pigeons.get(i);
             g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
         }
         
+        
+        // On affiche les cochons
         for (int i = 0; i < pigs.size(); ++i ) {
             Pig p = (Pig) pigs.get(i);
             g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
         }
         
+        // On affiche les oeufs lachés
         for (int i = 0; i < pigeons.size(); ++i ) {
         	ArrayList<Egg> eggs = pigeons.get(i).getEggs();
         	
@@ -59,7 +63,13 @@ public class GameView extends JPanel implements ActionListener {
         		g2d.drawImage(e.getImage(), e.getPosition().getX(), e.getPosition().getY(), this);
         	}
         }
-
+        
+        Egg e = new Egg();        
+        // On affiche les oeufs restants	
+        for (int i = 0; i < pigeons.get(0).getEggLeft(); ++i) {
+        		g2d.drawImage(e.getImage(), 600+i*15, 20, this);
+        }
+        
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
