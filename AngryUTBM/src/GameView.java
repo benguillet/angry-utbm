@@ -50,6 +50,7 @@ public class GameView extends JPanel implements ActionListener {
         
         for (int i = 0; i < entities.size(); ++i) {
             g2d.drawImage(entities.get(i).getImage(), entities.get(i).getPosition().getX(), entities.get(i).getPosition().getY(), this);
+        	g2d.drawRect(entities.get(i).getBound().x,entities.get(i).getBound().y,entities.get(i).getBound().width,entities.get(i).getBound().height);
         }
         
         
@@ -59,8 +60,14 @@ public class GameView extends JPanel implements ActionListener {
             g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
         }*/
         
+         // On affiche les cochons
+        for (int i = 0; i < pigs.size(); ++i ) {
+            Pig p = (Pig) pigs.get(i);
+            g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
+            g2d.drawRect(p.getBound().x,p.getBound().y,p.getBound().width,p.getBound().height);
+        }
         
-       /* // On affiche les oeufs lachés
+       // On affiche les oeufs lachés
         for (int i = 0; i < pigeons.size(); ++i ) {
         	ArrayList<Egg> eggs = pigeons.get(i).getEggs();
         	
@@ -68,9 +75,9 @@ public class GameView extends JPanel implements ActionListener {
         		Egg e = (Egg) eggs.get(j);
         		g2d.drawImage(e.getImage(), e.getPosition().getX(), e.getPosition().getY(), this);
         	}
-        }*/
+        }
         
-        /*Egg e = new Egg(0,0);        
+        Egg e = new Egg(0,0);        
         // On affiche les oeufs restants	
         for (int i = 0; i < pigeons.get(0).getEggLeft(); ++i) {
         		g2d.drawImage(e.getImage(), 600+i*15, 20, this);

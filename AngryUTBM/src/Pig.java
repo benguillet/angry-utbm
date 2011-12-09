@@ -42,9 +42,10 @@ public class Pig extends Enemy {
 			 } catch (InterruptedException e) {
                  e.printStackTrace();
 			 }
-			
-			
+			 
+			 hitBox.setBounds(position.getX(),position.getY(),50,50);
 		}
+		
 	}
 	
 	public Rectangle getBound() {
