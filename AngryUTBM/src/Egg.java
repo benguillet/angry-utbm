@@ -1,16 +1,14 @@
 import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+
 import javax.swing.ImageIcon;
 
 
 public class Egg extends Entity {
 	private boolean visible;
 	private Dimension frameSize;
-	
-	public Egg() {
-		imagePath = "res/images/egg.png";
-    	ImageIcon ii = new ImageIcon(imagePath);
-	    image = ii.getImage();
-	}
+	private Rectangle hitBox;
 	
 	public Egg(int x, int y) {
 		imagePath = "res/images/egg.png";
@@ -20,6 +18,7 @@ public class Egg extends Entity {
 	    position = new Position(x, y);
 		speed = 1;
 		frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		hitBox = new Rectangle(new Point(position.getX(),position.getY()), new Dimension(50, 50));
 	}
 	
 	public boolean isVisible() {
@@ -28,8 +27,13 @@ public class Egg extends Entity {
 	
 	public void move() {
 		position.setY(position.getY() + speed);
+		hitBox.setBounds(position.getX(),position.getY(),50,50);
 		if (position.getY() > (int) frameSize.getHeight())
 			visible = false;
+	}
+
+	public Rectangle getBound() {
+		return hitBox;
 	}
 	
 	

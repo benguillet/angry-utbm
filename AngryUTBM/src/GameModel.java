@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -52,7 +53,38 @@ public class GameModel implements ActionListener {
 	public ArrayList<Egg> getEggList() {
 		return eggs;
 	}
-	
+	public boolean checkCollision()
+	{
+		for(int j = 0; j < pigeons.size() ; j++)
+		{
+			for(int k = 0 ; k < pigs.size();k++)
+			{
+				ArrayList<Egg> eggs = pigeons.get(j).getEggs();
+				Pig pigTest = pigs.get(k);
+				
+				for (int i = 0; i < eggs.size(); ++i ) {
+		            Egg e = (Egg) eggs.get(i);
+		            Rectangle hitBoxEgg = e.getBound();
+		            Rectangle hitBoxPig= pigTest.getBound();
+		            if(testCollision(hitBoxEgg,hitBoxPig))
+		            {
+		            	eggs.remove(i);
+		            }
+				}
+	        }
+		}
+		
+		return false;
+	}
+	public boolean testCollision(Rectangle x, Rectangle y)
+	{
+		if(x.intersects(y))
+		{
+			System.out.print("collision");
+			return true;
+		}
+		return false;
+	}
 	public void actionPerformed(ActionEvent event) {
         for (int i = 0; i < pigeons.size(); ++i ) {
         	ArrayList<Egg> eggs = pigeons.get(i).getEggs();
@@ -65,6 +97,7 @@ public class GameModel implements ActionListener {
                 	eggs.remove(i);
         	}
         }
+        checkCollision();
         
     }
 	

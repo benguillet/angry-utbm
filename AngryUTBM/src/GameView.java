@@ -64,7 +64,7 @@ public class GameView extends JPanel implements ActionListener {
         	}
         }
         
-        Egg e = new Egg();        
+        Egg e = new Egg(0,0);        
         // On affiche les oeufs restants	
         for (int i = 0; i < pigeons.get(0).getEggLeft(); ++i) {
         		g2d.drawImage(e.getImage(), 600+i*15, 20, this);
