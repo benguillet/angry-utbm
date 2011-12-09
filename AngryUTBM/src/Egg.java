@@ -18,7 +18,7 @@ public class Egg extends Entity {
 	    position = new Position(x, y);
 		speed = 1;
 		frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		hitBox = new Rectangle(new Point(position.getX(),position.getY()), new Dimension(100, 100));
+		hitBox = new Rectangle(new Point(position.getX()+25,position.getY()+25), new Dimension(30, 30));
 	}
 	
 	public boolean isVisible() {
