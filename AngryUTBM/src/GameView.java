@@ -50,7 +50,7 @@ public class GameView extends JPanel implements ActionListener {
         
         for (int i = 0; i < entities.size(); ++i) {
             g2d.drawImage(entities.get(i).getImage(), entities.get(i).getPosition().getX(), entities.get(i).getPosition().getY(), this);
-        	g2d.drawRect(entities.get(i).getBound().x,entities.get(i).getBound().y,entities.get(i).getBound().width,entities.get(i).getBound().height);
+        	//g2d.drawRect(entities.get(i).getBound().x,entities.get(i).getBound().y,entities.get(i).getBound().width,entities.get(i).getBound().height);
         }
         
         
@@ -58,7 +58,7 @@ public class GameView extends JPanel implements ActionListener {
         for (int i = 0; i < pigeons.size(); ++i ) {
         	Pigeon p = (Pigeon) pigeons.get(i);
             g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
-        }*/
+        }
         
          // On affiche les cochons
         for (int i = 0; i < pigs.size(); ++i ) {
