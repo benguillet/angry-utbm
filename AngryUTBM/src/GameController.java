@@ -12,17 +12,26 @@ public class GameController implements KeyListener, ActionListener {
 	private GameModel angryModel;
 	private GameFrame angryFrame;
 	private JButton startButton;
+	private Pigeon p;
 	
-	private ArrayList<Pigeon> pigeons;
-	private ArrayList<Pig> pigs;
-	private ArrayList<Egg> eggs;
+	//private ArrayList<Pigeon> pigeons;
+	//private ArrayList<Pig> pigs;
+	//private ArrayList<Egg> eggs;
+	private ArrayList<Entity> entities;
 	
 	public GameController() {
 		angryModel = new GameModel();
-		pigeons = angryModel.getPigeonList();
-		pigs = angryModel.getPigList();
+		entities = angryModel.getEntityList();
 		
-		angryFrame = new GameFrame(this, pigeons, pigs);
+		for (int i = 0; i < entities.size(); ++i) {
+			if (entities.get(i) instanceof Pigeon)
+				p = (Pigeon) entities.get(i);
+		}
+		
+		//pigeons = ArrayList<Egg> eggs;
+		//pigs = angryModel.getPigList();
+		
+		angryFrame = new GameFrame(this, entities);
 		angryMenu = angryFrame.getAngryViewMenu();
 		angryView = angryFrame.getAngryView();
 		
@@ -32,9 +41,7 @@ public class GameController implements KeyListener, ActionListener {
 	}
 	
 	@Override
-	public void keyPressed(KeyEvent e) {
-		Pigeon p = (Pigeon) pigeons.get(0);
-		
+	public void keyPressed(KeyEvent e) {		
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_RIGHT:
 			p.moveRight();
@@ -49,7 +56,8 @@ public class GameController implements KeyListener, ActionListener {
 			p.moveDown();
 			break;
 		case KeyEvent.VK_SPACE:
-			p.fire();	
+			//p.fire();	
+			angryModel.addEgg();
 			break;
 		case KeyEvent.VK_ESCAPE:
 			angryFrame.setMenu();
