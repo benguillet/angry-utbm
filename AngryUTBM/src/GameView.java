@@ -52,6 +52,7 @@ public class GameView extends JPanel implements ActionListener {
         for (int i = 0; i < pigs.size(); ++i ) {
             Pig p = (Pig) pigs.get(i);
             g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
+            g2d.drawRect(p.getBound().x,p.getBound().y,p.getBound().width,p.getBound().height);
         }
         
         // On affiche les oeufs lachés
@@ -61,6 +62,7 @@ public class GameView extends JPanel implements ActionListener {
         	for (int j = 0; j < eggs.size(); ++j ) {
         		Egg e = (Egg) eggs.get(j);
         		g2d.drawImage(e.getImage(), e.getPosition().getX(), e.getPosition().getY(), this);
+        		g2d.drawRect(e.getBound().x,e.getBound().y,e.getBound().width,e.getBound().height);
         	}
         }
         
