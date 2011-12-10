@@ -19,7 +19,7 @@ import javax.swing.text.LayeredHighlighter;
 import com.sun.xml.internal.ws.api.server.Container;
 
 
-public class GameViewMenu extends JPanel{
+public class GameViewMenu extends JLayeredPane{
 
 	private String backgroundImagePath = "res/images/backgroundMenu.png";
 	private String backgroundImagePathCredit = "res/images/backgroundCredit.png";
