@@ -37,9 +37,9 @@ public class GameView extends JPanel implements ListListener {
 	    int dx=0;
 	    int dy=0;
 	    
-	    for(int i=0; i<24;i++)
+	    for(int i=0; i<22;i++)
 	    {
-	    	for(int j=0; j<32;j++)
+	    	for(int j=0; j<31;j++)
 	    	{
 	    		switch(tabMap[i][j])
 	    		{
@@ -47,15 +47,15 @@ public class GameView extends JPanel implements ListListener {
 	    			g2d.drawImage(map.getGrass(), dx, dy, this);
 	    			break;
 	    		case 2 :
-	    			g2d.drawImage(map.getBloc(), dx, dy, this);
+	    			g2d.drawImage(map.getBlock(), dx, dy, this);
 	    			break;
 	    		default :
 	    			break;
 	    		}
 	    		
-	    		dx=dx+25;
+	    		dx=dx+26;
 	    	}
-	    	dy=dy+25;
+	    	dy=dy+26;
 	    	dx=0;
 	    }
         
