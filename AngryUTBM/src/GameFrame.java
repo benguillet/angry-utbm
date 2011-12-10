@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 public class GameFrame extends JFrame {
 	private GameView angryView;
 	private GameViewMenu angryViewMenu;
-	private boolean menuOn;
 	
 	public GameFrame(GameController controller, ArrayList<Entity> entities) {
 		angryViewMenu = new GameViewMenu(controller);
@@ -17,7 +16,6 @@ public class GameFrame extends JFrame {
 		this.add(angryViewMenu);
 		this.add(angryView);
 		
-		menuOn = false;
 		
 		this.setTitle("AngryUTBM");
 		this.setSize(800, 600);
@@ -39,14 +37,12 @@ public class GameFrame extends JFrame {
 	public void setMenu()
 	{
 		setContentPane(angryViewMenu);
-		menuOn = true;
 		this.setVisible(true);
 	}
 	
 	public void setGame()
 	{
 		setContentPane(angryView);
-		menuOn = false;
 		this.setVisible(true);
 	}
 }

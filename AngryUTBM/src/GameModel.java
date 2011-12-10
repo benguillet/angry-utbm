@@ -22,7 +22,8 @@ public class GameModel implements ActionListener {
 		entities = new ArrayList<Entity>();
 		currentPigeon = new Pigeon();
 		entities.add(currentPigeon);
-		entities.add(new Pig());		
+		entities.add(new Pig());	
+		
 		for (int i = 0; i < entities.size(); ++i) {
 			if (entities.get(i) instanceof Pig)
 				entities.get(i).start();
@@ -65,27 +66,24 @@ public class GameModel implements ActionListener {
     		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");
 	}
 	
-	/*public boolean checkCollision()
+	public boolean checkCollision()
 	{
-		for(int j = 0; j < pigeons.size() ; j++)
-		{
-			for(int k = 0 ; k < pigs.size();k++)
-			{
-				ArrayList<Egg> eggs = pigeons.get(j).getEggs();
-				Pig pigTest = pigs.get(k);
+				ArrayList<Egg> eggs = currentPigeon.getEggs();
 				
-				for (int i = 0; i < eggs.size(); ++i ) {
+				for (int i = 0; i < eggs.size(); ++i) {
 		            Egg e = (Egg) eggs.get(i);
 		            Rectangle hitBoxEgg = e.getBound();
-		            Rectangle hitBoxPig= pigTest.getBound();
-		            if(testCollision(hitBoxEgg,hitBoxPig))
-		            {
-		            	eggs.remove(i);
+		            for (int j = 0; j < entities.size(); ++j) {
+		    			if (entities.get(j) instanceof Pig){
+		    				Pig pigTest = (Pig)entities.get(j);
+				            Rectangle hitBoxPig= pigTest.getBound();
+				            if(testCollision(hitBoxEgg,hitBoxPig))
+				            {
+				            	eggs.remove(i);
+				            }
+		    			}
 		            }
 				}
-	        }
-		}
-		
 		return false;
 	}
 	
@@ -97,7 +95,7 @@ public class GameModel implements ActionListener {
 			return true;
 		}
 		return false;
-	}*/
+	}
 	
 	public void actionPerformed(ActionEvent event) {
         for (int i = 0; i <entities.size(); ++i ) {
@@ -108,7 +106,7 @@ public class GameModel implements ActionListener {
                 	entities.remove(i);
         	}
         }
-      //checkCollision();
+        checkCollision();
         fireListChanged();
     }
 	
