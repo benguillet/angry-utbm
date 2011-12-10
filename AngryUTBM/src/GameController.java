@@ -12,6 +12,8 @@ public class GameController implements KeyListener, ActionListener {
 	private GameModel angryModel;
 	private GameFrame angryFrame;
 	private JButton startButton;
+	private JButton lvl01Button;
+	private JButton lvl02Button;
 	private Pigeon p;
 	
 	private ArrayList<Entity> entities;
@@ -31,6 +33,12 @@ public class GameController implements KeyListener, ActionListener {
 		
 		startButton = angryMenu.getStartButton();
 		startButton.addActionListener(this);
+		
+		lvl01Button = angryMenu.getLvl01Button();
+		lvl01Button.addActionListener(this);
+		
+		lvl02Button = angryMenu.getLvl02Button();
+		lvl02Button.addActionListener(this);
 	
 		angryModel.setDisplay(angryView);
 		angryModel.addListListener(angryView);
@@ -82,8 +90,25 @@ public class GameController implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(startButton)) {
+			//angryFrame.setGame();
+			startButton.setVisible(false);
+			lvl01Button.setVisible(true);
+			lvl02Button.setVisible(true);
+			System.out.println("bite");
+		}
+		
+		if (e.getSource().equals(lvl01Button))
+		{
+			angryView.setMap(new Level("res/maps/lvl01.txt"));
 			angryFrame.setGame();
 		}
+		
+		if (e.getSource().equals(lvl02Button))
+		{
+			angryView.setMap(new Level("res/maps/lvl02.txt"));
+			angryFrame.setGame();
+		}
+		
 	}
 
 
