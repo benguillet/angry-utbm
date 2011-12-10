@@ -9,7 +9,7 @@ public class GameFrame extends JFrame {
 	
 	public GameFrame(GameController controller, ArrayList<Entity> entities) {
 		angryViewMenu = new GameViewMenu(controller);
-		angryView = new GameView(controller, entities);
+		angryView = new GameView(controller, entities);//taille : 794 par 572
 		
 		// Pour activer ou non le menu, il faut mettre menuOn a true ou false, et interchanger les 2 this.add(...)
 		this.add(angryViewMenu);
