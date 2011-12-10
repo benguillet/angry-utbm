@@ -18,7 +18,7 @@ public class GameModel implements ActionListener {
 	private EventListenerList listeners;
 	
 	public GameModel() {
-		map = new Level();
+		map = new Level("res/maps/lvl01.txt");
 		entities = new ArrayList<Entity>();
 		currentPigeon = new Pigeon();
 		entities.add(currentPigeon);
@@ -86,8 +86,29 @@ public class GameModel implements ActionListener {
 				            }
 		    			}
 		            }
-					}
+					int dx=0;
+					int dy=0;
+					int tabMap[][]= map.getTabMap();
 					// collision avec le decor
+					for(int y=0;y<24;y++)
+					{	
+						for(int x=0; x<32;x++)
+						{
+							if(tabMap[y][x]==1 || tabMap[y][x]==2)
+							{
+								Rectangle HitBox = new Rectangle(dx,dy,25,25);
+								if(testCollision(hitBoxEgg, HitBox))
+								{
+									entities.remove(i);
+									break;
+								}
+							}
+							dx=dx+25;
+						}
+						dy=dy+25;
+				    	dx=0;
+					}
+					}
 				}
 				
 			

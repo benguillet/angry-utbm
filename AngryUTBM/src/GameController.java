@@ -25,14 +25,12 @@ public class GameController implements KeyListener, ActionListener {
 				p = (Pigeon) entities.get(i);
 		}
 		
-		//pigeons = ArrayList<Egg> eggs;
-		//pigs = angryModel.getPigList();
-		
 		angryFrame = new GameFrame(this, entities);
 		angryMenu = angryFrame.getAngryViewMenu();
 		angryView = angryFrame.getAngryView();
 		
 		startButton = angryMenu.getStartButton();
+		startButton.addActionListener(this);
 	
 		angryModel.setDisplay(angryView);
 		angryModel.addListListener(angryView);
@@ -84,7 +82,7 @@ public class GameController implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource().equals("Start game"))
+		if (e.getSource().equals(startButton))
 		{
 			angryFrame.setGame();
 		}
