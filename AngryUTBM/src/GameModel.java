@@ -27,9 +27,7 @@ public class GameModel implements ActionListener {
 			if (entities.get(i) instanceof Pig)
 				entities.get(i).start();
 		}
-
-		//eggs = pigeons.get(0).getEggs();
-		//pigs.get(0).start();
+		
 		timer = new Timer(5, this);
 		timer.start();
 		
