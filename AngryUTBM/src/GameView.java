@@ -2,19 +2,14 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 
 import java.util.ArrayList;
 
-import javax.swing.Timer;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class GameView extends JPanel implements ActionListener {
+public class GameView extends JPanel implements ListListener {
 	private Level map;
-	private Timer timer;
 	private ArrayList<Entity> entities;
 	
 	
