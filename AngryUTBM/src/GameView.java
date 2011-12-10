@@ -24,12 +24,10 @@ public class GameView extends JPanel implements ActionListener {
         setFocusable(true);
         setDoubleBuffered(true);
 
-        timer = new Timer(5, this);
         map = new Level("res/maps/lvl01.txt");
         
         this.entities = entities;
         
-       	timer.start();
 	}
 	
 	public void paint(Graphics g) {
@@ -120,10 +118,6 @@ public class GameView extends JPanel implements ActionListener {
 	public void setEntityList(ArrayList<Entity> entities) {
 		this.entities = entities;
 	}
-
-	public void actionPerformed(ActionEvent event) {
-        repaint();
-    }
 	
 
 	public Level getMap() {
@@ -132,6 +126,13 @@ public class GameView extends JPanel implements ActionListener {
 
 	public void setMap(Level map) {
 		this.map = map;
+	}
+
+	@Override
+	public void listChanged(ListChangedEvent event) {
+		this.entities = event.getEntityList();
+		repaint();
+		
 	}
 	
 }
