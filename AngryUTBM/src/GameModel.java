@@ -68,21 +68,23 @@ public class GameModel implements ActionListener {
 	
 	public boolean checkCollision()
 	{
-				ArrayList<Egg> eggs = currentPigeon.getEggs();
-				
-				for (int i = 0; i < eggs.size(); ++i) {
-		            Egg e = (Egg) eggs.get(i);
-		            Rectangle hitBoxEgg = e.getBound();
+		
+				for (int i = 0; i < entities.size(); ++i) {
+					if (entities.get(i) instanceof Egg)
+					{
+						Egg e = (Egg) entities.get(i);
+						Rectangle hitBoxEgg = e.getBound();
 		            for (int j = 0; j < entities.size(); ++j) {
 		    			if (entities.get(j) instanceof Pig){
 		    				Pig pigTest = (Pig)entities.get(j);
 				            Rectangle hitBoxPig= pigTest.getBound();
 				            if(testCollision(hitBoxEgg,hitBoxPig))
 				            {
-				            	eggs.remove(i);
+				            	entities.remove(i);
 				            }
 		    			}
 		            }
+					}
 				}
 		return false;
 	}
