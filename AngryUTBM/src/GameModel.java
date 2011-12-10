@@ -49,18 +49,6 @@ public class GameModel implements ActionListener {
 	public void setMap(Level map) {
 		this.map = map;
 	}
-
-/*	public ArrayList<Pig> getPigList() {
-		return pigs;
-	}
-
-	public ArrayList<Pigeon> getPigeonList() {
-		return pigeons;
-	}
-	
-	public ArrayList<Egg> getEggList() {
-		return eggs;
-	}*/
 	
 	public ArrayList<Entity> getEntityList() {
 		return entities;
