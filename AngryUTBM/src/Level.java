@@ -11,7 +11,7 @@ public class Level {
 	private String backgroundImagePath = "res/images/background.png";
 	private Image image;
 	private int tabMap[][];
-	private Rectangle tabCollsion[][];
+	private Rectangle tabCollision[][];
 	private String grassImagePath = "res/images/grass.png";
 	private Image grass;
 	private String blockImagePath = "res/images/block.png";

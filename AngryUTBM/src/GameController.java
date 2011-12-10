@@ -81,9 +81,7 @@ public class GameController implements KeyListener, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource().equals(startButton))
-		{
+		if (e.getSource().equals(startButton)) {
 			angryFrame.setGame();
 		}
 	}
