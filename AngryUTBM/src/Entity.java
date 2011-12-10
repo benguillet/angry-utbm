@@ -1,16 +1,29 @@
 import java.awt.Image;
+import java.util.ArrayList;
 
 abstract class Entity extends Thread {
 	protected short speed;
 	protected Position position;
 	protected String imagePath;
 	protected Image image;
+	protected ArrayList<Egg> eggs;
+	protected boolean visible = true;
 
 	public Image getImage() {
-        return image;
+        return this.image;
     }
 	
 	public Position getPosition() {
-		return position;
+		return this.position;
+	}
+	
+	public ArrayList<Egg> getEggs() {
+		return this.eggs;
+	}
+	
+	abstract public void move();
+	
+	public boolean isVisible() {
+		return this.visible;
 	}
 }

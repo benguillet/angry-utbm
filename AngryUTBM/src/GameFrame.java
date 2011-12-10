@@ -9,9 +9,9 @@ public class GameFrame extends JFrame {
 	private GameViewMenu angryViewMenu;
 	private boolean menuOn;
 	
-	public GameFrame(GameController controller, ArrayList<Pigeon> pigeons, ArrayList<Pig> pigs) {
+	public GameFrame(GameController controller, ArrayList<Entity> entities) {
 		angryViewMenu = new GameViewMenu(controller);
-		angryView = new GameView(controller, pigeons, pigs);
+		angryView = new GameView(controller, entities);
 		
 		// Pour activer ou non le menu, il faut mettre menuOn a true ou false, et interchanger les 2 this.add(...)
 		this.add(angryViewMenu);

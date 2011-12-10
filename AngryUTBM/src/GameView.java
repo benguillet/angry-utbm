@@ -2,36 +2,27 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 
 import java.util.ArrayList;
 
-import javax.swing.Timer;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class GameView extends JPanel implements ActionListener {
+public class GameView extends JPanel implements ListListener {
 	private Level map;
-	private Timer timer;
+	private ArrayList<Entity> entities;
 	
-	private ArrayList<Pigeon> pigeons;
-	private ArrayList<Pig> pigs;
 	
-	public GameView(GameController controller, ArrayList<Pigeon> pigeons, ArrayList<Pig> pigs) {
+	public GameView(GameController controller, ArrayList<Entity> entities) {
 
         addKeyListener(controller);
         setFocusable(true);
         setDoubleBuffered(true);
 
-        timer = new Timer(5, this);
         map = new Level("res/maps/lvl01.txt");
         
-        this.pigeons = pigeons;
-		this.pigs = pigs;
+        this.entities = entities;
         
-       	timer.start();
 	}
 	
 	public void paint(Graphics g) {
@@ -68,21 +59,65 @@ public class GameView extends JPanel implements ActionListener {
 	    	dx=0;
 	    }
         
+        int tabMap[][]= map.getTabMap();
         
-        // On affiche les pigeons
+	    int dx=0;
+	    int dy=0;
+	    
+	    for(int i=0; i<24;i++)
+	    {
+	    	for(int j=0; j<32;j++)
+	    	{
+	    		switch(tabMap[i][j])
+	    		{
+	    		case 1 :
+	    			g2d.drawImage(map.getGrass(), dx, dy, this);
+	    			break;
+	    		case 2 :
+	    			g2d.drawImage(map.getBloc(), dx, dy, this);
+	    			break;
+	    		default :
+	    			break;
+	    		}
+	    		
+	    		dx=dx+25;
+	    	}
+	    	dy=dy+25;
+	    	dx=0;
+	    }
+        
+        
+        
+        for (int i = 0; i < entities.size(); ++i) {
+        	if (entities.get(i) instanceof Bird) {
+            	Bird bird = (Bird) entities.get(i);
+        		for (int j = 0; j < bird.getEggLeft(); ++j) {
+        			Egg egg = new Egg(0,0);
+        			g2d.drawImage(egg.getImage(), 600+j*15, 20, this);
+        		}
+        	}
+        }
+        
+        for (int i = 0; i < entities.size(); ++i) {
+            g2d.drawImage(entities.get(i).getImage(), entities.get(i).getPosition().getX(), entities.get(i).getPosition().getY(), this);
+        	//g2d.drawRect(entities.get(i).getBound().x,entities.get(i).getBound().y,entities.get(i).getBound().width,entities.get(i).getBound().height);
+        }
+        
+        
+        /*// On affiche les pigeons
         for (int i = 0; i < pigeons.size(); ++i ) {
         	Pigeon p = (Pigeon) pigeons.get(i);
             g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
         }
         
-        
-        // On affiche les cochons
+         // On affiche les cochons
         for (int i = 0; i < pigs.size(); ++i ) {
             Pig p = (Pig) pigs.get(i);
             g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
+            g2d.drawRect(p.getBound().x,p.getBound().y,p.getBound().width,p.getBound().height);
         }
         
-        // On affiche les oeufs lachés
+       // On affiche les oeufs lachés
         for (int i = 0; i < pigeons.size(); ++i ) {
         	ArrayList<Egg> eggs = pigeons.get(i).getEggs();
         	
@@ -92,24 +127,19 @@ public class GameView extends JPanel implements ActionListener {
         	}
         }
         
-        Egg e = new Egg();        
+        Egg e = new Egg(0,0);        
         // On affiche les oeufs restants	
         for (int i = 0; i < pigeons.get(0).getEggLeft(); ++i) {
         		g2d.drawImage(e.getImage(), 600+i*15, 20, this);
-        }
+        }*/
         
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
 	
-	public void setEntityLists(ArrayList<Pigeon> pigeons2, ArrayList<Pig> pigs2) {
-		pigeons = pigeons2;
-		pigs = pigs2;
+	public void setEntityList(ArrayList<Entity> entities) {
+		this.entities = entities;
 	}
-
-	public void actionPerformed(ActionEvent event) {
-        repaint();
-    }
 	
 
 	public Level getMap() {
@@ -118,6 +148,13 @@ public class GameView extends JPanel implements ActionListener {
 
 	public void setMap(Level map) {
 		this.map = map;
+	}
+
+	@Override
+	public void listChanged(ListChangedEvent event) {
+		this.entities = event.getEntityList();
+		repaint();
+		
 	}
 	
 }

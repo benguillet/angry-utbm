@@ -14,7 +14,9 @@ public class Pigeon extends Bird {
 	    eggLeft = 3;
 	}
 
-    public void moveRight() {
+    public void move() {}
+	
+	public void moveRight() {
         position.setX(position.getX() + speed);
     }
     
@@ -47,4 +49,6 @@ public class Pigeon extends Bird {
     public ArrayList<Egg> getEggs() {
     	return eggs;
     }
+    
+    
 }
