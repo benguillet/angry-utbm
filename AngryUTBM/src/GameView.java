@@ -41,7 +41,6 @@ public class GameView extends JPanel implements ListListener {
 	    {
 	    	for(int j=0; j<31;j++)
 	    	{
-	    		System.out.println(this.getSize());
 	    		switch(tabMap[i][j])
 	    		{
 	    		case 1 :
@@ -54,9 +53,9 @@ public class GameView extends JPanel implements ListListener {
 	    			break;
 	    		}
 	    		
-	    		dx=dx+25;
+	    		dx=dx+26;
 	    	}
-	    	dy=dy+25;
+	    	dy=dy+26;
 	    	dx=0;
 	    }
         
