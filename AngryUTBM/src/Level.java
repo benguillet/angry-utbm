@@ -11,8 +11,8 @@ public class Level {
 	private int tabMap[][];
 	private String grassImagePath = "res/images/grass.png";
 	private Image grass;
-	private String blocImagePath = "res/images/bloc.png";
-	private Image bloc;
+	private String blockImagePath = "res/images/block.png";
+	private Image block;
 
 	
 	public Level() {
@@ -26,8 +26,8 @@ public class Level {
 	    image = ii.getImage();
 	    ImageIcon gr = new ImageIcon(grassImagePath);
 	    grass = gr.getImage();
-	    ImageIcon bl = new ImageIcon(blocImagePath);
-	    bloc = bl.getImage();
+	    ImageIcon bl = new ImageIcon(blockImagePath);
+	    block = bl.getImage();
 	    
 	    try
 	    {
@@ -36,13 +36,13 @@ public class Level {
 			BufferedReader br=new BufferedReader(ipsr);
 			String ligne;
 			
-			tabMap = new int[24][32];
+			tabMap = new int[22][31];
 						
-			for(int i=0;i<24;i++)
+			for(int i=0;i<22;i++)
 			{	
 				ligne = br.readLine();
 				
-				for(int j=0; j<32;j++)
+				for(int j=0; j<31;j++)
 				{
 					
 					char car = ligne.charAt(j);
@@ -67,8 +67,8 @@ public class Level {
 		return grass;
 	}
 	
-	public Image getBloc(){
-		return bloc;
+	public Image getBlock(){
+		return block;
 	}
 	
 	public int[][] getTabMap(){
