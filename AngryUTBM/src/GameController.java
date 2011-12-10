@@ -38,6 +38,7 @@ public class GameController implements KeyListener, ActionListener {
 		startButton = angryMenu.getStartButton();
 	
 		angryModel.setDisplay(angryView);
+		angryModel.addListListener(angryView);
 	}
 	
 	@Override

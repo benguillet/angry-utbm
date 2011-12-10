@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 
+@SuppressWarnings("serial")
 public class GameViewMenu extends JPanel  implements ActionListener{
 
 	private String backgroundImagePath = "res/images/background.png";

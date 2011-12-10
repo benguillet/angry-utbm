@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
+import javax.swing.event.EventListenerList;
 
 
 public class GameModel implements ActionListener {
@@ -17,6 +18,8 @@ public class GameModel implements ActionListener {
 	//private ArrayList<Pig> pigs;
 	//private ArrayList<Egg> eggs;
 	private Timer timer;
+	
+	private EventListenerList listeners;
 	
 	public GameModel() {
 		map = new Level();
@@ -33,6 +36,8 @@ public class GameModel implements ActionListener {
 		//pigs.get(0).start();
 		timer = new Timer(5, this);
 		timer.start();
+		
+		listeners = new EventListenerList();
 	}
 
 	public GameView getDisplay() {
@@ -115,5 +120,22 @@ public class GameModel implements ActionListener {
         	}
         }
       //checkCollision();
+        fireListChanged();
     }
+	
+	public void addListListener(ListListener listener) {
+		listeners.add(ListListener.class, listener);
+	}
+	
+	public void removeListListener(ListListener l) {
+		listeners.remove(ListListener.class, l);
+	}
+	
+	public void fireListChanged(){
+		ListListener[] listenerList = (ListListener[])listeners.getListeners(ListListener.class);
+		
+		for(ListListener listener : listenerList){
+			listener.listChanged(new ListChangedEvent(this, getEntityList()));
+		}
+	}
 }
