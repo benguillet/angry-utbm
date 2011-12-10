@@ -61,6 +61,7 @@ public class GameView extends JPanel implements ListListener {
         
         
         
+        
         for (int i = 0; i < entities.size(); ++i) {
         	if (entities.get(i) instanceof Bird) {
             	Bird bird = (Bird) entities.get(i);
