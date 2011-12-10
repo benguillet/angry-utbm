@@ -26,7 +26,7 @@ public class GameView extends JPanel implements ActionListener {
         setDoubleBuffered(true);
 
         timer = new Timer(5, this);
-        map = new Level();
+        map = new Level("res/maps/lvl01.txt");
         
         this.pigeons = pigeons;
 		this.pigs = pigs;
@@ -37,8 +37,36 @@ public class GameView extends JPanel implements ActionListener {
 	public void paint(Graphics g) {
         super.paint(g);
 
+        // On affiche le level
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(map.getImage(), 0, 0, this);
+        
+        int tabMap[][]= map.getTabMap();
+        
+	    int dx=0;
+	    int dy=0;
+	    
+	    for(int i=0; i<24;i++)
+	    {
+	    	for(int j=0; j<32;j++)
+	    	{
+	    		switch(tabMap[i][j])
+	    		{
+	    		case 1 :
+	    			g2d.drawImage(map.getGrass(), dx, dy, this);
+	    			break;
+	    		case 2 :
+	    			g2d.drawImage(map.getBloc(), dx, dy, this);
+	    			break;
+	    		default :
+	    			break;
+	    		}
+	    		
+	    		dx=dx+25;
+	    	}
+	    	dy=dy+25;
+	    	dx=0;
+	    }
         
         
         // On affiche les pigeons
