@@ -59,32 +59,6 @@ public class GameView extends JPanel implements ListListener {
 	    	dx=0;
 	    }
         
-        int tabMap[][]= map.getTabMap();
-        
-	    int dx=0;
-	    int dy=0;
-	    
-	    for(int i=0; i<24;i++)
-	    {
-	    	for(int j=0; j<32;j++)
-	    	{
-	    		switch(tabMap[i][j])
-	    		{
-	    		case 1 :
-	    			g2d.drawImage(map.getGrass(), dx, dy, this);
-	    			break;
-	    		case 2 :
-	    			g2d.drawImage(map.getBloc(), dx, dy, this);
-	    			break;
-	    		default :
-	    			break;
-	    		}
-	    		
-	    		dx=dx+25;
-	    	}
-	    	dy=dy+25;
-	    	dx=0;
-	    }
         
         
         
