@@ -14,9 +14,6 @@ public class GameController implements KeyListener, ActionListener {
 	private JButton startButton;
 	private Pigeon p;
 	
-	//private ArrayList<Pigeon> pigeons;
-	//private ArrayList<Pig> pigs;
-	//private ArrayList<Egg> eggs;
 	private ArrayList<Entity> entities;
 	
 	public GameController() {
