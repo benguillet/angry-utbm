@@ -13,10 +13,6 @@ public class GameModel implements ActionListener {
 	private Level map;
 	private ArrayList<Entity> entities;
 	private Pigeon currentPigeon;
-	
-	//private ArrayList<Pigeon> pigeons;
-	//private ArrayList<Pig> pigs;
-	//private ArrayList<Egg> eggs;
 	private Timer timer;
 	
 	private EventListenerList listeners;
