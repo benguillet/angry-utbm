@@ -25,9 +25,6 @@ public class GameController implements KeyListener, ActionListener {
 				p = (Pigeon) entities.get(i);
 		}
 		
-		//pigeons = ArrayList<Egg> eggs;
-		//pigs = angryModel.getPigList();
-		
 		angryFrame = new GameFrame(this, entities);
 		angryMenu = angryFrame.getAngryViewMenu();
 		angryView = angryFrame.getAngryView();
