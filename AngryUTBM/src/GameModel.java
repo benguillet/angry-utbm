@@ -66,7 +66,7 @@ public class GameModel implements ActionListener {
     		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");
 	}
 	
-	public boolean checkCollision()
+	public void checkCollision()
 	{
 		
 				for (int i = 0; i < entities.size(); ++i) {
@@ -74,6 +74,7 @@ public class GameModel implements ActionListener {
 					{
 						Egg e = (Egg) entities.get(i);
 						Rectangle hitBoxEgg = e.getBound();
+					// collision avec les entities
 		            for (int j = 0; j < entities.size(); ++j) {
 		    			if (entities.get(j) instanceof Pig){
 		    				Pig pigTest = (Pig)entities.get(j);
@@ -81,12 +82,16 @@ public class GameModel implements ActionListener {
 				            if(testCollision(hitBoxEgg,hitBoxPig))
 				            {
 				            	entities.remove(i);
+				            	entities.remove(j);
 				            }
 		    			}
 		            }
 					}
+					// collision avec le decor
 				}
-		return false;
+				
+			
+				
 	}
 	
 	public boolean testCollision(Rectangle x, Rectangle y)
