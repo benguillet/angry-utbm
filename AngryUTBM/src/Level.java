@@ -1,4 +1,6 @@
 import java.awt.Image;
+import java.awt.Rectangle;
+
 import javax.swing.ImageIcon;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -9,6 +11,7 @@ public class Level {
 	private String backgroundImagePath = "res/images/background.png";
 	private Image image;
 	private int tabMap[][];
+	private Rectangle tabCollsion[][];
 	private String grassImagePath = "res/images/grass.png";
 	private Image grass;
 	private String blockImagePath = "res/images/block.png";
