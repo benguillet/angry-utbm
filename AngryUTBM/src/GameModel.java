@@ -18,7 +18,7 @@ public class GameModel implements ActionListener {
 	private EventListenerList listeners;
 	
 	public GameModel() {
-		map = new Level();
+		map = new Level("res/maps/lvl01.txt");
 		entities = new ArrayList<Entity>();
 		currentPigeon = new Pigeon();
 		entities.add(currentPigeon);
@@ -66,7 +66,7 @@ public class GameModel implements ActionListener {
     		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");
 	}
 	
-	public boolean checkCollision()
+	public void checkCollision()
 	{
 		
 				for (int i = 0; i < entities.size(); ++i) {
@@ -74,6 +74,7 @@ public class GameModel implements ActionListener {
 					{
 						Egg e = (Egg) entities.get(i);
 						Rectangle hitBoxEgg = e.getBound();
+					// collision avec les entities
 		            for (int j = 0; j < entities.size(); ++j) {
 		    			if (entities.get(j) instanceof Pig){
 		    				Pig pigTest = (Pig)entities.get(j);
@@ -81,12 +82,37 @@ public class GameModel implements ActionListener {
 				            if(testCollision(hitBoxEgg,hitBoxPig))
 				            {
 				            	entities.remove(i);
+				            	entities.remove(j);
 				            }
 		    			}
 		            }
+					int dx=0;
+					int dy=0;
+					int tabMap[][]= map.getTabMap();
+					// collision avec le decor
+					for(int y=0;y<24;y++)
+					{	
+						for(int x=0; x<32;x++)
+						{
+							if(tabMap[y][x]==1 || tabMap[y][x]==2)
+							{
+								Rectangle HitBox = new Rectangle(dx,dy,25,25);
+								if(testCollision(hitBoxEgg, HitBox))
+								{
+									entities.remove(i);
+									break;
+								}
+							}
+							dx=dx+25;
+						}
+						dy=dy+25;
+				    	dx=0;
+					}
 					}
 				}
-		return false;
+				
+			
+				
 	}
 	
 	public boolean testCollision(Rectangle x, Rectangle y)

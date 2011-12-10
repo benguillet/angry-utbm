@@ -30,6 +30,7 @@ public class GameController implements KeyListener, ActionListener {
 		angryView = angryFrame.getAngryView();
 		
 		startButton = angryMenu.getStartButton();
+		startButton.addActionListener(this);
 	
 		angryModel.setDisplay(angryView);
 		angryModel.addListListener(angryView);
@@ -81,7 +82,7 @@ public class GameController implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource().equals("Start game"))
+		if (e.getSource().equals(startButton))
 		{
 			angryFrame.setGame();
 		}
