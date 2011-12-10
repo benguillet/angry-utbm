@@ -25,6 +25,8 @@ public class GameViewMenu extends JLayeredPane{
 	private String backgroundImagePathCredit = "res/images/backgroundCredit.png";
 	private Image image;
 	private JButton startButton;
+	private JButton lvl01Button;
+	private JButton lvl02Button;
 	
 	public GameViewMenu(GameController controller)
 	{
@@ -46,8 +48,23 @@ public class GameViewMenu extends JLayeredPane{
         startButton.setSize(200,30);
         startButton.setLocation(400-100, 400-15);
         
+        lvl01Button = new JButton("Level 1");
+        lvl01Button.setSize(200,30);
+        lvl01Button.setLocation(400-100, 400-15);
+        
+        lvl02Button = new JButton("Level 2");
+        lvl02Button.setSize(200,30);
+        lvl02Button.setLocation(400-100, 500-15);
+        
         this.add(backPanel,new Integer(0));
    	 	this.add(startButton,new Integer(1));
+   	 	
+   	 	this.add(lvl01Button,new Integer(1));
+   	 	this.add(lvl02Button,new Integer(1));
+   	 	
+   	 	lvl01Button.setVisible(false);
+   	 	lvl02Button.setVisible(false);
+   	 	
         
         
         
@@ -70,5 +87,14 @@ public class GameViewMenu extends JLayeredPane{
 		return startButton;
 	}
 
+	public JButton getLvl01Button()
+	{
+		return lvl01Button;
+	}
+	
+	public JButton getLvl02Button()
+	{
+		return lvl02Button;
+	}
 	
 }
