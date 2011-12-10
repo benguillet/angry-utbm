@@ -11,7 +11,7 @@ public class GameModel implements ActionListener {
 	private GameView display;
 	private Level map;
 	private ArrayList<Entity> entities;
-	private Pigeon pigeonCurrent;
+	private Pigeon currentPigeon;
 	
 	//private ArrayList<Pigeon> pigeons;
 	//private ArrayList<Pig> pigs;
@@ -21,8 +21,8 @@ public class GameModel implements ActionListener {
 	public GameModel() {
 		map = new Level();
 		entities = new ArrayList<Entity>();
-		pigeonCurrent = new Pigeon();
-		entities.add(pigeonCurrent);
+		currentPigeon = new Pigeon();
+		entities.add(currentPigeon);
 		entities.add(new Pig());		
 		for (int i = 0; i < entities.size(); ++i) {
 			if (entities.get(i) instanceof Pig)
@@ -68,7 +68,14 @@ public class GameModel implements ActionListener {
 	}
 	
 	public void addEgg() {
-		entities.add(new Egg(pigeonCurrent.getPosition().getX(), pigeonCurrent.getPosition().getY()));
+		short eggLeft = currentPigeon.getEggLeft();
+		
+		if (eggLeft > 0) {
+			entities.add(new Egg(currentPigeon.getPosition().getX(), currentPigeon.getPosition().getY()));
+			currentPigeon.setEggLeft(eggLeft--);
+    	}
+    	else
+    		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");
 	}
 	
 	/*public boolean checkCollision()

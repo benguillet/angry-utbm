@@ -8,4 +8,8 @@ abstract class Bird extends Entity {
 	public short getEggLeft() {
 		return eggLeft;
 	}
+	
+	public void setEggLeft(short eggLeft) {
+		this.eggLeft = eggLeft;
+	}
 }
