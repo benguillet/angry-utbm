@@ -83,36 +83,35 @@ public class GameModel implements ActionListener {
 				int dx=0;
 				int dy=0;
 				int tabMap[][]= map.getTabMap();
-				/*// collision avec le decor
-				for(int y=0;y<24;y++)
+				// collision avec le decor
+				for(int y=0;y<22;y++)
 				{	
-					for(int x=0; x<32;x++)
+					for(int x=0; x<31;x++)
 					{
 						if(tabMap[y][x]==1 || tabMap[y][x]==2)
 						{
-							Rectangle HitBox = new Rectangle(dx,dy,25,25);
+							Rectangle HitBox = new Rectangle(dx,dy,26,26);
 							if(testCollision(hitBoxEgg, HitBox))
 							{
 								entities.remove(i);
 								break;
 							}
 						}
-						dx=dx+25;
+						dx=dx+26;
 					}
-					dy=dy+25;
+					dy=dy+26;
 			    	dx=0;
-				}*/
+					}
+				}
 			}
-		}			
 	}
+				
+			
 	
 	public boolean testCollision(Rectangle x, Rectangle y)
 	{
 		if(x.intersects(y))
-		{
-			System.out.print("collision");
 			return true;
-		}
 		return false;
 	}
 	

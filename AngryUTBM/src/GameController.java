@@ -23,16 +23,19 @@ public class GameController implements KeyListener, ActionListener {
 	
 	private ArrayList<Entity> entities;
 	
-	public GameController() {
-		angryModel = new GameModel();
+	public GameController(GameFrame Frame) {
+		angryFrame = Frame;
+		angryModel = Frame.getAngryModel();
+		angryMenu = Frame.getAngryViewMenu();
+		angryView = Frame.getAngryView();
+		
 		entities = angryModel.getEntityList();
 		
 		for (int i = 0; i < entities.size(); ++i) {
 			if (entities.get(i) instanceof Pigeon)
 				p = (Pigeon) entities.get(i);
 		}
-		
-		angryFrame = new GameFrame(this, entities);
+
 		angryMenu = angryFrame.getAngryViewMenu();
 		angryView = angryFrame.getAngryView();
 		
@@ -64,9 +67,8 @@ public class GameController implements KeyListener, ActionListener {
 		lvl01Button.addActionListener(this);
 		lvl02Button = angryMenu.getLvl02Button();
 		lvl02Button.addActionListener(this);
+
 	
-		angryModel.setDisplay(angryView);
-		angryModel.addListListener(angryView);
 	}
 	
 	@Override
@@ -126,10 +128,7 @@ public class GameController implements KeyListener, ActionListener {
 			playernameField.setVisible(true);
 			playernameLabel.setVisible(true);
 			okButton.setVisible(true);
-			
-			
 		}
-		
 		if(e.getSource().equals(okButton))
 		{
 			playernameField.setVisible(false);

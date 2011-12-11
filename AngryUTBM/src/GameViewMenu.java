@@ -17,6 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import sun.net.ProgressEvent;
+import sun.net.ProgressListener;
+
 
 public class GameViewMenu extends JLayeredPane {
 
@@ -28,7 +31,7 @@ public class GameViewMenu extends JLayeredPane {
 	private JButton easyButton, mediumButton, hardButton, extremeButton;
 	private String backgroundImagePath = "res/images/backgroundMenu.png";
 	private String backgroundImagePathCredit = "res/images/backgroundCredit.png";
-	private JLayeredPane layeredPane;
+	private String imgBird1 = "res/images/pigeon.png";
 	private JButton lvl01Button;
 	private JButton lvl02Button;
 	

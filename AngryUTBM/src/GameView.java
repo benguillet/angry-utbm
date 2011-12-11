@@ -21,8 +21,7 @@ public class GameView extends JPanel implements ListListener {
 
         map = new Level("res/maps/lvl01.txt");
         
-        this.entities = entities;
-        
+        this.entities = entities; 
 	}
 	
 	public void paint(Graphics g) {
