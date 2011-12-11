@@ -7,6 +7,7 @@ public class GameFrame extends JFrame {
 	private GameView angryView;
 	private GameViewMenu angryViewMenu;
 	private GameController angryController;
+	private MenuController angryMenuController;
 	private GameModel angryModel;
 	private String winName;
 	ArrayList<Entity> angryEntities;
@@ -14,20 +15,31 @@ public class GameFrame extends JFrame {
 	public GameFrame(String name) {
 		winName = name;
 		angryModel = new GameModel();
-		angryViewMenu = new GameViewMenu(this);
-		angryController = new GameController(this);
-		angryView = new GameView(this, angryEntities);
 		angryEntities = angryModel.getEntityList();
 		
-		
-		angryView.setVisible(true);
+		//Views
+		angryViewMenu = new GameViewMenu();
+		angryView = new GameView(angryEntities);
 		
 		
 		angryModel.setDisplay(angryView);
+		
+		//controller 
+		angryController = new GameController(this);
+		angryMenuController = new MenuController(this);
+		
+		
+		//Listener
+		angryView.addKeyListener(angryController);
 		angryModel.addListListener(angryView);
 		
-		this.add(angryViewMenu);
+		
+		angryView.setVisible(false);
+		angryViewMenu.setVisible(true);
+		
+		
 		this.add(angryView);
+		this.add(angryViewMenu);
 		
 		this.setTitle(winName);
 		this.setSize(800, 600);
@@ -35,7 +47,7 @@ public class GameFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
-		this.addKeyListener(angryController);
+		
     }
 
 	public GameView getAngryView() {
@@ -58,13 +70,18 @@ public class GameFrame extends JFrame {
 	
 	public void setMenu()
 	{
-		this.setContentPane(angryViewMenu);
-		this.setVisible(true);
+		//this.setContentPane(angryViewMenu);
+		angryView.setVisible(false);
+		angryViewMenu.setVisible(true);
+		//this.add(angryViewMenu);
 	}
 	
 	public void setGame()
 	{
-		this.setContentPane(angryView);
-		this.setVisible(true);
+		//this.setContentPane(angryView);
+		angryView.setVisible(true);
+		angryViewMenu.setVisible(false);
+		this.add(angryView);
+		
 	}
 }

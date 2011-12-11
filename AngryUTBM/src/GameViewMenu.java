@@ -35,7 +35,7 @@ public class GameViewMenu extends JLayeredPane {
 	private JButton lvl01Button;
 	private JButton lvl02Button;
 	
-	public GameViewMenu(GameFrame frame)
+	public GameViewMenu()
 	{
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
@@ -53,16 +53,8 @@ public class GameViewMenu extends JLayeredPane {
 		};
 		
 		backPanel.setSize(new Dimension(800, 600));
-	    
-	    addKeyListener(frame.getController());
 	    setFocusable(true);
         setDoubleBuffered(true);
-        
-
-        newButton = new JButton("Start game");
-        newButton.setSize(200,30);
-        newButton.setLocation(400-100, 400-15);
-        newButton.addActionListener(frame.getController());
 
         difficultyLabel = new JLabel("Choose difficulty :");
         difficultyLabel.setSize(200, 30);
@@ -116,12 +108,10 @@ public class GameViewMenu extends JLayeredPane {
         lvl01Button = new JButton("LEVEL 1");
         lvl01Button.setSize(200,30);
         lvl01Button.setLocation(400-100, 400-15);
-        lvl01Button.addActionListener(frame.getController());
         
         lvl02Button = new JButton("LEVEL 2");
         lvl02Button.setSize(200,30);
         lvl02Button.setLocation(400-100, 500-15);
-        lvl02Button.addActionListener(frame.getController());
         
         this.add(backPanel,new Integer(0));
    	 	this.add(newButton,new Integer(1));
