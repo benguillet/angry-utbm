@@ -114,6 +114,7 @@ public class GameController implements KeyListener, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		// TODO Auto-generated method stub
 		if (e.getSource().equals(newButton))
 		{
@@ -150,10 +151,8 @@ public class GameController implements KeyListener, ActionListener {
 			hardButton.setVisible(false);
 			extremeButton.setVisible(false);
 			
-			lvl01Button.setVisible(true);
-			lvl02Button.setVisible(true);
 		}
-		
+			
 		if (e.getSource().equals(lvl01Button))
 		{
 			angryView.setMap(new Level("res/maps/lvl01.txt"));

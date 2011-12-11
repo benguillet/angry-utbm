@@ -16,20 +16,19 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.text.LayeredHighlighter;
-
-import com.sun.xml.internal.ws.api.server.Container;
 
 
-public class GameViewMenu extends JLayeredPane{
+public class GameViewMenu extends JLayeredPane {
 
-	private String backgroundImagePath = "res/images/background.png";
 	private String titleImagePath = "res/images/title.png";
 	private Image image,title;
 	private JLabel difficultyLabel,playernameLabel;
 	private JTextField playernameField;
 	private JButton newButton,loadButton,optionsButton,exitButton,okButton;
 	private JButton easyButton, mediumButton, hardButton, extremeButton;
+	private String backgroundImagePath = "res/images/backgroundMenu.png";
+	private String backgroundImagePathCredit = "res/images/backgroundCredit.png";
+	private JLayeredPane layeredPane;
 	private JButton lvl01Button;
 	private JButton lvl02Button;
 	
@@ -37,10 +36,11 @@ public class GameViewMenu extends JLayeredPane{
 	{
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
+
 	    ImageIcon ti = new ImageIcon(titleImagePath);
 	    title = ti.getImage();
-	    
-	    JPanel backPanel= new JPanel(){
+	      
+	    JPanel backPanel= new JPanel() {
 	    
 			public void paint(Graphics g) {
 				g.drawImage(image, 0, 0, null);
@@ -48,11 +48,11 @@ public class GameViewMenu extends JLayeredPane{
 			
 			}
 		};
+		
 		backPanel.setSize(new Dimension(800, 600));
 	    
 	    addKeyListener(controller);
 	    setFocusable(true);
-        setBackground(Color.BLACK);
         setDoubleBuffered(true);
         
         difficultyLabel = new JLabel("Choose difficulty :");
@@ -141,8 +141,6 @@ public class GameViewMenu extends JLayeredPane{
    	 	playernameField.setVisible(false);
    	 	playernameLabel.setVisible(false);
         
-        
-        
         this.setVisible(true);
 	}
 	
@@ -152,11 +150,11 @@ public class GameViewMenu extends JLayeredPane{
         Graphics2D g2d = (Graphics2D)g;
         //g2d.drawImage(image, 0, 0, this);
         
-        
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
       
 	}*/
+
 	public JButton getNewButton()
 	{
 		return newButton;
@@ -196,6 +194,7 @@ public class GameViewMenu extends JLayeredPane{
 	{
 		return extremeButton;
 	}
+
 
 	public JButton getLvl01Button()
 	{
