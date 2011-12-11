@@ -15,14 +15,14 @@ public class GameFrame extends JFrame {
 		winName = name;
 		angryModel = new GameModel();
 		angryController = new GameController(this);
-		angryView = new GameView(angryController, angryEntities);
+		angryEntities = angryModel.getEntityList();
+		angryViewMenu = new GameViewMenu(this);
+		angryView = new GameView(this, angryEntities);
+		
 		angryView.setVisible(false);
-		angryViewMenu = new GameViewMenu(angryController);
 		angryView.setVisible(true);
 		
 		
-		
-		angryEntities = angryModel.getEntityList();
 		angryModel.setDisplay(angryView);
 		angryModel.addListListener(angryView);
 		
@@ -50,6 +50,10 @@ public class GameFrame extends JFrame {
 	public GameModel getAngryModel()
 	{
 		return angryModel;
+	}
+	public GameController getController()
+	{
+		return angryController;
 	}
 	
 	public void setMenu()

@@ -13,9 +13,9 @@ public class GameView extends JPanel implements ListListener {
 	private ArrayList<Entity> entities;
 	
 	
-	public GameView(GameController controller, ArrayList<Entity> entities) {
+	public GameView(GameFrame frame, ArrayList<Entity> entities) {
 
-        addKeyListener(controller);
+        addKeyListener(frame.getController());
         setFocusable(true);
         setDoubleBuffered(true);
 

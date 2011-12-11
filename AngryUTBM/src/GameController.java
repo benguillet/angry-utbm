@@ -30,17 +30,7 @@ public class GameController implements KeyListener, ActionListener {
 			if (entities.get(i) instanceof Pigeon)
 				p = (Pigeon) entities.get(i);
 		}
-		
-		/*startButton = angryMenu.getStartButton();
-		startButton.addActionListener(this);
-		
-		lvl01Button = angryMenu.getLvl01Button();
-		lvl01Button.addActionListener(this);
-		
-		lvl02Button = angryMenu.getLvl02Button();
-		lvl02Button.addActionListener(this);*/
 
-	
 	}
 	
 	@Override
@@ -89,14 +79,13 @@ public class GameController implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 			
-		/*if (e.getSource().equals(startButton)) {
+		/*if (e.getSource().equals(angryMenu.getStartButton())) {
 			//angryFrame.setGame();
+			System.out.print("bite");
 			startButton.setVisible(false);
 			lvl01Button.setVisible(true);
 			lvl02Button.setVisible(true);
-			System.out.println("bite");
 		}
-		
 		if (e.getSource().equals(lvl01Button))
 		{
 			angryView.setMap(new Level("res/maps/lvl01.txt"));
