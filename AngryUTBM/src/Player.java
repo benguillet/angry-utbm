@@ -63,8 +63,8 @@ public class Player implements Serializable {
 	public String toString() {
 		String result = "Name : " + name + "\n" +
 	                    "Score : " + score + "\n" +
-	                    "Easy : " + easy.toString() +
-	                    "Normal : " + normal.toString() +
+	                    "Easy : " + easy.toString() + "\n" +
+	                    "Normal : " + normal.toString() + "\n" +
 	                    "Hard : " + hard.toString();
 		return result;
 	}
