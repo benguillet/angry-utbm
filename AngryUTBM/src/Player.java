@@ -17,12 +17,12 @@ public class Player implements Serializable {
 	public Player(String name) {
 		this.name = name;
 		easy = new ArrayList<Integer>();
-		easy.add(1);
-		easy.add(2);
-		easy.add(3);
+		finished(1, "easy");
+		finished(2, "easy");
+		finished(3, "easy");
 		normal = new ArrayList<Integer>();
-		normal.add(4);
-		normal.add(8);
+		finished(1, "normal");
+		finished(8, "normal");
 		hard = new ArrayList<Integer>();
 		score = 0;
 		this.save();
@@ -30,7 +30,8 @@ public class Player implements Serializable {
 
 	public static Player loadFromFile(String name) {
 		try {
-			FileInputStream fichier = new FileInputStream("save/" + name + ".save");
+			FileInputStream fichier = new FileInputStream("save/" + name
+					+ ".save");
 			ObjectInputStream ois = new ObjectInputStream(fichier);
 			Player player = (Player) ois.readObject();
 			return player;
@@ -48,6 +49,7 @@ public class Player implements Serializable {
 			File folder = new File("save/");
 			folder.mkdir();
 			File file = new File("save/" + name + ".save");
+			file.delete();
 			file.createNewFile();
 			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -59,14 +61,44 @@ public class Player implements Serializable {
 		}
 
 	}
-	
+
 	public String toString() {
-		String result = "Name : " + name + "\n" +
-	                    "Score : " + score + "\n" +
-	                    "Easy : " + easy.toString() +
-	                    "Normal : " + normal.toString() +
-	                    "Hard : " + hard.toString();
+		String result = "Name : " + name + "\n" + "Score : " + score + "\n"
+				+ "Easy : " + easy.toString() + "\n" + "Normal : "
+				+ normal.toString() + "\n" + "Hard : " + hard.toString();
 		return result;
 	}
 
+	public boolean isFinished(int level, String difficulty) {
+		if (difficulty.equals("easy")) {
+			return easy.contains(level);
+		} else if (difficulty.equals("normal")) {
+			return normal.contains(level);
+		} else {
+			return hard.contains(level);
+		}
+	}
+
+	public void finished(int level, String difficulty) {
+		if (difficulty.equals("easy") && !(easy.contains(level))) {
+			easy.add(level);
+		} else if (difficulty.equals("normal") && !(normal.contains(level))) {
+			normal.add(level);
+		} else {
+			hard.add(level);
+		}
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public int addToScore(int add) {
+		score = score + add;
+		return score;
+	}
 }
