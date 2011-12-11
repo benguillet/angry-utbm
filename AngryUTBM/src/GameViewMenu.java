@@ -27,8 +27,6 @@ public class GameViewMenu extends JLayeredPane {
 	private String backgroundImagePath = "res/images/backgroundMenu.png";
 	private String backgroundImagePathCredit = "res/images/backgroundCredit.png";
 	private String imgBird1 = "res/images/pigeon.png";
-	private int x;
-	private int y;
 	private Image image;
 	private JButton startButton;
 	
@@ -45,8 +43,6 @@ public class GameViewMenu extends JLayeredPane {
 		backPanel.setSize(new Dimension(800, 600));
 	    
 	    addKeyListener(controller);
-	    x=0;
-	    y=0;
 	    setFocusable(true);
         setBackground(Color.BLACK);
         setDoubleBuffered(true);
@@ -62,7 +58,6 @@ public class GameViewMenu extends JLayeredPane {
 	
 	public void paint(Graphics g) {
         super.paint(g);
-        x++;
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(new ImageIcon(imgBird1).getImage(), 0, 0, this);
        

@@ -16,6 +16,7 @@ public class Level {
 	private Image grass;
 	private String blockImagePath = "res/images/block.png";
 	private Image block;
+	private boolean levelFinish;
 
 	
 	public Level() {

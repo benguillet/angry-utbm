@@ -118,10 +118,7 @@ public class GameModel implements ActionListener {
 	public boolean testCollision(Rectangle x, Rectangle y)
 	{
 		if(x.intersects(y))
-		{
-			System.out.print("collision");
 			return true;
-		}
 		return false;
 	}
 	
