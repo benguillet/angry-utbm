@@ -1,7 +1,7 @@
 import java.awt.Image;
 import java.util.ArrayList;
 
-abstract class Entity extends Thread {
+abstract class Entity {
 	protected short speed;
 	protected Position position;
 	protected String imagePath;

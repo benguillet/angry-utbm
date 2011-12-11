@@ -14,7 +14,7 @@ public class GameModel implements ActionListener {
 	private ArrayList<Entity> entities;
 	private Pigeon currentPigeon;
 	private Timer timer;
-	
+	private EnemyThread enemyThread;
 	private EventListenerList listeners;
 	
 	public GameModel() {
@@ -24,10 +24,8 @@ public class GameModel implements ActionListener {
 		entities.add(currentPigeon);
 		entities.add(new Pig());	
 		
-		for (int i = 0; i < entities.size(); ++i) {
-			if (entities.get(i) instanceof Pig)
-				entities.get(i).start();
-		}
+		enemyThread = new EnemyThread(entities);
+		enemyThread.start();
 		
 		timer = new Timer(5, this);
 		timer.start();
@@ -90,7 +88,7 @@ public class GameModel implements ActionListener {
 					int dy=0;
 					int tabMap[][]= map.getTabMap();
 					// collision avec le decor
-					for(int y=0;y<24;y++)
+					/*for(int y=0;y<24;y++)
 					{	
 						for(int x=0; x<32;x++)
 						{
@@ -107,7 +105,7 @@ public class GameModel implements ActionListener {
 						}
 						dy=dy+25;
 				    	dx=0;
-					}
+					}*/
 					}
 				}
 				
