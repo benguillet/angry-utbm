@@ -35,9 +35,6 @@ public class GameController implements KeyListener, ActionListener {
 			if (entities.get(i) instanceof Pigeon)
 				p = (Pigeon) entities.get(i);
 		}
-
-		angryMenu = angryFrame.getAngryViewMenu();
-		angryView = angryFrame.getAngryView();
 		
 		newButton = angryMenu.getNewButton();
 		newButton.addActionListener(this);	
