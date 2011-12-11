@@ -14,12 +14,12 @@ public class GameFrame extends JFrame {
 	public GameFrame(String name) {
 		winName = name;
 		angryModel = new GameModel();
-		angryController = new GameController(this);
-		angryEntities = angryModel.getEntityList();
 		angryViewMenu = new GameViewMenu(this);
+		angryController = new GameController(this);
 		angryView = new GameView(this, angryEntities);
+		angryEntities = angryModel.getEntityList();
 		
-		angryView.setVisible(false);
+		
 		angryView.setVisible(true);
 		
 		
