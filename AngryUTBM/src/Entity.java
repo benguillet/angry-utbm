@@ -1,21 +1,23 @@
 import java.awt.Image;
+import java.awt.Point;
 import java.util.ArrayList;
 
 abstract class Entity {
 	protected short speed;
-	protected Position position;
+	protected Point position;
 	protected String imagePath;
 	protected Image image;
 	protected ArrayList<Egg> eggs;
 	protected boolean visible = true;
 
+	
+	public Point getPosition() {
+		return position;
+	}
+	
 	public Image getImage() {
         return this.image;
     }
-	
-	public Position getPosition() {
-		return this.position;
-	}
 	
 	public ArrayList<Egg> getEggs() {
 		return this.eggs;

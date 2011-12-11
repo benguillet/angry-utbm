@@ -57,60 +57,53 @@ public class GameModel implements ActionListener {
 		short eggLeft = currentPigeon.getEggLeft();
 		
 		if (eggLeft > 0) {
-			entities.add(new Egg(currentPigeon.getPosition().getX(), currentPigeon.getPosition().getY()));
-			currentPigeon.setEggLeft(eggLeft--);
+			entities.add(new Egg((int)currentPigeon.getPosition().getX(), (int)currentPigeon.getPosition().getY()));
+			currentPigeon.setEggLeft(--eggLeft);
     	}
     	else
     		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");
 	}
 	
-	public void checkCollision()
-	{
-		
-				for (int i = 0; i < entities.size(); ++i) {
-					if (entities.get(i) instanceof Egg)
-					{
-						Egg e = (Egg) entities.get(i);
-						Rectangle hitBoxEgg = e.getBound();
-					// collision avec les entities
-		            for (int j = 0; j < entities.size(); ++j) {
-		    			if (entities.get(j) instanceof Pig){
-		    				Pig pigTest = (Pig)entities.get(j);
-				            Rectangle hitBoxPig= pigTest.getBound();
-				            if(testCollision(hitBoxEgg,hitBoxPig))
-				            {
-				            	entities.remove(i);
-				            	entities.remove(j);
-				            }
-		    			}
-		            }
-					int dx=0;
-					int dy=0;
-					int tabMap[][]= map.getTabMap();
-					// collision avec le decor
-					/*for(int y=0;y<24;y++)
-					{	
-						for(int x=0; x<32;x++)
-						{
-							if(tabMap[y][x]==1 || tabMap[y][x]==2)
-							{
-								Rectangle HitBox = new Rectangle(dx,dy,25,25);
-								if(testCollision(hitBoxEgg, HitBox))
-								{
-									entities.remove(i);
-									break;
-								}
-							}
-							dx=dx+25;
-						}
-						dy=dy+25;
-				    	dx=0;
-					}*/
+	public void checkCollision() {
+		for (int i = 0; i < entities.size(); ++i) {
+			if (entities.get(i) instanceof Egg) {
+				Egg e = (Egg) entities.get(i);
+				Rectangle hitBoxEgg = e.getBound();
+				// collision avec les entities
+		        for (int j = 0; j < entities.size(); ++j) {
+					if (entities.get(j) instanceof Pig) {
+						Pig pigTest = (Pig)entities.get(j);
+			            Rectangle hitBoxPig= pigTest.getBound();
+			            if(testCollision(hitBoxEgg,hitBoxPig)) {
+			            	entities.remove(i);
+			            	entities.remove(j);
+			            }
 					}
-				}
-				
-			
-				
+		        }
+				int dx=0;
+				int dy=0;
+				int tabMap[][]= map.getTabMap();
+				/*// collision avec le decor
+				for(int y=0;y<24;y++)
+				{	
+					for(int x=0; x<32;x++)
+					{
+						if(tabMap[y][x]==1 || tabMap[y][x]==2)
+						{
+							Rectangle HitBox = new Rectangle(dx,dy,25,25);
+							if(testCollision(hitBoxEgg, HitBox))
+							{
+								entities.remove(i);
+								break;
+							}
+						}
+						dx=dx+25;
+					}
+					dy=dy+25;
+			    	dx=0;
+				}*/
+			}
+		}			
 	}
 	
 	public boolean testCollision(Rectangle x, Rectangle y)

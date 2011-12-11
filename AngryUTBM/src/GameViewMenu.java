@@ -14,15 +14,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.text.LayeredHighlighter;
-
-import com.sun.xml.internal.ws.api.server.Container;
 
 
-public class GameViewMenu extends JLayeredPane{
+public class GameViewMenu extends JLayeredPane {
 
 	private String backgroundImagePath = "res/images/backgroundMenu.png";
 	private String backgroundImagePathCredit = "res/images/backgroundCredit.png";
+	private JLayeredPane layeredPane;
 	private Image image;
 	private JButton startButton;
 	private JButton lvl01Button;
@@ -32,18 +30,20 @@ public class GameViewMenu extends JLayeredPane{
 	{
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
-	     JPanel backPanel= new JPanel(){
+	   	    
+	    JPanel backPanel= new JPanel() {
 	    
 			public void paint(Graphics g) {
 				g.drawImage(image, 0, 0, null);
 			}
 		};
+		
 		backPanel.setSize(new Dimension(800, 600));
 	    
 	    addKeyListener(controller);
 	    setFocusable(true);
-        setBackground(Color.BLACK);
         setDoubleBuffered(true);
+        
         startButton = new JButton("Start game");
         startButton.setSize(200,30);
         startButton.setLocation(400-100, 400-15);
@@ -66,8 +66,6 @@ public class GameViewMenu extends JLayeredPane{
    	 	lvl02Button.setVisible(false);
    	 	
         
-        
-        
         this.setVisible(true);
 	}
 	
@@ -77,15 +75,15 @@ public class GameViewMenu extends JLayeredPane{
         Graphics2D g2d = (Graphics2D)g;
         //g2d.drawImage(image, 0, 0, this);
         
-        
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
       
 	}*/
-	public JButton getStartButton()
-	{
+	
+	public JButton getStartButton() {
 		return startButton;
 	}
+
 
 	public JButton getLvl01Button()
 	{
