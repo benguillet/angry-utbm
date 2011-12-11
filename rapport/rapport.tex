@@ -1,0 +1,95 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{xltxtra} % charge aussi fontspec et xunicode, nécessaires...
+\usepackage[frenchb]{babel}
+\usepackage[top=2cm, bottom=2cm, left=3cm, right=3cm]{geometry}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsmath} % oh oui des maths
+\usepackage{minted}
+\usepackage{eurosym} %utilisation du signe euro
+\usepackage{graphicx} %utilisation d'images
+\usepackage{fancyhdr} %des en-têtes qui poutrent
+\usepackage{titlesec}
+\usepackage{upgreek} % lettres grecques
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage[final]{pdfpages}
+
+\usepackage{color} % on en a besoin pour utiliser les couleurs
+\definecolor{grey}{rgb}{0.7, 0.7, 0.7}
+\definecolor{blue}{rgb}{0.46,0.56,0.68}
+\definecolor{red}{rgb}{0.509,0.145,0.114}
+\definecolor{orange}{rgb}{1,0.4,0}
+
+\usemintedstyle{tango}
+
+\hypersetup{
+     colorlinks=true, %colorise les liens
+     breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+     urlcolor= blue,  %couleur des hyperliens
+     linkcolor= black, %couleur des liens internes
+     bookmarksopen=true,            %si les signets Acrobat sont créés,
+                                    %les afficher complètement.
+     pdftitle={LO43 : Rapport de projet}, %informations apparaissant dans
+     pdfauthor={Loïs Aubree, Lucie Boutou, Benjamin GUILLET, Théophile Madet},     %dans les informations du document
+     pdfsubject={Rapport de projet LO43},          %sous Acrobat.
+     xetex
+}
+
+%%%% begin macro allowing marging changed some times :) %%%%
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+%%%% end macro %%%%
+
+%\pagestyle{fancyplain}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Avoir des subsubsection avec des lettres
+%\renewcommand{\thesubsubsection}{\thesubsection .\alph{subsubsection}}
+\renewcommand{\subsubsectionmark}[1]{\markright{#1}}
+
+\fancyhead[L]{LO43 - A11 - Projet}
+\fancyhead[R]{\textsc{Aubree} - \textsc{Boutou}- \textsc{Guillet} - \textsc{Madet}}
+\fancyfoot[R]{\thepage}
+
+\renewcommand{\emph}{\textbf}
+\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+
+\input{garde}
+
+\begin{document}
+
+\garde{Loïs Aubree - Lucie Boutou\\Benjamin Guillet - Théophile Madet} % Authors
+{\textbf{Projet de LO43}} % Title
+{Réalisation d'un jeu AngryBirds-like} % Sub-title
+{Rapport de projet} % Sub-sub-title
+{Automne 2011} % Date
+{} % Logo
+{} % Note bas de page
+
+\tableofcontents
+\chapter{Présentation du projet}
+Rappel sujet + cahier des charges
+
+
+\chapter{Organisation et répartition du travail}
+
+\chapter{Spécification}
+\section{Diagramme de classes}
+\section{Diagramme de séquences}
+
+\chapter{Conception et prise en main}
+
+\chapter{Bilan}
+
+\end{document}

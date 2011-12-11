@@ -1,0 +1,68 @@
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{fancybox}
+\newcommand{\HRule}{\rule{\linewidth}{1pt}}
+
+\newcommand{\garde}[7]{
+% #1 : Auteurs
+% #2 : Titre
+% #3 : Sous titre
+% #4 : Sous sous Titre
+% #5 : Date
+% #6 : Fichier Image
+% #7 : Note bas de page
+
+\thispagestyle{empty}
+
+\begin{changemargin}{-0.5cm}{-0.5cm}
+
+% Auteur + logo
+\begin{flushleft}
+  \includegraphics[width=5cm]{images/logo_utbm.png}
+\end{flushleft}
+
+\begin{flushright}
+  \textbf{\large{#1}}
+\end{flushright}
+
+\vfill{}
+
+% Titre
+\begin{flushright}
+  \HRule{}
+  \Huge{\textsc{#2}} \\
+  \ifthenelse{\equal{#3}{}}
+     {}
+     {\Large{\textbf{#3}}} \\
+  \ifthenelse{\equal{#4}{}}
+     {}
+    {\large{\textit{#4}}}
+  \HRule{}
+\end{flushright}
+
+% Date
+\ifthenelse{\equal{#5}{}}
+  {}
+  {\begin{flushright}
+     \large{\textbf{#5}}
+  \end{flushright}}
+\vfill{}
+
+% Logo projet
+\ifthenelse{\equal{#6}{}}
+  {}
+  {\begin{center}
+     \includegraphics[width=9cm]{#6}
+  \end{center}
+  \vfill{}}
+
+% Note de bas de page
+\ifthenelse{\equal{#7}{}}
+  {}
+  {\begin{center}
+     \large{#7}
+   \end{center}}
+\end{changemargin}
+
+\newpage
+}
