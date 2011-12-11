@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -8,7 +9,7 @@ public class Pigeon extends Bird {
 	    imagePath = "res/images/pigeon.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
-	    position = new Position(40, 60);
+	    position = new Point(40, 60);
 	    speed = 20;
 	    eggs = new ArrayList<Egg>();
 	    eggLeft = 3;
@@ -17,29 +18,19 @@ public class Pigeon extends Bird {
     public void move() {}
 	
 	public void moveRight() {
-        position.setX(position.getX() + speed);
+        position.setLocation(position.getX() + speed, position.getY());
     }
     
     public void moveLeft() {
-    	position.setX(position.getX() - speed);
+    	position.setLocation(position.getX() - speed, position.getY());
     }
     
     public void moveUp() {
-    	position.setY(position.getY() - speed);
+    	position.setLocation(position.getX() ,position.getY() - speed);
     }
     
     public void moveDown() {
-    	position.setY(position.getY() + speed);
-    }
-    
-    
-    public void fire() {
-    	if (eggLeft > 0) {
-    		eggs.add(new Egg(position.getX()-PIGEON_SIZE/4, position.getY()+PIGEON_SIZE/3));
-    		--eggLeft;
-    	}
-    	else
-    		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");
+    	position.setLocation(position.getX(), position.getY() + speed);
     }
     
     public void reload() {

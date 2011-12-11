@@ -59,8 +59,8 @@ public class GameModel implements ActionListener {
 		short eggLeft = currentPigeon.getEggLeft();
 		
 		if (eggLeft > 0) {
-			entities.add(new Egg(currentPigeon.getPosition().getX(), currentPigeon.getPosition().getY()));
-			currentPigeon.setEggLeft(eggLeft--);
+			entities.add(new Egg((int)currentPigeon.getPosition().getX(), (int)currentPigeon.getPosition().getY()));
+			currentPigeon.setEggLeft(--eggLeft);
     	}
     	else
     		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");

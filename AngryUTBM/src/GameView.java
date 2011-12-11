@@ -71,7 +71,7 @@ public class GameView extends JPanel implements ListListener {
         }
         
         for (int i = 0; i < entities.size(); ++i) {
-            g2d.drawImage(entities.get(i).getImage(), entities.get(i).getPosition().getX(), entities.get(i).getPosition().getY(), this);
+            g2d.drawImage(entities.get(i).getImage(), (int) entities.get(i).getPosition().getX(), (int) entities.get(i).getPosition().getY(), this);
         	//g2d.drawRect(entities.get(i).getBound().x,entities.get(i).getBound().y,entities.get(i).getBound().width,entities.get(i).getBound().height);
         }
         
