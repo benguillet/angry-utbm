@@ -14,43 +14,28 @@ public class Pig extends Enemy {
 	    imagePath = "res/images/pig.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
-	    position = new Position(100, 500);
+	    position = new Point(100, 500);
 	    speed = 1;
 	    frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	    hitBox = new Rectangle(new Point(position.getX(),position.getY()), new Dimension(50, 50));
-	}
-	
-	public void run() {
-		move();
+	    hitBox = new Rectangle(new Point((int)position.getX(),(int)position.getY()), new Dimension(50, 50));
 	}
 
-	public void move() {
-		boolean back = false;
+public void move() {
+	boolean back = false;
 		
-		while(true) {
-			if (position.getX() > 800 - image.getWidth(null)) back = true;
-			if (position.getX() < 1) back = false;
-
-			
-			if (!back)
-				position.setX(position.getX() + speed);
-			else
-		    	position.setX(position.getX() - speed);
-			
-			 try {
-                 Thread.sleep(15);
-			 } catch (InterruptedException e) {
-                 e.printStackTrace();
-			 }
+	if (position.getX() > 800 - image.getWidth(null)) back = true;
+	if (position.getX() < 1) back = false;
+		
+	if (!back)
+		position.setLocation(position.getX() + speed, position.getY());
+	else
+	   	position.setLocation(position.getX() - speed, position.getY());
 			 
-			 hitBox.setBounds(position.getX(),position.getY(),50,50);
-		}
+		hitBox.setBounds((int)position.getX(),(int)position.getY(),50,50);
 		
 	}
 	
 	public Rectangle getBound() {
-		// TODO Auto-generated method stub
-		
 		return hitBox;
 	}
 	
