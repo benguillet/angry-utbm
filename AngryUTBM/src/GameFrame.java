@@ -11,14 +11,16 @@ public class GameFrame extends JFrame {
 	private GameModel angryModel;
 	private String winName;
 	ArrayList<Entity> angryEntities;
+	ArrayList<Player> angryPlayers;
 	
 	public GameFrame(String name) {
 		winName = name;
 		angryModel = new GameModel();
 		angryEntities = angryModel.getEntityList();
+		angryPlayers = angryModel.getPlayers();
 		
 		//Views
-		angryViewMenu = new GameViewMenu();
+		angryViewMenu = new GameViewMenu(angryPlayers);
 		angryView = new GameView(angryEntities);
 		
 		

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,10 +8,15 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
 
 public class GameModel implements ActionListener {
 	private GameView display;
 	private Level map;
+	private ArrayList<Player> players;
 	private ArrayList<Entity> entities;
 	private Pigeon currentPigeon;
 	private Timer timer;
@@ -18,11 +24,29 @@ public class GameModel implements ActionListener {
 	private EventListenerList listeners;
 	
 	public GameModel() {
-		map = new Level("res/maps/lvl01.txt");
+		map = new Level();
 		entities = new ArrayList<Entity>();
 		currentPigeon = new Pigeon();
 		entities.add(currentPigeon);
 		entities.add(new Pig());	
+		
+		players = new ArrayList<Player>();
+		// on parcourt tout les éléments du répertoire
+		try{
+			File initial = new File ("save");
+			for (File f:initial.listFiles())
+			{
+				FileInputStream fis = new FileInputStream(f);
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				ois.readObject();
+				Player pl = (Player)ois.readObject();
+				players.add(pl);
+			}			
+		}
+		catch(Exception e)
+		{
+			//message d'exception
+		}
 		
 		enemyThread = new EnemyThread(entities);
 		enemyThread.start();
@@ -43,6 +67,10 @@ public class GameModel implements ActionListener {
 
 	public Level getMap() {
 		return map;
+	}
+	
+	public ArrayList<Player> getPlayers(){
+		return players;
 	}
 
 	public void setMap(Level map) {

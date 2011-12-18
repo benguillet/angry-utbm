@@ -15,7 +15,9 @@ public class Player implements Serializable {
 	private ArrayList<Integer> hard;
 
 	public Player(String name) {
+
 		this.name = name;
+
 		easy = new ArrayList<Integer>();
 		finished(1, "easy");
 		finished(2, "easy");

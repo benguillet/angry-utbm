@@ -10,21 +10,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JComboBox;
 
 import sun.net.ProgressEvent;
 import sun.net.ProgressListener;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameViewMenu extends JLayeredPane {
 
 	private String titleImagePath = "res/images/title.png";
 	private Image image,title;
+	private ArrayList<Player> players;
 	private JLabel difficultyLabel,playernameLabel;
 	private JTextField playernameField;
 	private JButton newButton,loadButton,optionsButton,exitButton,okButton;
@@ -34,9 +39,12 @@ public class GameViewMenu extends JLayeredPane {
 	private String imgBird1 = "res/images/pigeon.png";
 	private JButton lvl01Button;
 	private JButton lvl02Button;
+	private JComboBox playersList;
 	
-	public GameViewMenu()
+	public GameViewMenu(ArrayList<Player> players)
 	{
+		this.players = players;
+		
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
 
@@ -56,10 +64,18 @@ public class GameViewMenu extends JLayeredPane {
 	    setFocusable(true);
         setDoubleBuffered(true);
 
+        playersList = new JComboBox();
+        playersList.setSize(200,30);
+        playersList.setLocation(400-100,150);
+
+        for(int i = 0; i < players.size(); ++i)
+        {
+        	playersList.addItem(players.get(i).getName());
+        }
+        
         difficultyLabel = new JLabel("Choose difficulty :");
         difficultyLabel.setSize(200, 30);
         difficultyLabel.setLocation(400-100,150);
-
         
         playernameLabel = new JLabel("Enter your name :");
         playernameLabel.setSize(200, 30);
@@ -123,6 +139,8 @@ public class GameViewMenu extends JLayeredPane {
    	 	this.add(playernameField,new Integer(1));
    	 	this.add(okButton,new Integer(1));
    	 	
+   	 	this.add(playersList,new Integer(1));
+   	 	
    	 	this.add(difficultyLabel,new Integer(1));
    	 	this.add(easyButton,new Integer(1));
    	 	this.add(mediumButton,new Integer(1));
@@ -142,6 +160,7 @@ public class GameViewMenu extends JLayeredPane {
    	 	okButton.setVisible(false);
    	 	playernameField.setVisible(false);
    	 	playernameLabel.setVisible(false);
+   	 	playersList.setVisible(false);
         
         this.setVisible(true);
 	}
@@ -226,6 +245,11 @@ public class GameViewMenu extends JLayeredPane {
 	public JButton getOkButton()
 	{
 		return okButton;
+	}
+	
+	public JComboBox getPlayersList()
+	{
+		return playersList;
 	}
 	
 }
