@@ -30,14 +30,13 @@ public class GameModel implements ActionListener {
 		entities.add(new Pig());	
 		
 		players = new ArrayList<Player>();
-		// on parcourt tout les �l�ments du r�pertoire
+		// on parcourt tout les elements du repertoire
 		try{
 			File initial = new File ("save");
 			for (File f:initial.listFiles())
 			{
 				FileInputStream fis = new FileInputStream(f);
 				ObjectInputStream ois = new ObjectInputStream(fis);
-				ois.readObject();
 				Player pl = (Player)ois.readObject();
 				players.add(pl);
 			}			
