@@ -24,14 +24,13 @@ public class GameModel implements ActionListener {
 	private EventListenerList listeners;
 	
 	public GameModel() {
-		map = new Level();
 		entities = new ArrayList<Entity>();
 		currentPigeon = new Pigeon();
 		entities.add(currentPigeon);
 		entities.add(new Pig());	
 		
 		players = new ArrayList<Player>();
-		// on parcourt tout les éléments du répertoire
+		// on parcourt tout les ï¿½lï¿½ments du rï¿½pertoire
 		try{
 			File initial = new File ("save");
 			for (File f:initial.listFiles())
@@ -122,6 +121,8 @@ public class GameModel implements ActionListener {
 							if(testCollision(hitBoxEgg, HitBox))
 							{
 								entities.remove(i);
+								if(tabMap[y][x]==2)
+									tabMap[y][x]=0;
 								break;
 							}
 						}

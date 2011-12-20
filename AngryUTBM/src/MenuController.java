@@ -112,13 +112,17 @@ public class MenuController implements ActionListener {
 			
 		if (e.getSource().equals(lvl01Button))
 		{
-			angryFrame.getAngryView().setMap(new Level("res/maps/lvl01.txt"));
+			Level lvl1 = new Level("res/maps/lvl01.txt");
+			angryFrame.getAngryView().setMap(lvl1);
+			angryFrame.getAngryModel().setMap(lvl1);
 			angryFrame.setGame();
 		}
 		
 		if (e.getSource().equals(lvl02Button))
 		{
-			angryFrame.getAngryView().setMap(new Level("res/maps/lvl02.txt"));
+			Level lvl2 = new Level("res/maps/lvl02.txt");
+			angryFrame.getAngryView().setMap(lvl2);
+			angryFrame.getAngryModel().setMap(lvl2);
 			angryFrame.setGame();
 		}
 	}

@@ -17,8 +17,6 @@ public class GameView extends JPanel implements ListListener {
 
         setFocusable(true);
         setDoubleBuffered(true);
-
-        //map = new Level("res/maps/lvl01.txt");
         
         this.entities = entities; 
 	}
