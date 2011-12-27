@@ -114,7 +114,7 @@ public class MenuController implements ActionListener {
 		{
 			Level lvl1 = new Level("res/maps/lvl01.txt");
 			angryFrame.getAngryView().setMap(lvl1);
-			angryFrame.getAngryModel().setMap(lvl1);
+			angryFrame.getAngryModel().setMap(lvl1,3);
 			angryFrame.setGame();
 		}
 		
@@ -122,7 +122,7 @@ public class MenuController implements ActionListener {
 		{
 			Level lvl2 = new Level("res/maps/lvl02.txt");
 			angryFrame.getAngryView().setMap(lvl2);
-			angryFrame.getAngryModel().setMap(lvl2);
+			angryFrame.getAngryModel().setMap(lvl2,3);
 			angryFrame.setGame();
 		}
 	}

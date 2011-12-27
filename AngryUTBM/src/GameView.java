@@ -55,10 +55,12 @@ public class GameView extends JPanel implements ListListener {
 	    	dx=0;
 	    }
         
-        
+	    int k = 0;
         for (int i = 0; i < entities.size(); ++i) {
         	if (entities.get(i) instanceof Bird) {
             	Bird bird = (Bird) entities.get(i);
+            	g2d.drawImage(bird.getImage(), 600+k*15, 100, this);
+            	k++;
         		for (int j = 0; j < bird.getEggLeft(); ++j) {
         			Egg egg = new Egg(0,0);
         			g2d.drawImage(egg.getImage(), 600+j*15, 20, this);

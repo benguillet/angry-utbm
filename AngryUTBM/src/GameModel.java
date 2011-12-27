@@ -20,13 +20,15 @@ public class GameModel implements ActionListener {
 	private ArrayList<Entity> entities;
 	private Pigeon currentPigeon;
 	private Timer timer;
-	private EnemyThread enemyThread;
+	private EntityThread entityThread;
 	private EventListenerList listeners;
+	private int nbPigeon;
 	
 	public GameModel() {
 		entities = new ArrayList<Entity>();
 		currentPigeon = new Pigeon();
 		entities.add(currentPigeon);
+		
 		entities.add(new Pig());	
 		
 		players = new ArrayList<Player>();
@@ -46,8 +48,8 @@ public class GameModel implements ActionListener {
 			//message d'exception
 		}
 		
-		enemyThread = new EnemyThread(entities);
-		enemyThread.start();
+		entityThread = new EntityThread(entities);
+		entityThread.start();
 		
 		timer = new Timer(5, this);
 		timer.start();
@@ -71,8 +73,14 @@ public class GameModel implements ActionListener {
 		return players;
 	}
 
-	public void setMap(Level map) {
+	public void setMap(Level map,int nb) {
 		this.map = map;
+		this.nbPigeon = nb;
+		for(int i = 0 ; i < nbPigeon-1 ; i++)
+		{
+			Pigeon pigeon = new Pigeon();
+			entities.add(pigeon);
+		}
 	}
 	
 	public ArrayList<Entity> getEntityList() {
@@ -146,10 +154,19 @@ public class GameModel implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
         for (int i = 0; i <entities.size(); ++i ) {
         	if (entities.get(i) instanceof Egg) {
-        		if (entities.get(i).isVisible())
-                	entities.get(i).move();
-                else
+        		if (!entities.get(i).isVisible())
                 	entities.remove(i);
+        	}
+    		if (entities.get(i) instanceof Pigeon) {
+        		if (!entities.get(i).isVisible())
+                	entities.remove(i);
+        		for(Entity entity : entities)
+        		{
+        			if(entity instanceof Pigeon)
+        			{
+        				currentPigeon = (Pigeon)entity;
+        			}
+        		}
         	}
         }
         checkCollision();

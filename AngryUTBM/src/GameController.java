@@ -33,7 +33,7 @@ public class GameController implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {		
 		switch (e.getKeyCode()) {
-		case KeyEvent.VK_RIGHT:
+		/*case KeyEvent.VK_RIGHT:
 			p.moveRight();
 			break;
 		case KeyEvent.VK_LEFT:
@@ -44,6 +44,9 @@ public class GameController implements KeyListener{
 			break;
 		case KeyEvent.VK_DOWN:
 			p.moveDown();
+			break;*/
+		case KeyEvent.VK_M:
+			p.lancer();
 			break;
 		case KeyEvent.VK_SPACE:
 			//p.fire();	

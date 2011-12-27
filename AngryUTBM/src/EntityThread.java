@@ -1,19 +1,17 @@
 import java.util.ArrayList;
 
 
-public class EnemyThread extends Thread {
+public class EntityThread extends Thread {
 	private ArrayList<Entity> entities;
 	
-	public EnemyThread(ArrayList<Entity> entities) {
+	public EntityThread(ArrayList<Entity> entities) {
 		this.entities = entities;
 	}
 	
 	public void run(){
 		while(true) {
 			for(Entity entity : entities) {
-				if (entity instanceof Pig) {
-					entity.move();
-				}
+				entity.move();
 			}
 			
 			try {

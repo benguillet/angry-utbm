@@ -18,9 +18,8 @@ public class Egg extends Entity {
 		imagePath = "res/images/egg.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
-	    //visible = true;
 	    position = new Point(x, y);
-		speed = 1;
+		speed = 3;
 		frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		hitBox = new Rectangle(new Point((int)position.getX()+25,(int)position.getY()+25), new Dimension(30, 30));
 	}
