@@ -40,6 +40,8 @@ public class GameViewMenu extends JLayeredPane {
 	private JButton lvl01Button;
 	private JButton lvl02Button;
 	private JComboBox playersList;
+	private int frameHeight = 600;
+	private int frameWidth = 1200;
 	
 	public GameViewMenu(ArrayList<Player> players)
 	{
@@ -54,19 +56,19 @@ public class GameViewMenu extends JLayeredPane {
 	    JPanel backPanel= new JPanel() {
 	    
 			public void paint(Graphics g) {
-				g.drawImage(image, 0, 0, null);
-				g.drawImage(title,800/2-295, 20, null);
+				g.drawImage(image, 0, 0,frameWidth,frameHeight, null);
+				g.drawImage(title,frameWidth/2-295, 20, null);
 			
 			}
 		};
 		
-		backPanel.setSize(new Dimension(800, 600));
+		backPanel.setSize(new Dimension(frameWidth, frameHeight));
 	    setFocusable(true);
         setDoubleBuffered(true);
 
         playersList = new JComboBox();
         playersList.setSize(200,30);
-        playersList.setLocation(400-100,150);
+        playersList.setLocation(frameWidth/2-100,150);
 
         for(int i = 0; i < players.size(); ++i)
         {
@@ -75,59 +77,59 @@ public class GameViewMenu extends JLayeredPane {
         
         difficultyLabel = new JLabel("Choose difficulty :");
         difficultyLabel.setSize(200, 30);
-        difficultyLabel.setLocation(400-100,150);
+        difficultyLabel.setLocation(frameWidth/2-100,150);
         
         playernameLabel = new JLabel("Enter your name :");
         playernameLabel.setSize(200, 30);
-        playernameLabel.setLocation(400-100,150);
+        playernameLabel.setLocation(frameWidth/2-100,150);
         
         playernameField = new JTextField();
         playernameField.setSize(200,30);
-        playernameField.setLocation(400-100,250);
+        playernameField.setLocation(frameWidth/2-100,250);
         
         okButton = new JButton("OK");
         okButton.setSize(200, 30);
-        okButton.setLocation(400-100,350);
+        okButton.setLocation(frameWidth/2-100,350);
         
         newButton = new JButton("NEW GAME");
         newButton.setSize(200,30);
-        newButton.setLocation(400-100, 150);
+        newButton.setLocation(frameWidth/2-100, 150);
         
         loadButton = new JButton("LOAD GAME");
         loadButton.setSize(200,30);
-        loadButton.setLocation(400-100, 225);
+        loadButton.setLocation(frameWidth/2-100, 225);
         
         optionsButton = new JButton("OPTIONS");
         optionsButton.setSize(200,30);
-        optionsButton.setLocation(400-100, 300);
+        optionsButton.setLocation(frameWidth/2-100, 300);
         
         exitButton = new JButton("EXIT GAME");
         exitButton.setSize(200,30);
-        exitButton.setLocation(400-100, 375);
+        exitButton.setLocation(frameWidth/2-100, 375);
         
         easyButton = new JButton("EASY");
         easyButton.setSize(200,30);
-        easyButton.setLocation(400-100, 250);
+        easyButton.setLocation(frameWidth/2-100, 250);
         
         mediumButton = new JButton("MEDIUM");
         mediumButton.setSize(200,30);
-        mediumButton.setLocation(400-100, 325);
+        mediumButton.setLocation(frameWidth/2-100, 325);
         
         hardButton = new JButton("HARD");
         hardButton.setSize(200,30);
-        hardButton.setLocation(400-100, 400);
+        hardButton.setLocation(frameWidth/2-100, 400);
         
         extremeButton = new JButton("EXTREME");
         extremeButton.setSize(200,30);
-        extremeButton.setLocation(400-100, 475);
+        extremeButton.setLocation(frameWidth/2-100, 475);
                 
         lvl01Button = new JButton("LEVEL 1");
         lvl01Button.setSize(200,30);
-        lvl01Button.setLocation(400-100, 400-15);
+        lvl01Button.setLocation(frameWidth/2-100, frameHeight/2-30);
         
         lvl02Button = new JButton("LEVEL 2");
         lvl02Button.setSize(200,30);
-        lvl02Button.setLocation(400-100, 500-15);
+        lvl02Button.setLocation(frameWidth/2-100, frameHeight/2+30);
         
         this.add(backPanel,new Integer(0));
    	 	this.add(newButton,new Integer(1));

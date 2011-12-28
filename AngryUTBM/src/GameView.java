@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 public class GameView extends JPanel implements ListListener {
 	private Level map;
 	private ArrayList<Entity> entities;
+	private int frameHeight = 600;
+	private int frameWidth = 1200;
 	
 	
 	public GameView(ArrayList<Entity> entities) {
@@ -26,16 +28,16 @@ public class GameView extends JPanel implements ListListener {
 
         // On affiche le level
         Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(map.getImage(), 0, 0, this);
+        g2d.drawImage(map.getImage(), 0, 0,frameWidth,frameHeight, this);
         
         int tabMap[][]= map.getTabMap();
         
 	    int dx=0;
 	    int dy=0;
 	    
-	    for(int i=0; i<22;i++)
+	    for(int i=0; i<map.getTabMapSizeY();i++)
 	    {
-	    	for(int j=0; j<31;j++)
+	    	for(int j=0; j<map.getTabMapSizeX();j++)
 	    	{
 	    		switch(tabMap[i][j])
 	    		{
@@ -59,11 +61,11 @@ public class GameView extends JPanel implements ListListener {
         for (int i = 0; i < entities.size(); ++i) {
         	if (entities.get(i) instanceof Bird) {
             	Bird bird = (Bird) entities.get(i);
-            	g2d.drawImage(bird.getImage(), 600+k*15, 100, this);
+            	g2d.drawImage(bird.getImage(), frameWidth*4/5+k*15, 100, this);
             	k++;
         		for (int j = 0; j < bird.getEggLeft(); ++j) {
         			Egg egg = new Egg(0,0);
-        			g2d.drawImage(egg.getImage(), 600+j*15, 20, this);
+        			g2d.drawImage(egg.getImage(), frameWidth*4/5+j*15, 20, this);
         		}
         	}
         }

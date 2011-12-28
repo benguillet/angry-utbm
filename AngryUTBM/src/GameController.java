@@ -27,24 +27,29 @@ public class GameController implements KeyListener{
 		for (int i = 0; i < entities.size(); ++i) {
 			if (entities.get(i) instanceof Pigeon)
 				p = (Pigeon) entities.get(i);
+				break;
 		}
 	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {		
 		switch (e.getKeyCode()) {
-		/*case KeyEvent.VK_RIGHT:
-			p.moveRight();
+		case KeyEvent.VK_RIGHT:
+			if(p.getFlyingState())
+				p.moveRight();
 			break;
 		case KeyEvent.VK_LEFT:
-			p.moveLeft();
+			if(p.getFlyingState())
+				p.moveLeft();
 			break;
 		case KeyEvent.VK_UP:
-			p.moveUp();
+			if(p.getFlyingState())
+				p.moveUp();
 			break;
 		case KeyEvent.VK_DOWN:
-			p.moveDown();
-			break;*/
+			if(p.getFlyingState())
+				p.moveDown();
+			break;
 		case KeyEvent.VK_M:
 			p.lancer();
 			break;
@@ -59,7 +64,7 @@ public class GameController implements KeyListener{
 			p.reload();
 			break;
 		default:
-			System.out.println("je gère pas cette touche ! Blaireau !");		
+			System.out.println("je gère pas cette touche ! Blaireau !");
 		}
 	}
 

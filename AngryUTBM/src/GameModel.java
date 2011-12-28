@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -28,7 +29,6 @@ public class GameModel implements ActionListener {
 		entities = new ArrayList<Entity>();
 		currentPigeon = new Pigeon();
 		entities.add(currentPigeon);
-		
 		entities.add(new Pig());	
 		
 		players = new ArrayList<Player>();
@@ -76,11 +76,6 @@ public class GameModel implements ActionListener {
 	public void setMap(Level map,int nb) {
 		this.map = map;
 		this.nbPigeon = nb;
-		for(int i = 0 ; i < nbPigeon-1 ; i++)
-		{
-			Pigeon pigeon = new Pigeon();
-			entities.add(pigeon);
-		}
 	}
 	
 	public ArrayList<Entity> getEntityList() {
@@ -118,9 +113,9 @@ public class GameModel implements ActionListener {
 				int dy=0;
 				int tabMap[][]= map.getTabMap();
 				// collision avec le decor
-				for(int y=0;y<22;y++)
+				for(int y=0;y<map.getTabMapSizeY();y++)
 				{	
-					for(int x=0; x<31;x++)
+					for(int x=0; x<map.getTabMapSizeX();x++)
 					{
 						if(tabMap[y][x]==1 || tabMap[y][x]==2)
 						{
@@ -160,13 +155,6 @@ public class GameModel implements ActionListener {
     		if (entities.get(i) instanceof Pigeon) {
         		if (!entities.get(i).isVisible())
                 	entities.remove(i);
-        		for(Entity entity : entities)
-        		{
-        			if(entity instanceof Pigeon)
-        			{
-        				currentPigeon = (Pigeon)entity;
-        			}
-        		}
         	}
         }
         checkCollision();

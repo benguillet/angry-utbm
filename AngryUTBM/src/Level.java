@@ -11,6 +11,8 @@ public class Level {
 	private String backgroundImagePath = "res/images/background.png";
 	private Image image;
 	private int tabMap[][];
+	private int tabMapSizeX = 47;
+	private int tabMapSizeY = 22;
 	private Rectangle tabCollision[][];
 	private String grassImagePath = "res/images/grass.png";
 	private Image grass;
@@ -40,13 +42,13 @@ public class Level {
 			BufferedReader br=new BufferedReader(ipsr);
 			String ligne;
 			
-			tabMap = new int[22][31];
+			tabMap = new int[tabMapSizeY][tabMapSizeX];
 						
-			for(int i=0;i<22;i++)
+			for(int i=0;i<tabMapSizeY;i++)
 			{	
 				ligne = br.readLine();
 				
-				for(int j=0; j<31;j++)
+				for(int j=0; j<tabMapSizeX;j++)
 				{
 					
 					char car = ligne.charAt(j);
@@ -79,5 +81,10 @@ public class Level {
 		return tabMap;
 	
 	}
-	
+	public int getTabMapSizeX(){
+		return tabMapSizeX;
+	}
+	public int getTabMapSizeY(){
+		return tabMapSizeY;
+	}	
 }

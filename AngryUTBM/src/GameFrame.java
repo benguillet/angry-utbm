@@ -12,6 +12,8 @@ public class GameFrame extends JFrame {
 	private String winName;
 	ArrayList<Entity> angryEntities;
 	ArrayList<Player> angryPlayers;
+	private int frameHeight = 600;
+	private int frameWidth = 1200;
 	
 	public GameFrame(String name) {
 		winName = name;
@@ -44,7 +46,7 @@ public class GameFrame extends JFrame {
 		this.add(angryViewMenu);
 		
 		this.setTitle(winName);
-		this.setSize(800, 600);
+		this.setSize(frameWidth, frameHeight);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
