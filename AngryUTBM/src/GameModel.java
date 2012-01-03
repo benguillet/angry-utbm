@@ -106,6 +106,16 @@ public class GameModel implements ActionListener {
 			            if(testCollision(hitBoxEgg,hitBoxPig)) {
 			            	entities.remove(i);
 			            	entities.remove(j);
+			            	boolean win = true;
+			            	for (Entity entity : entities) {
+			            		if (entity instanceof Pig) {
+			            			win = false;
+			            			break;
+			            		}
+			            	}
+			            	if(win) {
+			            		win();
+			            	}
 			            }
 					}
 		        }
@@ -175,5 +185,9 @@ public class GameModel implements ActionListener {
 		for(ListListener listener : listenerList){
 			listener.listChanged(new ListChangedEvent(this, getEntityList()));
 		}
+	}
+	
+	public void win() {
+		System.out.println("Bravo! Vous avez gagné!");
 	}
 }
