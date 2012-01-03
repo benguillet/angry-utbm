@@ -66,7 +66,7 @@ public class Player implements Serializable {
 				"Easy : " + easy.toString() + "\n" +
 				"Medium : " + medium.toString() + "\n" + 
 				"Hard : " + hard.toString() +
-				"Extreme : " + hard.toString();
+				"Extreme : " + extreme.toString();
 		return result;
 	}
 
@@ -75,8 +75,10 @@ public class Player implements Serializable {
 			return easy.contains(level);
 		} else if (difficulty.equals("normal")) {
 			return medium.contains(level);
-		} else {
+		} else if (difficulty.equals("hard")){
 			return hard.contains(level);
+		} else {
+			return extreme.contains(level);
 		}
 	}
 
@@ -85,8 +87,10 @@ public class Player implements Serializable {
 			easy.add(level);
 		} else if (difficulty.equals("normal") && !(medium.contains(level))) {
 			medium.add(level);
-		} else {
+		} else if (difficulty.equals("hard") && !(hard.contains(level))) {
 			hard.add(level);
+		} else if (difficulty.equals("extreme") && !(extreme.contains(level))) {
+			extreme.add(level);
 		}
 	}
 	
