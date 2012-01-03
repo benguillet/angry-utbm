@@ -61,13 +61,17 @@ public class Player implements Serializable {
 
 	}
 
-	public String toString() {
+	/*public String toString() {
 		String result = "Name : " + name + "\n" + "Score : " + score + "\n" +
 				"Easy : " + easy.toString() + "\n" +
 				"Medium : " + medium.toString() + "\n" + 
 				"Hard : " + hard.toString() +
 				"Extreme : " + extreme.toString();
 		return result;
+	}*/
+	
+	public String toString() {
+		return name;
 	}
 
 	public boolean isFinished(int level, String difficulty) {
@@ -92,6 +96,7 @@ public class Player implements Serializable {
 		} else if (difficulty.equals("extreme") && !(extreme.contains(level))) {
 			extreme.add(level);
 		}
+		save();
 	}
 	
 	public String getName() {

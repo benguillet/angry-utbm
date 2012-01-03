@@ -88,4 +88,17 @@ public class GameFrame extends JFrame {
 		this.add(angryView);
 		
 	}
+	
+	public void setCurrentPlayer(Player p) {
+		angryModel.setCurrentPlayer(p);
+	}
+	
+	public void setDifficulty(String dif) {
+		angryModel.setDifficulty(dif);
+	}
+	
+	public void setCurrentLevel(int l) {
+		angryModel.setCurrentLevel(l);
+	}
+	
 }

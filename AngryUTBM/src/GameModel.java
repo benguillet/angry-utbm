@@ -24,6 +24,9 @@ public class GameModel implements ActionListener {
 	private EntityThread entityThread;
 	private EventListenerList listeners;
 	private int nbPigeon;
+	private Player currentPlayer;
+	private String difficulty;
+	private int currentLevel;
 	
 	public GameModel() {
 		entities = new ArrayList<Entity>();
@@ -189,5 +192,18 @@ public class GameModel implements ActionListener {
 	
 	public void win() {
 		System.out.println("Bravo! Vous avez gagné!");
+		currentPlayer.finished(currentLevel, difficulty);
+	}
+	
+	public void setCurrentPlayer(Player p) {
+		currentPlayer = p;
+	}
+	
+	public void setDifficulty(String dif) {
+		difficulty = dif;
+	}
+	
+	public void setCurrentLevel(int l) {
+		currentLevel = l;
 	}
 }

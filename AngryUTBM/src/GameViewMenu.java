@@ -70,9 +70,9 @@ public class GameViewMenu extends JLayeredPane {
         playersList.setSize(200,30);
         playersList.setLocation(frameWidth/2-100,150);
 
-        for(int i = 0; i < players.size(); ++i)
+        for(Player p : players)
         {
-        	playersList.addItem(players.get(i).getName());
+        	playersList.addItem(p);
         }
         
         difficultyLabel = new JLabel("Choose difficulty :");
