@@ -11,21 +11,18 @@ public class Player implements Serializable {
 	private String name;
 	private int score;
 	private ArrayList<Integer> easy;
-	private ArrayList<Integer> normal;
+	private ArrayList<Integer> medium;
 	private ArrayList<Integer> hard;
+	private ArrayList<Integer> extreme;
 
 	public Player(String name) {
 
 		this.name = name;
 
 		easy = new ArrayList<Integer>();
-		finished(1, "easy");
-		finished(2, "easy");
-		finished(3, "easy");
-		normal = new ArrayList<Integer>();
-		finished(1, "normal");
-		finished(8, "normal");
+		medium = new ArrayList<Integer>();
 		hard = new ArrayList<Integer>();
+		extreme = new ArrayList<Integer>();
 		score = 0;
 		this.save();
 	}
@@ -65,9 +62,11 @@ public class Player implements Serializable {
 	}
 
 	public String toString() {
-		String result = "Name : " + name + "\n" + "Score : " + score + "\n"
-				+ "Easy : " + easy.toString() + "\n" + "Normal : "
-				+ normal.toString() + "\n" + "Hard : " + hard.toString();
+		String result = "Name : " + name + "\n" + "Score : " + score + "\n" +
+				"Easy : " + easy.toString() + "\n" +
+				"Medium : " + medium.toString() + "\n" + 
+				"Hard : " + hard.toString() +
+				"Extreme : " + hard.toString();
 		return result;
 	}
 
@@ -75,7 +74,7 @@ public class Player implements Serializable {
 		if (difficulty.equals("easy")) {
 			return easy.contains(level);
 		} else if (difficulty.equals("normal")) {
-			return normal.contains(level);
+			return medium.contains(level);
 		} else {
 			return hard.contains(level);
 		}
@@ -84,8 +83,8 @@ public class Player implements Serializable {
 	public void finished(int level, String difficulty) {
 		if (difficulty.equals("easy") && !(easy.contains(level))) {
 			easy.add(level);
-		} else if (difficulty.equals("normal") && !(normal.contains(level))) {
-			normal.add(level);
+		} else if (difficulty.equals("normal") && !(medium.contains(level))) {
+			medium.add(level);
 		} else {
 			hard.add(level);
 		}
