@@ -13,6 +13,7 @@ public class GameView extends JPanel implements ListListener {
 	private ArrayList<Entity> entities;
 	private int frameHeight = 600;
 	private int frameWidth = 1200;
+	private Bird currentBird;
 	
 	
 	public GameView(ArrayList<Entity> entities) {
@@ -61,15 +62,13 @@ public class GameView extends JPanel implements ListListener {
 	    
 	    int k = 0;
 	    boolean first = true;
-	    Pigeon currentPigeon;
 	    for(Entity e : entities) {
-	    	if(e instanceof Pigeon) {
-	    		currentPigeon = (Pigeon) e;
-	    		g2d.drawImage(currentPigeon.getImage(), frameWidth*4/5+k*15, 100, this);
+	    	if(e instanceof Bird) {
+	    		g2d.drawImage(e.getImage(), frameWidth*4/5+k*15, 100, this);
 	    		k++;
 	    		if(first){
 	    			Egg egg = new Egg(0,0);
-	    			for (int j = 0; j < currentPigeon.getEggLeft(); ++j) {
+	    			for (int j = 0; j < currentBird.getEggLeft(); ++j) {
 	        			g2d.drawImage(egg.getImage(), frameWidth*4/5+j*15, 20, this);
 	        		}
 	    		}
@@ -77,40 +76,11 @@ public class GameView extends JPanel implements ListListener {
 	    	}
 	    }
         
-        for (int i = 0; i < entities.size(); ++i) {
-            g2d.drawImage(entities.get(i).getImage(), (int) entities.get(i).getPosition().getX(), (int) entities.get(i).getPosition().getY(), this);
-        	//g2d.drawRect(entities.get(i).getBound().x,entities.get(i).getBound().y,entities.get(i).getBound().width,entities.get(i).getBound().height);
-        }
-        
-        
-        /*// On affiche les pigeons
-        for (int i = 0; i < pigeons.size(); ++i ) {
-        	Pigeon p = (Pigeon) pigeons.get(i);
-            g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
-        }
-        
-         // On affiche les cochons
-        for (int i = 0; i < pigs.size(); ++i ) {
-            Pig p = (Pig) pigs.get(i);
-            g2d.drawImage(p.getImage(), p.getPosition().getX(), p.getPosition().getY(), this);
-            g2d.drawRect(p.getBound().x,p.getBound().y,p.getBound().width,p.getBound().height);
-        }
-        
-       // On affiche les oeufs lachés
-        for (int i = 0; i < pigeons.size(); ++i ) {
-        	ArrayList<Egg> eggs = pigeons.get(i).getEggs();
-        	
-        	for (int j = 0; j < eggs.size(); ++j ) {
-        		Egg e = (Egg) eggs.get(j);
-        		g2d.drawImage(e.getImage(), e.getPosition().getX(), e.getPosition().getY(), this);
+        for (Entity e : entities) {
+        	if (!(e instanceof Bird) || e == currentBird) { // on affiche pas tous les oiseaux, juste le courant
+        		g2d.drawImage(e.getImage(), (int) e.getPosition().getX(), (int) e.getPosition().getY(), this);
         	}
         }
-        
-        Egg e = new Egg(0,0);        
-        // On affiche les oeufs restants	
-        for (int i = 0; i < pigeons.get(0).getEggLeft(); ++i) {
-        		g2d.drawImage(e.getImage(), 600+i*15, 20, this);
-        }*/
         
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -131,7 +101,8 @@ public class GameView extends JPanel implements ListListener {
 
 	@Override
 	public void listChanged(ListChangedEvent event) {
-		this.entities = event.getEntityList();
+		entities = event.getEntityList();
+		currentBird = event.getCurrentBird();
 		repaint();
 		
 	}

@@ -14,7 +14,7 @@ public class GameController implements KeyListener, ListListener{
 	private GameModel angryModel;
 	private GameFrame angryFrame;
 	
-	private Pigeon p;
+	private Bird currentBird;
 	
 	private ArrayList<Entity> entities;
 	
@@ -28,26 +28,26 @@ public class GameController implements KeyListener, ListListener{
 	public void keyPressed(KeyEvent e) {		
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_RIGHT:
-			if(p.getFlyingState())
-				p.moveRight();
+			if(currentBird.isFlying())
+				currentBird.moveRight();
 			break;
 		case KeyEvent.VK_LEFT:
-			if(p.getFlyingState())
-				p.moveLeft();
+			if(currentBird.isFlying())
+				currentBird.moveLeft();
 			break;
 		case KeyEvent.VK_UP:
-			if(p.getFlyingState())
-				p.moveUp();
+			if(currentBird.isFlying())
+				currentBird.moveUp();
 			break;
 		case KeyEvent.VK_DOWN:
-			if(p.getFlyingState())
-				p.moveDown();
+			if(currentBird.isFlying())
+				currentBird.moveDown();
 			break;
 		case KeyEvent.VK_M:
-			p.lancer();
+			currentBird.launch();
 			break;
 		case KeyEvent.VK_S:
-			p.volStationaire();
+			currentBird.volStationaire();
 			break;
 		case KeyEvent.VK_SPACE:
 			//p.fire();	
@@ -57,7 +57,7 @@ public class GameController implements KeyListener, ListListener{
 			angryFrame.setMenu();
 			break;
 		case KeyEvent.VK_R:
-			p.reload();
+			currentBird.reload();
 			break;
 		default:
 			System.out.println("je gère pas cette touche ! Blaireau !");
@@ -79,7 +79,7 @@ public class GameController implements KeyListener, ListListener{
 	@Override
 	public void listChanged(ListChangedEvent event) {
 		this.entities = event.getEntityList();
-		p = angryModel.getCurrentPigeon();
+		this.currentBird = event.getCurrentBird();
 	}
 }
 

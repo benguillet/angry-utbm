@@ -13,7 +13,7 @@ public class Pigeon extends Bird {
 	private int startLocationX = 40;
 	private int startLocationY = 400;
 	private double accelX = 0;
-	private boolean isFlying = false;
+	
 	
 	public Pigeon() {
 	    imagePath = "res/images/pigeon.png";
@@ -22,7 +22,7 @@ public class Pigeon extends Bird {
 	    position = new Point(startLocationX, startLocationY);
 	    speed = 100;
 	    eggs = new ArrayList<Egg>();
-	    eggLeft = 3;
+	    reload();
 	    frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
 
@@ -36,14 +36,9 @@ public class Pigeon extends Bird {
     	}
     }
     
-    public void lancer(){
+    public void launch(){
     	isMoving = true;
     	isFlying = true;
-    }
-    
-    public boolean getFlyingState()
-    {
-    	return isFlying;
     }
     
 	

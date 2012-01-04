@@ -42,33 +42,36 @@ public class Level {
 			FileInputStream ips=new FileInputStream(fichierMapPath); 
 			InputStreamReader ipsr=new InputStreamReader(ips);
 			BufferedReader br=new BufferedReader(ipsr);
-			String ligne;
-			ligne = br.readLine();
-			while(!ligne.equals("Map")) {
+			String line;
+			line = br.readLine();
+			while(!line.equals("Map")) {
 				int X, Y;
-				if(ligne.equals("Pig")) {
-					ligne = br.readLine();
-					X = Integer.parseInt(ligne);
-					ligne = br.readLine();
-					Y = Integer.parseInt(ligne);
+				if(line.equals("Pig")) {
+					line = br.readLine();
+					X = Integer.parseInt(line);
+					line = br.readLine();
+					Y = Integer.parseInt(line);
 					entities.add(new Pig(X,Y));
 				}
-				if(ligne.equals("Pigeon")) {
+				if(line.equals("Pigeon")) {
 					entities.add(new Pigeon());
 				}
-				ligne = br.readLine();
+				if(line.equals("Humming Bird")) {
+					entities.add(new HummingBird());
+				}
+				line = br.readLine();
 			}
 			
 			tabMap = new int[tabMapSizeY][tabMapSizeX];
 			
 			for(int i=0;i<tabMapSizeY;i++)
 			{	
-				ligne = br.readLine();
+				line = br.readLine();
 				
 				for(int j=0; j<tabMapSizeX;j++)
 				{
 					
-					char car = ligne.charAt(j);
+					char car = line.charAt(j);
 					String st = String.valueOf(car);
 					tabMap[i][j]= Integer.parseInt(st);
 				}

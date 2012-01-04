@@ -4,15 +4,21 @@ import java.util.EventObject;
 
 @SuppressWarnings("serial")
 public class ListChangedEvent extends EventObject {
-	public ArrayList<Entity> entities;
+	private ArrayList<Entity> entities;
+	private Bird currentBird;
 	
-	public ListChangedEvent(Object source, ArrayList<Entity> entities) {
+	public ListChangedEvent(Object source, ArrayList<Entity> entities, Bird b) {
 		super(source);
 		
 		this.entities = entities;
+		currentBird = b;
 	}
 	
 	public ArrayList<Entity> getEntityList() {
 		return entities;
+	}
+	
+	public Bird getCurrentBird() {
+		return currentBird;
 	}
 }

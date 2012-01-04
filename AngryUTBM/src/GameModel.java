@@ -19,7 +19,7 @@ public class GameModel implements ActionListener {
 	private Level map;
 	private ArrayList<Player> players;
 	private ArrayList<Entity> entities;
-	private Pigeon currentPigeon;
+	private Bird currentBird;
 	private Timer timer;
 	private EntityThread entityThread;
 	private EventListenerList listeners;
@@ -77,8 +77,8 @@ public class GameModel implements ActionListener {
 		this.map = map;
 		entities = map.getEntityList();
 		for(Entity e : entities) {
-			if(e instanceof Pigeon) {
-				currentPigeon = (Pigeon) e;
+			if(e instanceof Bird) {
+				currentBird = (Bird) e;
 			}
 		}
 		fireListChanged();
@@ -90,11 +90,11 @@ public class GameModel implements ActionListener {
 	}
 	
 	public void addEgg() {
-		short eggLeft = currentPigeon.getEggLeft();
+		int eggLeft = currentBird.getEggLeft();
 		
 		if (eggLeft > 0) {
-			entities.add(new Egg((int)currentPigeon.getPosition().getX(), (int)currentPigeon.getPosition().getY()));
-			currentPigeon.setEggLeft(--eggLeft);
+			entities.add(new Egg((int)currentBird.getPosition().getX(), (int)currentBird.getPosition().getY()));
+			currentBird.setEggLeft(eggLeft-1);
     	}
     	else
     		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");
@@ -169,13 +169,13 @@ public class GameModel implements ActionListener {
         		if (!entities.get(i).isVisible())
                 	entities.remove(i);
         	}
-    		if (entities.get(i) instanceof Pigeon) {
+    		if (entities.get(i) instanceof Bird) {
         		if (!entities.get(i).isVisible()) {
                 	entities.remove(i);
             		boolean loose = true;
             		for (Entity entity : entities) {
-            			if (entity instanceof Pigeon) {
-            				currentPigeon = (Pigeon) entity;
+            			if (entity instanceof Bird) {
+            				currentBird = (Bird) entity;
             				loose = false;
             				break;
             			}
@@ -202,7 +202,7 @@ public class GameModel implements ActionListener {
 		ListListener[] listenerList = (ListListener[])listeners.getListeners(ListListener.class);
 		
 		for(ListListener listener : listenerList){
-			listener.listChanged(new ListChangedEvent(this, getEntityList()));
+			listener.listChanged(new ListChangedEvent(this, getEntityList(), currentBird));
 		}
 	}
 	
@@ -227,7 +227,7 @@ public class GameModel implements ActionListener {
 		currentLevel = l;
 	}
 	
-	public Pigeon getCurrentPigeon() {
-		return currentPigeon;
+	public Bird getCurrentBird() {
+		return currentBird;
 	}
 }
