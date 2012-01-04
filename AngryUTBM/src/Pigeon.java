@@ -35,10 +35,12 @@ public class Pigeon extends Bird {
 				visible = false;
     	}
     }
+    
     public void lancer(){
     	isMoving = true;
     	isFlying = true;
     }
+    
     public boolean getFlyingState()
     {
     	return isFlying;
@@ -61,6 +63,10 @@ public class Pigeon extends Bird {
     
     public void moveDown() {
     	//position.setLocation(position.getX(), position.getY() + speed);
+    }
+    
+    public void volStationaire() {
+    	isMoving = !isMoving;
     }
     
     public void reload() {

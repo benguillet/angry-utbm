@@ -23,19 +23,15 @@ public class GameModel implements ActionListener {
 	private Timer timer;
 	private EntityThread entityThread;
 	private EventListenerList listeners;
-	private int nbPigeon;
 	private Player currentPlayer;
 	private String difficulty;
 	private int currentLevel;
 	
 	public GameModel() {
 		entities = new ArrayList<Entity>();
-		currentPigeon = new Pigeon();
-		entities.add(currentPigeon);
-		entities.add(new Pig());	
 		
 		players = new ArrayList<Player>();
-		// on parcourt tout les elements du repertoire
+		// on parcourt tous les elements du repertoire
 		try{
 			File initial = new File ("save");
 			for (File f:initial.listFiles())
@@ -51,13 +47,14 @@ public class GameModel implements ActionListener {
 			//message d'exception
 		}
 		
-		entityThread = new EntityThread(entities);
-		entityThread.start();
-		
 		timer = new Timer(5, this);
 		timer.start();
 		
 		listeners = new EventListenerList();
+		
+		entityThread = new EntityThread(entities);
+		addListListener(entityThread);
+		//entityThread.start();
 	}
 
 	public GameView getDisplay() {
@@ -76,9 +73,16 @@ public class GameModel implements ActionListener {
 		return players;
 	}
 
-	public void setMap(Level map,int nb) {
+	public void setMap(Level map) {
 		this.map = map;
-		this.nbPigeon = nb;
+		entities = map.getEntityList();
+		for(Entity e : entities) {
+			if(e instanceof Pigeon) {
+				currentPigeon = (Pigeon) e;
+			}
+		}
+		fireListChanged();
+		entityThread.start();
 	}
 	
 	public ArrayList<Entity> getEntityList() {
@@ -166,8 +170,20 @@ public class GameModel implements ActionListener {
                 	entities.remove(i);
         	}
     		if (entities.get(i) instanceof Pigeon) {
-        		if (!entities.get(i).isVisible())
+        		if (!entities.get(i).isVisible()) {
                 	entities.remove(i);
+            		boolean loose = true;
+            		for (Entity entity : entities) {
+            			if (entity instanceof Pigeon) {
+            				currentPigeon = (Pigeon) entity;
+            				loose = false;
+            				break;
+            			}
+            		}
+            		if(loose) {
+            			loose();
+            		}
+        		}
         	}
         }
         checkCollision();
@@ -195,6 +211,10 @@ public class GameModel implements ActionListener {
 		currentPlayer.finished(currentLevel, difficulty);
 	}
 	
+	public void loose() {
+		System.out.println("La loose! Vous avez perdu!");
+	}
+	
 	public void setCurrentPlayer(Player p) {
 		currentPlayer = p;
 	}
@@ -205,5 +225,9 @@ public class GameModel implements ActionListener {
 	
 	public void setCurrentLevel(int l) {
 		currentLevel = l;
+	}
+	
+	public Pigeon getCurrentPigeon() {
+		return currentPigeon;
 	}
 }

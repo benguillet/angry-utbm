@@ -81,9 +81,10 @@ public class Player implements Serializable {
 			return medium.contains(level);
 		} else if (difficulty.equals("hard")){
 			return hard.contains(level);
-		} else {
+		} else if (difficulty.equals("extreme")){
 			return extreme.contains(level);
 		}
+		return false;
 	}
 
 	public void finished(int level, String difficulty) {

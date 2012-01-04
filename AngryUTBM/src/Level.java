@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.util.ArrayList;
 
 
 public class Level {
@@ -19,7 +20,7 @@ public class Level {
 	private String blockImagePath = "res/images/block.png";
 	private Image block;
 	private boolean levelFinish;
-
+	private ArrayList<Entity> entities;
 	
 	public Level() {
 	    ImageIcon ii = new ImageIcon(backgroundImagePath);
@@ -34,6 +35,7 @@ public class Level {
 	    grass = gr.getImage();
 	    ImageIcon bl = new ImageIcon(blockImagePath);
 	    block = bl.getImage();
+	    entities = new ArrayList<Entity>();
 	    
 	    try
 	    {
@@ -41,9 +43,24 @@ public class Level {
 			InputStreamReader ipsr=new InputStreamReader(ips);
 			BufferedReader br=new BufferedReader(ipsr);
 			String ligne;
+			ligne = br.readLine();
+			while(!ligne.equals("Map")) {
+				int X, Y;
+				if(ligne.equals("Pig")) {
+					ligne = br.readLine();
+					X = Integer.parseInt(ligne);
+					ligne = br.readLine();
+					Y = Integer.parseInt(ligne);
+					entities.add(new Pig(X,Y));
+				}
+				if(ligne.equals("Pigeon")) {
+					entities.add(new Pigeon());
+				}
+				ligne = br.readLine();
+			}
 			
 			tabMap = new int[tabMapSizeY][tabMapSizeX];
-						
+			
 			for(int i=0;i<tabMapSizeY;i++)
 			{	
 				ligne = br.readLine();
@@ -87,4 +104,8 @@ public class Level {
 	public int getTabMapSizeY(){
 		return tabMapSizeY;
 	}	
+	
+	public ArrayList<Entity> getEntityList() {
+		return entities;
+	}
 }

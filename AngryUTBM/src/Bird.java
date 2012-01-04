@@ -12,4 +12,6 @@ abstract class Bird extends Entity {
 	public void setEggLeft(short eggLeft) {
 		this.eggLeft = eggLeft;
 	}
+	
+	public abstract void volStationaire();
 }

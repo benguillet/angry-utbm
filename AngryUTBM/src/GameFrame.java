@@ -36,7 +36,7 @@ public class GameFrame extends JFrame {
 		//Listener
 		angryView.addKeyListener(angryController);
 		angryModel.addListListener(angryView);
-		
+		angryModel.addListListener(angryController);		
 		
 		angryView.setVisible(false);
 		angryViewMenu.setVisible(true);

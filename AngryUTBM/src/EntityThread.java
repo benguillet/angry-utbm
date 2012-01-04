@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class EntityThread extends Thread {
+public class EntityThread extends Thread implements ListListener{
 	private ArrayList<Entity> entities;
 	
 	public EntityThread(ArrayList<Entity> entities) {
@@ -20,5 +20,10 @@ public class EntityThread extends Thread {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	@Override
+	public void listChanged(ListChangedEvent event) {
+		this.entities = event.getEntityList();
 	}
 }

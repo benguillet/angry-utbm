@@ -21,6 +21,18 @@ public class Pig extends Enemy {
 		hitBox = new Rectangle(new Point((int) position.getX(),
 				(int) position.getY()), new Dimension(50, 50));
 	}
+	
+	public Pig(int X, int Y) {
+		imagePath = "res/images/pig.png";
+		ImageIcon ii = new ImageIcon(imagePath);
+		image = ii.getImage();
+		position = new Point(X, Y);
+		speed = 1;
+		back = false;
+		frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		hitBox = new Rectangle(new Point((int) position.getX(),
+				(int) position.getY()), new Dimension(50, 50));
+	}
 
 	public void move() {
 

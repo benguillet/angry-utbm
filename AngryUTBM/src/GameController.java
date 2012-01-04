@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class GameController implements KeyListener{
+public class GameController implements KeyListener, ListListener{
 	
 	//private GameView angryView;
 	private GameModel angryModel;
@@ -22,13 +22,6 @@ public class GameController implements KeyListener{
 		angryFrame = Frame;
 		angryModel = Frame.getAngryModel();
 		
-		entities = angryModel.getEntityList();
-		
-		for (int i = 0; i < entities.size(); ++i) {
-			if (entities.get(i) instanceof Pigeon)
-				p = (Pigeon) entities.get(i);
-				break;
-		}
 	}
 	
 	@Override
@@ -52,6 +45,9 @@ public class GameController implements KeyListener{
 			break;
 		case KeyEvent.VK_M:
 			p.lancer();
+			break;
+		case KeyEvent.VK_S:
+			p.volStationaire();
 			break;
 		case KeyEvent.VK_SPACE:
 			//p.fire();	
@@ -78,6 +74,12 @@ public class GameController implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void listChanged(ListChangedEvent event) {
+		this.entities = event.getEntityList();
+		p = angryModel.getCurrentPigeon();
 	}
 }
 
