@@ -57,18 +57,25 @@ public class GameView extends JPanel implements ListListener {
 	    	dx=0;
 	    }
         
+	    
+	    
 	    int k = 0;
-        for (int i = 0; i < entities.size(); ++i) {
-        	if (entities.get(i) instanceof Bird) {
-            	Bird bird = (Bird) entities.get(i);
-            	g2d.drawImage(bird.getImage(), frameWidth*4/5+k*15, 100, this);
-            	k++;
-        		for (int j = 0; j < bird.getEggLeft(); ++j) {
-        			Egg egg = new Egg(0,0);
-        			g2d.drawImage(egg.getImage(), frameWidth*4/5+j*15, 20, this);
-        		}
-        	}
-        }
+	    boolean first = true;
+	    Pigeon currentPigeon;
+	    for(Entity e : entities) {
+	    	if(e instanceof Pigeon) {
+	    		currentPigeon = (Pigeon) e;
+	    		g2d.drawImage(currentPigeon.getImage(), frameWidth*4/5+k*15, 100, this);
+	    		k++;
+	    		if(first){
+	    			Egg egg = new Egg(0,0);
+	    			for (int j = 0; j < currentPigeon.getEggLeft(); ++j) {
+	        			g2d.drawImage(egg.getImage(), frameWidth*4/5+j*15, 20, this);
+	        		}
+	    		}
+	    		first = false;
+	    	}
+	    }
         
         for (int i = 0; i < entities.size(); ++i) {
             g2d.drawImage(entities.get(i).getImage(), (int) entities.get(i).getPosition().getX(), (int) entities.get(i).getPosition().getY(), this);
