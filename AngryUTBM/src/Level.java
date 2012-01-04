@@ -59,6 +59,9 @@ public class Level {
 				if(line.equals("Humming Bird")) {
 					entities.add(new HummingBird());
 				}
+				if(line.equals("Sparrow")) {
+					entities.add(new Sparrow());
+				}
 				line = br.readLine();
 			}
 			
