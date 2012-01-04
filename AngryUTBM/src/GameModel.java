@@ -79,6 +79,7 @@ public class GameModel implements ActionListener {
 		for(Entity e : entities) {
 			if(e instanceof Bird) {
 				currentBird = (Bird) e;
+				break;
 			}
 		}
 		fireListChanged();
