@@ -98,7 +98,7 @@ public class GameModel implements ActionListener {
 			currentBird.setEggLeft(eggLeft-1);
     	}
     	else
-    		System.out.println("Plus d'oeufs ! Fail ! Appuie sur R pour recharger !");
+    		System.out.println("Plus d'oeufs ! Fail !");
 	}
 	
 	public void checkCollision() {
