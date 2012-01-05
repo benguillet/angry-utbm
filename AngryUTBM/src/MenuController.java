@@ -173,5 +173,10 @@ public class MenuController implements ActionListener {
 			angryFrame.setGame();
 			angryFrame.setCurrentLevel(2);
 		}
+		
+		if (e.getSource().equals(exitButton))
+		{
+			System.exit(0);
+		}
 	}
 }
