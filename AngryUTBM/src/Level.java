@@ -2,6 +2,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
@@ -28,7 +30,7 @@ public class Level {
 	    
     }
 	
-	public Level(String fichierMapPath) {
+	public Level(String fichierMapPath, JFrame actualFrame) {
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
 	    ImageIcon gr = new ImageIcon(grassImagePath);
@@ -51,7 +53,7 @@ public class Level {
 					X = Integer.parseInt(line);
 					line = br.readLine();
 					Y = Integer.parseInt(line);
-					entities.add(new Pig(X,Y));
+					entities.add(new Pig(X,Y, actualFrame));
 				}
 				if(line.equals("Pigeon")) {
 					entities.add(new Pigeon());
