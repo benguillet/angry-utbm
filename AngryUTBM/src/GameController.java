@@ -21,46 +21,49 @@ public class GameController implements KeyListener, ListListener{
 	public GameController(GameFrame Frame){
 		angryFrame = Frame;
 		angryModel = Frame.getAngryModel();
-		
 	}
 	
 	@Override
-	public void keyPressed(KeyEvent e) {		
+	public void keyPressed(KeyEvent e) {	
 		switch (e.getKeyCode()) {
-		case KeyEvent.VK_RIGHT:
-			if(currentBird.isFlying())
-				currentBird.moveRight();
-			break;
-		case KeyEvent.VK_LEFT:
-			if(currentBird.isFlying())
-				currentBird.moveLeft();
-			break;
-		case KeyEvent.VK_UP:
-			if(currentBird.isFlying())
-				currentBird.moveUp();
-			break;
-		case KeyEvent.VK_DOWN:
-			if(currentBird.isFlying())
-				currentBird.moveDown();
-			break;
-		case KeyEvent.VK_M:
-			currentBird.launch();
-			break;
-		case KeyEvent.VK_S:
-			currentBird.volStationaire();
-			break;
-		case KeyEvent.VK_SPACE:
-			//p.fire();	
-			angryModel.addEgg();
-			break;
-		case KeyEvent.VK_ESCAPE:
-			angryFrame.setMenu();
-			break;
-		case KeyEvent.VK_R:
-			currentBird.reload();
-			break;
-		default:
-			System.out.println("je gère pas cette touche ! Blaireau !");
+			case KeyEvent.VK_RIGHT:
+				if(currentBird.isFlying())
+					currentBird.moveRight();
+				break;
+			case KeyEvent.VK_LEFT:
+				if(currentBird.isFlying())
+					currentBird.moveLeft();
+				break;
+			case KeyEvent.VK_UP:
+				if(currentBird.isFlying())
+					currentBird.moveUp();
+				break;
+			case KeyEvent.VK_DOWN:
+				if(currentBird.isFlying())
+					currentBird.moveDown();
+				break;
+			case KeyEvent.VK_M:
+				currentBird.launch();
+				break;
+			case KeyEvent.VK_S:
+				currentBird = angryModel.getCurrentBird();
+				// On interdit le vol stationaire pour les moineaux
+				if(!(currentBird instanceof Sparrow))
+					currentBird.volStationaire();
+				break;
+			case KeyEvent.VK_SPACE:
+				//p.fire();	
+				angryModel.addEgg();
+				break;
+			case KeyEvent.VK_ESCAPE:
+				angryFrame.setMenu();
+				break;
+			// Plus de rechargement possible (trop facile sinon)	
+			/*case KeyEvent.VK_R:
+				currentBird.reload();
+				break;*/
+			default:
+				System.out.println("je gère pas cette touche ! Blaireau !");
 		}
 	}
 

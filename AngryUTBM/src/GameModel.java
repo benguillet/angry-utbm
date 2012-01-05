@@ -173,16 +173,16 @@ public class GameModel implements ActionListener {
     		if (entities.get(i) instanceof Bird) {
         		if (!entities.get(i).isVisible()) {
                 	entities.remove(i);
-            		boolean loose = true;
+            		boolean lose = true;
             		for (Entity entity : entities) {
             			if (entity instanceof Bird) {
             				currentBird = (Bird) entity;
-            				loose = false;
+            				lose = false;
             				break;
             			}
             		}
-            		if(loose) {
-            			loose();
+            		if(lose) {
+            			lose();
             		}
         		}
         	}
@@ -208,12 +208,12 @@ public class GameModel implements ActionListener {
 	}
 	
 	public void win() {
-		System.out.println("Bravo! Vous avez gagné!");
+		System.out.println("Bravo! Vous avez gagnï¿½!");
 		currentPlayer.finished(currentLevel, difficulty);
 	}
 	
-	public void loose() {
-		System.out.println("La loose! Vous avez perdu!");
+	public void lose() {
+		System.out.println("La lose! Vous avez perdu!");
 	}
 	
 	public void setCurrentPlayer(Player p) {
