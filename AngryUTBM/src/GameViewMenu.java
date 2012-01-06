@@ -37,8 +37,7 @@ public class GameViewMenu extends JLayeredPane {
 	private String backgroundImagePath = "res/images/background.png";
 	private String backgroundImagePathCredit = "res/images/backgroundCredit.png";
 	private String imgBird1 = "res/images/pigeon.png";
-	private JButton lvl01Button;
-	private JButton lvl02Button;
+	private ArrayList<JButton> lvlButtons;
 	private JComboBox playersList;
 	private int frameHeight = 600;
 	private int frameWidth = 1200;
@@ -122,14 +121,17 @@ public class GameViewMenu extends JLayeredPane {
         extremeButton = new JButton("EXTREME");
         extremeButton.setSize(200,30);
         extremeButton.setLocation(frameWidth/2-100, 475);
-                
-        lvl01Button = new JButton("LEVEL 1");
-        lvl01Button.setSize(200,30);
-        lvl01Button.setLocation(frameWidth/2-100, frameHeight/2-30);
         
-        lvl02Button = new JButton("LEVEL 2");
-        lvl02Button.setSize(200,30);
-        lvl02Button.setLocation(frameWidth/2-100, frameHeight/2+30);
+        lvlButtons = new ArrayList<JButton>();
+        
+        for (int lvlNumber = 0; lvlNumber < 5; ++lvlNumber) {
+        	lvlButtons.add(new JButton("" + (lvlNumber+1)));
+        	lvlButtons.get(lvlNumber).setSize(60,60);
+        	int lineNumber = lvlNumber / 5;
+        	lvlButtons.get(lvlNumber).setLocation(frameWidth/2-190+(lvlNumber%5)*80, 
+        											frameHeight/2-80 + lineNumber*80);
+        }
+        
         
         this.add(backPanel,new Integer(0));
    	 	this.add(newButton,new Integer(1));
@@ -149,11 +151,14 @@ public class GameViewMenu extends JLayeredPane {
    	 	this.add(hardButton,new Integer(1));
    	 	this.add(extremeButton,new Integer(1));
    	 	
-   	 	this.add(lvl01Button,new Integer(1));
-   	 	this.add(lvl02Button,new Integer(1));
+   	 	/*this.add(lvl01Button,new Integer(1));
+   	 	this.add(lvl02Button,new Integer(1));*/
    	 	
-   	 	lvl01Button.setVisible(false);
-   	 	lvl02Button.setVisible(false);
+   	 	for (JButton button : lvlButtons) {
+   	 		this.add(button, new Integer(1));
+   	 		button.setVisible(false);
+   	 	}
+   	 	
    	 	difficultyLabel.setVisible(false);
    	 	easyButton.setVisible(false);
    	 	mediumButton.setVisible(false);
@@ -166,17 +171,6 @@ public class GameViewMenu extends JLayeredPane {
         
         this.setVisible(true);
 	}
-	
-	/*public void paint(Graphics g) {
-        super.paint(g);
-        
-        Graphics2D g2d = (Graphics2D)g;
-        //g2d.drawImage(image, 0, 0, this);
-        
-        Toolkit.getDefaultToolkit().sync();
-        g.dispose();
-      
-	}*/
 
 	public JButton getNewButton()
 	{
@@ -217,16 +211,10 @@ public class GameViewMenu extends JLayeredPane {
 	{
 		return extremeButton;
 	}
-
-
-	public JButton getLvl01Button()
-	{
-		return lvl01Button;
-	}
 	
-	public JButton getLvl02Button()
+	public ArrayList<JButton> getLvlButtons()
 	{
-		return lvl02Button;
+		return lvlButtons;
 	}
 	
 	public JLabel getDifficultyLabel()

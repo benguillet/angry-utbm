@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -14,10 +15,8 @@ public class MenuController implements ActionListener {
 	private JTextField playerNameField;
 	private JButton newButton,loadButton,optionsButton,exitButton,okButton;
 	private JButton easyButton,mediumButton,hardButton,extremeButton;
-	private JButton lvl01Button;
-	private JButton lvl02Button;
+	private ArrayList<JButton> lvlButtons;
 	private JComboBox playersList;
-	
 	private GameViewMenu angryMenu;
 	private GameFrame angryFrame;
 	
@@ -50,11 +49,12 @@ public class MenuController implements ActionListener {
 		extremeButton = angryMenu.getExtremeButton();
 		extremeButton.addActionListener(this);
 		
-		lvl01Button = angryMenu.getLvl01Button();
-		lvl01Button.addActionListener(this);
-		lvl02Button = angryMenu.getLvl02Button();
-		lvl02Button.addActionListener(this);
+		lvlButtons = angryMenu.getLvlButtons();
+		for (JButton button : lvlButtons) {
+			button.addActionListener(this);
+		}
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -119,72 +119,46 @@ public class MenuController implements ActionListener {
 		
 		if (e.getSource().equals(easyButton))
 		{
-			difficultyLabel.setVisible(false);
-			lvl01Button.setVisible(true);
-			lvl02Button.setVisible(true);
-			easyButton.setVisible(false);
-			mediumButton.setVisible(false);
-			hardButton.setVisible(false);
-			extremeButton.setVisible(false);
 			angryFrame.setDifficulty("easy");
 			
 		}
 		
 		if (e.getSource().equals(mediumButton))
 		{
-			difficultyLabel.setVisible(false);
-			lvl01Button.setVisible(true);
-			lvl02Button.setVisible(true);
-			easyButton.setVisible(false);
-			mediumButton.setVisible(false);
-			hardButton.setVisible(false);
-			extremeButton.setVisible(false);
 			angryFrame.setDifficulty("medium");
 			
 		}
 			
 		if (e.getSource().equals(hardButton))
 		{
-			difficultyLabel.setVisible(false);
-			lvl01Button.setVisible(true);
-			lvl02Button.setVisible(true);
-			easyButton.setVisible(false);
-			mediumButton.setVisible(false);
-			hardButton.setVisible(false);
-			extremeButton.setVisible(false);
 			angryFrame.setDifficulty("hard");
 			
 		}
 		
 		if (e.getSource().equals(extremeButton))
 		{
+			angryFrame.setDifficulty("extreme");	
+		}
+		
+		if (e.getSource().equals(easyButton) || e.getSource().equals(mediumButton) || e.getSource().equals(hardButton) || e.getSource().equals(extremeButton) ) {
 			difficultyLabel.setVisible(false);
-			lvl01Button.setVisible(true);
-			lvl02Button.setVisible(true);
+			for (JButton button : lvlButtons) {
+				button.setVisible(true);
+			}
 			easyButton.setVisible(false);
 			mediumButton.setVisible(false);
 			hardButton.setVisible(false);
 			extremeButton.setVisible(false);
-			angryFrame.setDifficulty("extreme");
-			
 		}
 		
-		if (e.getSource().equals(lvl01Button))
-		{
-			Level lvl1 = new Level("res/maps/lvl01.txt", angryFrame);
-			angryFrame.getAngryView().setMap(lvl1);
-			angryFrame.getAngryModel().setMap(lvl1);
-			angryFrame.setGame();
-			angryFrame.setCurrentLevel(1);
-		}
-		
-		if (e.getSource().equals(lvl02Button))
-		{
-			Level lvl2 = new Level("res/maps/lvl02.txt", angryFrame);
-			angryFrame.getAngryView().setMap(lvl2);
-			angryFrame.getAngryModel().setMap(lvl2);
-			angryFrame.setGame();
-			angryFrame.setCurrentLevel(2);
+		for (int i = 0; i < lvlButtons.size(); ++i) {
+			if(e.getSource().equals(lvlButtons.get(i))) {
+				Level lvl = new Level("res/maps/lvl0" + (i+1) + ".txt", angryFrame);
+				angryFrame.getAngryView().setMap(lvl);
+				angryFrame.getAngryModel().setMap(lvl);
+				angryFrame.setGame();
+				angryFrame.setCurrentLevel(i+1);
+			}
 		}
 		
 		if (e.getSource().equals(exitButton))

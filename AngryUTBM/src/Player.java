@@ -50,6 +50,7 @@ public class Player implements Serializable {
 			File file = new File("save/" + name + ".save");
 			file.delete();
 			file.createNewFile();
+			
 			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this);
