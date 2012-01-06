@@ -46,7 +46,6 @@ public class GameController implements KeyListener, ListListener{
 				currentBird.launch();
 				break;
 			case KeyEvent.VK_S:
-				currentBird = angryModel.getCurrentBird();
 				// On interdit le vol stationaire pour les moineaux
 				if(!(currentBird instanceof Sparrow))
 					currentBird.volStationaire();

@@ -16,6 +16,7 @@ public class MenuController implements ActionListener {
 	private JButton newButton,loadButton,optionsButton,exitButton,okButton;
 	private JButton easyButton,mediumButton,hardButton,extremeButton;
 	private ArrayList<JButton> lvlButtons;
+	private Player currentPlayer;
 	private JComboBox playersList;
 	private GameViewMenu angryMenu;
 	private GameFrame angryFrame;
@@ -58,6 +59,7 @@ public class MenuController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		
 		if (e.getSource().equals(newButton))
 		{
 			newButton.setVisible(false);
@@ -84,16 +86,15 @@ public class MenuController implements ActionListener {
 		}
 		
 		if(e.getSource().equals(okButton))
-		{	
-			Player player;
+		{
 			
 			if (playerNameField.isVisible()) {
 				if (playerNameField.getText().equals(""))
 					javax.swing.JOptionPane.showMessageDialog(null, "Il faut mettre ton pseudo");
 				else {
-					player = new Player(playerNameField.getText());
+					currentPlayer = new Player(playerNameField.getText());
 					playerNameField.setVisible(false);
-					angryFrame.setCurrentPlayer(player);
+					angryFrame.setCurrentPlayer(currentPlayer);
 					playerNameLabel.setVisible(false);
 					okButton.setVisible(false);
 					difficultyLabel.setVisible(true);
@@ -104,9 +105,9 @@ public class MenuController implements ActionListener {
 				}
 			}
 			else {
-				player = (Player) playersList.getSelectedItem();
+				currentPlayer = (Player) playersList.getSelectedItem();
 				playersList.setVisible(false);
-				angryFrame.setCurrentPlayer(player);
+				angryFrame.setCurrentPlayer(currentPlayer);
 				playerNameLabel.setVisible(false);
 				okButton.setVisible(false);
 				difficultyLabel.setVisible(true);
@@ -117,38 +118,50 @@ public class MenuController implements ActionListener {
 			}
 		}
 		
+		String difficulty = "";
+		
 		if (e.getSource().equals(easyButton))
 		{
-			angryFrame.setDifficulty("easy");
+			difficulty = "easy";
 			
 		}
 		
 		if (e.getSource().equals(mediumButton))
 		{
-			angryFrame.setDifficulty("medium");
+			difficulty = "medium";
 			
 		}
 			
 		if (e.getSource().equals(hardButton))
 		{
-			angryFrame.setDifficulty("hard");
+			difficulty = "hard";
 			
 		}
 		
 		if (e.getSource().equals(extremeButton))
 		{
-			angryFrame.setDifficulty("extreme");	
+			difficulty = "extreme";	
 		}
 		
-		if (e.getSource().equals(easyButton) || e.getSource().equals(mediumButton) || e.getSource().equals(hardButton) || e.getSource().equals(extremeButton) ) {
+		// Si difficulty est renseigné on a forcément cliqué sur un des boutons de difficulté
+		if (!difficulty.equals("")) {
 			difficultyLabel.setVisible(false);
-			for (JButton button : lvlButtons) {
-				button.setVisible(true);
+			for (int lvlNumber = 0; lvlNumber < lvlButtons.size(); ++lvlNumber) {
+				lvlButtons.get(lvlNumber).setVisible(true);
+				lvlButtons.get(lvlNumber).setEnabled(false);
+				
+				if (currentPlayer.isFinished(lvlNumber, difficulty)) {
+					lvlButtons.get(lvlNumber).setEnabled(true);
+					if ((lvlNumber+1) < lvlButtons.size())
+						lvlButtons.get(lvlNumber+1).setEnabled(true);
+				}
 			}
+			lvlButtons.get(0).setEnabled(true);
 			easyButton.setVisible(false);
 			mediumButton.setVisible(false);
 			hardButton.setVisible(false);
 			extremeButton.setVisible(false);
+			angryFrame.setDifficulty(difficulty);
 		}
 		
 		for (int i = 0; i < lvlButtons.size(); ++i) {
