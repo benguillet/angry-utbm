@@ -86,22 +86,35 @@ public class MenuController implements ActionListener {
 		if(e.getSource().equals(okButton))
 		{	
 			Player player;
-			if(playerNameField.isVisible()){
-				player = new Player(playerNameField.getText());
-				playerNameField.setVisible(false);
+			
+			if (playerNameField.isVisible()) {
+				if (playerNameField.getText().equals(""))
+					javax.swing.JOptionPane.showMessageDialog(null, "Il faut mettre ton pseudo");
+				else {
+					player = new Player(playerNameField.getText());
+					playerNameField.setVisible(false);
+					angryFrame.setCurrentPlayer(player);
+					playerNameLabel.setVisible(false);
+					okButton.setVisible(false);
+					difficultyLabel.setVisible(true);
+					easyButton.setVisible(true);
+					mediumButton.setVisible(true);
+					hardButton.setVisible(true);
+					extremeButton.setVisible(true);
+				}
 			}
 			else {
 				player = (Player) playersList.getSelectedItem();
 				playersList.setVisible(false);
+				angryFrame.setCurrentPlayer(player);
+				playerNameLabel.setVisible(false);
+				okButton.setVisible(false);
+				difficultyLabel.setVisible(true);
+				easyButton.setVisible(true);
+				mediumButton.setVisible(true);
+				hardButton.setVisible(true);
+				extremeButton.setVisible(true);
 			}
-			angryFrame.setCurrentPlayer(player);	
-			playerNameLabel.setVisible(false);
-			okButton.setVisible(false);
-			difficultyLabel.setVisible(true);
-			easyButton.setVisible(true);
-			mediumButton.setVisible(true);
-			hardButton.setVisible(true);
-			extremeButton.setVisible(true);
 		}
 		
 		if (e.getSource().equals(easyButton))

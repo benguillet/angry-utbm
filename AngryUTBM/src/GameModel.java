@@ -83,7 +83,8 @@ public class GameModel implements ActionListener {
 			}
 		}
 		fireListChanged();
-		entityThread.start();
+		if (!entityThread.isAlive())
+			entityThread.start();
 	}
 	
 	public ArrayList<Entity> getEntityList() {
