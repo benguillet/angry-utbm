@@ -9,11 +9,19 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class Player implements Serializable {
 	private String name;
-	private int score;
+	
+	// Score par niveau
+	private ArrayList<Integer> scoreEasy;
+	private ArrayList<Integer> scoreMedium;
+	private ArrayList<Integer> scoreHard;
+	private ArrayList<Integer> scoreExtreme;
+	
 	private ArrayList<Integer> easy;
 	private ArrayList<Integer> medium;
 	private ArrayList<Integer> hard;
 	private ArrayList<Integer> extreme;
+	
+	private int levelNumber;
 
 	public Player(String name) {
 
@@ -23,7 +31,21 @@ public class Player implements Serializable {
 		medium = new ArrayList<Integer>();
 		hard = new ArrayList<Integer>();
 		extreme = new ArrayList<Integer>();
-		score = 0;
+		
+		scoreEasy = new ArrayList<Integer>();
+		scoreMedium = new ArrayList<Integer>();
+		scoreHard = new ArrayList<Integer>();
+		scoreExtreme = new ArrayList<Integer>();
+		
+		
+		// Permet de créer des listes de la bonne taille et ainsi d'éviter les OutOfBoundExceptions
+		for (int i = 0; i < LevelNumber.getLevelNumber(); ++i) {
+			scoreEasy.add(0);
+			scoreMedium.add(0);
+			scoreHard.add(0);
+			scoreExtreme.add(0);
+		}
+		
 		this.save();
 	}
 
@@ -88,29 +110,24 @@ public class Player implements Serializable {
 		return false;
 	}
 
-	public void finished(int level, String difficulty) {
+	public void finished(int level, String difficulty, int score) {
 		if (difficulty.equals("easy") && !(easy.contains(level))) {
 			easy.add(level);
+			scoreEasy.set(level, score);
 		} else if (difficulty.equals("normal") && !(medium.contains(level))) {
 			medium.add(level);
+			scoreMedium.set(level, score);
 		} else if (difficulty.equals("hard") && !(hard.contains(level))) {
 			hard.add(level);
+			scoreHard.set(level, score);
 		} else if (difficulty.equals("extreme") && !(extreme.contains(level))) {
 			extreme.add(level);
+			scoreExtreme.set(level, score);
 		}
 		save();
 	}
 	
 	public String getName() {
 		return name;
-	}
-	
-	public int getScore() {
-		return score;
-	}
-	
-	public int addToScore(int add) {
-		score = score + add;
-		return score;
 	}
 }

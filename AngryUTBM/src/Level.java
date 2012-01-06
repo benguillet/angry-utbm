@@ -31,7 +31,7 @@ public class Level {
 	    
     }
 	
-	public Level(String fichierMapPath, JFrame actualFrame) {
+	public Level(String fichierMapPath) {
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
 	    ImageIcon gr = new ImageIcon(grassImagePath);
@@ -55,7 +55,7 @@ public class Level {
 					X = Integer.parseInt(line);
 					line = br.readLine();
 					Y = Integer.parseInt(line);
-					entities.add(new Pig(X,Y, actualFrame));
+					entities.add(new Pig(X,Y));
 				}
 				if(line.equals("Pigeon")) {
 					entities.add(new Pigeon());

@@ -2,6 +2,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JButton;
@@ -9,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class MenuController implements ActionListener {
+public class MenuController implements KeyListener, ActionListener {
 
 	private JLabel difficultyLabel,playerNameLabel;
 	private JTextField playerNameField;
@@ -166,7 +169,7 @@ public class MenuController implements ActionListener {
 		
 		for (int i = 0; i < lvlButtons.size(); ++i) {
 			if(e.getSource().equals(lvlButtons.get(i))) {
-				Level lvl = new Level("res/maps/lvl0" + (i+1) + ".txt", angryFrame);
+				Level lvl = new Level("res/maps/lvl0" + (i+1) + ".txt");
 				if (lvl.isLoaded()) {
 					angryFrame.getAngryView().setMap(lvl);
 					angryFrame.getAngryModel().setMap(lvl);
@@ -183,5 +186,28 @@ public class MenuController implements ActionListener {
 		{
 			System.exit(0);
 		}
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {	
+		switch (e.getKeyCode()) {
+			case KeyEvent.VK_ESCAPE:
+				//angryFrame.setPreviousMenu();
+				break;
+			default:
+				System.out.println("je gère pas cette touche ! Blaireau !");
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
