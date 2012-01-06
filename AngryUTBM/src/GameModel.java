@@ -224,7 +224,7 @@ public class GameModel implements ActionListener {
 			this.setCurrentLevel(currentLevel+1);
 		}
 		else {
-			javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant à ce niveau, tu peux insulter les développeurs");
+			javax.swing.JOptionPane.showMessageDialog(null, "Bravo, tu as finis tous les niveaux !");
 		}
 	}
 	

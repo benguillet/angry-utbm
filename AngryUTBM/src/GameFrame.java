@@ -36,26 +36,9 @@ public class GameFrame extends JFrame {
 		angryView.addKeyListener(angryController);
 		angryModel.addListListener(angryView);
 		angryModel.addListListener(angryController);		
-		
-		
-		// methode qui marche
-		/*angryView.setVisible(false);
-		angryViewMenu.setVisible(true);*/
-		
-		
-		// test
-		this.add(angryView);
-		this.add(angryViewMenu);
-		angryViewMenu.setVisible(true);
-		angryView.setVisible(false);
-		
-		
-		// methode qui marche
-		/*this.add(angryView);
-		this.add(angryViewMenu);*/
-		
-		// test
-		//this.add(angryViewMenu);
+
+		this.setContentPane(angryViewMenu);
+		this.setVisible(true);
 		
 		this.setTitle(winName);
 		this.setSize(GameFrame.getFrameSize().width, GameFrame.getFrameSize().height);
@@ -83,43 +66,21 @@ public class GameFrame extends JFrame {
 	{
 		return angryController;
 	}
-	
-	// methode qui marche !
-	/*public void setMenu()
-	{
-		//this.setContentPane(angryViewMenu);
-		angryView.setVisible(false);
-		angryViewMenu.setVisible(true);
-		//this.add(angryViewMenu);
-	}
-	
-	public void setGame()
-	{
-		//this.setContentPane(angryView);
-		angryView.setVisible(true);
-		angryViewMenu.setVisible(false);
-		this.add(angryView);
-		
-	}*/
-	
-	// test
+
 	public void setMenu()
 	{
-		angryViewMenu.setVisible(true);
-		angryView.setVisible(false);
-		//this.requestFocus();
-		//this.add(angryViewMenu);
-		
+
+		this.setContentPane(angryViewMenu);
+		angryViewMenu.requestFocus();
+		this.setVisible(true);
 		
 	}
 	
 	public void setGame()
 	{
-		angryView.setVisible(true);
-		angryViewMenu.setVisible(false);
-		//this.requestFocus();
-		//this.repaint();
-		this.add(angryView);
+		this.setContentPane(angryView);
+		angryView.requestFocus();
+		this.setVisible(true);
 		
 	}
 	

@@ -113,16 +113,17 @@ public class Player implements Serializable {
 	public void finished(int level, String difficulty, int score) {
 		if (difficulty.equals("easy") && !(easy.contains(level))) {
 			easy.add(level);
-			scoreEasy.set(level, score);
+			// l'index des levels de scoreEasy commence à 0
+			scoreEasy.set(level-1, score);
 		} else if (difficulty.equals("normal") && !(medium.contains(level))) {
 			medium.add(level);
-			scoreMedium.set(level, score);
+			scoreMedium.set(level-1, score);
 		} else if (difficulty.equals("hard") && !(hard.contains(level))) {
 			hard.add(level);
-			scoreHard.set(level, score);
+			scoreHard.set(level-1, score);
 		} else if (difficulty.equals("extreme") && !(extreme.contains(level))) {
 			extreme.add(level);
-			scoreExtreme.set(level, score);
+			scoreExtreme.set(level-1, score);
 		}
 		save();
 	}
