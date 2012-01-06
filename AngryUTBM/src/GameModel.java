@@ -15,7 +15,7 @@ import java.io.ObjectInputStream;
 
 
 public class GameModel implements ActionListener {
-	private GameView display;
+	private GameView angryView;
 	private Level map;
 	private ArrayList<Player> players;
 	private ArrayList<Entity> entities;
@@ -31,6 +31,7 @@ public class GameModel implements ActionListener {
 		entities = new ArrayList<Entity>();
 		
 		players = new ArrayList<Player>();
+		
 		// on parcourt tous les elements du repertoire
 		try{
 			File initial = new File ("save");
@@ -57,12 +58,12 @@ public class GameModel implements ActionListener {
 		//entityThread.start();
 	}
 
-	public GameView getDisplay() {
-		return display;
+	public GameView getAngryView() {
+		return angryView;
 	}
 
-	public void setDisplay(GameView display) {
-		this.display = display;
+	public void setAngryView(GameView display) {
+		this.angryView = display;
 	}
 
 	public Level getMap() {
@@ -123,7 +124,12 @@ public class GameModel implements ActionListener {
 			            		}
 			            	}
 			            	if(win) {
-			            		win();
+			            		int score = 0;
+			            		for (Entity entity : entities) {
+				            		if (entity instanceof Bird)
+				            			++score;
+			            		}
+			            		win(score);
 			            	}
 			            }
 					}
@@ -138,8 +144,8 @@ public class GameModel implements ActionListener {
 					{
 						if(tabMap[y][x]==1 || tabMap[y][x]==2)
 						{
-							Rectangle HitBox = new Rectangle(dx,dy,26,26);
-							if(testCollision(hitBoxEgg, HitBox))
+							Rectangle hitBoxScenery = new Rectangle(dx,dy,26,26);
+							if(testCollision(hitBoxEgg, hitBoxScenery))
 							{
 								entities.remove(i);
 								if(tabMap[y][x]==2)
@@ -166,7 +172,7 @@ public class GameModel implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent event) {
-        for (int i = 0; i <entities.size(); ++i ) {
+        for (int i = 0; i < entities.size(); ++i) {
         	if (entities.get(i) instanceof Egg) {
         		if (!entities.get(i).isVisible())
                 	entities.remove(i);
@@ -208,9 +214,18 @@ public class GameModel implements ActionListener {
 		}
 	}
 	
-	public void win() {
-		System.out.println("Bravo! Vous avez gagn�!");
-		currentPlayer.finished(currentLevel, difficulty);
+	public void win(int score) {
+		javax.swing.JOptionPane.showMessageDialog(null, "Bravo, tu as gagné ! Ton score est " + score);
+		currentPlayer.finished(currentLevel, difficulty, score);
+		Level lvl = new Level("res/maps/lvl0" + (currentLevel+1) + ".txt");
+		if (lvl.isLoaded()) {
+			angryView.setMap(lvl);
+			this.setMap(lvl);
+			this.setCurrentLevel(currentLevel+1);
+		}
+		else {
+			javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant à ce niveau, tu peux insulter les développeurs");
+		}
 	}
 	
 	public void lose() {

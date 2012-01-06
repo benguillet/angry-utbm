@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -12,8 +13,6 @@ public class GameFrame extends JFrame {
 	private String winName;
 	ArrayList<Entity> angryEntities;
 	ArrayList<Player> angryPlayers;
-	private int frameHeight = 600;
-	private int frameWidth = 1200;
 	
 	public GameFrame(String name) {
 		winName = name;
@@ -26,7 +25,7 @@ public class GameFrame extends JFrame {
 		angryView = new GameView(angryEntities);
 		
 		
-		angryModel.setDisplay(angryView);
+		angryModel.setAngryView(angryView);
 		
 		//controller 
 		angryController = new GameController(this);
@@ -38,15 +37,28 @@ public class GameFrame extends JFrame {
 		angryModel.addListListener(angryView);
 		angryModel.addListListener(angryController);		
 		
-		angryView.setVisible(false);
-		angryViewMenu.setVisible(true);
+		
+		// methode qui marche
+		/*angryView.setVisible(false);
+		angryViewMenu.setVisible(true);*/
 		
 		
+		// test
 		this.add(angryView);
 		this.add(angryViewMenu);
+		angryViewMenu.setVisible(true);
+		angryView.setVisible(false);
+		
+		
+		// methode qui marche
+		/*this.add(angryView);
+		this.add(angryViewMenu);*/
+		
+		// test
+		//this.add(angryViewMenu);
 		
 		this.setTitle(winName);
-		this.setSize(frameWidth, frameHeight);
+		this.setSize(GameFrame.getFrameSize().width, GameFrame.getFrameSize().height);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -72,7 +84,8 @@ public class GameFrame extends JFrame {
 		return angryController;
 	}
 	
-	public void setMenu()
+	// methode qui marche !
+	/*public void setMenu()
 	{
 		//this.setContentPane(angryViewMenu);
 		angryView.setVisible(false);
@@ -87,7 +100,30 @@ public class GameFrame extends JFrame {
 		angryViewMenu.setVisible(false);
 		this.add(angryView);
 		
+	}*/
+	
+	// test
+	public void setMenu()
+	{
+		angryViewMenu.setVisible(true);
+		angryView.setVisible(false);
+		//this.requestFocus();
+		//this.add(angryViewMenu);
+		
+		
 	}
+	
+	public void setGame()
+	{
+		angryView.setVisible(true);
+		angryViewMenu.setVisible(false);
+		//this.requestFocus();
+		//this.repaint();
+		this.add(angryView);
+		
+	}
+	
+	
 	
 	public void setCurrentPlayer(Player p) {
 		angryModel.setCurrentPlayer(p);
@@ -99,6 +135,11 @@ public class GameFrame extends JFrame {
 	
 	public void setCurrentLevel(int l) {
 		angryModel.setCurrentLevel(l);
+	}
+	
+	static public Dimension getFrameSize() {
+		Dimension frameSize = new Dimension(1200,600);
+		return frameSize;
 	}
 	
 }

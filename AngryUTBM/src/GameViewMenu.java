@@ -150,9 +150,7 @@ public class GameViewMenu extends JLayeredPane {
    	 	this.add(mediumButton,new Integer(1));
    	 	this.add(hardButton,new Integer(1));
    	 	this.add(extremeButton,new Integer(1));
-   	 	
-   	 	/*this.add(lvl01Button,new Integer(1));
-   	 	this.add(lvl02Button,new Integer(1));*/
+
    	 	
    	 	for (JButton button : lvlButtons) {
    	 		this.add(button, new Integer(1));
