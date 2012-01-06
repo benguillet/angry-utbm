@@ -154,10 +154,15 @@ public class MenuController implements ActionListener {
 		for (int i = 0; i < lvlButtons.size(); ++i) {
 			if(e.getSource().equals(lvlButtons.get(i))) {
 				Level lvl = new Level("res/maps/lvl0" + (i+1) + ".txt", angryFrame);
-				angryFrame.getAngryView().setMap(lvl);
-				angryFrame.getAngryModel().setMap(lvl);
-				angryFrame.setGame();
-				angryFrame.setCurrentLevel(i+1);
+				if (lvl.isLoaded()) {
+					angryFrame.getAngryView().setMap(lvl);
+					angryFrame.getAngryModel().setMap(lvl);
+					angryFrame.setGame();
+					angryFrame.setCurrentLevel(i+1);
+				}
+				else {
+					javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant à ce niveau, tu peux insulter les développeurs");
+				}
 			}
 		}
 		

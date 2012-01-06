@@ -22,6 +22,7 @@ public class Level {
 	private String blockImagePath = "res/images/block.png";
 	private Image block;
 	private boolean levelFinish;
+	private boolean isLoaded;
 	private ArrayList<Entity> entities;
 	
 	public Level() {
@@ -42,6 +43,7 @@ public class Level {
 	    try
 	    {
 			FileInputStream ips=new FileInputStream(fichierMapPath); 
+			isLoaded = true;
 			InputStreamReader ipsr=new InputStreamReader(ips);
 			BufferedReader br=new BufferedReader(ipsr);
 			String line;
@@ -83,9 +85,12 @@ public class Level {
 			}
 				
 	    }
+	    
+	    // Si jamais on tente de créer un niveau qui n'a aucun fichier texte correspondant
 		catch (Exception e)
 		{
-			System.out.println(e.toString());
+			//System.out.println(e.toString());
+			isLoaded = false;
 		}
 	    
 	}
@@ -115,5 +120,9 @@ public class Level {
 	
 	public ArrayList<Entity> getEntityList() {
 		return entities;
+	}
+	
+	public boolean isLoaded() {
+		return isLoaded;
 	}
 }
