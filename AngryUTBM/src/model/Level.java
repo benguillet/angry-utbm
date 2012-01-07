@@ -1,9 +1,14 @@
+package model;
+
+import model.entities.Entity;
+import model.entities.HummingBird;
+import model.entities.Pig;
+import model.entities.Pigeon;
+import model.entities.Sparrow;
+
 import java.awt.Image;
 import java.awt.Rectangle;
-
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;

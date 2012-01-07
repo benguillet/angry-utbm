@@ -1,4 +1,9 @@
+package model.entities;
+
 import java.util.ArrayList;
+
+import model.ListChangedEvent;
+import model.ListListener;
 
 
 public class EntityThread extends Thread implements ListListener{

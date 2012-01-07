@@ -1,10 +1,10 @@
-import java.awt.Dimension;
+package model.entities;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Pigeon extends Bird {
-	private final int PIGEON_SIZE = 58;
 	
 	
 	public Pigeon() {
@@ -36,7 +36,5 @@ public class Pigeon extends Bird {
     
     public ArrayList<Egg> getEggs() {
     	return eggs;
-    }
-    
-    
+    }  
 }

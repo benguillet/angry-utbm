@@ -1,7 +1,6 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
+package model;
 
+import java.io.File;
 
 public class LevelNumber {
 	static public int getLevelNumber() {

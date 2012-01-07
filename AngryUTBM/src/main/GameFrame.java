@@ -1,7 +1,15 @@
+package main;
 import java.awt.Dimension;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
+
+import view.GameView;
+import view.GameViewMenu;
+import controller.GameController;
+import controller.MenuController;
+import model.GameModel;
+import model.Player;
+import model.entities.Entity;
 
 @SuppressWarnings("serial")
 public class GameFrame extends JFrame {

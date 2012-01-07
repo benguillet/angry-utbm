@@ -1,12 +1,16 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+package controller;
+
+import main.GameFrame;
+import model.GameModel;
+import model.ListChangedEvent;
+import model.ListListener;
+import model.entities.Bird;
+import model.entities.Entity;
+import model.entities.Sparrow;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 public class GameController implements KeyListener, ListListener{
 	

@@ -1,16 +1,10 @@
-import java.awt.Color;
-import java.awt.Component;
+package view;
+
+import model.Player;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,13 +12,9 @@ import javax.swing.JTextField;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
-
-import sun.net.ProgressEvent;
-import sun.net.ProgressListener;
-
 import java.util.ArrayList;
-import java.util.List;
 
+@SuppressWarnings("serial")
 public class GameViewMenu extends JLayeredPane {
 
 	private String titleImagePath = "res/images/title.png";

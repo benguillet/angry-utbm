@@ -1,16 +1,19 @@
+package controller;
+
+import main.GameFrame;
+import model.Level;
+import model.Player;
+import view.GameViewMenu;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JComboBox;
-import javax.swing.JList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 
 public class MenuController implements KeyListener, ActionListener {
 

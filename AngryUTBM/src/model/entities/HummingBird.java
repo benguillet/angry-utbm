@@ -1,12 +1,10 @@
-import java.awt.Dimension;
+package model.entities;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-public class HummingBird extends Bird {
-	private final int PIGEON_SIZE = 58;
-	
-	
+public class HummingBird extends Bird {	
 	public HummingBird() {
 	    imagePath = "res/images/hummingBird.png";
     	ImageIcon ii = new ImageIcon(imagePath);

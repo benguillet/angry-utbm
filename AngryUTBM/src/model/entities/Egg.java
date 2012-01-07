@@ -1,9 +1,8 @@
+package model.entities;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 
 

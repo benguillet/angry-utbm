@@ -1,14 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+package model;
 
+import view.GameView;
+import model.entities.Bird;
+import model.entities.Egg;
+import model.entities.Entity;
+import model.entities.EntityThread;
+import model.entities.Pig;
+
+import java.util.ArrayList;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -163,8 +167,6 @@ public class GameModel implements ActionListener {
 		
 		//Collisions cochon/d�cor
 		for(Entity entity : entities) {
-			int dx=0;
-			int dy=0;
 			int tabMap[][]= level.getTabMap();
 			if(entity instanceof Pig) {
 				Pig pig = (Pig) entity;

@@ -1,3 +1,5 @@
+package view;
+
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -6,6 +8,13 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+
+import model.Level;
+import model.ListChangedEvent;
+import model.ListListener;
+import model.entities.Bird;
+import model.entities.Egg;
+import model.entities.Entity;
 
 @SuppressWarnings("serial")
 public class GameView extends JPanel implements ListListener {

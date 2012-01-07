@@ -1,5 +1,9 @@
+package model;
 import java.util.ArrayList;
 import java.util.EventObject;
+
+import model.entities.Bird;
+import model.entities.Entity;
 
 
 @SuppressWarnings("serial")

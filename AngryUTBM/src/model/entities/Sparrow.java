@@ -1,10 +1,10 @@
-import java.awt.Dimension;
+package model.entities;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Sparrow extends Bird {
-	private final int PIGEON_SIZE = 58;
 	
 	
 	public Sparrow() {

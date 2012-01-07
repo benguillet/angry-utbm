@@ -1,7 +1,8 @@
+package model.entities;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
-abstract class Bird extends Entity {
+public abstract class Bird extends Entity {
 	protected short flyingTime;
 	protected int eggLeft;
 	protected ArrayList<Egg> eggs;

@@ -1,8 +1,9 @@
+package model.entities;
 import java.awt.Image;
 import java.awt.Point;
 import java.util.ArrayList;
 
-abstract class Entity {
+public abstract class Entity {
 	protected short speed;
 	protected Point position;
 	protected String imagePath;
