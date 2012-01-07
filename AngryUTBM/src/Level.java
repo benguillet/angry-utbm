@@ -38,6 +38,8 @@ public class Level {
 	    grass = gr.getImage();
 	    ImageIcon bl = new ImageIcon(blockImagePath);
 	    block = bl.getImage();
+	   
+	    
 	    entities = new ArrayList<Entity>();
 	    
 	    try
@@ -78,9 +80,12 @@ public class Level {
 				for(int j=0; j<tabMapSizeX;j++)
 				{
 					
-					char car = line.charAt(j);
+					char car = line.charAt(j);	
 					String st = String.valueOf(car);
 					tabMap[i][j]= Integer.parseInt(st);
+					if (tabMap[i][j] == 3) {
+						entities.add(new Pig(j*26,i*26));
+					}
 				}
 			}
 				
@@ -107,6 +112,7 @@ public class Level {
 		return block;
 	}
 	
+
 	public int[][] getTabMap(){
 		return tabMap;
 	

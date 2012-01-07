@@ -56,7 +56,6 @@ public class GameModel implements ActionListener {
 		
 		entityThread = new EntityThread(entities);
 		addListListener(entityThread);
-		//entityThread.start();
 	}
 
 	public GameView getAngryView() {
@@ -162,7 +161,7 @@ public class GameModel implements ActionListener {
 				}
 			}
 		
-		//Collisions cochon/décor
+		//Collisions cochon/dï¿½cor
 		for(Entity entity : entities) {
 			int dx=0;
 			int dy=0;
