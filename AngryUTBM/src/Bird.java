@@ -11,9 +11,9 @@ abstract class Bird extends Entity {
 	private double angle;
 	protected Dimension frameSize;
 	private double accelX;
+	private double accelY;
 	protected int startLocationX;
 	protected int startLocationY;
-	private double accelY;
 	private long lastTime;
 	private long flyingTimeLeft;
 	

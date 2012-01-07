@@ -52,13 +52,13 @@ public class Level {
 			line = br.readLine();
 			while(!line.equals("Map")) {
 				int X, Y;
-				if(line.equals("Pig")) {
+				/*if(line.equals("Pig")) {
 					line = br.readLine();
 					X = Integer.parseInt(line);
 					line = br.readLine();
 					Y = Integer.parseInt(line);
 					entities.add(new Pig(X,Y));
-				}
+				}*/
 				if(line.equals("Pigeon")) {
 					entities.add(new Pigeon());
 				}
