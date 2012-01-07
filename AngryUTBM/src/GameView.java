@@ -82,6 +82,7 @@ public class GameView extends JPanel implements ListListener {
         	}
         }
         
+        g.drawString("Flying time left : " + currentBird.getFlyingTimeLeft(), 25, 25);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }

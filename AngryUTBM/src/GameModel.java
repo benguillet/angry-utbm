@@ -16,7 +16,7 @@ import java.io.ObjectInputStream;
 
 public class GameModel implements ActionListener {
 	private GameView angryView;
-	private Level map;
+	private Level level;
 	private ArrayList<Player> players;
 	private ArrayList<Entity> entities;
 	private Bird currentBird;
@@ -67,7 +67,7 @@ public class GameModel implements ActionListener {
 	}
 
 	public Level getMap() {
-		return map;
+		return level;
 	}
 	
 	public ArrayList<Player> getPlayers(){
@@ -75,7 +75,7 @@ public class GameModel implements ActionListener {
 	}
 
 	public void setMap(Level map) {
-		this.map = map;
+		this.level = map;
 		entities = map.getEntityList();
 		for(Entity e : entities) {
 			if(e instanceof Bird) {
@@ -136,11 +136,11 @@ public class GameModel implements ActionListener {
 		        }
 				int dx=0;
 				int dy=0;
-				int tabMap[][]= map.getTabMap();
+				int tabMap[][]= level.getTabMap();
 				// collision avec le decor
-				for(int y=0;y<map.getTabMapSizeY();y++)
+				for(int y=0;y<level.getTabMapSizeY();y++)
 				{	
-					for(int x=0; x<map.getTabMapSizeX();x++)
+					for(int x=0; x<level.getTabMapSizeX();x++)
 					{
 						if(tabMap[y][x]==1 || tabMap[y][x]==2)
 						{
@@ -160,6 +160,29 @@ public class GameModel implements ActionListener {
 					}
 				}
 			}
+		
+		//Collisions cochon/décor
+		for(Entity entity : entities) {
+			int dx=0;
+			int dy=0;
+			int tabMap[][]= level.getTabMap();
+			if(entity instanceof Pig) {
+				Pig pig = (Pig) entity;
+				Rectangle hitBoxPig = pig.getBound();
+				for(int y=0;y<level.getTabMapSizeY();y++)
+				{	
+					for(int x=0; x<level.getTabMapSizeX();x++)
+					{
+						if(tabMap[y][x] != 0)
+						{
+							Rectangle hitBoxScenery = new Rectangle(x*26,y*26,26,26);
+							if(testCollision(hitBoxPig, hitBoxScenery))
+								pig.changeDirection();
+						}
+					}
+				}
+			}
+		}
 	}
 				
 			
