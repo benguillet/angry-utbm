@@ -14,6 +14,7 @@ public class GameView extends JPanel implements ListListener {
 	private int frameHeight = 600;
 	private int frameWidth = 1200;
 	private Bird currentBird;
+	private int currentHighestScore;
 	
 	
 	public GameView(ArrayList<Entity> entities) {
@@ -82,6 +83,8 @@ public class GameView extends JPanel implements ListListener {
         	}
         }
         
+        g.drawString("Highest Score : " + currentHighestScore, 10, 15);
+        
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -98,6 +101,10 @@ public class GameView extends JPanel implements ListListener {
 	public void setMap(Level map) {
 		this.map = map;
 	}
+	
+	public void setCurrentHighestScore(int highestScore) {
+		this.currentHighestScore = highestScore;
+	}
 
 	@Override
 	public void listChanged(ListChangedEvent event) {
@@ -106,5 +113,4 @@ public class GameView extends JPanel implements ListListener {
 		repaint();
 		
 	}
-	
 }

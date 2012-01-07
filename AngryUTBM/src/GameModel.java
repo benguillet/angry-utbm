@@ -26,6 +26,7 @@ public class GameModel implements ActionListener {
 	private Player currentPlayer;
 	private String difficulty;
 	private int currentLevel;
+	private int currentHighestScore;
 	
 	public GameModel() {
 		entities = new ArrayList<Entity>();
@@ -232,16 +233,22 @@ public class GameModel implements ActionListener {
 		System.out.println("La lose! Vous avez perdu!");
 	}
 	
-	public void setCurrentPlayer(Player p) {
-		currentPlayer = p;
-	}
 	
 	public void setDifficulty(String dif) {
 		difficulty = dif;
 	}
 	
+	public void setCurrentPlayer(Player p) {
+		currentPlayer = p;
+	}
+	
 	public void setCurrentLevel(int l) {
 		currentLevel = l;
+	}
+	
+	public void setCurrentHighScore() {
+		currentHighestScore = currentPlayer.getHighestScore(difficulty, currentLevel);
+		angryView.setCurrentHighestScore(currentHighestScore);
 	}
 	
 	public Bird getCurrentBird() {

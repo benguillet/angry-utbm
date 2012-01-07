@@ -98,6 +98,9 @@ public class MenuController implements KeyListener, ActionListener {
 					currentPlayer = new Player(playerNameField.getText());
 					playerNameField.setVisible(false);
 					angryFrame.setCurrentPlayer(currentPlayer);
+					angryFrame.setDifficulty("");
+					angryFrame.setCurrentLevel(0);
+					angryFrame.setCurrentHighScore();
 					playerNameLabel.setVisible(false);
 					okButton.setVisible(false);
 					difficultyLabel.setVisible(true);
@@ -105,12 +108,16 @@ public class MenuController implements KeyListener, ActionListener {
 					mediumButton.setVisible(true);
 					hardButton.setVisible(true);
 					extremeButton.setVisible(true);
+					
 				}
 			}
 			else {
 				currentPlayer = (Player) playersList.getSelectedItem();
 				playersList.setVisible(false);
 				angryFrame.setCurrentPlayer(currentPlayer);
+				angryFrame.setDifficulty("");
+				angryFrame.setCurrentLevel(0);
+				angryFrame.setCurrentHighScore();
 				playerNameLabel.setVisible(false);
 				okButton.setVisible(false);
 				difficultyLabel.setVisible(true);
@@ -118,6 +125,7 @@ public class MenuController implements KeyListener, ActionListener {
 				mediumButton.setVisible(true);
 				hardButton.setVisible(true);
 				extremeButton.setVisible(true);
+				
 			}
 		}
 		
@@ -173,6 +181,7 @@ public class MenuController implements KeyListener, ActionListener {
 				if (lvl.isLoaded()) {
 					angryFrame.getAngryView().setMap(lvl);
 					angryFrame.getAngryModel().setMap(lvl);
+					angryFrame.setCurrentHighScore();
 					angryFrame.setGame();
 					angryFrame.setCurrentLevel(i+1);
 				}

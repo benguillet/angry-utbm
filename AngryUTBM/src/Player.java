@@ -10,12 +10,19 @@ import java.util.ArrayList;
 public class Player implements Serializable {
 	private String name;
 	
-	// Score par niveau
-	private ArrayList<Integer> scoreEasy;
-	private ArrayList<Integer> scoreMedium;
-	private ArrayList<Integer> scoreHard;
-	private ArrayList<Integer> scoreExtreme;
+	// Scores par niveaux et difficultés
+	private ArrayList<Integer> easyScores;
+	private ArrayList<Integer> mediumScores;
+	private ArrayList<Integer> hardScores;
+	private ArrayList<Integer> extremeScores;
 	
+	// Meilleurs scores par niveaux et difficultés
+	private ArrayList<Integer> highestEasyScores;
+	private ArrayList<Integer> highestMediumScores;
+	private ArrayList<Integer> highestHardScores;
+	private ArrayList<Integer> highestExtremeScores;
+	
+	// Niveaux débloqués
 	private ArrayList<Integer> easy;
 	private ArrayList<Integer> medium;
 	private ArrayList<Integer> hard;
@@ -32,18 +39,29 @@ public class Player implements Serializable {
 		hard = new ArrayList<Integer>();
 		extreme = new ArrayList<Integer>();
 		
-		scoreEasy = new ArrayList<Integer>();
-		scoreMedium = new ArrayList<Integer>();
-		scoreHard = new ArrayList<Integer>();
-		scoreExtreme = new ArrayList<Integer>();
+		easyScores = new ArrayList<Integer>();
+		mediumScores = new ArrayList<Integer>();
+		hardScores = new ArrayList<Integer>();
+		extremeScores = new ArrayList<Integer>();
+		
+		highestEasyScores = new ArrayList<Integer>();
+		highestMediumScores = new ArrayList<Integer>();
+		highestHardScores = new ArrayList<Integer>();
+		highestExtremeScores = new ArrayList<Integer>();
 		
 		
 		// Permet de créer des listes de la bonne taille et ainsi d'éviter les OutOfBoundExceptions
 		for (int i = 0; i < LevelNumber.getLevelNumber(); ++i) {
-			scoreEasy.add(0);
-			scoreMedium.add(0);
-			scoreHard.add(0);
-			scoreExtreme.add(0);
+			easyScores.add(0);
+			mediumScores.add(0);
+			hardScores.add(0);
+			extremeScores.add(0);
+			
+			highestEasyScores.add(0);
+			highestMediumScores.add(0);
+			highestHardScores.add(0);
+			highestExtremeScores.add(0);
+			
 		}
 		
 		this.save();
@@ -83,15 +101,6 @@ public class Player implements Serializable {
 		}
 
 	}
-
-	/*public String toString() {
-		String result = "Name : " + name + "\n" + "Score : " + score + "\n" +
-				"Easy : " + easy.toString() + "\n" +
-				"Medium : " + medium.toString() + "\n" + 
-				"Hard : " + hard.toString() +
-				"Extreme : " + extreme.toString();
-		return result;
-	}*/
 	
 	public String toString() {
 		return name;
@@ -114,21 +123,42 @@ public class Player implements Serializable {
 		if (difficulty.equals("easy") && !(easy.contains(level))) {
 			easy.add(level);
 			// l'index des levels de scoreEasy commence à 0
-			scoreEasy.set(level-1, score);
-		} else if (difficulty.equals("normal") && !(medium.contains(level))) {
+			easyScores.set(level-1, score);
+			if (score > highestEasyScores.get(level-1))
+				highestEasyScores.set(level-1, score);
+		} else if (difficulty.equals("medium") && !(medium.contains(level))) {
 			medium.add(level);
-			scoreMedium.set(level-1, score);
+			mediumScores.set(level-1, score);
+			if (score > highestMediumScores.get(level-1))
+				highestMediumScores.set(level-1, score);
 		} else if (difficulty.equals("hard") && !(hard.contains(level))) {
 			hard.add(level);
-			scoreHard.set(level-1, score);
+			hardScores.set(level-1, score);
+			if (score > highestHardScores.get(level-1))
+				highestHardScores.set(level-1, score);
 		} else if (difficulty.equals("extreme") && !(extreme.contains(level))) {
 			extreme.add(level);
-			scoreExtreme.set(level-1, score);
+			extremeScores.set(level-1, score);
+			if (score > highestExtremeScores.get(level-1))
+				highestExtremeScores.set(level-1, score);
 		}
 		save();
 	}
 	
 	public String getName() {
 		return name;
+	}
+	
+	public int getHighestScore(String difficulty, int level) {
+		if (difficulty.equals("easy")) {
+			return highestEasyScores.get(level);
+		} else if (difficulty.equals("medium")) {
+			return highestMediumScores.get(level);
+		} else if (difficulty.equals("hard")) {
+			return highestHardScores.get(level);
+		} else if (difficulty.equals("extreme")) {
+			return highestExtremeScores.get(level);
+		}
+		return 0;
 	}
 }

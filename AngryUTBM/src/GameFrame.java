@@ -16,6 +16,7 @@ public class GameFrame extends JFrame {
 	
 	public GameFrame(String name) {
 		winName = name;
+		
 		angryModel = new GameModel();
 		angryEntities = angryModel.getEntityList();
 		angryPlayers = angryModel.getPlayers();
@@ -24,28 +25,27 @@ public class GameFrame extends JFrame {
 		angryViewMenu = new GameViewMenu(angryPlayers);
 		angryView = new GameView(angryEntities);
 		
-		
 		angryModel.setAngryView(angryView);
 		
 		//controller 
 		angryController = new GameController(this);
 		angryMenuController = new MenuController(this);
 		
-		
+	
 		//Listener
 		angryView.addKeyListener(angryController);
 		angryModel.addListListener(angryView);
 		angryModel.addListListener(angryController);		
 
 		this.setContentPane(angryViewMenu);
-		this.setVisible(true);
 		
 		this.setTitle(winName);
-		this.setSize(GameFrame.getFrameSize().width, GameFrame.getFrameSize().height);
+		this.setSize((int)GameFrame.getFrameSize().getWidth(), (int)GameFrame.getFrameSize().getHeight());
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
+
 		
     }
 
@@ -96,6 +96,10 @@ public class GameFrame extends JFrame {
 	
 	public void setCurrentLevel(int l) {
 		angryModel.setCurrentLevel(l);
+	}
+	
+	public void setCurrentHighScore() {
+		angryModel.setCurrentHighScore();
 	}
 	
 	static public Dimension getFrameSize() {
