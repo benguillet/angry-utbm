@@ -8,7 +8,7 @@ public class HummingBird extends Bird {
 	
 	
 	public HummingBird() {
-	    imagePath = "res/images/hummingbird.png";
+	    imagePath = "res/images/hummingBird.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
 	    position = new Point(startLocationX, startLocationY);
