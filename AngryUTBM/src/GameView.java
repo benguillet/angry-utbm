@@ -49,9 +49,6 @@ public class GameView extends JPanel implements ListListener {
 		    		case 2:
 		    			g2d.drawImage(map.getBlock(), dx, dy, this);
 		    			break;
-		    		/*case 3:
-		    			entities.add(new Pig(dx,dy));
-		    			break;*/
 		    		default :
 		    			break;
 	    		}
