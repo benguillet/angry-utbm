@@ -6,7 +6,6 @@ abstract class Bird extends Entity {
 	protected int eggLeft;
 	protected ArrayList<Egg> eggs;
 	protected boolean isFlying = false;
-	private long launchTime;
 	protected boolean isMoving;
 	private double time;
 	private double angle;
@@ -15,6 +14,8 @@ abstract class Bird extends Entity {
 	protected int startLocationX;
 	protected int startLocationY;
 	private double accelY;
+	private long lastTime;
+	private long flyingTimeLeft;
 	
 	public Bird() {
 		isMoving = false;
@@ -24,6 +25,7 @@ abstract class Bird extends Entity {
 		startLocationX = 40;
 		startLocationY = 400;
 		accelY = 9.81;
+		flyingTimeLeft = 10000;
 	}
 	public int getEggLeft() {
 		return eggLeft;
@@ -47,15 +49,19 @@ abstract class Bird extends Entity {
 	    	if (position.getY() > (int) frameSize.getHeight() || position.getX() > (int) frameSize.getWidth())
 				visible = false;
     	}
-    	if(isFlying && (System.currentTimeMillis() - launchTime) > 10000) {
-    		visible = false;
+    	if(isFlying) {
+	    	long currentTime = System.currentTimeMillis();
+	    	flyingTimeLeft -= (currentTime - lastTime);
+	    	lastTime = currentTime;
+	    	if(flyingTimeLeft <= 0)
+	    		visible = false;
     	}
     }
     
     public void launch(){
     	isMoving = true;
     	isFlying = true;
-    	launchTime = System.currentTimeMillis();
+    	lastTime = System.currentTimeMillis();
     }
     
 	public void moveRight() {
@@ -72,4 +78,8 @@ abstract class Bird extends Entity {
 	public abstract void moveDown();
 	
 	public abstract void reload();
+	
+	public long getFlyingTimeLeft() {
+		return flyingTimeLeft;
+	}
 }

@@ -21,7 +21,7 @@ public class Pig extends Enemy {
 		back = false;
 		frameSize = GameFrame.getFrameSize();
 		hitBox = new Rectangle(new Point((int) position.getX(),
-				(int) position.getY()), new Dimension(50, 50));
+				(int) position.getY()), new Dimension(48, 46));
 	}
 	
 	public Pig(int X, int Y) {
@@ -32,8 +32,7 @@ public class Pig extends Enemy {
 		speed = 1;
 		back = false;
 		frameSize = GameFrame.getFrameSize();
-		hitBox = new Rectangle(new Point((int) position.getX(),
-				(int) position.getY()), new Dimension(50, 50));
+		hitBox = new Rectangle(X, Y, 48, 46);
 	}
 
 	public void move() {
@@ -47,8 +46,11 @@ public class Pig extends Enemy {
 		else
 			position.setLocation(position.getX() - speed, position.getY());
 
-		hitBox.setBounds((int) position.getX(), (int) position.getY(), 50, 50);
-
+		hitBox.setLocation((int) position.getX(), (int) position.getY());
+	}
+	
+	public void changeDirection() {
+		back = !back;
 	}
 
 	public Rectangle getBound() {
