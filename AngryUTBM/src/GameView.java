@@ -84,7 +84,7 @@ public class GameView extends JPanel implements ListListener {
         }
         
         g.drawString("Highest Score : " + currentHighestScore, 10, 15);
-        g.drawString("Flying time left : " + currentBird.getFlyingTimeLeft(), 25, 25);
+        g.drawString("Flying time left : " + currentBird.getFlyingTimeLeft(), 10, 30);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
