@@ -210,7 +210,7 @@ public class GameModel implements ActionListener {
 			            	
 		            		boolean lose = true;
 		            		for (Entity entity3 : entities) {
-		            			if (entity3 instanceof Bird) {
+		            			if (entity3 instanceof Bird && !toRemove.contains(entity3)) {
 		            				currentBird = (Bird) entity3;
 		            				lose = false;
 		            				break;
