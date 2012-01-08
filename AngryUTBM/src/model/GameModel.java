@@ -171,6 +171,17 @@ public class GameModel implements ActionListener {
 						}
 					}
 				}
+				//On vérifie que le cochon ne va pas marcher sur du vide
+				int casex = (hitBoxPig.x / 26);
+				int casey = (hitBoxPig.y / 26);
+				if(pig.goForward()) {
+					if(tabMap[casey+1][casex+1] == 0)
+						pig.changeDirection();
+				} 
+				else {
+					if(tabMap[casey+1][casex] == 0)
+						pig.changeDirection();
+				} 
 			}
 		}
 		

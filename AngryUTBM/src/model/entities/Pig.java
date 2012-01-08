@@ -39,4 +39,8 @@ public class Pig extends Enemy {
 		back = !back;
 	}
 
+	public boolean goForward() {
+		return !back;
+	}
+
 }
