@@ -158,10 +158,10 @@ public class GameModel implements ActionListener {
 				}
 			}
 			
-			//Collisions cochon/décor
 			if(entity instanceof Pig) {
 				Pig pig = (Pig) entity;
 				Rectangle hitBoxPig = pig.getHitBox();
+				//Collisions cochon/décor
 				for(int x = 0; x < tabMap[0].length; ++x) {
 					for(int y = 0; y < tabMap.length; ++y) {
 						if(tabMap[y][x] != 0) {
@@ -182,7 +182,48 @@ public class GameModel implements ActionListener {
 					if(tabMap[casey+1][casex] == 0)
 						pig.changeDirection();
 				} 
+				
+				//Collisions oiseaux/cochons
+				for(Entity entity2 : entities) {
+					if (entity2 instanceof Bird) {
+						Bird bird = (Bird) entity2;
+						Rectangle hitBoxBird =  bird.getHitBox();
+						if(hitBoxBird.intersects(hitBoxPig)) {
+							toRemove.add(pig);
+							toRemove.add(bird);
+							
+			            	boolean win = true;
+			            	for (Entity entity3 : entities) {
+			            		if (entity3 instanceof Pig) {
+			            			win = false;
+			            			break;
+			            		}
+			            	}
+			            	if(win) {
+			            		int score = 0;
+			            		for (Entity entity3 : entities) {
+				            		if (entity3 instanceof Bird)
+				            			++score;
+			            		}
+			            		win(score);
+			            	}
+			            	
+		            		boolean lose = true;
+		            		for (Entity entity3 : entities) {
+		            			if (entity3 instanceof Bird) {
+		            				currentBird = (Bird) entity3;
+		            				lose = false;
+		            				break;
+		            			}
+		            		}
+		            		if(lose) {
+		            			lose();
+		            		}
+						}
+					}
+				}
 			}
+			
 		}
 		
 		for(Entity entity : toRemove) 
