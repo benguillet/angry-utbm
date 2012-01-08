@@ -90,6 +90,7 @@ public class Level {
 					tabMap[i][j]= Integer.parseInt(st);
 					if (tabMap[i][j] == 3) {
 						entities.add(new Pig(j*26,i*26));
+						tabMap[i][j] = 0;
 					}
 				}
 			}
@@ -135,5 +136,9 @@ public class Level {
 	
 	public boolean isLoaded() {
 		return isLoaded;
+	}
+	
+	public void setTabMap(int[][] tabMap) {
+		this.tabMap = tabMap;
 	}
 }

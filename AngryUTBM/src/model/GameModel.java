@@ -108,83 +108,74 @@ public class GameModel implements ActionListener {
 	}
 	
 	public void checkCollision() {
-		for (int i = 0; i < entities.size(); ++i) {
-			if (entities.get(i) instanceof Egg) {
-				Egg e = (Egg) entities.get(i);
-				Rectangle hitBoxEgg = e.getHitBox();
-				// collision avec les entities
-		        for (int j = 0; j < entities.size(); ++j) {
-					if (entities.get(j) instanceof Pig) {
-						Pig pigTest = (Pig)entities.get(j);
-			            Rectangle hitBoxPig= pigTest.getHitBox();
-			            if(testCollision(hitBoxEgg,hitBoxPig)) {
-			            	entities.remove(i);
-			            	entities.remove(j);
+		ArrayList<Entity> toRemove = new ArrayList<Entity>(); //On ne retire les entités de la liste qu'après être sorti de la boucle
+		for(Entity entity : entities) {
+			int tabMap[][] = level.getTabMap();
+			
+			if(entity instanceof Egg) {
+				Egg egg = (Egg) entity;
+				Rectangle hitBoxEgg = egg.getHitBox();
+				//Collisions oeuf/cochons
+				for(Entity entity2 : entities) {
+					if(entity2 instanceof Pig) {
+						Pig pig = (Pig) entity2;
+						Rectangle hitBoxPig = pig.getHitBox();
+						if(hitBoxPig.intersects(hitBoxEgg)) {
+							toRemove.add(egg);
+							toRemove.add(pig);
 			            	boolean win = true;
-			            	for (Entity entity : entities) {
-			            		if (entity instanceof Pig) {
+			            	for (Entity entity3 : entities) {
+			            		if (entity3 instanceof Pig) {
 			            			win = false;
 			            			break;
 			            		}
 			            	}
 			            	if(win) {
 			            		int score = 0;
-			            		for (Entity entity : entities) {
-				            		if (entity instanceof Bird)
+			            		for (Entity entity3 : entities) {
+				            		if (entity3 instanceof Bird)
 				            			++score;
 			            		}
 			            		win(score);
 			            	}
-			            }
+						}
 					}
-		        }
-				int dx=0;
-				int dy=0;
-				int tabMap[][]= level.getTabMap();
-				// collision avec le decor
-				for(int y=0;y<level.getTabMapSizeY();y++)
-				{	
-					for(int x=0; x<level.getTabMapSizeX();x++)
-					{
-						if(tabMap[y][x]==1 || tabMap[y][x]==2)
-						{
-							Rectangle hitBoxScenery = new Rectangle(dx,dy,26,26);
-							if(testCollision(hitBoxEgg, hitBoxScenery))
-							{
-								entities.remove(i);
-								if(tabMap[y][x]==2)
-									tabMap[y][x]=0;
-								break;
+				}
+				
+				//Collisions oeuf/décor
+				for(int x = 0; x < tabMap[0].length; ++x) {
+					for(int y = 0; y < tabMap.length; ++y) {
+						if(tabMap[y][x] != 0) {
+							Rectangle hitBoxScenery = new Rectangle(x*26,y*26,26,26);
+							if(hitBoxScenery.intersects(hitBoxEgg)) {
+								toRemove.add(egg);
+								if(tabMap[y][x] == 2)
+									tabMap[y][x] = 0;
+								level.setTabMap(tabMap);
 							}
 						}
-						dx=dx+26;
-					}
-					dy=dy+26;
-			    	dx=0;
 					}
 				}
 			}
-		
-		//Collisions cochon/dï¿½cor
-		for(Entity entity : entities) {
-			int tabMap[][]= level.getTabMap();
+			
+			//Collisions cochon/décor
 			if(entity instanceof Pig) {
 				Pig pig = (Pig) entity;
 				Rectangle hitBoxPig = pig.getHitBox();
-				for(int y=0;y<level.getTabMapSizeY();y++)
-				{	
-					for(int x=0; x<level.getTabMapSizeX();x++)
-					{
-						if(tabMap[y][x] != 0)
-						{
-							Rectangle hitBoxScenery = new Rectangle(x*26,y*26,26,26);
-							if(testCollision(hitBoxPig, hitBoxScenery))
+				for(int x = 0; x < tabMap[0].length; ++x) {
+					for(int y = 0; y < tabMap.length; ++y) {
+						if(tabMap[y][x] != 0) {
+							Rectangle hitBoxScenery = new Rectangle(x*26,y*26,25,25);
+							if(hitBoxScenery.intersects(hitBoxPig))
 								pig.changeDirection();
 						}
 					}
 				}
 			}
 		}
+		
+		for(Entity entity : toRemove) 
+			entities.remove(entity);
 	}
 				
 			
