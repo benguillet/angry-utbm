@@ -1,5 +1,6 @@
 package view;
 
+import main.GameFrame;
 import model.Player;
 
 import java.awt.Dimension;
@@ -34,6 +35,9 @@ public class GameViewMenu extends JLayeredPane {
 	
 	public GameViewMenu(ArrayList<Player> players)
 	{
+		final int frameHeight = GameFrame.getFrameSize().height;
+		final int frameWidth = GameFrame.getFrameSize().width;
+		
 		this.players = players;
 		
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
@@ -45,7 +49,7 @@ public class GameViewMenu extends JLayeredPane {
 	    JPanel backPanel= new JPanel() {
 	    
 			public void paint(Graphics g) {
-				g.drawImage(image, 0, 0,frameWidth,frameHeight, null);
+				g.drawImage(image, 0, 0,frameWidth, frameHeight, null);
 				g.drawImage(title,frameWidth/2-295, 20, null);
 			
 			}

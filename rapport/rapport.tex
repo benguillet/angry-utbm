@@ -79,34 +79,45 @@
 
 \tableofcontents
 \chapter{Présentation du projet}
-Ce semestre en LO43 nous avions la possibilité de créer un jeu ludique similaire à Angry Birds.\\
-Le cahier des charges était le suivant :
-\begin{itemize}
-  \item Environnement : l'environnement du jeu est un terrain ayant des caractéristiques différentes en fonction de la difficulté. Il peux y avoir des cavernes, ponts, …
-  \item Personnes : les personnages sont des entités générées aléatoirement de 1 à 10 suivant le niveau de difficulté. Chacune de ces entité ont des propriétés de déplacement différente (vitesse, direction,...). Elles se déplacent de manière aléatoire dans l'environnement en suivant le sol de l'environnement. Leur déplacement est géré par run thread propre.
-  \item Oiseaux en colères : Les oiseaux sont de 3 types différentes au moins :
-    \begin{itemize}
-      \item Type moineaux : ces oiseaux peuvent voler sans réaliser de vol stationnaire, peu longtemps et ont une seule possibilité de ponte d'oeuf de calibre moyen.
-      \item Type colibris : ces oiseaux peuvent voler longtemps, même en stationnaire mais n'ont qu'une seul possibilité de ponte de petit calibre.
-      \item Type pigeon : ces oiseaux peuvent voler longtemps, en stationnaire et réaliser trois pontes de gros calibre.
-    \end{itemize}
-\end{itemize}
+Nous avions ce semestre en LO43 la possibilité de développer un jeu ludique similaire à Angry Birds.\\
 
-Le principe du jeu est simple : le joueur a à sa disposition un ensemble d'oiseaux \guillemotleft en colère\guillemotright~,
-et doit tuer les ennemis à l'aide d'oeufs pondus en vol. Les oiseaux peuvent également se sacrifier
+Dans notre version, le joueur a à sa disposition un ensemble d'oiseaux \guillemotleft en colère\guillemotright~,
+et doit tuer les ennemis à l'aide d'oeufs pondus en vol. Les oiseaux peuvent également se sacrifier comme dans Angry Birds
 en réalisant une \guillemotleft attaque suicide\guillemotright~ et tuer les ennemis avec leur propre corps.\\
 
 Le joueur a au départ entre 3 à 5 oiseaux, selon la difficulté du niveau. Chaque type d'oiseaux possède des 
 capacités de ponte (nombres d'oeufs) et des possibilités physiques qui lui sont particulières. Le score du joueur est calculé d'après
-son nombre d'oiseaux restants à la fin du niveau. Le niveau est fini quand tous les ennemis sont morts.\\
+son nombre d'oiseaux restants à la fin du niveau. Celui-ci est fini quand tous les ennemis sont morts.\\
 
-Le jeu est organisé en niveaux de difficultés qui vont de facile à extrême, et dans chaque niveau un nombre défini de niveau.
+Le jeu est organisé en suivant des difficultés qui vont de facile à extrême, et 
+chacune d'elle possède un nombre défini de niveaux.
 Seul le niveau 1 de chaque difficulté est au départ disponible, les niveaux 
-suivants sont débloqués au fûr et à mesure de la progression du joueur. 
-Le joueur ne peut accéder au niveau suivant qu'en ayant validé le précédent.\\
+suivants sont débloqués au fur et à mesure de la progression du joueur. 
+Ce dernier ne peut accéder au niveau suivant qu'en ayant validé le précédent.\\
  
 
 \chapter{Organisation et répartition du travail}
+Notre groupe était composé de quatre personnes, nous avons régulièrement organisé 
+des réunions chez les uns et les autres pour avancer le projet et faire le point.\\
+
+La partie spécification UML a été faîte une première fois tous ensemble afin de se
+mettre d'accord sur une base de départ puis a évolué pour mieux coller au cahier des
+charges : respect du pattern MVC, utilisation des threads et du polymorphisme etc.\\
+
+Nous avons utilisé Eclipse, Skype et un dépot GitHub pour la synchronisation et la gestion des versions.
+GitHub possède également un suivi des fonctionnalités à ajouter ou à corriger. Ce qui a 
+permit à chacun de travailler les classes et fonctionnalités nécessaires qui lui plaisaient.\\
+
+Globalement on peut dire que le travail s'est réparti ainsi :
+\begin{itemize}
+ \item Benjamin  : base du projet (respect du pattern MVC), gestion du joueur ;
+ \item Loïs : collisions et envoi des oiseaux ;
+ \item Lucie: décors et menus ;
+ \item Théophile : gestion des sauvegardes, collisions.
+\end{itemize}
+~\\
+Mais tout le monde a par moment débordé sur le \guillemotleft secteur\guillemotright~ 
+des autres pour corriger un bug ou améliorer une fonctionnalité. Rien n'était figé.
 
 \chapter{Spécification}
 \section{Diagramme de classes}
@@ -117,8 +128,20 @@ Le joueur ne peut accéder au niveau suivant qu'en ayant validé le précédent.
 
 \chapter{Bilan}
 \section{Conclusion}
-\section{Améliorations possibles}
-Ajout bruits événements
-Score sous les niveaux
+Ce projet était très intéressant et motivant. Son côté ludique nous a permis
+d'apprendre le java avec une vraie motivation et une bonne ambiance. Un groupe 
+important comme le notre nécessite une bonne communication afin que chacun sache 
+le travail à accomplir et éviter les répétitions. Heureusement aujourd'hui nous avons de nombreux outils 
+à notre disposition pour nous faciliter la tâche, en plus des classiques réunions ou e-mails.
 
+\section{Améliorations possibles}
+Un projet comme celui-ci est toujours perfectible, voici quelques-unes des améliorations 
+qui nous viennent en tête et que nous aurions bien voulu implémenter :\\
+\begin{itemize}
+  \item Il serait facile d'ajouter une musique d'ambiance, des bruits lors des 
+  collisions ou lorsque l'on gagne ou perds ;
+  \item On pourrait afficher le meilleur score du joueur actuel sous chaque niveaux ;
+  \item Les ennemis pourraient gérer la gravité, c'est à dire s'ils sont placés 
+      sur un bloc en hauteur, descendre jusqu'en bas lors de la destruction de ce bloc.
+\end{itemize}
 \end{document}
