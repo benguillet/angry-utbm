@@ -8,10 +8,10 @@ public class Sparrow extends Bird {
 	
 	
 	public Sparrow() {
+		super(30, 29);
 	    imagePath = "res/images/sparrow.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
-	    position = new Point(startLocationX, startLocationY);
 	    speed = 100;
 	    eggs = new ArrayList<Egg>();
 	    reload();

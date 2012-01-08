@@ -1,19 +1,24 @@
 package model.entities;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public abstract class Entity {
 	protected short speed;
-	protected Point position;
 	protected String imagePath;
 	protected Image image;
 	protected ArrayList<Egg> eggs;
 	protected boolean visible = true;
+	protected Rectangle hitBox;
 
+	public Entity(int x, int y, int width, int height) {
+		hitBox = new Rectangle(x, y, width, height);
+		
+	}
 	
 	public Point getPosition() {
-		return position;
+		return new Point(hitBox.x, hitBox.y);
 	}
 	
 	public Image getImage() {
@@ -28,5 +33,9 @@ public abstract class Entity {
 	
 	public boolean isVisible() {
 		return this.visible;
+	}
+	
+	public Rectangle getHitBox() {
+		return hitBox;
 	}
 }

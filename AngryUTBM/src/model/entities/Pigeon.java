@@ -8,10 +8,10 @@ public class Pigeon extends Bird {
 	
 	
 	public Pigeon() {
+		super(60, 58);
 	    imagePath = "res/images/pigeon.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
-	    position = new Point(startLocationX, startLocationY);
 	    speed = 100;
 	    eggs = new ArrayList<Egg>();
 	    reload();

@@ -50,7 +50,7 @@ public class GameModel implements ActionListener {
 		}
 		catch(Exception e)
 		{
-			//message d'exception
+			e.printStackTrace();
 		}
 		
 		timer = new Timer(5, this);
@@ -111,12 +111,12 @@ public class GameModel implements ActionListener {
 		for (int i = 0; i < entities.size(); ++i) {
 			if (entities.get(i) instanceof Egg) {
 				Egg e = (Egg) entities.get(i);
-				Rectangle hitBoxEgg = e.getBound();
+				Rectangle hitBoxEgg = e.getHitBox();
 				// collision avec les entities
 		        for (int j = 0; j < entities.size(); ++j) {
 					if (entities.get(j) instanceof Pig) {
 						Pig pigTest = (Pig)entities.get(j);
-			            Rectangle hitBoxPig= pigTest.getBound();
+			            Rectangle hitBoxPig= pigTest.getHitBox();
 			            if(testCollision(hitBoxEgg,hitBoxPig)) {
 			            	entities.remove(i);
 			            	entities.remove(j);
@@ -170,7 +170,7 @@ public class GameModel implements ActionListener {
 			int tabMap[][]= level.getTabMap();
 			if(entity instanceof Pig) {
 				Pig pig = (Pig) entity;
-				Rectangle hitBoxPig = pig.getBound();
+				Rectangle hitBoxPig = pig.getHitBox();
 				for(int y=0;y<level.getTabMapSizeY();y++)
 				{	
 					for(int x=0; x<level.getTabMapSizeX();x++)

@@ -18,7 +18,20 @@ public abstract class Bird extends Entity {
 	private long lastTime;
 	private long flyingTimeLeft;
 	
-	public Bird() {
+	public Bird(int x, int y, int width, int height) {
+		super(x,y,width,height);
+		isMoving = false;
+		time = 0.1;
+		angle = 45;
+		accelX = 0;
+		startLocationX = x;
+		startLocationY = y;
+		accelY = 9.81;
+		flyingTimeLeft = 10000;
+	}
+	
+	public Bird(int width, int height) {
+		super(40,400,width,height);
 		isMoving = false;
 		time = 0.1;
 		angle = 45;
@@ -28,6 +41,7 @@ public abstract class Bird extends Entity {
 		accelY = 9.81;
 		flyingTimeLeft = 10000;
 	}
+	
 	public int getEggLeft() {
 		return eggLeft;
 	}
@@ -45,9 +59,11 @@ public abstract class Bird extends Entity {
     public void move() {
     	if(isMoving)
     	{
-	    	position.setLocation(speed*Math.cos(angle)*time+0.5*accelX*time*time+startLocationX,0.5*accelY*time*time-Math.sin(angle)*speed*time+startLocationY);
+    		
+	    	hitBox.x = (int) Math.round(speed*Math.cos(angle)*time+0.5*accelX*time*time+startLocationX);
+	    	hitBox.y = (int) Math.round(0.5*accelY*time*time-Math.sin(angle)*speed*time+startLocationY);
 	    	time+=0.1;
-	    	if (position.getY() > (int) frameSize.getHeight() || position.getX() > (int) frameSize.getWidth())
+	    	if (hitBox.y > (int) frameSize.getHeight() || hitBox.y > (int) frameSize.getWidth())
 				visible = false;
     	}
     	if(isFlying) {
@@ -66,18 +82,15 @@ public abstract class Bird extends Entity {
     }
     
 	public void moveRight() {
-		//position.setLocation(position.getX() + speed, position.getY());
 		accelX+=0.1;
     }
     
     public void moveLeft() {
-    	//position.setLocation(position.getX() - speed, position.getY());
     	accelX-=0.1;
     }
     
 	public abstract void moveUp();
 	public abstract void moveDown();
-	
 	public abstract void reload();
 	
 	public long getFlyingTimeLeft() {

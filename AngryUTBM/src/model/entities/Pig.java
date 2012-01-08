@@ -11,52 +11,32 @@ import javax.swing.ImageIcon;
 public class Pig extends Enemy {
 
 	private Dimension frameSize;
-	private Rectangle hitBox;
 	private boolean back;
-
-	public Pig() {
-		imagePath = "res/images/pig.png";
-		ImageIcon ii = new ImageIcon(imagePath);
-		image = ii.getImage();
-		position = new Point(100, 500);
-		speed = 1;
-		back = false;
-		frameSize = GameFrame.getFrameSize();
-		hitBox = new Rectangle(new Point((int) position.getX(),
-				(int) position.getY()), new Dimension(48, 46));
-	}
 	
-	public Pig(int X, int Y) {
+	public Pig(int x, int y) {
+		super(x,y,26,25);
 		imagePath = "res/images/pig.png";
 		ImageIcon ii = new ImageIcon(imagePath);
 		image = ii.getImage();
-		position = new Point(X, Y);
 		speed = 1;
 		back = false;
 		frameSize = GameFrame.getFrameSize();
-		hitBox = new Rectangle(X, Y, 48, 46);
 	}
 
 	public void move() {
-		if (position.getX() > frameSize.getWidth() - image.getWidth(null))
+		if (hitBox.x > frameSize.getWidth() - image.getWidth(null))
 			back = true;
-		if (position.getX() < 1)
+		if (hitBox.x < 1)
 			back = false;
 
 		if (!back)
-			position.setLocation(position.getX() + speed, position.getY());
+			hitBox.x += speed;
 		else
-			position.setLocation(position.getX() - speed, position.getY());
-
-		hitBox.setLocation((int) position.getX(), (int) position.getY());
+			hitBox.x -= speed;
 	}
 	
 	public void changeDirection() {
 		back = !back;
-	}
-
-	public Rectangle getBound() {
-		return hitBox;
 	}
 
 }

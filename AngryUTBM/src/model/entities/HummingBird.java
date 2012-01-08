@@ -6,10 +6,10 @@ import javax.swing.ImageIcon;
 
 public class HummingBird extends Bird {	
 	public HummingBird() {
+		super(45, 44);
 	    imagePath = "res/images/hummingBird.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
-	    position = new Point(startLocationX, startLocationY);
 	    speed = 100;
 	    eggs = new ArrayList<Egg>();
 	    reload();
