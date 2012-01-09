@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public abstract class Entity {
-	protected double speed;
+	protected float speed;
 	protected String imagePath;
 	protected Image image;
 	protected int imageWidth;
@@ -42,7 +42,7 @@ public abstract class Entity {
 		return hitBox;
 	}
 	
-	public void setSpeed(double speed) {
+	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
 	public void setAngle(double a){angle=a;}

@@ -59,7 +59,9 @@ public class GameFrame extends JFrame {
 		//Listener
 		angryMenuHomeView.addKeyListener(angryMenuController);
 		angryMenuNewView.addKeyListener(angryMenuController);
+		angryMenuNewView.addMouseListener(angryMenuController);
 		angryMenuLoadView.addKeyListener(angryMenuController);
+		angryMenuLoadView.addMouseListener(angryMenuController);
 		angryMenuOptionsView.addKeyListener(angryMenuController);
 		angryMenuDifficultyView.addKeyListener(angryMenuController);
 		angryMenuLevelView.addKeyListener(angryMenuController);
