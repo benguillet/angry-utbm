@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Line2D;
+
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 import java.io.File;
@@ -171,32 +173,44 @@ public class GameModel implements ActionListener {
 				Pig pig = (Pig) entity;
 				Rectangle hitBoxPig = pig.getHitBox();
 				
-				
+				boolean moveDown = true;
 				for(Entity entity2 : entities) {
 					if(entity2 instanceof Block)
 					{
 						Block block = (Block) entity2;
 						Rectangle hitBoxBlock = entity2.getHitBox();
-						if(hitBoxPig.intersects(hitBoxBlock))
-							pig.changeDirection();
-							
+						
+						if(	hitBoxPig.intersectsLine(hitBoxBlock.getX()+hitBoxBlock.getWidth(),
+													hitBoxBlock.getY()+2,
+													hitBoxBlock.getX()+hitBoxBlock.getWidth(),
+													hitBoxBlock.getY()+hitBoxBlock.getHeight()-2) || 
+													
+													hitBoxPig.intersectsLine(hitBoxBlock.getX(),
+													hitBoxBlock.getY()+2,
+													hitBoxBlock.getX(),
+													hitBoxBlock.getY()+hitBoxBlock.getHeight()-2))
+							pig.changeDirection();	
+						if(hitBoxPig.intersectsLine(hitBoxBlock.getX(),
+								hitBoxBlock.getY(),
+								hitBoxBlock.getX()+hitBoxBlock.getWidth(),
+								hitBoxBlock.getY()))
+							moveDown=false;
 					}
+					if(entity2 instanceof Grass)
+					{
+						Grass block = (Grass) entity2;
+						Rectangle hitBoxGrass = entity2.getHitBox();
+						
+						if(hitBoxPig.intersects(hitBoxGrass))
+							moveDown=false;
+					}
+					if(moveDown)
+						pig.moveDown();
+					else pig.doNotMoveDown();
 				}
-				//On v�rifie que le cochon ne va pas marcher sur du vide
-				int casex = (hitBoxPig.x / level.getBlockSize());
-				int casey = (hitBoxPig.y / level.getBlockSize());
-				if(pig.goForward()) {
-					if(tabMap[casey+1][casex+1] == 0)
-						pig.changeDirection();
-				} 
-				else {
-					if(tabMap[casey+1][casex] == 0)
-						pig.changeDirection();
-				} 
-				
 			}
 			
-			/********** Collision des oiseaux *************/
+			/********** Collision de l'oiseau  courant *************/
 			if(entity == currentBird)
 			{
 				Bird bird = (Bird) entity;

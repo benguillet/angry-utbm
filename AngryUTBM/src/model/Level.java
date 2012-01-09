@@ -24,12 +24,10 @@ public class Level {
 	private int tabMapSizeX = 47;
 	private int tabMapSizeY = 22;
 	private int blockSize = 26;
-	private Rectangle tabCollision[][];
 	private String grassImagePath = "res/images/grass.png";
 	private Image grass;
 	private String blockImagePath = "res/images/block.png";
 	private Image block;
-	private boolean levelFinish;
 	private boolean isLoaded;
 	private ArrayList<Entity> entities;
 	private float pigSpeed;
@@ -64,14 +62,6 @@ public class Level {
 			String line;
 			line = br.readLine();
 			while(!line.equals("Map")) {
-				int X, Y;
-				/*if(line.equals("Pig")) {
-					line = br.readLine();
-					X = Integer.parseInt(line);
-					line = br.readLine();
-					Y = Integer.parseInt(line);
-					entities.add(new Pig(X,Y));
-				}*/
 				if(line.equals("Pigeon")) {
 					entities.add(new Pigeon());
 				}
