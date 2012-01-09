@@ -30,7 +30,7 @@ public class MenuController implements KeyListener, ActionListener {
 	private JButton easyButton,mediumButton,hardButton,extremeButton;
 	private ArrayList<JButton> lvlButtons;
 	private Player currentPlayer;
-	private JComboBox<Player> playersList;
+	private JComboBox playersList;
 	private MenuHomeView angryMenuHomeView;
 	private MenuNewView angryMenuNewView;
 	private MenuLoadView angryMenuLoadView;
@@ -97,7 +97,7 @@ public class MenuController implements KeyListener, ActionListener {
 		{			
 			if(angryFrame.getAngryModel().getPlayers().isEmpty())
 			{
-				javax.swing.JOptionPane.showMessageDialog(null, "Aucune sauvegarde en mémoire !");
+				javax.swing.JOptionPane.showMessageDialog(null, "Aucune sauvegarde en mï¿½moire !");
 			}
 			else
 			{
@@ -211,7 +211,7 @@ public class MenuController implements KeyListener, ActionListener {
 					angryFrame.setCurrentLevel(i+1);
 				}
 				else {
-					javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant a  ce niveau, tu peux insulter les developpeurs");
+					javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant aï¿½ ce niveau, tu peux insulter les developpeurs");
 				}
 			}
 		}

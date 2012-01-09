@@ -10,12 +10,12 @@ import model.Player;
 @SuppressWarnings("serial")
 public class MenuLoadView extends GameViewMenu
 {
-	private JComboBox<Player> playersList;
+	private JComboBox playersList;
 	private JButton okLoadButton;
 
 	public MenuLoadView(ArrayList<Player> players)
 	{
-        playersList = new JComboBox<Player>();
+        playersList = new JComboBox();
         playersList.setSize(200,30);
         playersList.setLocation(frameWidth/2-100,150);
 
@@ -32,7 +32,7 @@ public class MenuLoadView extends GameViewMenu
         this.add(okLoadButton,new Integer(1));
 	}
 	
-	public JComboBox<Player> getPlayersList()
+	public JComboBox getPlayersList()
 	{
 		return playersList;
 	}
