@@ -32,6 +32,7 @@ public class Level {
 	private boolean levelFinish;
 	private boolean isLoaded;
 	private ArrayList<Entity> entities;
+	private double pigSpeed;
 	
 	public Level() {
 	    ImageIcon ii = new ImageIcon(backgroundImagePath);
@@ -39,7 +40,7 @@ public class Level {
 	    
     }
 	
-	public Level(String fichierMapPath) {
+	public Level(String fichierMapPath, String difficulty) {
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
 	    ImageIcon gr = new ImageIcon(grassImagePath);
@@ -47,6 +48,17 @@ public class Level {
 	    ImageIcon bl = new ImageIcon(blockImagePath);
 	    block = bl.getImage();
 	   
+	    switch(difficulty){
+	    	case "easy" : pigSpeed=1;
+	    				  break;
+	    	case "medium" : pigSpeed=1.5;
+	    					break;
+	    	case "hard" : pigSpeed=2;
+	    				  break;
+	    	case "extreme" : pigSpeed=2.5;
+	    					 break;
+	    	default: break;
+	    }
 	    
 	    entities = new ArrayList<Entity>();
 	    
@@ -92,7 +104,7 @@ public class Level {
 					String st = String.valueOf(car);
 					tabMap[i][j]= Integer.parseInt(st);
 					if (tabMap[i][j] == 3) {
-						entities.add(new Pig(j*blockSize,i*blockSize));
+						entities.add(new Pig(j*blockSize,i*blockSize, pigSpeed));
 						tabMap[i][j] = 0;
 					}
 					if(tabMap[i][j] == 2)
@@ -102,7 +114,7 @@ public class Level {
 				}
 			}		
 	    }
-	    // Si jamais on tente de créer un niveau qui n'a aucun fichier texte correspondant
+	    // Si jamais on tente de creer un niveau qui n'a aucun fichier texte correspondant
 		catch (Exception e)
 		{
 			//System.out.println(e.toString());

@@ -303,7 +303,7 @@ public class GameModel implements ActionListener {
 	public void win(int score) {
 		javax.swing.JOptionPane.showMessageDialog(null, "Bravo, tu as gagné ! Ton score est " + score);
 		currentPlayer.finished(currentLevel, difficulty, score);
-		Level lvl = new Level("res/maps/lvl0" + (currentLevel+1) + ".txt");
+		Level lvl = new Level("res/maps/lvl0" + (currentLevel+1) + ".txt", difficulty);
 		if (lvl.isLoaded()) {
 			angryView.setMap(lvl);
 			this.setMap(lvl);
@@ -318,6 +318,9 @@ public class GameModel implements ActionListener {
 		System.out.println("La lose! Vous avez perdu!");
 	}
 	
+	public String getDifficulty() {
+		return difficulty;
+	}
 	
 	public void setDifficulty(String dif) {
 		difficulty = dif;

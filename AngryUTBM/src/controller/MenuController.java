@@ -35,6 +35,7 @@ public class MenuController implements KeyListener, ActionListener {
 	private MenuDifficultyView angryMenuDifficultyView;
 	private MenuLevelView angryMenuLevelView;
 	private GameFrame angryFrame;
+	private String difficulty = "";
 	
 	public MenuController(GameFrame frame){
 		
@@ -94,7 +95,7 @@ public class MenuController implements KeyListener, ActionListener {
 		{			
 			if(angryFrame.getAngryModel().getPlayers().isEmpty())
 			{
-				javax.swing.JOptionPane.showMessageDialog(null, "Aucune sauvegarde en m�moire !");
+				javax.swing.JOptionPane.showMessageDialog(null, "No save file found !");
 			}
 			else
 			{
@@ -120,7 +121,7 @@ public class MenuController implements KeyListener, ActionListener {
 		{			
 			if (playerNameField.getText().equals(""))
 			{
-				javax.swing.JOptionPane.showMessageDialog(null, "Il faut mettre ton pseudo");
+				javax.swing.JOptionPane.showMessageDialog(null, "You must enter your name, please.");
 			}		
 			else 
 			{
@@ -152,7 +153,7 @@ public class MenuController implements KeyListener, ActionListener {
 			angryFrame.setVisible(true);
 		}
 		
-		String difficulty = "";
+
 		
 		if (e.getSource().equals(easyButton))
 		{
@@ -199,7 +200,7 @@ public class MenuController implements KeyListener, ActionListener {
 		
 		for (int i = 0; i < lvlButtons.size(); ++i) {
 			if(e.getSource().equals(lvlButtons.get(i))) {
-				Level lvl = new Level("res/maps/lvl0" + (i+1) + ".txt");
+				Level lvl = new Level("res/maps/lvl0" + (i+1) + ".txt", difficulty);
 				if (lvl.isLoaded()) {
 					angryFrame.getAngryView().setMap(lvl);
 					angryFrame.getAngryModel().setMap(lvl);

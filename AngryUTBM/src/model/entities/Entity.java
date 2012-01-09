@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public abstract class Entity {
-	protected short speed;
+	protected double speed;
 	protected String imagePath;
 	protected Image image;
 	protected ArrayList<Egg> eggs;
