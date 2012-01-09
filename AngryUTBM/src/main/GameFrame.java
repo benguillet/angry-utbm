@@ -57,6 +57,13 @@ public class GameFrame extends JFrame {
 		angryMenuController = new MenuController(this);
 		
 		//Listener
+		angryMenuHomeView.addKeyListener(angryMenuController);
+		angryMenuNewView.addKeyListener(angryMenuController);
+		angryMenuLoadView.addKeyListener(angryMenuController);
+		angryMenuOptionsView.addKeyListener(angryMenuController);
+		angryMenuDifficultyView.addKeyListener(angryMenuController);
+		angryMenuLevelView.addKeyListener(angryMenuController);
+		
 		angryView.addKeyListener(angryController);
 		angryView.addMouseListener(angryController);
 		angryView.addMouseMotionListener(angryController);
