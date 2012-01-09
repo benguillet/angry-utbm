@@ -38,4 +38,8 @@ public abstract class Entity {
 	public Rectangle getHitBox() {
 		return hitBox;
 	}
+	
+	public void setSpeed(short speed) {
+		this.speed = speed;
+	}
 }

@@ -4,6 +4,12 @@ import main.GameFrame;
 import model.Level;
 import model.Player;
 import view.GameViewMenu;
+import view.MenuDifficultyView;
+import view.MenuHomeView;
+import view.MenuLevelView;
+import view.MenuLoadView;
+import view.MenuNewView;
+import view.MenuOptionsView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,44 +25,58 @@ public class MenuController implements KeyListener, ActionListener {
 
 	private JLabel difficultyLabel,playerNameLabel;
 	private JTextField playerNameField;
-	private JButton newButton,loadButton,optionsButton,exitButton,okButton;
+	private JButton newButton,loadButton,optionsButton,exitButton;
+	private JButton okNewButton,okLoadButton;
 	private JButton easyButton,mediumButton,hardButton,extremeButton;
 	private ArrayList<JButton> lvlButtons;
 	private Player currentPlayer;
-	private JComboBox playersList;
-	private GameViewMenu angryMenu;
+	private JComboBox<Player> playersList;
+	private MenuHomeView angryMenuHomeView;
+	private MenuNewView angryMenuNewView;
+	private MenuLoadView angryMenuLoadView;
+	private MenuOptionsView angryMenuOptionsView;
+	private MenuDifficultyView angryMenuDifficultyView;
+	private MenuLevelView angryMenuLevelView;
 	private GameFrame angryFrame;
 	
 	public MenuController(GameFrame frame){
 		
 		angryFrame = frame;
-		angryMenu = frame.getAngryViewMenu();
-		newButton = angryMenu.getNewButton();
+		
+		angryMenuHomeView = frame.getAngryMenuHomeView();
+		angryMenuNewView = frame.getAngryMenuNewView();
+		angryMenuLoadView = frame.getAngryMenuLoadView();
+		angryMenuOptionsView = frame.getAngryMenuOptionsView();
+		angryMenuDifficultyView = frame.getAngryMenuDifficultyView();
+		angryMenuLevelView = frame.getAngryMenuLevelView();
+		
+		newButton = angryMenuHomeView.getNewButton();
 		newButton.addActionListener(this);
-		loadButton = angryMenu.getLoadButton();
+		loadButton = angryMenuHomeView.getLoadButton();
 		loadButton.addActionListener(this);	
-		optionsButton = angryMenu.getOptionsButton();
+		optionsButton = angryMenuHomeView.getOptionsButton();
 		optionsButton.addActionListener(this);
-		exitButton = angryMenu.getExitButton();
+		exitButton = angryMenuHomeView.getExitButton();
 		exitButton.addActionListener(this);
-		okButton = angryMenu.getOkButton();
-		okButton.addActionListener(this);
 		
-		difficultyLabel = angryMenu.getDifficultyLabel();
-		playerNameLabel = angryMenu.getPlayerNameLabel();
-		playerNameField = angryMenu.getPlayerNameField();
-		playersList = angryMenu.getPlayersList();
+		playerNameField = angryMenuNewView.getPlayerNameField();
+		okNewButton = angryMenuNewView.getOkNewButton();
+		okNewButton.addActionListener(this);
+				
+		playersList = angryMenuLoadView.getPlayersList();
+		okLoadButton = angryMenuLoadView.getOkLoadButton();
+		okLoadButton.addActionListener(this);
 		
-		easyButton = angryMenu.getEasyButton();
+		easyButton = angryMenuDifficultyView.getEasyButton();
 		easyButton.addActionListener(this);
-		mediumButton = angryMenu.getMediumButton();
+		mediumButton = angryMenuDifficultyView.getMediumButton();
 		mediumButton.addActionListener(this);
-		hardButton = angryMenu.getHardButton();
+		hardButton = angryMenuDifficultyView.getHardButton();
 		hardButton.addActionListener(this);
-		extremeButton = angryMenu.getExtremeButton();
+		extremeButton = angryMenuDifficultyView.getExtremeButton();
 		extremeButton.addActionListener(this);
 		
-		lvlButtons = angryMenu.getLvlButtons();
+		lvlButtons = angryMenuLevelView.getLvlButtons();
 		for (JButton button : lvlButtons) {
 			button.addActionListener(this);
 		}
@@ -68,68 +88,71 @@ public class MenuController implements KeyListener, ActionListener {
 		
 		if (e.getSource().equals(newButton))
 		{
-			newButton.setVisible(false);
-			loadButton.setVisible(false);
-			optionsButton.setVisible(false);
-			exitButton.setVisible(false);
-			playerNameField.setVisible(true);
-			playerNameLabel.setVisible(true);
-			okButton.setVisible(true);
+			angryFrame.setContentPane(angryMenuNewView);
+			angryMenuNewView.requestFocus();
+			angryFrame.setVisible(true);
 		}
 		
 		if(e.getSource().equals(loadButton))
-		{
-			newButton.setVisible(false);
-			loadButton.setVisible(false);
-			optionsButton.setVisible(false);
-			exitButton.setVisible(false);
-			
-			if(angryFrame.getAngryModel().getPlayers()!=null)
+		{			
+			if(angryFrame.getAngryModel().getPlayers().isEmpty())
 			{
-				playersList.setVisible(true);
-				okButton.setVisible(true);
+				javax.swing.JOptionPane.showMessageDialog(null, "Aucune sauvegarde en m�moire !");
+			}
+			else
+			{
+				angryFrame.setContentPane(angryMenuLoadView);
+				angryMenuLoadView.requestFocus();
+				angryFrame.setVisible(true);
 			}
 		}
 		
-		if(e.getSource().equals(okButton))
+		if (e.getSource().equals(optionsButton))
 		{
-			
-			if (playerNameField.isVisible()) {
-				if (playerNameField.getText().equals(""))
-					javax.swing.JOptionPane.showMessageDialog(null, "Il faut mettre ton pseudo");
-				else {
-					currentPlayer = new Player(playerNameField.getText());
-					playerNameField.setVisible(false);
-					angryFrame.setCurrentPlayer(currentPlayer);
-					angryFrame.setDifficulty("");
-					angryFrame.setCurrentLevel(0);
-					angryFrame.setCurrentHighScore();
-					playerNameLabel.setVisible(false);
-					okButton.setVisible(false);
-					difficultyLabel.setVisible(true);
-					easyButton.setVisible(true);
-					mediumButton.setVisible(true);
-					hardButton.setVisible(true);
-					extremeButton.setVisible(true);
-					
-				}
-			}
-			else {
-				currentPlayer = (Player) playersList.getSelectedItem();
-				playersList.setVisible(false);
+			angryFrame.setContentPane(angryMenuOptionsView);
+			angryMenuOptionsView.requestFocus();
+			angryFrame.setVisible(true);
+		}
+		
+		if (e.getSource().equals(exitButton))
+		{
+			System.exit(0);
+		}
+		
+		if(e.getSource().equals(okNewButton))
+		{			
+			if (playerNameField.getText().equals(""))
+			{
+				javax.swing.JOptionPane.showMessageDialog(null, "Il faut mettre ton pseudo");
+			}		
+			else 
+			{
+				currentPlayer = new Player(playerNameField.getText());
+				playerNameField.setVisible(false);
 				angryFrame.setCurrentPlayer(currentPlayer);
 				angryFrame.setDifficulty("");
 				angryFrame.setCurrentLevel(0);
 				angryFrame.setCurrentHighScore();
-				playerNameLabel.setVisible(false);
-				okButton.setVisible(false);
-				difficultyLabel.setVisible(true);
-				easyButton.setVisible(true);
-				mediumButton.setVisible(true);
-				hardButton.setVisible(true);
-				extremeButton.setVisible(true);
 				
+				angryFrame.setContentPane(angryMenuDifficultyView);
+				angryMenuDifficultyView.requestFocus();
+				angryFrame.setVisible(true);
 			}
+			
+		}
+		
+		if(e.getSource().equals(okLoadButton))
+		{
+			currentPlayer = (Player) playersList.getSelectedItem();
+			playersList.setVisible(false);
+			angryFrame.setCurrentPlayer(currentPlayer);
+			angryFrame.setDifficulty("");
+			angryFrame.setCurrentLevel(0);
+			angryFrame.setCurrentHighScore();
+
+			angryFrame.setContentPane(angryMenuDifficultyView);
+			angryMenuDifficultyView.requestFocus();
+			angryFrame.setVisible(true);
 		}
 		
 		String difficulty = "";
@@ -157,11 +180,9 @@ public class MenuController implements KeyListener, ActionListener {
 			difficulty = "extreme";	
 		}
 		
-		// Si difficulty est renseigné on a forcément cliqué sur un des boutons de difficulté
+		// Si difficulty est renseignee on a forcement clique sur un des boutons de difficulte
 		if (!difficulty.equals("")) {
-			difficultyLabel.setVisible(false);
 			for (int lvlNumber = 0; lvlNumber < lvlButtons.size(); ++lvlNumber) {
-				lvlButtons.get(lvlNumber).setVisible(true);
 				lvlButtons.get(lvlNumber).setEnabled(false);
 				
 				if (currentPlayer.isFinished(lvlNumber, difficulty)) {
@@ -171,11 +192,12 @@ public class MenuController implements KeyListener, ActionListener {
 				}
 			}
 			lvlButtons.get(0).setEnabled(true);
-			easyButton.setVisible(false);
-			mediumButton.setVisible(false);
-			hardButton.setVisible(false);
-			extremeButton.setVisible(false);
+			
 			angryFrame.setDifficulty(difficulty);
+			
+			angryFrame.setContentPane(angryMenuLevelView);
+			angryMenuLevelView.requestFocus();
+			angryFrame.setVisible(true);
 		}
 		
 		for (int i = 0; i < lvlButtons.size(); ++i) {
@@ -189,15 +211,11 @@ public class MenuController implements KeyListener, ActionListener {
 					angryFrame.setCurrentLevel(i+1);
 				}
 				else {
-					javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant à ce niveau, tu peux insulter les développeurs");
+					javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant a� ce niveau, tu peux insulter les developpeurs");
 				}
 			}
 		}
 		
-		if (e.getSource().equals(exitButton))
-		{
-			System.exit(0);
-		}
 	}
 	
 	@Override
@@ -207,7 +225,7 @@ public class MenuController implements KeyListener, ActionListener {
 				//angryFrame.setPreviousMenu();
 				break;
 			default:
-				System.out.println("je gère pas cette touche ! Blaireau !");
+				System.out.println("je gere pas cette touche ! Blaireau !");
 		}
 	}
 

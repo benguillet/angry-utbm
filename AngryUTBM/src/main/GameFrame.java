@@ -5,6 +5,12 @@ import javax.swing.JFrame;
 
 import view.GameView;
 import view.GameViewMenu;
+import view.MenuDifficultyView;
+import view.MenuHomeView;
+import view.MenuLevelView;
+import view.MenuLoadView;
+import view.MenuNewView;
+import view.MenuOptionsView;
 import controller.GameController;
 import controller.MenuController;
 import model.GameModel;
@@ -13,8 +19,13 @@ import model.entities.Entity;
 
 @SuppressWarnings("serial")
 public class GameFrame extends JFrame {
+	private MenuHomeView angryMenuHomeView;
+	private MenuNewView angryMenuNewView;
+	private MenuLoadView angryMenuLoadView;
+	private MenuOptionsView angryMenuOptionsView;
+	private MenuDifficultyView angryMenuDifficultyView;
+	private MenuLevelView angryMenuLevelView;
 	private GameView angryView;
-	private GameViewMenu angryViewMenu;
 	private GameController angryController;
 	private MenuController angryMenuController;
 	private GameModel angryModel;
@@ -30,12 +41,18 @@ public class GameFrame extends JFrame {
 		angryPlayers = angryModel.getPlayers();
 		
 		//Views
-		angryViewMenu = new GameViewMenu(angryPlayers);
+		angryMenuHomeView = new MenuHomeView();
+		angryMenuNewView = new MenuNewView();
+		angryMenuLoadView = new MenuLoadView(angryPlayers);
+		angryMenuOptionsView = new MenuOptionsView();
+		angryMenuDifficultyView = new MenuDifficultyView();
+		angryMenuLevelView = new MenuLevelView();
+		
 		angryView = new GameView(angryEntities);
 		
 		angryModel.setAngryView(angryView);
 		
-		//controller 
+		//Controller 
 		angryController = new GameController(this);
 		angryMenuController = new MenuController(this);
 		
@@ -45,7 +62,7 @@ public class GameFrame extends JFrame {
 		angryModel.addListListener(angryView);
 		angryModel.addListListener(angryController);		
 
-		this.setContentPane(angryViewMenu);
+		this.setContentPane(angryMenuHomeView);
 		
 		this.setTitle(winName);
 		this.setSize((int)GameFrame.getFrameSize().getWidth(), (int)GameFrame.getFrameSize().getHeight());
@@ -61,9 +78,34 @@ public class GameFrame extends JFrame {
 		return angryView;
 	}
 	
-	public GameViewMenu getAngryViewMenu()
+	public MenuHomeView getAngryMenuHomeView()
 	{
-		return angryViewMenu;
+		return angryMenuHomeView;
+	}
+	
+	public MenuNewView getAngryMenuNewView()
+	{
+		return angryMenuNewView;
+	}
+	
+	public MenuLoadView getAngryMenuLoadView()
+	{
+		return angryMenuLoadView;
+	}
+	
+	public MenuOptionsView getAngryMenuOptionsView()
+	{
+		return angryMenuOptionsView;
+	}
+	
+	public MenuDifficultyView getAngryMenuDifficultyView()
+	{
+		return angryMenuDifficultyView;
+	}
+	
+	public MenuLevelView getAngryMenuLevelView()
+	{
+		return angryMenuLevelView;
 	}
 	
 	public GameModel getAngryModel()
@@ -75,11 +117,11 @@ public class GameFrame extends JFrame {
 		return angryController;
 	}
 
-	public void setMenu()
+	public void setMenuLevel()
 	{
 
-		this.setContentPane(angryViewMenu);
-		angryViewMenu.requestFocus();
+		this.setContentPane(angryMenuLevelView);
+		angryMenuLevelView.requestFocus();
 		this.setVisible(true);
 		
 	}
@@ -91,8 +133,6 @@ public class GameFrame extends JFrame {
 		this.setVisible(true);
 		
 	}
-	
-	
 	
 	public void setCurrentPlayer(Player p) {
 		angryModel.setCurrentPlayer(p);
