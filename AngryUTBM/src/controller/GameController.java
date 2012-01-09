@@ -59,7 +59,7 @@ public class GameController implements KeyListener, ListListener{
 				angryModel.addEgg();
 				break;
 			case KeyEvent.VK_ESCAPE:
-				angryFrame.setMenu();
+				angryFrame.setMenuLevel();
 				break;
 			// Plus de rechargement possible (trop facile sinon)	
 			/*case KeyEvent.VK_R:
