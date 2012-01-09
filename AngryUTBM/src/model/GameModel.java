@@ -208,18 +208,6 @@ public class GameModel implements ActionListener {
 						pig.moveDown();
 					else pig.doNotMoveDown();
 				}
-				/*//On v�rifie que le cochon ne va pas marcher sur du vide
-				int casex = (hitBoxPig.x / level.getBlockSize());
-				int casey = (hitBoxPig.y / level.getBlockSize());
-				if(pig.goForward()) {
-					if(tabMap[casey+1][casex+1] == 0)
-						pig.changeDirection();
-				} 
-				else {
-					if(tabMap[casey+1][casex] == 0)
-						pig.changeDirection();
-				} */
-				
 			}
 			
 			/********** Collision de l'oiseau  courant *************/
