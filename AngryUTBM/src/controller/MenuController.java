@@ -235,10 +235,10 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		// Si difficulty est renseignee on a forcement clique sur un des boutons de difficulte
 		if (!difficulty.equals("")) {
 			for (int lvlNumber = 0; lvlNumber < lvlButtons.size(); ++lvlNumber) {
-				lvlButtons.get(lvlNumber).setEnabled(true);
+				lvlButtons.get(lvlNumber).setEnabled(false);
 				
 				if (currentPlayer.isFinished(lvlNumber, difficulty)) {
-					lvlButtons.get(lvlNumber).setEnabled(false);
+					lvlButtons.get(lvlNumber).setEnabled(true);
 					if ((lvlNumber+1) < lvlButtons.size())
 						lvlButtons.get(lvlNumber+1).setEnabled(true);
 				}
