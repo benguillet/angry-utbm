@@ -238,7 +238,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				lvlButtons.get(lvlNumber).setEnabled(true);
 				
 				if (currentPlayer.isFinished(lvlNumber, difficulty)) {
-					lvlButtons.get(lvlNumber).setEnabled(true);
+					lvlButtons.get(lvlNumber).setEnabled(false);
 					if ((lvlNumber+1) < lvlButtons.size())
 						lvlButtons.get(lvlNumber+1).setEnabled(true);
 				}

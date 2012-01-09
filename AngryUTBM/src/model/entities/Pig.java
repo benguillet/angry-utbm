@@ -41,7 +41,7 @@ public class Pig extends Enemy {
 		else
 			hitBox.x -= speed;
 		if(down)
-			hitBox.y+=speed;
+			hitBox.y+=(int) (speed+3);
 		time++;
 		time1++;
 	}
