@@ -2,9 +2,11 @@ package model;
 
 import view.GameView;
 import model.entities.Bird;
+import model.entities.Block;
 import model.entities.Egg;
 import model.entities.Entity;
 import model.entities.EntityThread;
+import model.entities.Grass;
 import model.entities.Pig;
 
 import java.util.ArrayList;
@@ -108,14 +110,15 @@ public class GameModel implements ActionListener {
 	}
 	
 	public void checkCollision() {
-		ArrayList<Entity> toRemove = new ArrayList<Entity>(); //On ne retire les entités de la liste qu'après être sorti de la boucle
+		ArrayList<Entity> toRemove = new ArrayList<Entity>(); //On ne retire les entitï¿½s de la liste qu'aprï¿½s ï¿½tre sorti de la boucle
 		for(Entity entity : entities) {
 			int tabMap[][] = level.getTabMap();
 			
 			if(entity instanceof Egg) {
 				Egg egg = (Egg) entity;
 				Rectangle hitBoxEgg = egg.getHitBox();
-				//Collisions oeuf/cochons
+				
+				//Collisions oeuf/autre entity
 				for(Entity entity2 : entities) {
 					if(entity2 instanceof Pig) {
 						Pig pig = (Pig) entity2;
@@ -140,20 +143,20 @@ public class GameModel implements ActionListener {
 			            	}
 						}
 					}
-				}
-				
-				//Collisions oeuf/décor
-				for(int x = 0; x < tabMap[0].length; ++x) {
-					for(int y = 0; y < tabMap.length; ++y) {
-						if(tabMap[y][x] != 0) {
-							Rectangle hitBoxScenery = new Rectangle(x*26,y*26,26,26);
-							if(hitBoxScenery.intersects(hitBoxEgg)) {
-								toRemove.add(egg);
-								if(tabMap[y][x] == 2)
-									tabMap[y][x] = 0;
-								level.setTabMap(tabMap);
+					if(entity2 instanceof Block){
+						Block block= (Block) entity2;
+						Rectangle hitBoxBlock = block.getHitBox();
+						if(hitBoxBlock.intersects(hitBoxEgg)) {
+							toRemove.add(egg);
+							toRemove.add(block);
 							}
-						}
+					}
+					if(entity2 instanceof Grass){
+						Grass grass= (Grass) entity2;
+						Rectangle hitBoxGrass = grass.getHitBox();
+						if(hitBoxGrass.intersects(hitBoxEgg)) {
+							toRemove.add(egg);
+							}
 					}
 				}
 			}
@@ -161,19 +164,20 @@ public class GameModel implements ActionListener {
 			if(entity instanceof Pig) {
 				Pig pig = (Pig) entity;
 				Rectangle hitBoxPig = pig.getHitBox();
-				//Collisions cochon/décor
-				for(int x = 0; x < tabMap[0].length; ++x) {
-					for(int y = 0; y < tabMap.length; ++y) {
-						if(tabMap[y][x] != 0) {
-							Rectangle hitBoxScenery = new Rectangle(x*26,y*26,25,25);
-							if(hitBoxScenery.intersects(hitBoxPig))
-								pig.changeDirection();
-						}
+				//Collisions cochon/dï¿½cor
+				for(Entity entity2 : entities) {
+					if(entity2 instanceof Block)
+					{
+						Block block = (Block) entity2;
+						Rectangle hitBoxBlock = entity2.getHitBox();
+						if(hitBoxPig.intersects(hitBoxBlock))
+							pig.changeDirection();
+							
 					}
 				}
-				//On vérifie que le cochon ne va pas marcher sur du vide
-				int casex = (hitBoxPig.x / 26);
-				int casey = (hitBoxPig.y / 26);
+				//On vï¿½rifie que le cochon ne va pas marcher sur du vide
+				int casex = (hitBoxPig.x / level.getBlockSize());
+				int casey = (hitBoxPig.y / level.getBlockSize());
 				if(pig.goForward()) {
 					if(tabMap[casey+1][casex+1] == 0)
 						pig.changeDirection();
@@ -223,20 +227,34 @@ public class GameModel implements ActionListener {
 					}
 				}
 			}
-			
+			if(entity instanceof Bird)
+			{
+				Bird bird = (Bird) entity;
+				Rectangle hitBoxPig = bird.getHitBox();
+				//Collisions cochon/dï¿½cor
+				for(Entity entity2 : entities) {
+					if(entity2 instanceof Block)
+					{
+						Block block = (Block) entity2;
+						Rectangle hitBoxBlock = entity2.getHitBox();
+						if(hitBoxPig.intersects(hitBoxBlock))
+						{
+							toRemove.add(bird);
+							toRemove.add(block);
+						}
+					}
+				}
+				for (Entity entity3 : entities) {
+        			if (entity3 instanceof Bird && !toRemove.contains(entity3)) {
+        				currentBird = (Bird) entity3;
+        				break;
+        			}
+				}
+			}
 		}
-		
 		for(Entity entity : toRemove) 
 			entities.remove(entity);
-	}
-				
-			
-	
-	public boolean testCollision(Rectangle x, Rectangle y)
-	{
-		if(x.intersects(y))
-			return true;
-		return false;
+					
 	}
 	
 	public void actionPerformed(ActionEvent event) {

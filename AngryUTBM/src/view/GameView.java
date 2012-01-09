@@ -1,14 +1,9 @@
 package view;
-
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
-
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
-
 import model.Level;
 import model.ListChangedEvent;
 import model.ListListener;
@@ -40,35 +35,6 @@ public class GameView extends JPanel implements ListListener {
         // On affiche le level
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(map.getImage(), 0, 0,frameWidth,frameHeight, this);
-        
-        int tabMap[][]= map.getTabMap();
-        
-	    int dx=0;
-	    int dy=0;
-	    
-	    for(int i=0; i<map.getTabMapSizeY();i++)
-	    {
-	    	for(int j=0; j<map.getTabMapSizeX();j++)
-	    	{
-	    		switch(tabMap[i][j])
-	    		{
-		    		case 1:
-		    			g2d.drawImage(map.getGrass(), dx, dy, this);
-		    			break;
-		    		case 2:
-		    			g2d.drawImage(map.getBlock(), dx, dy, this);
-		    			break;
-		    		default :
-		    			break;
-	    		}
-	    		
-	    		dx=dx+26;
-	    	}
-	    	dy=dy+26;
-	    	dx=0;
-	    }
-        
-	    
 	    
 	    int k = 0;
 	    boolean first = true;

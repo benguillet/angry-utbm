@@ -1,6 +1,8 @@
 package model;
 
+import model.entities.Block;
 import model.entities.Entity;
+import model.entities.Grass;
 import model.entities.HummingBird;
 import model.entities.Pig;
 import model.entities.Pigeon;
@@ -21,6 +23,7 @@ public class Level {
 	private int tabMap[][];
 	private int tabMapSizeX = 47;
 	private int tabMapSizeY = 22;
+	private int blockSize = 26;
 	private Rectangle tabCollision[][];
 	private String grassImagePath = "res/images/grass.png";
 	private Image grass;
@@ -89,39 +92,34 @@ public class Level {
 					String st = String.valueOf(car);
 					tabMap[i][j]= Integer.parseInt(st);
 					if (tabMap[i][j] == 3) {
-						entities.add(new Pig(j*26,i*26));
+						entities.add(new Pig(j*blockSize,i*blockSize));
 						tabMap[i][j] = 0;
 					}
+					if(tabMap[i][j] == 2)
+						entities.add(new Block(j*blockSize,i*blockSize,blockSize,blockSize));
+					if(tabMap[i][j] == 1)
+						entities.add(new Grass(j*blockSize,i*blockSize,blockSize,blockSize));
 				}
-			}
-				
+			}		
 	    }
-	    
 	    // Si jamais on tente de créer un niveau qui n'a aucun fichier texte correspondant
 		catch (Exception e)
 		{
 			//System.out.println(e.toString());
 			isLoaded = false;
-		}
-	    
+		}   
 	}
-	
 	public Image getImage() {
         return image;
     }
-	
 	public Image getGrass(){
 		return grass;
 	}
-	
 	public Image getBlock(){
 		return block;
 	}
-	
-
 	public int[][] getTabMap(){
 		return tabMap;
-	
 	}
 	public int getTabMapSizeX(){
 		return tabMapSizeX;
@@ -129,7 +127,9 @@ public class Level {
 	public int getTabMapSizeY(){
 		return tabMapSizeY;
 	}	
-	
+	public int getBlockSize(){
+		return blockSize;
+	}
 	public ArrayList<Entity> getEntityList() {
 		return entities;
 	}

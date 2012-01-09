@@ -14,7 +14,6 @@ public abstract class Entity {
 
 	public Entity(int x, int y, int width, int height) {
 		hitBox = new Rectangle(x, y, width, height);
-		
 	}
 	
 	public Point getPosition() {

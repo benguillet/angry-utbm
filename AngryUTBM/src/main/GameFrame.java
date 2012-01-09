@@ -39,7 +39,6 @@ public class GameFrame extends JFrame {
 		angryController = new GameController(this);
 		angryMenuController = new MenuController(this);
 		
-	
 		//Listener
 		angryView.addKeyListener(angryController);
 		angryModel.addListListener(angryView);
@@ -52,9 +51,7 @@ public class GameFrame extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		this.setVisible(true);
-
-		
+		this.setVisible(true);		
     }
 
 	public GameView getAngryView() {
@@ -91,8 +88,6 @@ public class GameFrame extends JFrame {
 		this.setVisible(true);
 		
 	}
-	
-	
 	
 	public void setCurrentPlayer(Player p) {
 		angryModel.setCurrentPlayer(p);
