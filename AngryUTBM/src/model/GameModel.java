@@ -33,6 +33,9 @@ public class GameModel implements ActionListener {
 	private String difficulty;
 	private int currentLevel;
 	private int currentHighestScore;
+	private boolean isLevelFinished = false;
+	private boolean isGameOver = false;
+	private int score = 0;
 	
 	public GameModel() {
 		entities = new ArrayList<Entity>();
@@ -109,38 +112,29 @@ public class GameModel implements ActionListener {
     		System.out.println("Plus d'oeufs ! Fail !");
 	}
 	
-	public void checkCollision() {
+	public void updateEntity() {
 		ArrayList<Entity> toRemove = new ArrayList<Entity>(); //On ne retire les entit�s de la liste qu'apr�s �tre sorti de la boucle
+		
 		for(Entity entity : entities) {
+			//isLevelFinished = true;
 			int tabMap[][] = level.getTabMap();
+			
+			/******* Collision des oeufs *************/
 			
 			if(entity instanceof Egg) {
 				Egg egg = (Egg) entity;
+				if(!egg.isVisible())
+					toRemove.add(egg);
 				Rectangle hitBoxEgg = egg.getHitBox();
 				
-				//Collisions oeuf/autre entity
 				for(Entity entity2 : entities) {
 					if(entity2 instanceof Pig) {
+						isLevelFinished = false;
 						Pig pig = (Pig) entity2;
 						Rectangle hitBoxPig = pig.getHitBox();
 						if(hitBoxPig.intersects(hitBoxEgg)) {
 							toRemove.add(egg);
 							toRemove.add(pig);
-			            	boolean win = true;
-			            	for (Entity entity3 : entities) {
-			            		if (entity3 instanceof Pig) {
-			            			win = false;
-			            			break;
-			            		}
-			            	}
-			            	if(win) {
-			            		int score = 0;
-			            		for (Entity entity3 : entities) {
-				            		if (entity3 instanceof Bird)
-				            			++score;
-			            		}
-			            		win(score);
-			            	}
 						}
 					}
 					if(entity2 instanceof Block){
@@ -161,10 +155,13 @@ public class GameModel implements ActionListener {
 				}
 			}
 			
+			/************** Collision des cochons *************/
 			if(entity instanceof Pig) {
+				isLevelFinished = false;
 				Pig pig = (Pig) entity;
 				Rectangle hitBoxPig = pig.getHitBox();
-				//Collisions cochon/d�cor
+				
+				
 				for(Entity entity2 : entities) {
 					if(entity2 instanceof Block)
 					{
@@ -175,7 +172,7 @@ public class GameModel implements ActionListener {
 							
 					}
 				}
-				//On v�rifie que le cochon ne va pas marcher sur du vide
+				/*//On v�rifie que le cochon ne va pas marcher sur du vide
 				int casex = (hitBoxPig.x / level.getBlockSize());
 				int casey = (hitBoxPig.y / level.getBlockSize());
 				if(pig.goForward()) {
@@ -185,71 +182,48 @@ public class GameModel implements ActionListener {
 				else {
 					if(tabMap[casey+1][casex] == 0)
 						pig.changeDirection();
-				} 
+				} */
 				
-				//Collisions oiseaux/cochons
-				for(Entity entity2 : entities) {
-					if (entity2 instanceof Bird) {
-						Bird bird = (Bird) entity2;
-						Rectangle hitBoxBird =  bird.getHitBox();
-						if(hitBoxBird.intersects(hitBoxPig)) {
-							toRemove.add(pig);
-							toRemove.add(bird);
-							
-			            	boolean win = true;
-			            	for (Entity entity3 : entities) {
-			            		if (entity3 instanceof Pig) {
-			            			win = false;
-			            			break;
-			            		}
-			            	}
-			            	if(win) {
-			            		int score = 0;
-			            		for (Entity entity3 : entities) {
-				            		if (entity3 instanceof Bird)
-				            			++score;
-			            		}
-			            		win(score);
-			            	}
-			            	
-		            		boolean lose = true;
-		            		for (Entity entity3 : entities) {
-		            			if (entity3 instanceof Bird && !toRemove.contains(entity3)) {
-		            				currentBird = (Bird) entity3;
-		            				lose = false;
-		            				break;
-		            			}
-		            		}
-		            		if(lose) {
-		            			lose();
-		            		}
-						}
-					}
-				}
 			}
-			if(entity instanceof Bird)
+			
+			/********** Collision des oiseaux *************/
+			if(entity == currentBird)
 			{
 				Bird bird = (Bird) entity;
-				Rectangle hitBoxPig = bird.getHitBox();
-				//Collisions cochon/d�cor
+				if(!bird.isVisible())
+					toRemove.add(bird);
+				Rectangle hitBoxBird = bird.getHitBox();
+				
 				for(Entity entity2 : entities) {
 					if(entity2 instanceof Block)
 					{
 						Block block = (Block) entity2;
 						Rectangle hitBoxBlock = entity2.getHitBox();
-						if(hitBoxPig.intersects(hitBoxBlock))
+						if(hitBoxBird.intersects(hitBoxBlock))
 						{
 							toRemove.add(bird);
 							toRemove.add(block);
 						}
 					}
 				}
-				for (Entity entity3 : entities) {
-        			if (entity3 instanceof Bird && !toRemove.contains(entity3)) {
-        				currentBird = (Bird) entity3;
+				for(Entity entity2 : entities) {
+					if (entity2 instanceof Pig) {
+						Pig pig = (Pig) entity2;
+						Rectangle hitBoxPig =  pig.getHitBox();
+						if(hitBoxBird.intersects(hitBoxPig)) {
+							toRemove.add(pig);
+							toRemove.add(bird);
+						}
+					}
+				}
+				for (Entity entity2 : entities) {
+        			if (entity2 instanceof Bird && !toRemove.contains(entity2)) {
+        				currentBird = (Bird) entity2;
         				break;
         			}
 				}
+				if(currentBird==null)
+					lose();
 			}
 		}
 		for(Entity entity : toRemove) 
@@ -258,29 +232,11 @@ public class GameModel implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent event) {
-        for (int i = 0; i < entities.size(); ++i) {
-        	if (entities.get(i) instanceof Egg) {
-        		if (!entities.get(i).isVisible())
-                	entities.remove(i);
-        	}
-    		if (entities.get(i) instanceof Bird) {
-        		if (!entities.get(i).isVisible()) {
-                	entities.remove(i);
-            		boolean lose = true;
-            		for (Entity entity : entities) {
-            			if (entity instanceof Bird) {
-            				currentBird = (Bird) entity;
-            				lose = false;
-            				break;
-            			}
-            		}
-            		if(lose) {
-            			lose();
-            		}
-        		}
-        	}
-        }
-        checkCollision();
+        updateEntity();
+        if(isLevelFinished)
+        	win();
+        if(isGameOver)
+        	lose();
         fireListChanged();
     }
 	
@@ -300,7 +256,7 @@ public class GameModel implements ActionListener {
 		}
 	}
 	
-	public void win(int score) {
+	public void win() {
 		javax.swing.JOptionPane.showMessageDialog(null, "Bravo, tu as gagné ! Ton score est " + score);
 		currentPlayer.finished(currentLevel, difficulty, score);
 		Level lvl = new Level("res/maps/lvl0" + (currentLevel+1) + ".txt",difficulty);

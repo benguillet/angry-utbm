@@ -12,8 +12,9 @@ public class Pig extends Enemy {
 
 	private Dimension frameSize;
 	private boolean back;
+	private int time;
 	
-	public Pig(int x, int y, double pigSpeed) {
+	public Pig(int x, int y, float pigSpeed) {
 		super(x,y,26,25);
 		imagePath = "res/images/pig.png";
 		ImageIcon ii = new ImageIcon(imagePath);
@@ -21,7 +22,7 @@ public class Pig extends Enemy {
 		imageHeight = ii.getIconHeight();
 	    imageWidth = ii.getIconWidth();
 		speed = pigSpeed;
-
+		time = 0;
 		back = false;
 		frameSize = GameFrame.getFrameSize();
 	}
@@ -36,10 +37,15 @@ public class Pig extends Enemy {
 			hitBox.x += speed;
 		else
 			hitBox.x -= speed;
+		time++;
 	}
 	
 	public void changeDirection() {
-		back = !back;
+		if(time > 10)
+		{
+			back = !back;
+			time =0;
+		}
 	}
 
 	public boolean goForward() {

@@ -48,12 +48,13 @@ public class GameView extends JPanel implements ListListener {
         // On affiche le level
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(map.getImage(), 0, 0,frameWidth,frameHeight, this);
+        g2d.drawImage(slingShotImg2, 40,440, this);
        
 	    
 	    int k = 0;
 	    boolean first = true;
 	    for(Entity e : entities) {
-	    	if(e instanceof Bird) {
+	    	if(e instanceof Bird && e != currentBird) {
 	    		g2d.drawImage(e.getImage(), frameWidth*4/5+k*15, 100, this);
 	    		k++;
 	    		if(first){
@@ -72,18 +73,20 @@ public class GameView extends JPanel implements ListListener {
         	}
         		if(e== currentBird )
         	{
-        		g2d.drawImage(slingShotImg2, currentBird.getStartLocationX(), currentBird.getStartLocationY(), this);
+        		
         		g2d.setStroke(new BasicStroke(7.0f));
         		g2d.setColor(new Color(54, 28, 13));
         		if(!currentBird.isFlying())g2d.drawLine(75,470, (int)e.getPosition().getX()+e.getImageWidth()/2, (int)e.getPosition().getY()+e.getImageHeight()/2);
         		g2d.drawImage(e.getImage(), (int) e.getPosition().getX(), (int) e.getPosition().getY(), this);
         		if(!currentBird.isFlying())g2d.drawLine(60,470, (int)e.getPosition().getX()+e.getImageWidth()/2, (int)e.getPosition().getY()+e.getImageHeight()/2);
-        		g2d.drawImage(slingShotImg1, currentBird.getStartLocationX(), currentBird.getStartLocationY(), this);
         	}
+        		g2d.setStroke(new BasicStroke(7.0f));
+        		g2d.setColor(new Color(54, 28, 13));
+        		if(currentBird.isFlying())g2d.drawLine(75,470,60,470);
         }
         
         
-        
+        g2d.drawImage(slingShotImg1, 40, 440, this);
         g.drawString("Highest Score : " + currentHighestScore, 10, 15);
         g.drawString("Flying time left : " + currentBird.getFlyingTimeLeft(), 10, 30);
         Toolkit.getDefaultToolkit().sync();

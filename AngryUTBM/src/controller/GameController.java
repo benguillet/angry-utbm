@@ -139,7 +139,7 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 		if(isBirdPicked){
 			double deltaX = currentBird.getStartLocationX() - e.getX();
 			double deltaY = currentBird.getStartLocationY() - e.getY();
-			double speed = Math.sqrt((deltaX*deltaX)+(deltaY*deltaY));
+			float speed = (float)Math.sqrt((deltaX*deltaX)+(deltaY*deltaY));
 			currentBird.setAngle(-Math.atan(deltaY/deltaX));
 			currentBird.setSpeed(speed);
 			if(deltaX > 0)
