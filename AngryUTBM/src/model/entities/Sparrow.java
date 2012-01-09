@@ -12,6 +12,8 @@ public class Sparrow extends Bird {
 	    imagePath = "res/images/sparrow.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
+	    imageHeight = ii.getIconHeight();
+	    imageWidth = ii.getIconWidth();
 	    speed = 100;
 	    eggs = new ArrayList<Egg>();
 	    reload();

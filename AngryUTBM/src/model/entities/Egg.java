@@ -14,6 +14,8 @@ public class Egg extends Entity {
 		imagePath = "res/images/egg.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
+	    imageHeight = ii.getIconHeight();
+	    imageWidth = ii.getIconWidth();
 		speed = 3;
 		frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}

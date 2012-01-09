@@ -18,6 +18,8 @@ public class Pig extends Enemy {
 		imagePath = "res/images/pig.png";
 		ImageIcon ii = new ImageIcon(imagePath);
 		image = ii.getImage();
+		imageHeight = ii.getIconHeight();
+	    imageWidth = ii.getIconWidth();
 		speed = 1;
 		back = false;
 		frameSize = GameFrame.getFrameSize();

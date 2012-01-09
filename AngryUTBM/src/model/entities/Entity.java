@@ -2,15 +2,19 @@ package model.entities;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public abstract class Entity {
-	protected short speed;
+	protected double speed;
 	protected String imagePath;
 	protected Image image;
+	protected int imageWidth;
+	protected int imageHeight;
 	protected ArrayList<Egg> eggs;
 	protected boolean visible = true;
 	protected Rectangle hitBox;
+	protected double angle;
 
 	public Entity(int x, int y, int width, int height) {
 		hitBox = new Rectangle(x, y, width, height);
@@ -38,7 +42,17 @@ public abstract class Entity {
 		return hitBox;
 	}
 	
-	public void setSpeed(short speed) {
+	public void setSpeed(double speed) {
 		this.speed = speed;
+	}
+	public void setAngle(double a){angle=a;}
+	public double getAngle(){return angle;}
+	public int getImageWidth(){return imageWidth;}
+	public int getImageHeight(){return imageHeight;}
+	
+	public void setPosition(int x, int y) {
+		// TODO Auto-generated method stub
+		hitBox.x = x;
+		hitBox.y = y;
 	}
 }

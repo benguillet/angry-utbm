@@ -1,5 +1,18 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 import main.GameFrame;
 import model.GameModel;
 import model.ListChangedEvent;
@@ -8,17 +21,16 @@ import model.entities.Bird;
 import model.entities.Entity;
 import model.entities.Sparrow;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.ArrayList;
-
-public class GameController implements KeyListener, ListListener{
+public class GameController implements KeyListener, ListListener, MouseListener,MouseMotionListener{
 	
 	//private GameView angryView;
 	private GameModel angryModel;
 	private GameFrame angryFrame;
 	
 	private Bird currentBird;
+	private boolean isBirdPicked = false;
+	private int pickX;
+	private int pickY;
 	
 	private ArrayList<Entity> entities;
 	
@@ -39,12 +51,12 @@ public class GameController implements KeyListener, ListListener{
 					currentBird.moveLeft();
 				break;
 			case KeyEvent.VK_UP:
-				if(currentBird.isFlying())
-					currentBird.moveUp();
+				if(!currentBird.isFlying())
+					currentBird.setAngle(currentBird.getAngle()+0.1);
 				break;
 			case KeyEvent.VK_DOWN:
-				if(currentBird.isFlying())
-					currentBird.moveDown();
+				if(!currentBird.isFlying())
+					currentBird.setAngle(currentBird.getAngle()-0.1);
 				break;
 			case KeyEvent.VK_M:
 				currentBird.launch();
@@ -56,7 +68,8 @@ public class GameController implements KeyListener, ListListener{
 				break;
 			case KeyEvent.VK_SPACE:
 				//p.fire();	
-				angryModel.addEgg();
+				if(currentBird.isFlying())
+					angryModel.addEgg();
 				break;
 			case KeyEvent.VK_ESCAPE:
 				angryFrame.setMenuLevel();
@@ -86,6 +99,68 @@ public class GameController implements KeyListener, ListListener{
 	public void listChanged(ListChangedEvent event) {
 		this.entities = event.getEntityList();
 		this.currentBird = event.getCurrentBird();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(!currentBird.isFlying())
+		{
+			if(e.getX()>= currentBird.getPosition().getX() && e.getX() <= currentBird.getPosition().getX()+currentBird.getImageWidth())
+				if(e.getY()>= currentBird.getPosition().getY() && e.getY() <= currentBird.getPosition().getY()+currentBird.getImageHeight())
+				{
+					isBirdPicked = true;
+					pickX = e.getX();
+					pickY = e.getY();
+				}
+		}
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(isBirdPicked){
+			double deltaX = currentBird.getStartLocationX() - e.getX();
+			double deltaY = currentBird.getStartLocationY() - e.getY();
+			double speed = Math.sqrt((deltaX*deltaX)+(deltaY*deltaY));
+			currentBird.setAngle(-Math.atan(deltaY/deltaX));
+			currentBird.setSpeed(speed);
+			if(deltaX > 0)
+				currentBird.launch();
+			else{
+				currentBird.setPosition(currentBird.getStartLocationX(), currentBird.getStartLocationY());
+			}
+		}
+		isBirdPicked = false;
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(isBirdPicked)
+			currentBird.setPosition(e.getX()-currentBird.getImageWidth()/2, e.getY()-currentBird.getImageHeight()/2);
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
 	}
 }
 

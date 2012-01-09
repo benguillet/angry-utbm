@@ -10,6 +10,8 @@ public class Grass extends Entity {
 		imagePath = "res/images/grass.png";
 		ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
+	    imageHeight = ii.getIconHeight();
+	    imageWidth = ii.getIconWidth();
 	}
 
 	@Override

@@ -58,6 +58,8 @@ public class GameFrame extends JFrame {
 		
 		//Listener
 		angryView.addKeyListener(angryController);
+		angryView.addMouseListener(angryController);
+		angryView.addMouseMotionListener(angryController);
 		angryModel.addListListener(angryView);
 		angryModel.addListListener(angryController);		
 

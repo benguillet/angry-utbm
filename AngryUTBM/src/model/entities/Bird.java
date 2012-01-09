@@ -9,7 +9,6 @@ public abstract class Bird extends Entity {
 	protected boolean isFlying = false;
 	protected boolean isMoving;
 	private double time;
-	private double angle;
 	protected Dimension frameSize;
 	private double accelX;
 	private double accelY;
@@ -31,13 +30,12 @@ public abstract class Bird extends Entity {
 	}
 	
 	public Bird(int width, int height) {
-		super(40,400,width,height);
+		super(40,440,width,height);
 		isMoving = false;
 		time = 0.1;
-		angle = 45;
 		accelX = 0;
 		startLocationX = 40;
-		startLocationY = 400;
+		startLocationY = 440;
 		accelY = 9.81;
 		flyingTimeLeft = 10000;
 	}
@@ -48,6 +46,14 @@ public abstract class Bird extends Entity {
 	
 	public void setEggLeft(int i) {
 		this.eggLeft = i;
+	}
+	public int getStartLocationX()
+	{
+		return startLocationX;
+	}
+	public int getStartLocationY()
+	{
+		return startLocationY;
 	}
 	
 	public abstract void volStationaire();
