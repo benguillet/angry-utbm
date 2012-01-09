@@ -17,15 +17,20 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class MenuController implements KeyListener, ActionListener, MouseListener {
 
 	private JTextField playerNameField;
 	private JButton newButton,loadButton,optionsButton,exitButton;
-	private JButton okNewButton,okLoadButton;
+	private JButton okNewButton,okLoadButton,deleteButton;
 	private JButton easyButton,mediumButton,hardButton,extremeButton;
 	private ArrayList<JButton> lvlButtons;
 	private Player currentPlayer;
@@ -64,6 +69,8 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		okNewButton.addActionListener(this);
 				
 		playersList = angryMenuLoadView.getPlayersList();
+		deleteButton = angryMenuLoadView.getDeleteButton();
+		deleteButton.addActionListener(this);
 		okLoadButton = angryMenuLoadView.getOkLoadButton();
 		okLoadButton.addActionListener(this);
 		
@@ -116,7 +123,11 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		
 		if (e.getSource().equals(exitButton))
 		{
-			System.exit(0);
+			int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirmation pour quitter", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(option == JOptionPane.OK_OPTION)
+			{
+				System.exit(0);		
+			}
 		}
 		
 		if(e.getSource().equals(okNewButton))
@@ -153,6 +164,47 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			angryMenuDifficultyView.setParentPanel("loadPanel");
 			angryMenuDifficultyView.requestFocus();
 			angryFrame.setVisible(true);
+		}
+		
+		if(e.getSource().equals(deleteButton))
+		{
+			int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirmation avant suppression", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(option == JOptionPane.OK_OPTION)
+			{
+				Player p = (Player) playersList.getSelectedItem();
+				File file = new File("save/" + p.getName() + ".save"); 
+				file.delete();
+				
+				//mise a jour des players restants...
+				ArrayList<Player> players = new ArrayList<Player>();
+				try{
+					File initial = new File ("save");
+					for (File f:initial.listFiles())
+					{
+						FileInputStream fis = new FileInputStream(f);
+						ObjectInputStream ois = new ObjectInputStream(fis);
+						Player pl = (Player)ois.readObject();
+						players.add(pl);
+					}			
+				}
+				catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+				
+				for(Player p1 : players)
+		        {
+		        	System.out.println(p1.getName());
+		        }
+
+				//...dans la liste de players...
+				angryFrame.setPlayers(players);
+				//...et dans la JComboBox.
+				angryMenuLoadView.setPlayersList(players);
+				
+				angryMenuLoadView.repaint();
+				angryFrame.setVisible(true);	
+			}
 		}
 		
 
@@ -225,7 +277,11 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			case KeyEvent.VK_ESCAPE:
 				if(angryFrame.getContentPane()==angryMenuHomeView)
 				{
-					System.exit(0);
+					int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirmation pour quitter", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if(option == JOptionPane.OK_OPTION)
+					{
+						System.exit(0);		
+					}
 				}
 				if(angryFrame.getContentPane()==angryMenuNewView || angryFrame.getContentPane()==angryMenuLoadView || angryFrame.getContentPane()==angryMenuOptionsView)
 				{

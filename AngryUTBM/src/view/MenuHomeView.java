@@ -18,7 +18,7 @@ public class MenuHomeView extends GameViewMenu
         loadButton.setSize(200,30);
         loadButton.setLocation(frameWidth/2-100, 225);
         
-        optionsButton = new JButton("OPTIONS");
+        optionsButton = new JButton("CONTROLS");
         optionsButton.setSize(200,30);
         optionsButton.setLocation(frameWidth/2-100, 300);
         

@@ -309,6 +309,10 @@ public class GameModel implements ActionListener {
 		difficulty = dif;
 	}
 	
+	public void setPlayers(ArrayList<Player> players){
+		this.players = players;
+	}
+	
 	public void setCurrentPlayer(Player p) {
 		currentPlayer = p;
 	}
