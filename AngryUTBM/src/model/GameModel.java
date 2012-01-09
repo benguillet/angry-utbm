@@ -128,7 +128,7 @@ public class GameModel implements ActionListener {
 							toRemove.add(pig);
 			            	boolean win = true;
 			            	for (Entity entity3 : entities) {
-			            		if (entity3 instanceof Pig) {
+			            		if (entity3 instanceof Pig && !toRemove.contains(entity3)) {
 			            			win = false;
 			            			break;
 			            		}
