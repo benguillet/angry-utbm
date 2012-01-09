@@ -3,7 +3,6 @@ package controller;
 import main.GameFrame;
 import model.Level;
 import model.Player;
-import view.GameViewMenu;
 import view.MenuDifficultyView;
 import view.MenuHomeView;
 import view.MenuLevelView;
@@ -18,12 +17,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class MenuController implements KeyListener, ActionListener {
 
-	private JLabel difficultyLabel,playerNameLabel;
 	private JTextField playerNameField;
 	private JButton newButton,loadButton,optionsButton,exitButton;
 	private JButton okNewButton,okLoadButton;
@@ -128,13 +125,13 @@ public class MenuController implements KeyListener, ActionListener {
 			else 
 			{
 				currentPlayer = new Player(playerNameField.getText());
-				playerNameField.setVisible(false);
 				angryFrame.setCurrentPlayer(currentPlayer);
 				angryFrame.setDifficulty("");
 				angryFrame.setCurrentLevel(0);
 				angryFrame.setCurrentHighScore();
 				
 				angryFrame.setContentPane(angryMenuDifficultyView);
+				angryMenuDifficultyView.setParentPanel("newPanel");
 				angryMenuDifficultyView.requestFocus();
 				angryFrame.setVisible(true);
 			}
@@ -144,13 +141,13 @@ public class MenuController implements KeyListener, ActionListener {
 		if(e.getSource().equals(okLoadButton))
 		{
 			currentPlayer = (Player) playersList.getSelectedItem();
-			playersList.setVisible(false);
 			angryFrame.setCurrentPlayer(currentPlayer);
 			angryFrame.setDifficulty("");
 			angryFrame.setCurrentLevel(0);
 			angryFrame.setCurrentHighScore();
 
 			angryFrame.setContentPane(angryMenuDifficultyView);
+			angryMenuDifficultyView.setParentPanel("loadPanel");
 			angryMenuDifficultyView.requestFocus();
 			angryFrame.setVisible(true);
 		}
@@ -211,7 +208,7 @@ public class MenuController implements KeyListener, ActionListener {
 					angryFrame.setCurrentLevel(i+1);
 				}
 				else {
-					javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant a� ce niveau, tu peux insulter les developpeurs");
+					javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant a ce niveau, tu peux insulter les developpeurs");
 				}
 			}
 		}
@@ -219,10 +216,41 @@ public class MenuController implements KeyListener, ActionListener {
 	}
 	
 	@Override
-	public void keyPressed(KeyEvent e) {	
+	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
+		
 			case KeyEvent.VK_ESCAPE:
-				//angryFrame.setPreviousMenu();
+				if(angryFrame.getContentPane()==angryMenuHomeView)
+				{
+					System.exit(0);
+				}
+				if(angryFrame.getContentPane()==angryMenuNewView || angryFrame.getContentPane()==angryMenuLoadView || angryFrame.getContentPane()==angryMenuOptionsView)
+				{
+					angryFrame.setContentPane(angryMenuHomeView);
+					angryMenuHomeView.requestFocus();
+					angryFrame.setVisible(true);
+				}
+				if(angryFrame.getContentPane()==angryMenuDifficultyView)
+				{
+					if(angryMenuDifficultyView.getParentPanel()=="newPanel")
+					{
+						angryFrame.setContentPane(angryMenuNewView);
+						angryMenuNewView.requestFocus();
+						angryFrame.setVisible(true);
+					}
+					else
+					{
+						angryFrame.setContentPane(angryMenuLoadView);
+						angryMenuLoadView.requestFocus();
+						angryFrame.setVisible(true);
+					}
+				}
+				if(angryFrame.getContentPane()==angryMenuLevelView)
+				{
+					angryFrame.setContentPane(angryMenuDifficultyView);
+					angryMenuDifficultyView.requestFocus();
+					angryFrame.setVisible(true);
+				}
 				break;
 			default:
 				System.out.println("je gere pas cette touche ! Blaireau !");

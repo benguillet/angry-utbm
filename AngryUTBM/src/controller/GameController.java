@@ -66,7 +66,7 @@ public class GameController implements KeyListener, ListListener{
 				currentBird.reload();
 				break;*/
 			default:
-				System.out.println("je gère pas cette touche ! Blaireau !");
+				System.out.println("je gere pas cette touche ! Blaireau !");
 		}
 	}
 
