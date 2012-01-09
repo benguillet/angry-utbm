@@ -140,6 +140,10 @@ public class GameFrame extends JFrame {
 		
 	}
 	
+	public void setPlayers(ArrayList<Player> players) {
+		angryModel.setPlayers(players);
+	}
+	
 	public void setCurrentPlayer(Player p) {
 		angryModel.setCurrentPlayer(p);
 	}

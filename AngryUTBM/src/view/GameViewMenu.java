@@ -21,6 +21,8 @@ public abstract class GameViewMenu extends JLayeredPane {
 	private String backgroundImagePath = "res/images/background.png";
 	private Image image,title;
 	
+	private JPanel backPanel;
+	
 	public GameViewMenu()
 	{
 
@@ -31,7 +33,7 @@ public abstract class GameViewMenu extends JLayeredPane {
 	    ImageIcon ti = new ImageIcon(titleImagePath);
 	    title = ti.getImage();
 	      
-	    JPanel backPanel= new JPanel() {
+	    backPanel= new JPanel() {
 	    
 			public void paint(Graphics g) {
 				g.drawImage(image, 0, 0,frameWidth, frameHeight, null);
