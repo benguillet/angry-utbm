@@ -9,6 +9,7 @@ public class MenuDifficultyView extends GameViewMenu
 
 	private JLabel difficultyLabel;
 	private JButton easyButton, mediumButton, hardButton, extremeButton;
+	private String parentPanel="";
 	
 	public MenuDifficultyView()
 	{
@@ -57,5 +58,15 @@ public class MenuDifficultyView extends GameViewMenu
 	public JButton getExtremeButton()
 	{
 		return extremeButton;
+	}
+	
+	public String getParentPanel()
+	{
+		return this.parentPanel;
+	}
+	
+	public void setParentPanel(String parent)
+	{
+		this.parentPanel=parent;
 	}
 }

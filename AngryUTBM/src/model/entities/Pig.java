@@ -13,14 +13,15 @@ public class Pig extends Enemy {
 	private Dimension frameSize;
 	private boolean back;
 	
-	public Pig(int x, int y) {
+	public Pig(int x, int y, double pigSpeed) {
 		super(x,y,26,25);
 		imagePath = "res/images/pig.png";
 		ImageIcon ii = new ImageIcon(imagePath);
 		image = ii.getImage();
 		imageHeight = ii.getIconHeight();
 	    imageWidth = ii.getIconWidth();
-		speed = 1;
+		speed = pigSpeed;
+
 		back = false;
 		frameSize = GameFrame.getFrameSize();
 	}

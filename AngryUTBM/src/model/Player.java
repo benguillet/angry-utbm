@@ -52,7 +52,7 @@ public class Player implements Serializable {
 		highestExtremeScores = new ArrayList<Integer>();
 		
 		
-		// Permet de créer des listes de la bonne taille et ainsi d'éviter les OutOfBoundExceptions
+		// Permet de creer des listes de la bonne taille et ainsi d'eviter les OutOfBoundExceptions
 		for (int i = 0; i < LevelNumber.getLevelNumber(); ++i) {
 			easyScores.add(0);
 			mediumScores.add(0);
@@ -86,7 +86,6 @@ public class Player implements Serializable {
 
 	public void save() {
 		try {
-
 			File folder = new File("save/");
 			folder.mkdir();
 			File file = new File("save/" + name + ".save");
