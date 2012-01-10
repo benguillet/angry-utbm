@@ -24,13 +24,15 @@ public class MenuLoadView extends GameViewMenu
         	playersList.addItem(p);
         }
         
-        deleteButton = new JButton("DELETE");
-        deleteButton.setSize(200,30);
-        deleteButton.setLocation(frameWidth/2-100, 375);
-        
         okLoadButton = new JButton("OK");
         okLoadButton.setSize(200,30);
-        okLoadButton.setLocation(frameWidth/2-100, 475);
+        okLoadButton.setLocation(frameWidth/2-100, 200);
+        
+        deleteButton = new JButton("DELETE");
+        deleteButton.setSize(200,30);
+        deleteButton.setLocation(frameWidth/2-100, 300);
+        
+        
         
         this.add(playersList,new Integer(1));
         this.add(deleteButton, new Integer(1));

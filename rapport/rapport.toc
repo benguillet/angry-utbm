@@ -14,17 +14,27 @@
 \contentsline {section}{\numberline {3.1}Diagramme de classes}{5}{section.3.1}
 \contentsline {section}{\numberline {3.2}Diagramme de séquences}{5}{section.3.2}
 \contentsline {chapter}{\numberline {4}Conception et prise en main}{6}{chapter.4}
-\contentsline {section}{\numberline {4.1}Créer ou modifier des niveaux}{6}{section.4.1}
+\contentsline {section}{\numberline {4.1}Gestion du menu}{6}{section.4.1}
 \contentsline {paragraph}{}{6}{section.4.1}
 \contentsline {paragraph}{}{6}{section.4.1}
 \contentsline {paragraph}{}{6}{section.4.1}
-\contentsline {paragraph}{}{6}{section.4.1}
-\contentsline {paragraph}{}{6}{section.4.1}
-\contentsline {paragraph}{}{6}{section.4.1}
-\contentsline {paragraph}{}{6}{section.4.1}
-\contentsline {paragraph}{}{7}{section.4.1}
-\contentsline {chapter}{\numberline {5}Bilan}{8}{chapter.5}
-\contentsline {section}{\numberline {5.1}Conclusion}{8}{section.5.1}
-\contentsline {paragraph}{}{8}{section.5.1}
-\contentsline {section}{\numberline {5.2}Améliorations possibles}{8}{section.5.2}
-\contentsline {paragraph}{}{8}{section.5.2}
+\contentsline {paragraph}{}{7}{figure.4.1}
+\contentsline {paragraph}{}{7}{figure.4.1}
+\contentsline {paragraph}{}{7}{figure.4.1}
+\contentsline {section}{\numberline {4.2}Gestion des niveaux}{7}{section.4.2}
+\contentsline {paragraph}{}{7}{section.4.2}
+\contentsline {paragraph}{}{7}{section.4.2}
+\contentsline {paragraph}{}{7}{section.4.2}
+\contentsline {paragraph}{}{7}{section.4.2}
+\contentsline {paragraph}{}{7}{section.4.2}
+\contentsline {paragraph}{}{7}{section.4.2}
+\contentsline {paragraph}{}{7}{section.4.2}
+\contentsline {paragraph}{}{8}{section.4.2}
+\contentsline {paragraph}{}{8}{figure.4.3}
+\contentsline {paragraph}{}{9}{figure.4.3}
+\contentsline {paragraph}{}{9}{figure.4.3}
+\contentsline {chapter}{\numberline {5}Bilan}{10}{chapter.5}
+\contentsline {section}{\numberline {5.1}Conclusion}{10}{section.5.1}
+\contentsline {paragraph}{}{10}{section.5.1}
+\contentsline {section}{\numberline {5.2}Améliorations possibles}{10}{section.5.2}
+\contentsline {paragraph}{}{10}{section.5.2}

@@ -26,6 +26,8 @@ public class MenuHomeView extends GameViewMenu
         exitButton.setSize(200,30);
         exitButton.setLocation(frameWidth/2-100, 375);
         
+        backButton.setVisible(false);
+        
    	 	this.add(newButton,new Integer(1));
    	 	this.add(loadButton,new Integer(1));
    	 	this.add(optionsButton,new Integer(1));
