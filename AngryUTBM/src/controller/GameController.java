@@ -1,17 +1,11 @@
 package controller;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 import main.GameFrame;
 import model.GameModel;
@@ -29,10 +23,6 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 	
 	private Bird currentBird;
 	private boolean isBirdPicked = false;
-	private int pickX;
-	private int pickY;
-	
-	private ArrayList<Entity> entities;
 	
 	public GameController(GameFrame Frame){
 		angryFrame = Frame;
@@ -64,7 +54,7 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 			case KeyEvent.VK_S:
 				// On interdit le vol stationaire pour les moineaux
 				if(!(currentBird instanceof Sparrow))
-					currentBird.volStationaire();
+					currentBird.hovering();
 				break;
 			case KeyEvent.VK_SPACE:
 				//p.fire();	
@@ -97,7 +87,6 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 	
 	@Override
 	public void listChanged(ListChangedEvent event) {
-		this.entities = event.getEntityList();
 		this.currentBird = event.getCurrentBird();
 	}
 
@@ -127,10 +116,10 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 				if(e.getY()>= currentBird.getPosition().getY() && e.getY() <= currentBird.getPosition().getY()+currentBird.getImageHeight())
 				{
 					isBirdPicked = true;
-					pickX = e.getX();
-					pickY = e.getY();
 				}
+			angryFrame.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		}
+		
 	}
 
 	@Override
@@ -158,6 +147,7 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 				currentBird.setPosition(currentBird.getStartLocationX(), currentBird.getStartLocationY());
 			}
 		}
+		angryFrame.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		isBirdPicked = false;
 	}
 

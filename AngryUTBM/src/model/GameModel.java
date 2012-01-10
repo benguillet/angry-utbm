@@ -35,12 +35,12 @@ public class GameModel implements ActionListener {
 	private String difficulty;
 	private int currentLevel;
 	private int currentHighestScore;
-	private int score = 0;
+	private int score;
 	
 	public GameModel() {
 		entities = new ArrayList<Entity>();
-		
 		players = new ArrayList<Player>();
+		score =0;
 		
 		// on parcourt tous les elements du repertoire
 		try{

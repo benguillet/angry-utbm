@@ -6,7 +6,7 @@ public abstract class Bird extends Entity {
 	protected short flyingTime;
 	protected int eggLeft;
 	protected ArrayList<Egg> eggs;
-	protected boolean isFlying = false;
+	protected boolean isFlying;
 	protected boolean isMoving;
 	private double time;
 	protected Dimension frameSize;
@@ -21,6 +21,7 @@ public abstract class Bird extends Entity {
 	public Bird(int x, int y, int width, int height) {
 		super(x,y,width,height);
 		isMoving = false;
+		isFlying = false;
 		time = 0.1;
 		accelX = 0;
 		startLocationX = x;
@@ -58,7 +59,7 @@ public abstract class Bird extends Entity {
 		return startLocationY;
 	}
 	
-	public abstract void volStationaire();
+	public abstract void hovering();
 	
 	public boolean isFlying() {
 		return isFlying;

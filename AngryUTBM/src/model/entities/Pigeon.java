@@ -1,6 +1,5 @@
 package model.entities;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -20,7 +19,7 @@ public class Pigeon extends Bird {
 	    frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
     
-    public void volStationaire() {
+    public void hovering() {
     	isMoving = !isMoving;
     }
     

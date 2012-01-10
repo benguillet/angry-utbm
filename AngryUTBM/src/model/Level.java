@@ -38,7 +38,7 @@ public class Level {
 	    
     }
 	
-	public Level(String fichierMapPath, String difficulty) {
+	public Level(String fileMapPath, String difficulty) {
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
 	    ImageIcon gr = new ImageIcon(grassImagePath);
@@ -55,7 +55,7 @@ public class Level {
 	    
 	    try
 	    {
-			FileInputStream ips=new FileInputStream(fichierMapPath); 
+			FileInputStream ips=new FileInputStream(fileMapPath); 
 			isLoaded = true;
 			InputStreamReader ipsr=new InputStreamReader(ips);
 			BufferedReader br=new BufferedReader(ipsr);
