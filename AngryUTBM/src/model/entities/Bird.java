@@ -31,12 +31,12 @@ public abstract class Bird extends Entity {
 	}
 	
 	public Bird(int width, int height) {
-		super(40,440,width,height);
+		super(100,440,width,height);
 		isMoving = false;
 		bounce = false;
 		time = 0.1;
 		accelX = 0;
-		startLocationX = 40;
+		startLocationX = 100;
 		startLocationY = 440;
 		accelY = 9.81;
 		flyingTimeLeft = 10000;
