@@ -33,7 +33,7 @@ public class Pig extends Enemy {
 	public void move() {
 		if (hitBox.x > frameSize.getWidth() - image.getWidth(null))
 			back = true;
-		if (hitBox.x < 1)
+		if (hitBox.x < 250)
 			back = false;
 
 		if (!back)

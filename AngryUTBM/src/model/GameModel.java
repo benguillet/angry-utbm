@@ -201,9 +201,24 @@ public class GameModel implements ActionListener {
 						Grass block = (Grass) entity2;
 						Rectangle hitBoxGrass = entity2.getHitBox();
 						
-						if(hitBoxPig.intersects(hitBoxGrass))
+						if(hitBoxPig.intersectsLine(hitBoxGrass.getX(),
+								hitBoxGrass.getY(),
+								hitBoxGrass.getX()+hitBoxGrass.getWidth(),
+								hitBoxGrass.getY()))
 							moveDown=false;
 					}
+					/*if(entity2 instanceof Pig && entity2 != pig)
+					{
+						Pig pig1 = (Pig) entity2;
+						Rectangle hitBoxPig1 = entity2.getHitBox();
+						
+						if(hitBoxPig.intersects(hitBoxPig1))
+						{
+							pig1.changeDirection();
+							pig.changeDirection();
+						}
+							
+					}*/
 					if(moveDown)
 						pig.moveDown();
 					else pig.doNotMoveDown();
@@ -225,7 +240,7 @@ public class GameModel implements ActionListener {
 						Rectangle hitBoxBlock = entity2.getHitBox();
 						if(hitBoxBird.intersects(hitBoxBlock))
 						{
-							toRemove.add(bird);
+							bird.bounce();
 							toRemove.add(block);
 						}
 					}

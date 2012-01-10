@@ -79,7 +79,7 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 				currentBird.reload();
 				break;*/
 			default:
-				System.out.println("je gere pas cette touche ! Blaireau !");
+				System.out.println("je gere pas cette touche !");
 		}
 	}
 
@@ -137,11 +137,21 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(isBirdPicked){
-			double deltaX = currentBird.getStartLocationX() - e.getX();
-			double deltaY = currentBird.getStartLocationY() - e.getY();
+			int x = e.getX(),y = e.getY();
+			if(y > 545-currentBird.getImageHeight()/2)
+				y=545-currentBird.getImageHeight()/2;
+			if(y < 400)
+				y = 400;
+			if(x < currentBird.getImageWidth()/2)
+				x = currentBird.getImageWidth()/2;
+			if(x > 200)
+				x = 200;
+			double deltaX = currentBird.getStartLocationX() - x;
+			double deltaY = currentBird.getStartLocationY() - y;
 			float speed = (float)Math.sqrt((deltaX*deltaX)+(deltaY*deltaY));
 			currentBird.setAngle(-Math.atan(deltaY/deltaX));
 			currentBird.setSpeed(speed);
+			
 			if(deltaX > 0)
 				currentBird.launch();
 			else{
@@ -155,7 +165,24 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(isBirdPicked)
-			currentBird.setPosition(e.getX()-currentBird.getImageWidth()/2, e.getY()-currentBird.getImageHeight()/2);
+		{
+			int x = e.getX(),y = e.getY();
+			if(y > 545-currentBird.getImageHeight()/2)
+				y=545-currentBird.getImageHeight()/2;
+			if(y < 400)
+				y = 400;
+			if(x < currentBird.getImageWidth()/2)
+				x = currentBird.getImageWidth()/2;
+			if(x > 200)
+				x = 200;
+			double deltaX = currentBird.getStartLocationX() - x;
+			double deltaY = currentBird.getStartLocationY() - y;
+			float speed = (float)Math.sqrt((deltaX*deltaX)+(deltaY*deltaY));
+			currentBird.setAngle(-Math.atan(deltaY/deltaX));
+			currentBird.setSpeed(speed);
+			
+			currentBird.setPosition(x-currentBird.getImageWidth()/2, y-currentBird.getImageHeight()/2);
+		}
 	}
 
 	@Override

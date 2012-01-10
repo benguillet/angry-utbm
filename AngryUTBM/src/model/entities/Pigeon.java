@@ -20,14 +20,6 @@ public class Pigeon extends Bird {
 	    frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
     
-    public void moveUp() {
-    	//position.setLocation(position.getX() ,position.getY() - speed);
-    }
-    
-    public void moveDown() {
-    	//position.setLocation(position.getX(), position.getY() + speed);
-    }
-    
     public void volStationaire() {
     	isMoving = !isMoving;
     }
@@ -38,5 +30,5 @@ public class Pigeon extends Bird {
     
     public ArrayList<Egg> getEggs() {
     	return eggs;
-    }  
+    }
 }
