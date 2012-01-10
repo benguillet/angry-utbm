@@ -193,7 +193,7 @@
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.4]{images/lvl01hitbox.png} 
+\includegraphics[scale=0.35]{images/lvl01hitbox.png} 
 \end{center}
 \caption{Niveau 1 avec hitBoxes visibles}
 \label{Niveau 1 avec hitBoxes visibles}
@@ -270,6 +270,46 @@
 \paragraph{}Si le niveau est terminé, le programme entre dans la fonction win() qui se chargera d'effectuer tous les traitements de la victoire.
 \paragraph{}De la même façon que pour la gestion de la victoire, l'événement de défaite est provoqué dans la fonction updateEntity(). Mais, cette fois, le test n'est pas effectué sur les instances de cochons mais sur les instances des oiseaux dans la liste des entités. Lorsqu'il n'y a plus d'oiseaux dans la liste, la fonction lose() est appelée.
 \paragraph{}Dans ce cas il est important de faire les traitements sur les cochons en premier, pour qu'il n'y ait pas d'appel à la fonction lose() lorsqu'il n'y a plus de d'oiseaux ni de cochons (l'appel à la fonction win() passera donc en priorité).
+
+\section{Données du joueur et sauvegardes}
+\paragraph*{}
+Il nous était demandé de sauvegarder la progression du joueur pour le permettre 
+de reprendre la partie là où il en était plus tard. Nous avons donc mis en place 
+un système de \guillemotleft profil \guillemotright : 
+le dossier \verb+save+ contient un fichier de sauvegarde par joueur, qui porte son nom. 
+Ce fichier contient la sérialisation de l'objet correspondant au joueur. 
+La classe \verb+Player+ a été conçue spécifiquement pour ce besoin. \\
+
+Le joueur a donc la possibilité de choisir parmi la liste des profils déjà sauvegardés, 
+ou d'en créer un nouveau.
+
+\paragraph*{Données associées à un joueur}
+Pour chaque joueur, on souhaite stocker son nom, les niveaux qu'il a réussi, ainsi 
+que les scores obtenus. La classe Player contient donc un champ de type \verb+String+ 
+pour le nom et deux \verb+ArrayList+ par niveau de difficulté, une contenant les niveaux 
+débloqués pour la difficulté correspondant, l'autre contenant les scores pour les niveaux réussis.
+
+\paragraph*{Sérialisation}
+Pour sauvegarder les données entre les parties, il était nécessaire de sérialiser 
+la classe Player. Pour cela, le plus simple a été d'utiliser les facilités offertes par 
+Java avec les \verb+ObjectOutputStream+ et \verb+ObjectInputStream+. Nous n'avions ainsi pas 
+besoin de nous occuper des détails d'implémentation de la sérialisation des objets, ou de leur 
+lecture depuis un fichier. \\
+
+Cette technique empêche la lecture des fichiers de sauvegarde par d'autres programmes 
+que le notre, mais cela n'est pas un problème pour ce projet. \\
+
+Un autre problème pourrait venir du nom des joueurs : en effet, les fichiers de 
+sauvegarde son nommés \guillemotleft nom.save \guillemotright, or aucune vérification 
+n'est faite sur les noms entrés lors de la création d'un nouveau profil.
+
+\paragraph*{Scores}
+Seuls les plus hauts scores sont conservés pour un joueur et un niveau donné. 
+Lorsque le joueur termine un niveau, on appel la méthode \verb+finished()+ de 
+\verb+Player+, avec en paramètres le niveau, la difficultée et le score. \verb+finished()+ 
+se charge en suite de vérifier si le score donné est un nouveau record. \\
+
+Le score correspond au nombre d'oiseaux restant une fois le niveau réussi.
 
 \chapter{Bilan}
 \section{Conclusion}
