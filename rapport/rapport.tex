@@ -110,7 +110,36 @@
 \section{Diagramme de séquences}
 
 \chapter{Conception et prise en main}
-\section{Créer ou modifier des niveaux}
+
+\section{Gestion du menu}
+\paragraph{}La gestion du menu s’effectue au travers de 6 panneaux différents : 
+\begin{itemize}
+\item MenuHomeView, panneau d’accueil au lancement du jeu.
+\item MenuNewView, panneau de création d’une nouvelle partie.
+\item MenuLoadView, panneau de chargement d’une partie.
+\item MenuControlsView, panneau d’informations sur les contrôles du jeu.
+\item MenuDifficultyView, panneau de choix de la difficulté du jeu.
+\item MenuLevelView, panneau de choix du niveau.
+\end{itemize}
+
+\paragraph{}Chaque panneau est implémenté dans une classe propre à ses caractéristiques héritant de la classe GameViewMenu qui comporte les caractéristiques communes à tous les panneaux telle que le background du Menu.
+
+\paragraph{}La classe GameViewMenu hérite elle-même de la classe JLayeredPane, qui permet d’indiquer aux éléments placés sur le panneau un index de position en profondeur, ce qui nous permet notamment de placer nos boutons par-dessus notre background.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.5]{images/navigationmenu.png} 
+\end{center}
+\caption{Navigation dans le menu}
+\label{Navigation dans le menu}
+\end{figure}
+
+\paragraph{}La navigation dans le menu se fait au travers des différents boutons avec la souris, et pour le retour en arrière nous avons mis en place un contrôle supplémentaire par le clavier au moyen de la touche \guillemotleft échap \guillemotright(équivalent au retour en arrière avec le bouton \guillemotleft retour \guillemotright à la souris).
+\paragraph{}Il y a alors détection du panneau sur lequel on se trouve afin de charger le panneau \guillemotleft précédent \guillemotright correspondant. 
+\paragraph{}Pour le cas du panneau de choix de difficulté, l’accès au panneau a pu être réalisé depuis le panneau de création d’une nouvelle partie ou depuis le chargement d’une partie. C’est pourquoi une variable a été implémentée (parentPanel) afin de garder en mémoire depuis quel panneau a été fait le dernier accès au panneau de choix de difficulté.
+
+
+\section{Gestion des niveaux}
 \paragraph{}La création d’un niveau du jeu s’appuie sur la lecture d’un fichier texte qui doit contenir les informations suivantes :
 \begin{itemize}
 \item les oiseaux disponibles pour réaliser le niveau.
@@ -120,18 +149,39 @@
 
 \paragraph{}On retrouve en tête du fichier la liste des oiseaux. Un retour à la ligne est effectué après chaque oiseau disponible dans le niveau afin de faciliter la lecture du fichier. De plus les oiseaux sont indiqués dans le même ordre que leur ordre d’apparition dans le niveau.
 \paragraph{}Un test d’égalité a lieu entre la chaîne de caractère contenue dans la ligne et les différents types d’oiseaux, afin de créer l’oiseau correspondant et de l’ajouter à un ArrayList d’entités.
-\paragraph{}Lors de la lecture du fichier texte, la rencontre du mot « Map » permet au programme de savoir que la liste des oiseaux disponibles pour le niveau est complète et que la suite du fichier contient la carte représentant le niveau.
+\paragraph{}Lors de la lecture du fichier texte, la rencontre du mot \guillemotleft Map \guillemotright permet au programme de savoir que la liste des oiseaux disponibles pour le niveau est complète et que la suite du fichier contient la carte représentant le niveau.
 \paragraph{}Il s’agit de lignes de texte de taille égale contenant différents caractères qui seront implémentés dans un tableau de deux dimensions (chaque ligne du fichier texte correspond à une ligne du tableau 2D).
 \paragraph{}Le tableau à une taille adaptable aux dimensions de notre fenêtre et de nos éléments de décor. Chaque élément du décor a une image correspondante de 26*26 pixels, et pour correspondre ici à une fenêtre de taille 1200*600 pixels, une ligne du tableau contient 47 éléments et une colonne en contient 22.
 \paragraph{}Chaque caractère correspond à un élément différent sur le décor :
 \begin{itemize}
-\item le 0 indique que rien ne se trouve à cet endroit de la carte.
-\item le 1 indique qu’il y a un bloc d’herbe à cet endroit de la carte.
-\item le 2 indique qu’il y a un bloc de pierre à cet endroit de la carte.
-\item le 3 indique la position de départ d’un cochon ennemi.
+\item le \guillemotleft 0 \guillemotright indique que rien ne se trouve à cet endroit de la carte.
+\item le \guillemotleft 1 \guillemotright indique qu’il y a un bloc d’herbe à cet endroit de la carte.
+\item le \guillemotleft 2 \guillemotright indique qu’il y a un bloc de pierre à cet endroit de la carte.
+\item le \guillemotleft 3 \guillemotright indique la position de départ d’un cochon ennemi.
 \end{itemize}
-\paragraph{}Une lecture du tableau est réalisée pour positionner et dessiner les cochons sur le panel (à chaque 3 rencontré dans le tableau) et le décor. Lorsqu’un cochon est positionné on remplace la case correspondante par un 0 afin d’indiquer qu’aucun élément de décor ne se trouvera à cet emplacement. Lorsqu’un 1 (respectivement 2) est rencontré on positionne et dessine un bloc d’herbe (respectivement bloc de pierre) sur le panel.
+\paragraph{}Une lecture du tableau est ensuite réalisée et à chaque \guillemotleft 1 \guillemotright, \guillemotleft 2 \guillemotright, ou \guillemotleft 3 \guillemotright rencontré, on créé l'entité correspondante (cochon, bloc d'herbe ou bloc de pierre). L'entité est créé via un constructeur prenant en paramètre sa position x (calculée à l'aide de l'index des colonnes du tableau et de la taille de l'image correspondante à l'entité) et sa position y (calculée à l'aide de l'index des lignes du tableau et de la taille de l'image correspondante à l'entité).
 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.4]{images/lvl01image.png} 
+\end{center}
+\caption{Screenshot niveau 1}
+\label{Screenshot niveau 1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=1]{images/lvl01texte.png} 
+\end{center}
+\caption{Fichier texte niveau 1}
+\label{Fichier texte niveau 1}
+\end{figure}
+
+\paragraph{}La figure 4.2 est le fichier texte correspondant au niveau représenté en figure 4.1. On remarque que la dernière ligne ne comportant que des \guillemotleft 1 \guillemotright concorde bien à une ligne de blocs d'herbe sur la partie basse de notre fenêtre. De même les \guillemotleft 2 \guillemotright concordent à des blocs de pierres et les \guillemotleft 3 \guillemotright à des cochons.
+
+\paragraph{}On aperçoit dans le coin en haut à droite de la figure 4.1 les oiseaux disponibles dans le niveau, coïncidant aux premières lignes du fichier texte de la figure 4.2.
+
+\paragraph{}D'une manière générale on remarque que la création de nouveaux niveaux ou la modification de niveaux existants est relativement simple.
 
 \chapter{Bilan}
 \section{Conclusion}

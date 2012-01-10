@@ -88,7 +88,6 @@ public class Level {
 					tabMap[i][j]= Integer.parseInt(st);
 					if (tabMap[i][j] == 3) {
 						entities.add(new Pig(j*blockSize,i*blockSize, pigSpeed));
-						tabMap[i][j] = 0;
 					}
 					if(tabMap[i][j] == 2)
 						entities.add(new Block(j*blockSize,i*blockSize,blockSize,blockSize));

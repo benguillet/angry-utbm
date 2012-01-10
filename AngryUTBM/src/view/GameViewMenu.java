@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
+import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
@@ -22,6 +23,7 @@ public abstract class GameViewMenu extends JLayeredPane {
 	private Image image,title;
 	
 	private JPanel backPanel;
+	protected JButton backButton;
 	
 	public GameViewMenu()
 	{
@@ -46,7 +48,12 @@ public abstract class GameViewMenu extends JLayeredPane {
 	    setFocusable(true);
         setDoubleBuffered(true);
         
+        backButton = new JButton("BACK");
+        backButton.setSize(100,30);
+        backButton.setLocation(1000, 500);
+        
         this.add(backPanel,new Integer(0));
+        this.add(backButton,new Integer(1));
    	 	        
         this.setVisible(true);
 	}
