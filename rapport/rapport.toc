@@ -33,8 +33,33 @@
 \contentsline {paragraph}{}{8}{figure.4.3}
 \contentsline {paragraph}{}{9}{figure.4.3}
 \contentsline {paragraph}{}{9}{figure.4.3}
-\contentsline {chapter}{\numberline {5}Bilan}{10}{chapter.5}
-\contentsline {section}{\numberline {5.1}Conclusion}{10}{section.5.1}
-\contentsline {paragraph}{}{10}{section.5.1}
-\contentsline {section}{\numberline {5.2}Améliorations possibles}{10}{section.5.2}
-\contentsline {paragraph}{}{10}{section.5.2}
+\contentsline {section}{\numberline {4.3}Gestion des collisions}{9}{section.4.3}
+\contentsline {paragraph}{}{9}{section.4.3}
+\contentsline {paragraph}{}{9}{section.4.3}
+\contentsline {paragraph}{}{9}{section.4.3}
+\contentsline {paragraph}{}{9}{figure.4.4}
+\contentsline {paragraph}{}{9}{figure.4.4}
+\contentsline {subparagraph}{Collision des œufs :}{10}{figure.4.4}
+\contentsline {subparagraph}{Collision des cochons :}{10}{figure.4.4}
+\contentsline {subparagraph}{Collision des oiseaux :}{10}{figure.4.5}
+\contentsline {paragraph}{}{11}{figure.4.5}
+\contentsline {section}{\numberline {4.4}Gestion des oiseaux}{11}{section.4.4}
+\contentsline {paragraph}{}{11}{section.4.4}
+\contentsline {paragraph}{Création de l'oiseau courant :}{11}{section.4.4}
+\contentsline {paragraph}{}{11}{section.4.4}
+\contentsline {paragraph}{}{11}{section.4.4}
+\contentsline {paragraph}{Vie de l'oiseau :}{11}{section.4.4}
+\contentsline {paragraph}{}{11}{section.4.4}
+\contentsline {paragraph}{Mort de l'oiseau courant :}{11}{section.4.4}
+\contentsline {paragraph}{}{11}{section.4.4}
+\contentsline {section}{\numberline {4.5}Gestion de la victoire ou défaite d'un niveau}{11}{section.4.5}
+\contentsline {paragraph}{}{11}{section.4.5}
+\contentsline {paragraph}{}{12}{section.4.5}
+\contentsline {paragraph}{}{12}{section.4.5}
+\contentsline {paragraph}{}{12}{section.4.5}
+\contentsline {paragraph}{}{12}{section.4.5}
+\contentsline {chapter}{\numberline {5}Bilan}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}Conclusion}{13}{section.5.1}
+\contentsline {paragraph}{}{13}{section.5.1}
+\contentsline {section}{\numberline {5.2}Améliorations possibles}{13}{section.5.2}
+\contentsline {paragraph}{}{13}{section.5.2}
