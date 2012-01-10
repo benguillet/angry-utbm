@@ -284,12 +284,12 @@ public class GameModel implements ActionListener {
 			this.setCurrentLevel(currentLevel+1);
 		}
 		else {
-			javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant à ce niveau, tu peux insulter les développeurs");
+			javax.swing.JOptionPane.showMessageDialog(null, "No map for this level yet !");
 		}
 	}
 	
 	public void lose() {
-		System.out.println("La lose! Vous avez perdu!");
+		javax.swing.JOptionPane.showMessageDialog(null, "GAME OOOOOVER ! Try again ?");
 	}
 	
 	
