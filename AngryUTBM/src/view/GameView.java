@@ -73,10 +73,11 @@ public class GameView extends JPanel implements ListListener {
         for (Entity e : entities) {
         	if (!(e instanceof Bird)) { // on affiche pas tous les oiseaux, juste le courant
         		g2d.drawImage(e.getImage(), (int) e.getPosition().getX(), (int) e.getPosition().getY(), this);
+        		g2d.draw(e.getHitBox());
         	}
         		if(e== currentBird )
         	{
-        		
+        		g2d.draw(e.getHitBox());
         		g2d.setStroke(new BasicStroke(7.0f));
         		g2d.setColor(new Color(54, 28, 13));
         		if(!currentBird.isFlying())g2d.drawLine(75,470, (int)e.getPosition().getX()+e.getImageWidth()/2, (int)e.getPosition().getY()+e.getImageHeight()/2);
@@ -96,6 +97,8 @@ public class GameView extends JPanel implements ListListener {
         		g2d.setStroke(new BasicStroke(7.0f));
         		g2d.setColor(new Color(54, 28, 13));
         		if(currentBird.isFlying())g2d.drawLine(75,470,60,470);
+        		g2d.setStroke(new BasicStroke(1.0f));
+        		g2d.setColor(new Color(0, 0, 0));
         }
         
         
