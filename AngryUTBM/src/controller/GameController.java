@@ -155,7 +155,14 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(isBirdPicked)
+		{
+			double deltaX = currentBird.getStartLocationX() - e.getX();
+			double deltaY = currentBird.getStartLocationY() - e.getY();
+			float speed = (float)Math.sqrt((deltaX*deltaX)+(deltaY*deltaY));
+			currentBird.setAngle(-Math.atan(deltaY/deltaX));
+			currentBird.setSpeed(speed);
 			currentBird.setPosition(e.getX()-currentBird.getImageWidth()/2, e.getY()-currentBird.getImageHeight()/2);
+		}
 	}
 
 	@Override

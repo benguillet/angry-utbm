@@ -225,7 +225,7 @@ public class GameModel implements ActionListener {
 						Rectangle hitBoxBlock = entity2.getHitBox();
 						if(hitBoxBird.intersects(hitBoxBlock))
 						{
-							toRemove.add(bird);
+							bird.bounce();
 							toRemove.add(block);
 						}
 					}

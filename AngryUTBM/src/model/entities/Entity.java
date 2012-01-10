@@ -47,6 +47,7 @@ public abstract class Entity {
 	}
 	public void setAngle(double a){angle=a;}
 	public double getAngle(){return angle;}
+	public double getSpeed(){return speed;}
 	public int getImageWidth(){return imageWidth;}
 	public int getImageHeight(){return imageHeight;}
 	

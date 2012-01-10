@@ -16,22 +16,24 @@ public abstract class Bird extends Entity {
 	protected int startLocationY;
 	private long lastTime;
 	private long flyingTimeLeft;
+	private boolean bounce;
 	
 	public Bird(int x, int y, int width, int height) {
 		super(x,y,width,height);
 		isMoving = false;
 		time = 0.1;
-		angle = 45;
 		accelX = 0;
 		startLocationX = x;
 		startLocationY = y;
 		accelY = 9.81;
 		flyingTimeLeft = 10000;
+		
 	}
 	
 	public Bird(int width, int height) {
 		super(40,440,width,height);
 		isMoving = false;
+		bounce = false;
 		time = 0.1;
 		accelX = 0;
 		startLocationX = 40;
@@ -60,6 +62,11 @@ public abstract class Bird extends Entity {
 	
 	public boolean isFlying() {
 		return isFlying;
+	}
+	public void bounce()
+	{
+		bounce =!bounce;
+		speed=-speed;
 	}
 	
     public void move() {
@@ -90,9 +97,7 @@ public abstract class Bird extends Entity {
     public void moveLeft() {
     	accelX-=0.1;
     }
-    
-	public abstract void moveUp();
-	public abstract void moveDown();
+ 
 	public abstract void reload();
 	
 	public long getFlyingTimeLeft() {
