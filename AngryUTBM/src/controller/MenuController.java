@@ -312,7 +312,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				}
 				break;
 			default:
-				System.out.println("je gere pas cette touche ! Blaireau !");
+				System.out.println("je gere pas cette touche !");
 		}
 	}
 
