@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{report}
 
-\usepackage{xltxtra} % charge aussi fontspec et xunicode, nécessaires...
+\usepackage{xltxtra} % charge aussi fontspec et xunicode, nÃ©cessaires...
 \usepackage[frenchb]{babel}
 \usepackage[top=2cm, bottom=2cm, left=3cm, right=3cm]{geometry}
 \usepackage{url}
@@ -26,13 +26,13 @@
 
 \hypersetup{
      colorlinks=true, %colorise les liens
-     breaklinks=true, %permet le retour Ã  la ligne dans les liens trop longs
+     breaklinks=true, %permet le retour Ã  la ligne dans les liens trop longs
      urlcolor= blue,  %couleur des hyperliens
      linkcolor= black, %couleur des liens internes
-     bookmarksopen=true,            %si les signets Acrobat sont créés,
-                                    %les afficher complètement.
+     bookmarksopen=true,            %si les signets Acrobat sont crÃ©Ã©s,
+                                    %les afficher complÃ¨tement.
      pdftitle={LO43 : Rapport de projet}, %informations apparaissant dans
-     pdfauthor={Loïs Aubree, Lucie Boutou, Benjamin Guillet, Théophile Madet},     %dans les informations du document
+     pdfauthor={LoÃ¯s Aubree, Lucie Boutou, Benjamin GUILLET, ThÃ©ophile Madet},     %dans les informations du document
      pdfsubject={Rapport de projet LO43},          %sous Acrobat.
      xetex
 }
@@ -69,62 +69,62 @@
 
 \begin{document}
 
-\garde{Loïs Aubree - Lucie Boutou\\Benjamin Guillet - Théophile Madet} % Authors
+\garde{LoÃ¯s Aubree - Lucie Boutou\\Benjamin Guillet - ThÃ©ophile Madet} % Authors
 {\textbf{Projet de LO43}} % Title
-{Réalisation d'un jeu AngryBirds-like} % Sub-title
+{RÃ©alisation d'un jeu AngryBirds-like} % Sub-title
 {Rapport de projet} % Sub-sub-title
 {Automne 2011} % Date
 {} % Logo
 {} % Note bas de page
 
 \tableofcontents
-\chapter{Présentation du projet}
-\paragraph{}Nous avions ce semestre en LO43 la possibilité de développer un jeu ludique similaire Ã  Angry Birds.
+\chapter{PrÃ©sentation du projet}
+\paragraph{}Nous avions ce semestre en LO43 la possibilitÃ© de dÃ©velopper un jeu ludique similaire Ã  Angry Birds.
 
-\paragraph{}Dans notre version, le joueur a Ã  sa disposition un ensemble d'oiseaux \guillemotleft en colère\guillemotright~, et doit tuer les ennemis Ã  l'aide d'oeufs pondus en vol. Les oiseaux peuvent également se sacrifier comme dans Angry Birds en réalisant une \guillemotleft attaque suicide\guillemotright~ et tuer les ennemis avec leur propre corps.
+\paragraph{}Dans notre version, le joueur a Ã  sa disposition un ensemble d'oiseaux \guillemotleft en colÃ¨re\guillemotright~, et doit tuer les ennemis Ã  l'aide d'oeufs pondus en vol. Les oiseaux peuvent Ã©galement se sacrifier comme dans Angry Birds en rÃ©alisant une \guillemotleft attaque suicide\guillemotright~ et tuer les ennemis avec leur propre corps.
 
-\paragraph{}Le joueur a au départ entre 3 Ã  5 oiseaux, selon la difficulté du niveau. Chaque type d'oiseaux possède des capacités de ponte (nombres d'oeufs) et des possibilités physiques qui lui sont particulières. Le score du joueur est calculé d'après son nombre d'oiseaux restants Ã  la fin du niveau. Celui-ci est fini quand tous les ennemis sont morts.
+\paragraph{}Le joueur a au dÃ©part entre 3 Ã  5 oiseaux, selon la difficultÃ© du niveau. Chaque type d'oiseaux possÃ¨de des capacitÃ©s de ponte (nombres d'oeufs) et des possibilitÃ©s physiques qui lui sont particuliÃ¨res. Le score du joueur est calculÃ© d'aprÃ¨s son nombre d'oiseaux restants Ã  la fin du niveau. Celui-ci est fini quand tous les ennemis sont morts.
 
-\paragraph{}Le jeu est organisé en suivant des difficultés qui vont de facile Ã  extrÃªme, et chacune d'elle possède un nombre défini de niveaux. Seul le niveau 1 de chaque difficulté est au départ disponible, les niveaux suivants sont débloqués au fur et Ã  mesure de la progression du joueur. Ce dernier ne peut accéder au niveau suivant qu'en ayant validé le précédent.
+\paragraph{}Le jeu est organisÃ© en suivant des difficultÃ©s qui vont de facile Ã  extrÃªme, et chacune d'elle possÃ¨de un nombre dÃ©fini de niveaux. Seul le niveau 1 de chaque difficultÃ© est au dÃ©part disponible, les niveaux suivants sont dÃ©bloquÃ©s au fur et Ã  mesure de la progression du joueur. Ce dernier ne peut accÃ©der au niveau suivant qu'en ayant validÃ© le prÃ©cÃ©dent.
  
 
-\chapter{Organisation et répartition du travail}
-\paragraph{}Notre groupe était composé de quatre personnes, nous avons régulièrement organisé des réunions chez les uns et les autres pour avancer le projet et faire le point.
+\chapter{Organisation et rÃ©partition du travail}
+\paragraph{}Notre groupe Ã©tait composÃ© de quatre personnes, nous avons rÃ©guliÃ¨rement organisÃ© des rÃ©unions chez les uns et les autres pour avancer le projet et faire le point.
 
-\paragraph{}La partie spécification UML a été faÃ®te une première fois tous ensemble afin de se mettre d'accord sur une base de départ puis a évolué pour mieux coller au cahier des charges : respect du pattern MVC, utilisation des threads et du polymorphisme etc.
+\paragraph{}La partie spÃ©cification UML a Ã©tÃ© faÃ®te une premiÃ¨re fois tous ensemble afin de se mettre d'accord sur une base de dÃ©part puis a Ã©voluÃ© pour mieux coller au cahier des charges : respect du pattern MVC, utilisation des threads et du polymorphisme etc.
 
-\paragraph{}Nous avons utilisé Eclipse, Skype et un dépot GitHub pour la synchronisation et la gestion des versions. GitHub possède également un suivi des fonctionnalités Ã  ajouter ou Ã  corriger. Ce qui a permit Ã  chacun de travailler les classes et fonctionnalités nécessaires qui lui plaisaient.
+\paragraph{}Nous avons utilisÃ© Eclipse, Skype et un dÃ©pot GitHub pour la synchronisation et la gestion des versions. GitHub possÃ¨de Ã©galement un suivi des fonctionnalitÃ©s Ã  ajouter ou Ã  corriger. Ce qui a permit Ã  chacun de travailler les classes et fonctionnalitÃ©s nÃ©cessaires qui lui plaisaient.
 
-\paragraph{}Globalement on peut dire que le travail s'est réparti ainsi :
+\paragraph{}Globalement on peut dire que le travail s'est rÃ©parti ainsi :
 \begin{itemize}
 \item Benjamin  : base du projet (respect du pattern MVC), gestion du joueur ;
-\item Loïs : collisions et envoi des oiseaux ;
-\item Lucie: décors et menus ;
-\item Théophile : gestion des sauvegardes, collisions.
+\item LoÃ¯s : collisions et envoi des oiseaux ;
+\item Lucie: dÃ©cors et menus ;
+\item ThÃ©ophile : gestion des sauvegardes, collisions.
 \end{itemize}
 
-\paragraph{}Mais tout le monde a par moment débordé sur le \guillemotleft secteur\guillemotright~ des autres pour corriger un bug ou améliorer une fonctionnalité. Rien n'était figé.
+\paragraph{}Mais tout le monde a par moment dÃ©bordÃ© sur le \guillemotleft secteur\guillemotright~ des autres pour corriger un bug ou amÃ©liorer une fonctionnalitÃ©. Rien n'Ã©tait figÃ©.
 
-\chapter{Spécification}
+\chapter{SpÃ©cification}
 \section{Diagramme de classes}
-\section{Diagramme de séquences}
+\section{Diagramme de sÃ©quences}
 
 \chapter{Conception et prise en main}
 
 \section{Gestion du menu}
-\paragraph{}La gestion du menu sâ€™effectue au travers de 6 panneaux différents : 
+\paragraph{}La gestion du menu sâ€™effectue au travers de 6 panneaux diffÃ©rents : 
 \begin{itemize}
 \item MenuHomeView, panneau dâ€™accueil au lancement du jeu.
-\item MenuNewView, panneau de création dâ€™une nouvelle partie.
+\item MenuNewView, panneau de crÃ©ation dâ€™une nouvelle partie.
 \item MenuLoadView, panneau de chargement dâ€™une partie.
 \item MenuControlsView, panneau dâ€™informations sur les contrÃ´les du jeu.
-\item MenuDifficultyView, panneau de choix de la difficulté du jeu.
+\item MenuDifficultyView, panneau de choix de la difficultÃ© du jeu.
 \item MenuLevelView, panneau de choix du niveau.
 \end{itemize}
 
-\paragraph{}Chaque panneau est implémenté dans une classe propre Ã  ses caractéristiques héritant de la classe GameViewMenu qui comporte les caractéristiques communes Ã  tous les panneaux telle que le background du Menu.
+\paragraph{}Chaque panneau est implÃ©mentÃ© dans une classe propre Ã  ses caractÃ©ristiques hÃ©ritant de la classe GameViewMenu qui comporte les caractÃ©ristiques communes Ã  tous les panneaux telle que le background du Menu.
 
-\paragraph{}La classe GameViewMenu hérite elle-mÃªme de la classe JLayeredPane, qui permet dâ€™indiquer aux éléments placés sur le panneau un index de position en profondeur, ce qui nous permet notamment de placer nos boutons par-dessus notre background.
+\paragraph{}La classe GameViewMenu hÃ©rite elle-mÃªme de la classe JLayeredPane, qui permet dâ€™indiquer aux Ã©lÃ©ments placÃ©s sur le panneau un index de position en profondeur, ce qui nous permet notamment de placer nos boutons par-dessus notre background.
 
 \begin{figure}[H]
 \begin{center}
@@ -134,39 +134,39 @@
 \label{Navigation dans le menu}
 \end{figure}
 
-\paragraph{}La navigation dans le menu se fait au travers des différents boutons avec la souris, et pour le retour en arrière nous avons mis en place un contrÃ´le supplémentaire par le clavier au moyen de la touche \guillemotleft échap \guillemotright(équivalent au retour en arrière avec le bouton \guillemotleft retour \guillemotright Ã  la souris).
-\paragraph{}Il y a alors détection du panneau sur lequel on se trouve afin de charger le panneau \guillemotleft précédent \guillemotright correspondant. 
-\paragraph{}Pour le cas du panneau de choix de difficulté, lâ€™accès au panneau a pu Ãªtre réalisé depuis le panneau de création dâ€™une nouvelle partie ou depuis le chargement dâ€™une partie. Câ€™est pourquoi une variable a été implémentée (parentPanel) afin de garder en mémoire depuis quel panneau a été fait le dernier accès au panneau de choix de difficulté.
+\paragraph{}La navigation dans le menu se fait au travers des diffÃ©rents boutons avec la souris, et pour le retour en arriÃ¨re nous avons mis en place un contrÃ´le supplÃ©mentaire par le clavier au moyen de la touche \guillemotleft Ã©chap \guillemotright(Ã©quivalent au retour en arriÃ¨re avec le bouton \guillemotleft retour \guillemotright Ã  la souris).
+\paragraph{}Il y a alors dÃ©tection du panneau sur lequel on se trouve afin de charger le panneau \guillemotleft prÃ©cÃ©dent \guillemotright correspondant. 
+\paragraph{}Pour le cas du panneau de choix de difficultÃ©, lâ€™accÃ¨s au panneau a pu Ãªtre rÃ©alisÃ© depuis le panneau de crÃ©ation dâ€™une nouvelle partie ou depuis le chargement dâ€™une partie. Câ€™est pourquoi une variable a Ã©tÃ© implÃ©mentÃ©e (parentPanel) afin de garder en mÃ©moire depuis quel panneau a Ã©tÃ© fait le dernier accÃ¨s au panneau de choix de difficultÃ©.
 
 
 \section{Gestion des niveaux}
-\paragraph{}La création dâ€™un niveau du jeu sâ€™appuie sur la lecture dâ€™un fichier texte qui doit contenir les informations suivantes :
+\paragraph{}La crÃ©ation dâ€™un niveau du jeu sâ€™appuie sur la lecture dâ€™un fichier texte qui doit contenir les informations suivantes :
 \begin{itemize}
-\item les oiseaux disponibles pour réaliser le niveau.
-\item la position des différents blocs représentant le décor.
-\item la position des cochons dans ce décor.
+\item les oiseaux disponibles pour rÃ©aliser le niveau.
+\item la position des diffÃ©rents blocs reprÃ©sentant le dÃ©cor.
+\item la position des cochons dans ce dÃ©cor.
 \end{itemize}
 
-\paragraph{}On retrouve en tÃªte du fichier la liste des oiseaux. Un retour Ã  la ligne est effectué après chaque oiseau disponible dans le niveau afin de faciliter la lecture du fichier. De plus les oiseaux sont indiqués dans le mÃªme ordre que leur ordre dâ€™apparition dans le niveau.
-\paragraph{}Un test dâ€™égalité a lieu entre la chaÃ®ne de caractère contenue dans la ligne et les différents types dâ€™oiseaux, afin de créer lâ€™oiseau correspondant et de lâ€™ajouter Ã  un ArrayList dâ€™entités.
-\paragraph{}Lors de la lecture du fichier texte, la rencontre du mot \guillemotleft Map \guillemotright permet au programme de savoir que la liste des oiseaux disponibles pour le niveau est complète et que la suite du fichier contient la carte représentant le niveau.
-\paragraph{}Il sâ€™agit de lignes de texte de taille égale contenant différents caractères qui seront implémentés dans un tableau de deux dimensions (chaque ligne du fichier texte correspond Ã  une ligne du tableau 2D).
-\paragraph{}Le tableau Ã  une taille adaptable aux dimensions de notre fenÃªtre et de nos éléments de décor. Chaque élément du décor a une image correspondante de 26*26 pixels, et pour correspondre ici Ã  une fenÃªtre de taille 1200*600 pixels, une ligne du tableau contient 47 éléments et une colonne en contient 22.
-\paragraph{}Chaque caractère correspond Ã  un élément différent sur le décor :
+\paragraph{}On retrouve en tÃªte du fichier la liste des oiseaux. Un retour Ã  la ligne est effectuÃ© aprÃ¨s chaque oiseau disponible dans le niveau afin de faciliter la lecture du fichier. De plus les oiseaux sont indiquÃ©s dans le mÃªme ordre que leur ordre dâ€™apparition dans le niveau.
+\paragraph{}Un test dâ€™Ã©galitÃ© a lieu entre la chaÃ®ne de caractÃ¨re contenue dans la ligne et les diffÃ©rents types dâ€™oiseaux, afin de crÃ©er lâ€™oiseau correspondant et de lâ€™ajouter Ã  un ArrayList dâ€™entitÃ©s.
+\paragraph{}Lors de la lecture du fichier texte, la rencontre du mot \guillemotleft Map \guillemotright permet au programme de savoir que la liste des oiseaux disponibles pour le niveau est complÃ¨te et que la suite du fichier contient la carte reprÃ©sentant le niveau.
+\paragraph{}Il sâ€™agit de lignes de texte de taille Ã©gale contenant diffÃ©rents caractÃ¨res qui seront implÃ©mentÃ©s dans un tableau de deux dimensions (chaque ligne du fichier texte correspond Ã  une ligne du tableau 2D).
+\paragraph{}Le tableau Ã  une taille adaptable aux dimensions de notre fenÃªtre et de nos Ã©lÃ©ments de dÃ©cor. Chaque Ã©lÃ©ment du dÃ©cor a une image correspondante de 26*26 pixels, et pour correspondre ici Ã  une fenÃªtre de taille 1200*600 pixels, une ligne du tableau contient 47 Ã©lÃ©ments et une colonne en contient 22.
+\paragraph{}Chaque caractÃ¨re correspond Ã  un Ã©lÃ©ment diffÃ©rent sur le dÃ©cor :
 \begin{itemize}
-\item le \guillemotleft 0 \guillemotright indique que rien ne se trouve Ã  cet endroit de la carte.
-\item le \guillemotleft 1 \guillemotright indique quâ€™il y a un bloc dâ€™herbe Ã  cet endroit de la carte.
-\item le \guillemotleft 2 \guillemotright indique quâ€™il y a un bloc de pierre Ã  cet endroit de la carte.
-\item le \guillemotleft 3 \guillemotright indique la position de départ dâ€™un cochon ennemi.
+\item le \guillemotleft 0 \guillemotright indique que rien ne se trouve Ã  cet endroit de la carte.
+\item le \guillemotleft 1 \guillemotright indique quâ€™il y a un bloc dâ€™herbe Ã  cet endroit de la carte.
+\item le \guillemotleft 2 \guillemotright indique quâ€™il y a un bloc de pierre Ã  cet endroit de la carte.
+\item le \guillemotleft 3 \guillemotright indique la position de dÃ©part dâ€™un cochon ennemi.
 \end{itemize}
-\paragraph{}Une lecture du tableau est ensuite réalisée et Ã  chaque \guillemotleft 1 \guillemotright, \guillemotleft 2 \guillemotright, ou \guillemotleft 3 \guillemotright rencontré, on créé l'entité correspondante (cochon, bloc d'herbe ou bloc de pierre). L'entité est créé via un constructeur prenant en paramètre sa position x (calculée Ã  l'aide de l'index des colonnes du tableau et de la taille de l'image correspondante Ã  l'entité) et sa position y (calculée Ã  l'aide de l'index des lignes du tableau et de la taille de l'image correspondante Ã  l'entité).
+\paragraph{}Une lecture du tableau est ensuite rÃ©alisÃ©e et Ã  chaque \guillemotleft 1 \guillemotright, \guillemotleft 2 \guillemotright, ou \guillemotleft 3 \guillemotright rencontrÃ©, on crÃ©Ã© l'entitÃ© correspondante (cochon, bloc d'herbe ou bloc de pierre). L'entitÃ© est crÃ©Ã© via un constructeur prenant en paramÃ¨tre sa position x (calculÃ©e Ã  l'aide de l'index des colonnes du tableau et de la taille de l'image correspondante Ã  l'entitÃ©) et sa position y (calculÃ©e Ã  l'aide de l'index des lignes du tableau et de la taille de l'image correspondante Ã  l'entitÃ©).
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.4]{images/lvl01image.png} 
 \end{center}
 \caption{Screenshot niveau 1}
-\label{figScreenshot}
+\label{Screenshot niveau 1}
 \end{figure}
 
 \begin{figure}[H]
@@ -174,22 +174,22 @@
 \includegraphics[scale=1]{images/lvl01texte.png} 
 \end{center}
 \caption{Fichier texte niveau 1}
-\label{figTexte}
+\label{Fichier texte niveau 1}
 \end{figure}
 
-\paragraph{}La figure \ref{figTexte} est le fichier texte correspondant au niveau représenté en figure \ref{figScreenshot}. On remarque que la dernière ligne ne comportant que des \guillemotleft 1 \guillemotright concorde bien Ã  une ligne de blocs d'herbe sur la partie basse de notre fenÃªtre. De mÃªme les \guillemotleft 2 \guillemotright concordent Ã  des blocs de pierres et les \guillemotleft 3 \guillemotright Ã  des cochons.
+\paragraph{}La figure 4.2 est le fichier texte correspondant au niveau reprÃ©sentÃ© en figure 4.1. On remarque que la derniÃ¨re ligne ne comportant que des \guillemotleft 1 \guillemotright concorde bien Ã  une ligne de blocs d'herbe sur la partie basse de notre fenÃªtre. De mÃªme les \guillemotleft 2 \guillemotright concordent Ã  des blocs de pierres et les \guillemotleft 3 \guillemotright Ã  des cochons.
 
-\paragraph{}On aperÃ§oit dans le coin en haut Ã  droite de la figure 4.1 les oiseaux disponibles dans le niveau, coïncidant aux premières lignes du fichier texte de la figure 4.2.
+\paragraph{}On aperÃ§oit dans le coin en haut Ã  droite de la figure 4.1 les oiseaux disponibles dans le niveau, coÃ¯ncidant aux premiÃ¨res lignes du fichier texte de la figure 4.2.
 
-\paragraph{}D'une manière générale on remarque que la création de nouveaux niveaux ou la modification de niveaux existants est relativement simple.
+\paragraph{}D'une maniÃ¨re gÃ©nÃ©rale on remarque que la crÃ©ation de nouveaux niveaux ou la modification de niveaux existants est relativement simple.
 
 \section{Gestion des collisions}
 
-\paragraph{}La gestion des collisions et les événements qui en découlent sont effectués dans la fonction updateEntity().
+\paragraph{}La gestion des collisions et les Ã©vÃ©nements qui en dÃ©coulent sont effectuÃ©s dans la fonction updateEntity().
 
-\paragraph{}Chaque entité créée possède ce qu'on appelle une hitBox ; c'est-Ã -dire que chaque objet graphique est englobé d'un rectangle de collisions. 
+\paragraph{}Chaque entitÃ© crÃ©Ã©e possÃ¨de ce qu'on appelle une hitBox ; c'est-Ã -dire que chaque objet graphique est englobÃ© d'un rectangle de collisions. 
 
-\paragraph{}Pour assurer le traitement des collisions, on parcourt la liste des entités du GameModel. Ensuite, suivant l'entité courante traitée, on gère ses collisions avec les autres entités en testant si sa hitBox est en intersection avec la hitBox des autres.
+\paragraph{}Pour assurer le traitement des collisions, on parcourt la liste des entitÃ©s du GameModel. Ensuite, suivant l'entitÃ© courante traitÃ©e, on gÃ¨re ses collisions avec les autres entitÃ©s en testant si sa hitBox est en intersection avec la hitBox des autres.
 
 \begin{figure}[H]
 \begin{center}
@@ -199,16 +199,16 @@
 \label{Niveau 1 avec hitBoxes visibles}
 \end{figure}
 
-\paragraph{}Si la collision d'un élément avec un autre doit entraÃ®ner la suppression d'un des deux objets, le programme ajoute celui ou ceux-ci dans une liste d'Entity (toRemove). Celle-ci est parcourue Ã  son tour en fin de fonction pour effectuer la suppression des entités dans le GameModel. Cela permet de supprimer toutes les entités concernées au mÃªme niveau dans l'algorithme et aussi de s'assurer que tous les traitements sur les entités ont été réaliser avant d'en supprimer.
+\paragraph{}Si la collision d'un Ã©lÃ©ment avec un autre doit entraÃ®ner la suppression d'un des deux objets, le programme ajoute celui ou ceux-ci dans une liste d'Entity (toRemove). Celle-ci est parcourue Ã  son tour en fin de fonction pour effectuer la suppression des entitÃ©s dans le GameModel. Cela permet de supprimer toutes les entitÃ©s concernÃ©es au mÃªme niveau dans l'algorithme et aussi de s'assurer que tous les traitements sur les entitÃ©s ont Ã©tÃ© rÃ©aliser avant d'en supprimer.
 
-\paragraph{}Les différentes collisions gérées sont les suivantes :
+\paragraph{}Les diffÃ©rentes collisions gÃ©rÃ©es sont les suivantes :
 
 \subparagraph{Collision des Å“ufs :}
 ~\\
 \begin{itemize}
-\item[â€¢] avec les cochons : lorsque la collision est détectée, on ajoute le cochon et l'Å“uf courant dans la liste des entités Ã  supprimer.
-\item[â€¢] avec les blocs de pierre : la collision provoque l'ajout des entités bloc de pierre et Å“uf concernées dans la liste des entités Ã  supprimer.
-\item[â€¢] avec les blocs d'herbe : la collision provoque l'ajout simple de lâ€™Å“uf courant dans la liste toRemove. Le bloc d'herbe étant indestructible.
+\item[â€¢] avec les cochons : lorsque la collision est dÃ©tectÃ©e, on ajoute le cochon et l'Å“uf courant dans la liste des entitÃ©s Ã  supprimer.
+\item[â€¢] avec les blocs de pierre : la collision provoque l'ajout des entitÃ©s bloc de pierre et Å“uf concernÃ©es dans la liste des entitÃ©s Ã  supprimer.
+\item[â€¢] avec les blocs d'herbe : la collision provoque l'ajout simple de lâ€™Å“uf courant dans la liste toRemove. Le bloc d'herbe Ã©tant indestructible.
 \end{itemize}
 
 \subparagraph{Collision des cochons :}
@@ -216,88 +216,70 @@
 \begin{itemize}
 \item[â€¢] avec les blocs de pierre : 
 \begin{itemize}
-\item[-]gestion de la collision : la gestion de la collision est différente, ici, puisqu'elle ne se fait pas sur le rectangle de collision du bloc de pierre avec celui du cochon. En effet, les cochons peuvent se déplacer librement sur les blocs de pierre, mais, lorsqu'ils percutent un bloc de pierre par le cÃ´té, la collision doit provoquer le changement de direction dans le déplacement du cochon. On doit Ãªtre en mesure de tester avec quelle arÃªte de la hitBox du bloc de pierre, la hitBox du cochon est en intersection.
+\item[-]gestion de la collision : la gestion de la collision est diffÃ©rente, ici, puisqu'elle ne se fait pas sur le rectangle de collision du bloc de pierre avec celui du cochon. En effet, les cochons peuvent se dÃ©placer librement sur les blocs de pierre, mais, lorsqu'ils percutent un bloc de pierre par le cÃ´tÃ©, la collision doit provoquer le changement de direction dans le dÃ©placement du cochon. On doit Ãªtre en mesure de tester avec quelle arÃªte de la hitBox du bloc de pierre, la hitBox du cochon est en intersection.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.4]{images/collisionscochons.png} 
 \end{center}
-\caption{Différentes collisions des cochons}
-\label{Différentes collisions des cochons}
+\caption{DiffÃ©rentes collisions des cochons}
+\label{DiffÃ©rentes collisions des cochons}
 \end{figure}
 
-\item[-]événement : lorsque le cochon touche une des arÃªtes gauche ou droite d'un bloc de pierre, le cochon change de direction de déplacement (gauche ou droite) ; lorsque le cochon n'est pas en collision avec une seule des arÃªtes supérieures d'un des blocs de pierre (c'est-Ã -dire que le cochon se déplace sur aucun des blocs de pierre) il tombe, La chute du cochon se fait jusqu'Ã  ce qu'il rencontre l'arÃªte supérieure d'un des blocs (de pierre ou d'herbe) ; la gestion avec lâ€™arÃªte inférieur des blocs n'a aucun intérÃªt ici.
+\item[-]Ã©vÃ©nement : lorsque le cochon touche une des arÃªtes gauche ou droite d'un bloc de pierre, le cochon change de direction de dÃ©placement (gauche ou droite) ; lorsque le cochon n'est pas en collision avec une seule des arÃªtes supÃ©rieures d'un des blocs de pierre (c'est-Ã -dire que le cochon se dÃ©place sur aucun des blocs de pierre) il tombe, La chute du cochon se fait jusqu'Ã  ce qu'il rencontre l'arÃªte supÃ©rieure d'un des blocs (de pierre ou d'herbe) ; la gestion avec lâ€™arÃªte infÃ©rieur des blocs n'a aucun intÃ©rÃªt ici.
 \end{itemize}
-\item[â€¢] avec les cochons : lorsque deux cochons se rencontrent, cela provoque le changement de direction des deux cochons concernés.
+\item[â€¢] avec les cochons : lorsque deux cochons se rencontrent, cela provoque le changement de direction des deux cochons concernÃ©s.
 \end{itemize}
 
 \subparagraph{Collision des oiseaux :}
 ~\\
 \begin{itemize}
-\item[â€¢] avec les blocs de pierres : lorsqu'un oiseau entre en collision avec la hitBox d'un bloc de pierre, cela provoque l'ajout de ces deux entités dans la liste des suppressions. On peut une nouvelle fois justifier ici le choix du traitement des suppressions en fin de fonction car la hitBox des oiseaux est assez grande pour entrer en collision avec plusieurs blocs Ã  la fois. Seulement, si la suppression de l'oiseau était faite directement avec la détection de la collision pour le premier bloc, les autres blocs aussi en collision ne seraient pas supprimés car ils seraient non testés.
-\item[â€¢] avec les cochons : la collision d'un oiseau et d'un cochon provoque l'ajout de ces deux entités dans la liste des suppressions.
+\item[â€¢] avec les blocs de pierres : lorsqu'un oiseau entre en collision avec la hitBox d'un bloc de pierre, cela provoque l'ajout de ces deux entitÃ©s dans la liste des suppressions. On peut une nouvelle fois justifier ici le choix du traitement des suppressions en fin de fonction car la hitBox des oiseaux est assez grande pour entrer en collision avec plusieurs blocs Ã  la fois. Seulement, si la suppression de l'oiseau Ã©tait faite directement avec la dÃ©tection de la collision pour le premier bloc, les autres blocs aussi en collision ne seraient pas supprimÃ©s car ils seraient non testÃ©s.
+\item[â€¢] avec les cochons : la collision d'un oiseau et d'un cochon provoque l'ajout de ces deux entitÃ©s dans la liste des suppressions.
 \end{itemize}
 
-\paragraph{}Dans la fonction updateEntity(), il est aussi géré la visibilité des entités lorsque la position de celles-ci dépasse les bords de la fenÃªtre (gauche, droite ou bas). L'élément concerné est ajouté dans la liste des suppressions.
+\paragraph{}Dans la fonction updateEntity(), il est aussi gÃ©rÃ© la visibilitÃ© des entitÃ©s lorsque la position de celles-ci dÃ©passe les bords de la fenÃªtre (gauche, droite ou bas). L'Ã©lÃ©ment concernÃ© est ajoutÃ© dans la liste des suppressions.
 
 \section{Gestion des oiseaux}
 
-\paragraph{}Tous les oiseaux héritent de la classe abstraite Bird. 
+\paragraph{}Tous les oiseaux hÃ©ritent de la classe abstraite Bird. 
 
-\paragraph{Création de l'oiseau courant :}
+\paragraph{CrÃ©ation de l'oiseau courant :}
 
-\paragraph{}L'oiseau courant, celui qui est positionné au lance pierre est le premier oiseau trouvé en parcourant la liste des entités dans l'ordre.
+\paragraph{}L'oiseau courant, celui qui est positionnÃ© au lance pierre est le premier oiseau trouvÃ© en parcourant la liste des entitÃ©s dans l'ordre.
 
-\paragraph{}Pour définir un oiseau comme courant, on parcoure la liste des entités et lorsque la première instance d'un Bird est détectée, le pointeur CurrentBird est placé sur cette instance.
+\paragraph{}Pour dÃ©finir un oiseau comme courant, on parcoure la liste des entitÃ©s et lorsque la premiÃ¨re instance d'un Bird est dÃ©tectÃ©e, le pointeur CurrentBird est placÃ© sur cette instance.
 
 \paragraph{Vie de l'oiseau :}
 
-\paragraph{}Lorsqu'un oiseau est courant, il possède deux phases : une première de préparation au vol et une seconde de vol.\\
+\paragraph{}Lorsqu'un oiseau est courant, il possÃ¨de deux phases : une premiÃ¨re de prÃ©paration au vol et une seconde de vol.\\
 
 \begin{itemize}
-\item[-]Préparation au vol : l'oiseau est positionné sur le lance-pierre, le joueur a alors la possibilité de tendre lâ€™élastique du lance-pierre pour  déterminer la vitesse initiale et l'angle initial avec lequel le lancer de l'oiseau est effectué. Pour cela, le joueur doit cliquer sur l'oiseau du lance pierre puis effectuer un glissé tout en gardant le bouton de la souris enfoncé. Lorsque le joueur lÃ¢che le bouton de la souris, l'oiseau passe en mode vol (le booléen isFlying passe Ã  true).
-\item[-]Phase de vol : l'oiseau en vol est soumis Ã  la formule dâ€™accélération, une accélération de 9.81 (simulant la gravité) est appliquée en Y. La position de l'oiseau est modifiée en fonction du temps, de l'angle initial imposé et de la vitesse initiale imposée. En vol, le joueur a la possibilité de lÃ¢cher des Å“ufs (dans la limite du nombre dâ€™Å“ufs attribués : eggLeft). Le joueur peut aussi, si le type d'oiseau le permet (pigeon ou colibri) effectué un vol stationnaire. A ce moment lÃ , l'oiseau arrÃªtera son vol puis le joueur aura la possibilité de reprendre le cours du vol  dans la limite du temps de vol restant pour l'oiseau.
+\item[-]PrÃ©paration au vol : l'oiseau est positionnÃ© sur le lance-pierre, le joueur a alors la possibilitÃ© de tendre lâ€™Ã©lastique du lance-pierre pour  dÃ©terminer la vitesse initiale et l'angle initial avec lequel le lancer de l'oiseau est effectuÃ©. Pour cela, le joueur doit cliquer sur l'oiseau du lance pierre puis effectuer un glissÃ© tout en gardant le bouton de la souris enfoncÃ©. Lorsque le joueur lÃ¢che le bouton de la souris, l'oiseau passe en mode vol (le boolÃ©en isFlying passe Ã  true).
+\item[-]Phase de vol : l'oiseau en vol est soumis Ã  la formule dâ€™accÃ©lÃ©ration, une accÃ©lÃ©ration de 9.81 (simulant la gravitÃ©) est appliquÃ©e en Y. La position de l'oiseau est modifiÃ©e en fonction du temps, de l'angle initial imposÃ© et de la vitesse initiale imposÃ©e. En vol, le joueur a la possibilitÃ© de lÃ¢cher des Å“ufs (dans la limite du nombre dâ€™Å“ufs attribuÃ©s : eggLeft). Le joueur peut aussi, si le type d'oiseau le permet (pigeon ou colibri) effectuÃ© un vol stationnaire. A ce moment lÃ , l'oiseau arrÃªtera son vol puis le joueur aura la possibilitÃ© de reprendre le cours du vol  dans la limite du temps de vol restant pour l'oiseau.
 \end{itemize}
 
 \paragraph{Mort de l'oiseau courant :}
 
-\paragraph{}Lorsque l'oiseau courant meurt (collision avec un bloc, collision avec un cochon, plus visible dans la fenÃªtre ou temps de vol terminé), l'oiseau est ajouté dans la liste des suppressions de la fonction updateEntity() puis il est supprimé. La liste des entités est alors Ã  nouveau parcourue pour déterminer le nouvel oiseau courant.
+\paragraph{}Lorsque l'oiseau courant meurt (collision avec un bloc, collision avec un cochon, plus visible dans la fenÃªtre ou temps de vol terminÃ©), l'oiseau est ajoutÃ© dans la liste des suppressions de la fonction updateEntity() puis il est supprimÃ©. La liste des entitÃ©s est alors Ã  nouveau parcourue pour dÃ©terminer le nouvel oiseau courant.
 
-\section{Gestion de la victoire ou défaite d'un niveau}
+\section{Gestion de la victoire ou dÃ©faite d'un niveau}
 
-\paragraph{}Chaque niveau possède un nombre dâ€™ennemis (cochons) définit. Le jeu est gagné lorsque tous les cochons du niveau ont été tués (supprimer de la liste des entités).
-\paragraph{}Le test de victoire est effectué dans la fonction updateEntity(). Lorsqu'on parcourt la liste des entités, on effectue la mise Ã  jour du comportement des cochons, or si la liste des entités ne comporte plus aucune instance de cochon alors le niveau est terminé. 
-\paragraph{}Si le niveau est terminé, le programme entre dans la fonction win() qui se chargera d'effectuer tous les traitements de la victoire.
-\paragraph{}De la mÃªme faÃ§on que pour la gestion de la victoire, l'événement de défaite est provoqué dans la fonction updateEntity(). Mais, cette fois, le test n'est pas effectué sur les instances de cochons mais sur les instances des oiseaux dans la liste des entités. Lorsqu'il n'y a plus d'oiseaux dans la liste, la fonction lose() est appelée.
-\paragraph{}Dans ce cas il est important de faire les traitements sur les cochons en premier, pour qu'il n'y ait pas d'appel Ã  la fonction lose() lorsqu'il n'y a plus de d'oiseaux ni de cochons (l'appel Ã  la fonction win() passera donc en priorité).
-
-\section{Données du joueur et sauvegardes}
-
-\paragraph*{}
-Il nous était demandé de sauvegarder la progression du joueur pour le permettre de reprendre la partie là où il en était plus tard. Nous avons donc mis en place un système de <<profil>> : le dossier \verb+save+ contient un fichier de sauvegarde par joueur, qui porte son nom. Ce fichier contient la sérialisation de l'objet correspondant au joueur. La classe \verb+Player+ a été conçue spécifiquement pour ce besoin. \\
-Le joueur a donc la possibilité de choisir parmi la liste des profils déjà sauvegardés, ou d'en créer un nouveau.
-
-\paragraph*{Données associées à un joueur}
-Pour chaque joueur, on souhaite stocker son nom, les niveaux qu'il a réussi, ainsi que les scores obtenus. La classe Player contient donc un champ de type \verb+String+ pour le nom et deux \verb+ArrayList+ par niveau de difficulté, une contenant les niveaux débloqués pour la difficulté correspondant, l'autre contenant les scores pour les niveaux réussis.
-
-\paragraph*{Sérialisation}
-Pour sauvegarder les données entre les parties, il était nécessaire de sérialiser la classe Player. Pour cela, le plus simple a été d'utiliser les facilités offertes par Java avec les \verb+ObjectOutputStream+ et \verb+ObjectInputStream+. Nous n'avions ainsi pas besoin de nous occuper des détails d'implémentation de la sérialisation des objets, ou de leur lecture depuis un fichier. \\
-Cette technique empêche la lecture des fichiers de sauvegarde par d'autres programmes que le notre, mais cela n'est pas un problème pour ce projet. \\
-Un autre problème pourrait venir du nom des joueurs : en effet, les fichiers de sauvegarde son nommés <<nom.save>>, or aucune vérification n'est faite sur les noms entrés lors de la création d'un nouveau profil.
-
-\paragraph*{Scores}
-Seuls les plus hauts scores sont conservés pour un joueur et un niveau donné. Lorsque le joueur termine un niveau, on appel la méthode \verb+finished()+ de \verb+Player+, avec en paramètres le niveau, la difficultée et le score. \verb+finished()+ se charge en suite de vérifier si le score donné est un nouveau record. \\
-Le score correspond au nombre d'oiseaux restant une fois le niveau réussi.
+\paragraph{}Chaque niveau possÃ¨de un nombre dâ€™ennemis (cochons) dÃ©finit. Le jeu est gagnÃ© lorsque tous les cochons du niveau ont Ã©tÃ© tuÃ©s (supprimer de la liste des entitÃ©s).
+\paragraph{}Le test de victoire est effectuÃ© dans la fonction updateEntity(). Lorsqu'on parcourt la liste des entitÃ©s, on effectue la mise Ã  jour du comportement des cochons, or si la liste des entitÃ©s ne comporte plus aucune instance de cochon alors le niveau est terminÃ©. 
+\paragraph{}Si le niveau est terminÃ©, le programme entre dans la fonction win() qui se chargera d'effectuer tous les traitements de la victoire.
+\paragraph{}De la mÃªme faÃ§on que pour la gestion de la victoire, l'Ã©vÃ©nement de dÃ©faite est provoquÃ© dans la fonction updateEntity(). Mais, cette fois, le test n'est pas effectuÃ© sur les instances de cochons mais sur les instances des oiseaux dans la liste des entitÃ©s. Lorsqu'il n'y a plus d'oiseaux dans la liste, la fonction lose() est appelÃ©e.
+\paragraph{}Dans ce cas il est important de faire les traitements sur les cochons en premier, pour qu'il n'y ait pas d'appel Ã  la fonction lose() lorsqu'il n'y a plus de d'oiseaux ni de cochons (l'appel Ã  la fonction win() passera donc en prioritÃ©).
 
 \chapter{Bilan}
 \section{Conclusion}
-\paragraph{}Ce projet était très intéressant et motivant. Son cÃ´té ludique nous a permis d'apprendre le java avec une vraie motivation et une bonne ambiance. Un groupe important comme le notre nécessite une bonne communication afin que chacun sache le travail Ã  accomplir et éviter les répétitions. Heureusement aujourd'hui nous avons de nombreux outils Ã  notre disposition pour nous faciliter la tÃ¢che, en plus des classiques réunions ou e-mails.
+\paragraph{}Ce projet Ã©tait trÃ¨s intÃ©ressant et motivant. Son cÃ´tÃ© ludique nous a permis d'apprendre le java avec une vraie motivation et une bonne ambiance. Un groupe important comme le notre nÃ©cessite une bonne communication afin que chacun sache le travail Ã  accomplir et Ã©viter les rÃ©pÃ©titions. Heureusement aujourd'hui nous avons de nombreux outils Ã  notre disposition pour nous faciliter la tÃ¢che, en plus des classiques rÃ©unions ou e-mails.
 
-\section{Améliorations possibles}
-\paragraph{}Un projet comme celui-ci est toujours perfectible, voici quelques-unes des améliorations qui nous viennent en tÃªte et que nous aurions bien voulu implémenter :
+\section{AmÃ©liorations possibles}
+\paragraph{}Un projet comme celui-ci est toujours perfectible, voici quelques-unes des amÃ©liorations qui nous viennent en tÃªte et que nous aurions bien voulu implÃ©menter :
 \begin{itemize}
 \item Il serait facile d'ajouter une musique d'ambiance, des bruits lors des collisions ou lorsque l'on gagne ou perds ;
 \item On pourrait afficher le meilleur score du joueur actuel sous chaque niveaux ;
-\item Les ennemis pourraient gérer la gravité, c'est Ã  dire s'ils sont placés sur un bloc en hauteur, descendre jusqu'en bas lors de la destruction de ce bloc.
+\item Les ennemis pourraient gÃ©rer la gravitÃ©, c'est Ã  dire s'ils sont placÃ©s sur un bloc en hauteur, descendre jusqu'en bas lors de la destruction de ce bloc.
 \end{itemize}
 \end{document}
