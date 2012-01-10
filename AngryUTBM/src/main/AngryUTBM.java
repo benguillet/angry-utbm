@@ -1,7 +1,8 @@
 package main;
 
 public class AngryUTBM {
+	private static GameFrame angryFrame;
    public static void main(String[] args) {
-	   new GameFrame("AngryUTBM");
+	   angryFrame = new GameFrame("AngryUTBM");
 	}
 }

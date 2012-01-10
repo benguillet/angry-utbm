@@ -11,7 +11,6 @@ public abstract class Entity {
 	protected Image image;
 	protected int imageWidth;
 	protected int imageHeight;
-	protected ArrayList<Egg> eggs;
 	protected boolean visible = true;
 	protected Rectangle hitBox;
 	protected double angle;
@@ -27,10 +26,6 @@ public abstract class Entity {
 	public Image getImage() {
         return this.image;
     }
-	
-	public ArrayList<Egg> getEggs() {
-		return this.eggs;
-	}
 	
 	abstract public void move();
 	

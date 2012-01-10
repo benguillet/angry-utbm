@@ -1,6 +1,5 @@
 package model.entities;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -18,15 +17,7 @@ public class HummingBird extends Bird {
 	    frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
     
-    public void moveUp() {
-    	//position.setLocation(position.getX() ,position.getY() - speed);
-    }
-    
-    public void moveDown() {
-    	//position.setLocation(position.getX(), position.getY() + speed);
-    }
-    
-    public void volStationaire() {
+    public void hovering() {
     	isMoving = !isMoving;
     }
     

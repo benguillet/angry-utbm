@@ -3,18 +3,13 @@ package model.entities;
 import main.GameFrame;
 
 import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 
 public class Pig extends Enemy {
 
 	private Dimension frameSize;
-	private boolean back;
-	private boolean down;
-	private int time;
-	private int time1;
+
 	
 	public Pig(int x, int y, float pigSpeed) {
 		super(x,y,26,26);
@@ -24,8 +19,8 @@ public class Pig extends Enemy {
 		imageHeight = ii.getIconHeight();
 	    imageWidth = ii.getIconWidth();
 		speed = pigSpeed;
-		time = 0;
-		time1 = 0;
+		timeDirection = 0;
+		timeDown = 0; 
 		back = false;
 		frameSize = GameFrame.getFrameSize();
 	}
@@ -42,23 +37,23 @@ public class Pig extends Enemy {
 			hitBox.x -= speed;
 		if(down)
 			hitBox.y+=(int) (speed+3);
-		time++;
-		time1++;
+		timeDirection++;
+		timeDown++;
 	}
 	public void moveDown(){
-		if(time1 > 10)
+		if(timeDown > 10)
 		{
 			down=true;
-			time1=0;
+			timeDown=0;
 		}
 		
 	}
 	
 	public void changeDirection() {
-		if(time > 10)
+		if(timeDirection > 10)
 		{
 			back = !back;
-			time =0;
+			timeDirection =0;
 		}
 	}
 
