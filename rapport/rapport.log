@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2011.12.28)  10 JAN 2012 22:13
+This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2011.12.28)  10 JAN 2012 22:24
 entering extended mode
 **rapport.tex
 (C:\Users\Lucie\Documents\Eclipse-Workspace\AngryUTBM\rapport\rapport.tex
@@ -1034,11 +1034,6 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [8]
 File: images/lvl01hitbox.png Graphic file (type QTm)
  <use  "images/lvl01hitbox.png" >
-Overfull \hbox (54.00014pt too wide) in paragraph at lines 196--197
- [] 
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 207--208
 
  []
@@ -1100,6 +1095,6 @@ Here is how much of TeX's memory you used:
  22441 multiletter control sequences out of 15000+200000
  8011 words of font info for 43 fonts, out of 3000000 for 9000
  670 hyphenation exceptions out of 8191
- 44i,11n,46p,668b,443s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,11n,46p,668b,445s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on rapport.pdf (13 pages).
