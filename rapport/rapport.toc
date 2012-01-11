@@ -29,6 +29,10 @@
 \contentsline {paragraph}{}{7}{section.3.2}
 \contentsline {paragraph}{}{7}{section.3.2}
 \contentsline {paragraph}{}{7}{section.3.2}
+\contentsline {paragraph}{Objets actifs :}{7}{section.3.2}
+\contentsline {paragraph}{}{7}{section.3.2}
+\contentsline {paragraph}{}{7}{section.3.2}
+\contentsline {paragraph}{}{7}{section.3.2}
 \contentsline {chapter}{\numberline {4}Conception et prise en main}{10}{chapter.4}
 \contentsline {section}{\numberline {4.1}Gestion du menu}{10}{section.4.1}
 \contentsline {paragraph}{}{10}{section.4.1}
@@ -66,15 +70,26 @@
 \contentsline {paragraph}{}{15}{section.4.4}
 \contentsline {paragraph}{Vie de l'oiseau :}{15}{section.4.4}
 \contentsline {paragraph}{}{15}{section.4.4}
-\contentsline {paragraph}{Mort de l'oiseau courant :}{15}{section.4.4}
-\contentsline {paragraph}{}{15}{section.4.4}
-\contentsline {section}{\numberline {4.5}Gestion de la victoire ou défaite d'un niveau}{15}{section.4.5}
-\contentsline {paragraph}{}{15}{section.4.5}
+\contentsline {paragraph}{Mort de l'oiseau courant :}{16}{figure.4.6}
+\contentsline {paragraph}{}{16}{figure.4.6}
+\contentsline {section}{\numberline {4.5}Gestion de la victoire ou défaite d'un niveau}{16}{section.4.5}
 \contentsline {paragraph}{}{16}{section.4.5}
 \contentsline {paragraph}{}{16}{section.4.5}
 \contentsline {paragraph}{}{16}{section.4.5}
 \contentsline {paragraph}{}{16}{section.4.5}
-\contentsline {section}{\numberline {4.6}Données du joueur et sauvegardes}{16}{section.4.6}
+\contentsline {paragraph}{}{16}{section.4.5}
+\contentsline {section}{\numberline {4.6}Gestion du joueur et des sauvegardes}{16}{section.4.6}
+\contentsline {paragraph}{}{16}{section.4.6}
+\contentsline {paragraph}{}{16}{section.4.6}
+\contentsline {paragraph}{Données associées à un joueur :}{16}{section.4.6}
+\contentsline {paragraph}{}{16}{section.4.6}
+\contentsline {paragraph}{Sérialisation :}{16}{section.4.6}
+\contentsline {paragraph}{}{17}{section.4.6}
+\contentsline {paragraph}{}{17}{section.4.6}
+\contentsline {paragraph}{}{17}{section.4.6}
+\contentsline {paragraph}{Scores :}{17}{section.4.6}
+\contentsline {paragraph}{}{17}{section.4.6}
+\contentsline {paragraph}{}{17}{section.4.6}
 \contentsline {chapter}{\numberline {5}Bilan}{18}{chapter.5}
 \contentsline {section}{\numberline {5.1}Conclusion}{18}{section.5.1}
 \contentsline {paragraph}{}{18}{section.5.1}
