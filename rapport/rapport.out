@@ -1,14 +1,15 @@
 \BOOKMARK [0][]{chapter.1}{Présentation du projet}{}% 1
 \BOOKMARK [0][]{chapter.2}{Organisation et répartition du travail}{}% 2
-\BOOKMARK [0][]{chapter.3}{Spécification}{}% 3
-\BOOKMARK [1][]{section.3.1}{Diagramme\040de\040classes}{chapter.3}% 4
-\BOOKMARK [1][]{section.3.2}{Diagramme de séquences}{chapter.3}% 5
+\BOOKMARK [0][]{chapter.3}{Spécifications}{}% 3
+\BOOKMARK [1][]{section.3.1}{Diagramme\040d'utilisation}{chapter.3}% 4
+\BOOKMARK [1][]{section.3.2}{Diagramme\040de\040classes}{chapter.3}% 5
 \BOOKMARK [0][]{chapter.4}{Conception\040et\040prise\040en\040main}{}% 6
 \BOOKMARK [1][]{section.4.1}{Gestion\040du\040menu}{chapter.4}% 7
 \BOOKMARK [1][]{section.4.2}{Gestion\040des\040niveaux}{chapter.4}% 8
 \BOOKMARK [1][]{section.4.3}{Gestion\040des\040collisions}{chapter.4}% 9
 \BOOKMARK [1][]{section.4.4}{Gestion\040des\040oiseaux}{chapter.4}% 10
 \BOOKMARK [1][]{section.4.5}{Gestion de la victoire ou défaite d'un niveau}{chapter.4}% 11
-\BOOKMARK [0][]{chapter.5}{Bilan}{}% 12
-\BOOKMARK [1][]{section.5.1}{Conclusion}{chapter.5}% 13
-\BOOKMARK [1][]{section.5.2}{Améliorations possibles}{chapter.5}% 14
+\BOOKMARK [1][]{section.4.6}{Données du joueur et sauvegardes}{chapter.4}% 12
+\BOOKMARK [0][]{chapter.5}{Bilan}{}% 13
+\BOOKMARK [1][]{section.5.1}{Conclusion}{chapter.5}% 14
+\BOOKMARK [1][]{section.5.2}{Améliorations possibles}{chapter.5}% 15

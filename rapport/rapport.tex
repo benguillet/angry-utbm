@@ -105,9 +105,70 @@
 
 \paragraph{}Mais tout le monde a par moment débordé sur le \guillemotleft secteur\guillemotright~ des autres pour corriger un bug ou améliorer une fonctionnalité. Rien n'était figé.
 
-\chapter{Spécification}
+\chapter{Spécifications}
+
+\section{Diagramme d'utilisation}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.2]{images/UseCase1.png} 
+\end{center}
+\caption{Diagramme d'utilisation du menu}
+\label{Diagramme d'utilisation du menu}
+\end{figure}
+
+\paragraph{Diagramme d'utilisation du menu :}
+
+\paragraph{}Lorsque le joueur lance le jeu, il a plusieurs choix possibles : lancer une nouvelle partie, charger une partie sauvegardée, se renseigner sur les contrôles de jeu ou quitter le jeu.
+\paragraph{}Si le joueur lance une nouvelle partie, il devra renseigner son nom afin qu'une sauvegarde soit crée. S'il décide de charger une partie sauvegardée, il devra choisir par les noms des joueurs possédant déjà une sauvegarde.
+\paragraph{}Le joueur peut ensuite accéder au choix de difficulté puis de niveau.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.7]{images/UseCase2.png} 
+\end{center}
+\caption{Diagramme d'utilisation du jeu}
+\label{Diagramme d'utilisation du jeu}
+\end{figure}
+
+\paragraph{Diagramme d'utilisation du jeu :}
+
+\paragraph{}Après avoir choisi un niveau le jeu se lance. Le joueur doit donc lancer un oiseau.
+\paragraph{}Il peut, selon les caractéristiques de l'oiseau, décider de stopper celui-ci pendant son vol. L'oiseau peut aussi lancer un (ou plusieurs selon le type) œufs.
+\paragraph{}Le joueur peut détruire des blocs de pierres présents sur le décor à l'aide des œufs ou bien directement avec l'oiseau lui-même.
+\paragraph{}Enfin, l'utilisateur peut aussi tuer des cochons toujours à l'aide des œufs ou des oiseaux eux-même. Mais il peut être nécessaire parfois de détruire des blocs de pierre pour pouvoir atteindre certains cochons.
+
 \section{Diagramme de classes}
-\section{Diagramme de séquences}
+
+\paragraph{Respect du pattern MVC :}(voir figure 3.3)
+
+\paragraph{}L'architecture (le modèle) du programme réalisée dans ce projet est de type modèle-vue-contrôleur.
+
+\paragraph{}La fenêtre du jeu GameFrame héritée de JFrame est la classe principale du jeu. Elle créée et  stocke les classes du modèle-vue-contrôleur. La classe GameFrame possède la liste des entités du jeu.  
+
+\paragraph{}GameView est la classe correspondante à la vue du pattern MVC. Elle va se contenter d'afficher les entités de la liste. Elle n'effectue aucun traitement.
+
+\paragraph{}GameModel est la classe (modèle du pattern MVC) où l'ensemble des traitements est effectué comme la mise à jours des positions des entités ou le test des collision. GameModel va parcourir la liste des entités en permanence pour effectuer les modifications qu'apporte le joueur ou les événements du jeu.
+
+\paragraph{}GameController est la classe (contrôleur dans le pattern MVC) qui va écouter(listener) les événements (clavier, souris, changement dans la liste des entités). Elle aura pour but de récupérer ces événements et d'appeler les fonctions du GameModel (ou des entités) correspondantes.
+
+\paragraph{}Le menu, lui, est de type vue-contrôleur. Une vue est crée pour chaque page du menu et le MenuController récupère les différents événements. Pour chacune des vues, il sera chargé de faire le changement des pages du menu.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.27]{images/diagrammeclasses01.png} 
+\end{center}
+\caption{Diagramme des classes}
+\label{Diagramme des classes}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.27]{images/diagrammeclasses02.png} 
+\end{center}
+\caption{Diagramme des classes}
+\label{Diagramme des classes}
+\end{figure}
 
 \chapter{Conception et prise en main}
 

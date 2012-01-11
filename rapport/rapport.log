@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2011.12.28)  10 JAN 2012 22:24
+This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2011.12.28)  11 JAN 2012 01:49
 entering extended mode
 **rapport.tex
 (C:\Users\Lucie\Documents\Eclipse-Workspace\AngryUTBM\rapport\rapport.tex
@@ -848,7 +848,11 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \EndVerbatimTokens=\toks55
 \Verbatim@Outfile=\write5
 \Verbatim@Infile=\read3
-)) (C:\Users\Lucie\Documents\Eclipse-Workspace\AngryUTBM\rapport\rapport.aux)
+)) (C:\Users\Lucie\Documents\Eclipse-Workspace\AngryUTBM\rapport\rapport.aux
+
+LaTeX Warning: Label `Diagramme des classes' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
@@ -1006,12 +1010,19 @@ Chapitre 2.
 
 ]
 Chapitre 3.
-[5
+File: images/UseCase1.png Graphic file (type QTm)
+<use  "images/UseCase1.png" >
+Overfull \hbox (9.40092pt too wide) in paragraph at lines 114--115
+ [] 
+ []
 
-]
-Chapitre 4.
-File: images/navigationmenu.png Graphic file (type QTm)
-<use  "images/navigationmenu.png" > [6
+File: images/UseCase2.png Graphic file (type QTm)
+<use  "images/UseCase2.png" >
+Overfull \hbox (6.50569pt too wide) in paragraph at lines 128--129
+ [] 
+ []
+
+[5
 
 ]
 
@@ -1020,7 +1031,52 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
+[6]
+File: images/diagrammeclasses01.png Graphic file (type QTm)
+ <use  "images/diagrammeclasses01.png" >
+Overfull \hbox (18.9846pt too wide) in paragraph at lines 159--160
+ [] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
 [7]
+File: images/diagrammeclasses02.png Graphic file (type QTm)
+ <use  "images/diagrammeclasses02.png" >
+Overfull \hbox (24.11469pt too wide) in paragraph at lines 167--168
+ [] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+Chapitre 4.
+File: images/navigationmenu.png Graphic file (type QTm)
+<use  "images/navigationmenu.png" > [10
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11]
 File: images/lvl01image.png Graphic file (type QTm)
  <use  "images/lvl01image.png" >
 File: images/lvl01texte.png Graphic file (type QTm)
@@ -1031,10 +1087,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8]
+[12]
 File: images/lvl01hitbox.png Graphic file (type QTm)
  <use  "images/lvl01hitbox.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 
  []
 
@@ -1044,14 +1100,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 215--216
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
  []
 
 File: images/collisionscochons.png Graphic file (type QTm)
 <use  "images/collisionscochons.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
 
  []
 
@@ -1061,8 +1117,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
 
  []
 
@@ -1072,29 +1128,63 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[11]
+[15]
+LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 340
+.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\euenc\eu1lmtt.fd"
+File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Underfull \hbox (badness 10000) in paragraph at lines 337--343
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--359
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 360--362
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--372
+
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[12]
+[16]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[17]
 Chapitre 5.
-[13
+[18
 
 ] (C:\Users\Lucie\Documents\Eclipse-Workspace\AngryUTBM\rapport\rapport.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 19485 strings out of 429292
- 305519 string characters out of 3169421
+ 19535 strings out of 429292
+ 306571 string characters out of 3169421
  451168 words of memory out of 3000000
- 22441 multiletter control sequences out of 15000+200000
- 8011 words of font info for 43 fonts, out of 3000000 for 9000
+ 22482 multiletter control sequences out of 15000+200000
+ 8019 words of font info for 44 fonts, out of 3000000 for 9000
  670 hyphenation exceptions out of 8191
  44i,11n,46p,668b,445s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on rapport.pdf (13 pages).
+Output written on rapport.pdf (18 pages).
