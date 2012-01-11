@@ -83,7 +83,7 @@
 \contentsline {paragraph}{}{16}{section.4.6}
 \contentsline {paragraph}{Données associées à un joueur :}{16}{section.4.6}
 \contentsline {paragraph}{}{16}{section.4.6}
-\contentsline {paragraph}{Sérialisation :}{16}{section.4.6}
+\contentsline {paragraph}{Sérialisation :}{17}{section.4.6}
 \contentsline {paragraph}{}{17}{section.4.6}
 \contentsline {paragraph}{}{17}{section.4.6}
 \contentsline {paragraph}{}{17}{section.4.6}
