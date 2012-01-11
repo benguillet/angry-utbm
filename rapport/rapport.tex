@@ -144,11 +144,11 @@
 
 \paragraph{}L'architecture (le modèle) du programme réalisée dans ce projet est de type modèle-vue-contrôleur.
 
-\paragraph{}La fenêtre du jeu \verb+GameFrame+ héritée de \verb+JFrame+ est la classe principale du jeu. Elle créée et  stocke les classes du modèle-vue-contrôleur. La classe \verb+GameFrame+ possède la liste des entités du jeu.  
+\paragraph{}La fenêtre du jeu \verb+GameFrame+ héritée de \verb+JFrame+ est la classe principale du jeu. Elle créée et  stocke les classes du modèle-vue-contrôleur.   
 
 \paragraph{}\verb+GameView+ est la classe correspondante à la vue du pattern MVC. Elle va se contenter d'afficher les entités de la liste. Elle n'effectue aucun traitement.
 
-\paragraph{}\verb+GameModel+ est la classe (modèle du pattern MVC) où l'ensemble des traitements est effectué comme la mise à jours des positions des entités ou le test des collisions. \verb+GameModel+ va parcourir la liste des entités en permanence pour effectuer les modifications qu'apporte le joueur ou les événements du jeu.
+\paragraph{}\verb+GameModel+ est la classe (modèle du pattern MVC), elle possède la liste des entités du jeu. C'est là où l'ensemble des traitements est effectué comme la mise à jour des positions des entités ou le test des collisions : \verb+GameModel+ va parcourir la liste des entités en permanence pour effectuer les modifications qu'apporte le joueur ou les événements du jeu.
 
 \paragraph{}\verb+GameController+ est la classe (contrôleur dans le pattern MVC) qui va écouter(listener) les événements (clavier, souris, changement dans la liste des entités). Elle aura pour but de récupérer ces événements et d'appeler les fonctions de \verb+GameModel+ (ou des entités) correspondantes.
 
@@ -161,6 +161,8 @@
 \paragraph{}Les différents types d'oiseaux sont créés dans les classes correspondantes. Elles héritent toutes de la classe \verb+Bird+ qui contient les attributs et méthodes communs à tous les oiseaux.
 
 \paragraph{}Le même schéma est répété pour les ennemis, les différents types de cochons sont créés dans leur classe respective qui hérite elle-même de la classe \verb+Ennemy+.
+
+\paragraph{}Cette implémentation nous permet de parcourir une unique liste d'entités, la liaison dynamique s'occupant ensuite d'appeler la bonne méthode \verb+move()+.
 
 \begin{figure}[H]
 \begin{center}
@@ -348,7 +350,7 @@
 \paragraph{}Dans ce cas il est important de faire les traitements sur les cochons en premier, pour qu'il n'y ait pas d'appel à la fonction \verb+lose()+ lorsqu'il n'y a plus de d'oiseaux ni de cochons (l'appel à la fonction \verb+win()+ passera donc en priorité).
 
 \section{Gestion du joueur et des sauvegardes}
-\paragraph{}Il nous était demandé de sauvegarder la progression du joueur pour le permettre de reprendre la partie là où il en était plus tard. Nous avons donc mis en place un système de \guillemotleft profil\guillemotright~ : le dossier \verb+save+ contient un fichier de sauvegarde par joueur, qui porte son nom. Ce fichier contient la sérialisation de l'objet correspondant au joueur. La classe \verb+Player+ a été conçue spécifiquement pour ce besoin.
+\paragraph{}Il nous était demandé de sauvegarder la progression du joueur pour lui permettre de reprendre la partie là où il en était plus tard. Nous avons donc mis en place un système de \guillemotleft profil\guillemotright~ : le dossier \verb+save+ contient un fichier de sauvegarde par joueur, qui porte son nom. Ce fichier contient la sérialisation de l'objet correspondant au joueur. La classe \verb+Player+ a été conçue spécifiquement pour ce besoin.
 
 \paragraph{}Le joueur a donc la possibilité de choisir parmi la liste des profils déjà sauvegardés, ou d'en créer un nouveau.
 
@@ -374,9 +376,10 @@
 \section{Améliorations possibles}
 \paragraph{}Un projet comme celui-ci est toujours perfectible, voici quelques-unes des améliorations qui nous viennent en tête et que nous aurions bien voulu implémenter :
 \begin{itemize}
-\item il serait facile d'ajouter une musique d'ambiance, des bruits lors des collisions ou lorsque l'on gagne ou perds.
-\item on pourrait afficher le meilleur score du joueur actuel sous chaque niveaux.
+\item il serait facile d'ajouter une musique d'ambiance, des bruits lors des collisions ou lorsque l'on gagne ou perd.
+\item on pourrait afficher le meilleur score du joueur actuel sous chaque niveau.
 \item un ajout de contrôle sur le nom des profils serait nécessaire, pour ne pas rencontrer de problèmes à la création du fichier de sauvegarde.
 \item une diversité des ennemis pourrait facilement être implémentée.
+\item une amélioration de la chute des cochons serait envisageable, celle-ci ne dépend actuellement pas de la gravité et ne possède aucune accélération.
 \end{itemize}
 \end{document}

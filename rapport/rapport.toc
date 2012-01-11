@@ -33,6 +33,7 @@
 \contentsline {paragraph}{}{7}{section.3.2}
 \contentsline {paragraph}{}{7}{section.3.2}
 \contentsline {paragraph}{}{7}{section.3.2}
+\contentsline {paragraph}{}{7}{section.3.2}
 \contentsline {chapter}{\numberline {4}Conception et prise en main}{10}{chapter.4}
 \contentsline {section}{\numberline {4.1}Gestion du menu}{10}{section.4.1}
 \contentsline {paragraph}{}{10}{section.4.1}

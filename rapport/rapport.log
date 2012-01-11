@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2011.12.28)  11 JAN 2012 11:02
+This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2011.12.28)  11 JAN 2012 11:38
 entering extended mode
 **rapport.tex
 (C:\Users\Lucie\Documents\Eclipse-Workspace\AngryUTBM\rapport\rapport.tex
@@ -1044,7 +1044,7 @@ er les fonctions de []\EU1/lmtt/m/n/12 GameModel
 
 File: images/diagrammeclasses01.png Graphic file (type QTm)
 <use  "images/diagrammeclasses01.png" >
-Overfull \hbox (18.9846pt too wide) in paragraph at lines 167--168
+Overfull \hbox (18.9846pt too wide) in paragraph at lines 169--170
  [] 
  []
 
@@ -1057,7 +1057,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [7]
 File: images/diagrammeclasses02.png Graphic file (type QTm)
  <use  "images/diagrammeclasses02.png" >
-Overfull \hbox (24.11469pt too wide) in paragraph at lines 175--176
+Overfull \hbox (24.11469pt too wide) in paragraph at lines 177--178
  [] 
  []
 
@@ -1098,14 +1098,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [12]
-Overfull \hbox (13.88197pt too wide) in paragraph at lines 261--262
+Overfull \hbox (13.88197pt too wide) in paragraph at lines 263--264
 [] [][] \EU1/lmr/m/n/12 Pour assurer le traitement des collisions, on parcourt 
 la liste des entités du []\EU1/lmtt/m/n/12 GameModel\EU1/lmr/m/n/12 .
  []
 
 File: images/lvl01hitbox.png Graphic file (type QTm)
 <use  "images/lvl01hitbox.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
 
  []
 
@@ -1116,13 +1116,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
 
 File: images/collisionscochons.png Graphic file (type QTm)
 <use  "images/collisionscochons.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
 
  []
 
