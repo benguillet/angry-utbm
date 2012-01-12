@@ -36,7 +36,7 @@ public class GameFrame extends JFrame {
 	public GameFrame(String name) {
 		winName = name;
 		
-		angryModel = new GameModel();
+		angryModel = new GameModel(this);
 		angryEntities = angryModel.getEntityList();
 		angryPlayers = angryModel.getPlayers();
 		

@@ -3,6 +3,7 @@ package controller;
 import main.GameFrame;
 import model.Level;
 import model.Player;
+import view.GameViewMenu;
 import view.MenuDifficultyView;
 import view.MenuHomeView;
 import view.MenuLevelView;
@@ -29,6 +30,8 @@ import javax.swing.JTextField;
 public class MenuController implements KeyListener, ActionListener, MouseListener {
 
 	private JTextField playerNameField;
+	private JButton backfromNewButton, backfromLoadButton, backfromOptionsButton;
+	private JButton backfromDifficultyButton, backfromLevelButton;
 	private JButton newButton,loadButton,optionsButton,exitButton;
 	private JButton okNewButton,okLoadButton,deleteButton;
 	private JButton easyButton,mediumButton,hardButton,extremeButton;
@@ -54,6 +57,17 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		angryMenuOptionsView = frame.getAngryMenuOptionsView();
 		angryMenuDifficultyView = frame.getAngryMenuDifficultyView();
 		angryMenuLevelView = frame.getAngryMenuLevelView();
+		
+		backfromNewButton = angryMenuNewView.getBackButton();
+		backfromNewButton.addActionListener(this);
+		backfromLoadButton = angryMenuLoadView.getBackButton();
+		backfromLoadButton.addActionListener(this);
+		backfromOptionsButton = angryMenuOptionsView.getBackButton();
+		backfromOptionsButton.addActionListener(this);
+		backfromDifficultyButton = angryMenuDifficultyView.getBackButton();
+		backfromDifficultyButton.addActionListener(this);
+		backfromLevelButton = angryMenuLevelView.getBackButton();
+		backfromLevelButton.addActionListener(this);
 		
 		newButton = angryMenuHomeView.getNewButton();
 		newButton.addActionListener(this);
@@ -92,6 +106,34 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		if(e.getSource().equals(backfromNewButton)||e.getSource().equals(backfromLoadButton)||e.getSource().equals(backfromOptionsButton))
+		{
+			angryFrame.setContentPane(angryMenuHomeView);
+			angryMenuHomeView.requestFocus();
+			angryFrame.setVisible(true);
+		}
+		if(e.getSource().equals(backfromDifficultyButton))
+		{
+			if(angryMenuDifficultyView.getParentPanel()=="newPanel")
+			{
+				angryFrame.setContentPane(angryMenuNewView);
+				angryMenuNewView.requestFocus();
+				angryFrame.setVisible(true);
+			}
+			else
+			{
+				angryFrame.setContentPane(angryMenuLoadView);
+				angryMenuLoadView.requestFocus();
+				angryFrame.setVisible(true);
+			}
+		}
+
+		if(e.getSource().equals(backfromLevelButton))
+		{
+			angryFrame.setContentPane(angryMenuDifficultyView);
+			angryMenuDifficultyView.requestFocus();
+			angryFrame.setVisible(true);
+		}
 		
 		if (e.getSource().equals(newButton))
 		{
@@ -168,12 +210,16 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		
 		if(e.getSource().equals(deleteButton))
 		{
-			int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirmation avant suppression", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirmation before suppression", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if(option == JOptionPane.OK_OPTION)
 			{
 				Player p = (Player) playersList.getSelectedItem();
+				playersList.removeItem(p);
+				
 				File file = new File("save/" + p.getName() + ".save"); 
 				file.delete();
+				
+				//System.out.println(p.getName());
 				
 				//mise a jour des players restants...
 				ArrayList<Player> players = new ArrayList<Player>();
@@ -192,17 +238,18 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 					e1.printStackTrace();
 				}
 				
-				for(Player p1 : players)
+				/*for(Player p1 : players)
 		        {
 		        	System.out.println(p1.getName());
-		        }
+		        }*/
 
 				//...dans la liste de players...
 				angryFrame.setPlayers(players);
 				//...et dans la JComboBox.
 				angryMenuLoadView.setPlayersList(players);
 				
-				angryMenuLoadView.repaint();
+				angryFrame.setContentPane(angryMenuLoadView);
+				angryMenuLoadView.requestFocus();
 				angryFrame.setVisible(true);	
 			}
 		}
@@ -232,8 +279,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			difficulty = "extreme";	
 		}
 		
-		// Si difficulty est renseignee on a forcement clique sur un des boutons de difficulte
-		if (!difficulty.equals("")) {
+		if (!difficulty.equals("") && (e.getSource().equals(easyButton) || e.getSource().equals(mediumButton) || e.getSource().equals(hardButton) || e.getSource().equals(extremeButton))) {
 			for (int lvlNumber = 0; lvlNumber < lvlButtons.size(); ++lvlNumber) {
 				lvlButtons.get(lvlNumber).setEnabled(false);
 				
@@ -263,7 +309,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 					angryFrame.setCurrentLevel(i+1);
 				}
 				else {
-					javax.swing.JOptionPane.showMessageDialog(null, "Il n'y a aucun fichier map correspondant a ce niveau, tu peux insulter les developpeurs");
+					javax.swing.JOptionPane.showMessageDialog(null, "No map for this level yet !");
 				}
 			}
 		}
@@ -277,7 +323,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			case KeyEvent.VK_ESCAPE:
 				if(angryFrame.getContentPane()==angryMenuHomeView)
 				{
-					int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirmation pour quitter", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirmation to leave", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 					if(option == JOptionPane.OK_OPTION)
 					{
 						System.exit(0);		
@@ -312,7 +358,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				}
 				break;
 			default:
-				System.out.println("je gere pas cette touche !");
+				System.out.println("What are you trying to do ??!");
 		}
 	}
 
@@ -349,10 +395,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		if(angryFrame.getContentPane()==angryMenuLoadView)
-			angryMenuLoadView.requestFocus();
-		if(angryFrame.getContentPane()==angryMenuNewView)
-			angryMenuNewView.requestFocus();
+
 	}
 
 	@Override

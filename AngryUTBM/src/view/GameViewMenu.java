@@ -58,4 +58,8 @@ public abstract class GameViewMenu extends JLayeredPane {
         this.setVisible(true);
 	}
 	
+	public JButton getBackButton(){
+		return backButton;
+	}
+	
 }

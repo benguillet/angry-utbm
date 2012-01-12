@@ -1,6 +1,7 @@
 package model;
 
 import view.GameView;
+import main.GameFrame;
 import model.entities.Bird;
 import model.entities.Block;
 import model.entities.Egg;
@@ -23,6 +24,7 @@ import java.io.ObjectInputStream;
 
 
 public class GameModel implements ActionListener {
+	private GameFrame angryFrame;
 	private GameView angryView;
 	private Level level;
 	private ArrayList<Player> players;
@@ -37,7 +39,10 @@ public class GameModel implements ActionListener {
 	private int currentHighestScore;
 	private int score;
 	
-	public GameModel() {
+	public GameModel(GameFrame frame) {
+		
+		angryFrame = frame;
+		
 		entities = new ArrayList<Entity>();
 		players = new ArrayList<Player>();
 		score =0;
@@ -114,6 +119,8 @@ public class GameModel implements ActionListener {
 	
 	public void updateEntity() {
 		ArrayList<Entity> toRemove = new ArrayList<Entity>(); //On ne retire les entit�s de la liste qu'apr�s �tre sorti de la boucle
+		boolean birdTest = false;
+		boolean pigTest = false;
 		
 		for(Entity entity : entities) {
 			int tabMap[][] = level.getTabMap();
@@ -265,6 +272,16 @@ public class GameModel implements ActionListener {
 		}
 		for(Entity entity : toRemove) 
 			entities.remove(entity);
+		
+		for(Entity entity4 : entities){
+			if(entity4 instanceof Bird)
+				birdTest = true;
+			if(entity4 instanceof Pig)
+				pigTest = true;
+		}
+		
+		if(!birdTest && pigTest)
+			lose();
 					
 	}
 	
@@ -290,7 +307,7 @@ public class GameModel implements ActionListener {
 	}
 	
 	public void win() {
-		javax.swing.JOptionPane.showMessageDialog(null, "Bravo, tu as gagné ! Ton score est " + score);
+		javax.swing.JOptionPane.showMessageDialog(null, "Congrats you win ! Your score is " + score+".");
 		currentPlayer.finished(currentLevel, difficulty, score);
 		Level lvl = new Level("res/maps/lvl0" + (currentLevel+1) + ".txt",difficulty);
 		if (lvl.isLoaded()) {
@@ -305,6 +322,12 @@ public class GameModel implements ActionListener {
 	
 	public void lose() {
 		javax.swing.JOptionPane.showMessageDialog(null, "GAME OOOOOVER ! Try again ?");
+		
+		Level lvl = new Level("res/maps/lvl0" + (currentLevel) + ".txt",difficulty);
+		if (lvl.isLoaded()) {
+			angryView.setMap(lvl);
+			this.setMap(lvl);
+		}
 	}
 	
 	

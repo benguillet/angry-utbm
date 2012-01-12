@@ -45,6 +45,7 @@ public class MenuLoadView extends GameViewMenu
 	}
 	
 	public void setPlayersList(ArrayList<Player> players){
+		playersList.removeAllItems();
 		for(Player p : players)
         {
         	playersList.addItem(p);
