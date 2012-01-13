@@ -117,21 +117,21 @@ public class GameModel implements ActionListener {
 		int pigTest = 0;
 		int eggTest = 0;
 		
-		for(Entity entity : entities) {
+		for (Entity entity : entities) {
 			
 			/******* Collision des oeufs *************/
 			
 			if(entity instanceof Egg) {
 				Egg egg = (Egg) entity;
-				if(!egg.isVisible())
+				if (!egg.isVisible())
 					toRemove.add(egg);
 				Rectangle hitBoxEgg = egg.getHitBox();
 				
-				for(Entity entity2 : entities) {
-					if(entity2 instanceof Pig) {
+				for (Entity entity2 : entities) {
+					if (entity2 instanceof Pig) {
 						Pig pig = (Pig) entity2;
 						Rectangle hitBoxPig = pig.getHitBox();
-						if(hitBoxPig.intersects(hitBoxEgg)) {
+						if (hitBoxPig.intersects(hitBoxEgg)) {
 							toRemove.add(egg);
 							toRemove.add(pig);
 
@@ -142,7 +142,8 @@ public class GameModel implements ActionListener {
 			            			break;
 			            		}
 			            	}
-			            	if(win) {
+			            	if (win) {
+			            		/* On incrémente le score en fonction du nombre d'oiseaux restants */
 			            		for (Entity entity3 : entities) {
 				            		if (entity3 instanceof Bird)
 				            			++score;
@@ -151,7 +152,7 @@ public class GameModel implements ActionListener {
 			            	}
 						}
 					}
-					if(entity2 instanceof Block){
+					if (entity2 instanceof Block){
 						Block block= (Block) entity2;
 						Rectangle hitBoxBlock = block.getHitBox();
 						if(hitBoxBlock.intersects(hitBoxEgg)) {
@@ -159,12 +160,12 @@ public class GameModel implements ActionListener {
 							toRemove.add(block);
 							}
 					}
-					if(entity2 instanceof Grass){
+					if (entity2 instanceof Grass){
 						Grass grass= (Grass) entity2;
 						Rectangle hitBoxGrass = grass.getHitBox();
 						if(hitBoxGrass.intersects(hitBoxEgg)) {
 							toRemove.add(egg);
-							}
+						}
 					}
 				}
 			}
@@ -239,6 +240,22 @@ public class GameModel implements ActionListener {
 						if(hitBoxBird.intersects(hitBoxPig)) {
 							toRemove.add(pig);
 							toRemove.add(bird);
+							
+			            	boolean win = true;
+			            	for (Entity entity3 : entities) {
+			            		if (entity3 instanceof Pig && !toRemove.contains(entity3)) {
+			            			win = false;
+			            			break;
+			            		}
+			            	}
+			            	if (win) {
+			            		/* On incrémente le score en fonction du nombre d'oiseaux restants */
+			            		for (Entity entity3 : entities) {
+				            		if (entity3 instanceof Bird)
+				            			++score;
+			            		}
+			            		win();
+			            	}
 						}
 					}
 				}
@@ -250,7 +267,7 @@ public class GameModel implements ActionListener {
 				}
 			}
 		}
-		for(Entity entity : toRemove) 
+		for(Entity entity : toRemove)
 			entities.remove(entity);
 	
 		for(Entity entity4 : entities){
