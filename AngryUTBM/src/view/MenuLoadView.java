@@ -10,6 +10,7 @@ import model.Player;
 @SuppressWarnings("serial")
 public class MenuLoadView extends GameViewMenu
 {
+
 	private JComboBox playersList;
 	private JButton okLoadButton, deleteButton;
 

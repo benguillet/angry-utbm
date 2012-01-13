@@ -5,14 +5,11 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
-
 import main.GameFrame;
 import model.GameModel;
 import model.ListChangedEvent;
 import model.ListListener;
 import model.entities.Bird;
-import model.entities.Entity;
 import model.entities.Sparrow;
 
 public class GameController implements KeyListener, ListListener, MouseListener,MouseMotionListener{

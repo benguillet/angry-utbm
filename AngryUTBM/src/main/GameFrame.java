@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import view.GameView;
-import view.GameViewMenu;
 import view.MenuDifficultyView;
 import view.MenuHomeView;
 import view.MenuLevelView;
@@ -36,7 +35,7 @@ public class GameFrame extends JFrame {
 	public GameFrame(String name) {
 		winName = name;
 		
-		angryModel = new GameModel(this);
+		angryModel = new GameModel();
 		angryEntities = angryModel.getEntityList();
 		angryPlayers = angryModel.getPlayers();
 		

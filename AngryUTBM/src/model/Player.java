@@ -30,6 +30,7 @@ public class Player implements Serializable {
 	private ArrayList<Integer> hard;
 	private ArrayList<Integer> extreme;
 	
+	@SuppressWarnings("unused")
 	private int levelNumber;
 
 	public Player(String name) {

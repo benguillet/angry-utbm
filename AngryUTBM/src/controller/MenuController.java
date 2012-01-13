@@ -3,7 +3,6 @@ package controller;
 import main.GameFrame;
 import model.Level;
 import model.Player;
-import view.GameViewMenu;
 import view.MenuDifficultyView;
 import view.MenuHomeView;
 import view.MenuLevelView;
@@ -28,6 +27,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class MenuController implements KeyListener, ActionListener, MouseListener {
+	
+
 
 	private JTextField playerNameField;
 	private JButton backfromNewButton, backfromLoadButton, backfromOptionsButton;
@@ -51,12 +52,16 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		
 		angryFrame = frame;
 		
+		//on recupere les differentes vues du menu
 		angryMenuHomeView = frame.getAngryMenuHomeView();
 		angryMenuNewView = frame.getAngryMenuNewView();
 		angryMenuLoadView = frame.getAngryMenuLoadView();
 		angryMenuOptionsView = frame.getAngryMenuOptionsView();
 		angryMenuDifficultyView = frame.getAngryMenuDifficultyView();
 		angryMenuLevelView = frame.getAngryMenuLevelView();
+		
+		//on recupere les objets du menu necessaires
+		//et on leur ajoute  un actionlistener
 		
 		backfromNewButton = angryMenuNewView.getBackButton();
 		backfromNewButton.addActionListener(this);
@@ -106,6 +111,8 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		// on change de panel en fonction du bouton clique
+		
 		if(e.getSource().equals(backfromNewButton)||e.getSource().equals(backfromLoadButton)||e.getSource().equals(backfromOptionsButton))
 		{
 			angryFrame.setContentPane(angryMenuHomeView);
@@ -165,7 +172,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		
 		if (e.getSource().equals(exitButton))
 		{
-			int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Exit Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Exit confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if(option == JOptionPane.OK_OPTION)
 			{
 				System.exit(0);		

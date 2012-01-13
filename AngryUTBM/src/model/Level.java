@@ -9,7 +9,6 @@ import model.entities.Pigeon;
 import model.entities.Sparrow;
 
 import java.awt.Image;
-import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;

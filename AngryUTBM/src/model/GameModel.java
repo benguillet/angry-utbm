@@ -1,7 +1,6 @@
 package model;
 
 import view.GameView;
-import main.GameFrame;
 import model.entities.Bird;
 import model.entities.Block;
 import model.entities.Egg;
@@ -14,8 +13,6 @@ import java.util.ArrayList;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Line2D;
-
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 import java.io.File;
@@ -24,7 +21,6 @@ import java.io.ObjectInputStream;
 
 
 public class GameModel implements ActionListener {
-	private GameFrame angryFrame;
 	private GameView angryView;
 	private Level level;
 	private ArrayList<Player> players;
@@ -39,9 +35,7 @@ public class GameModel implements ActionListener {
 	private int currentHighestScore;
 	private int score;
 	
-	public GameModel(GameFrame frame) {
-		
-		angryFrame = frame;
+	public GameModel() {
 		
 		entities = new ArrayList<Entity>();
 		players = new ArrayList<Player>();
@@ -184,7 +178,6 @@ public class GameModel implements ActionListener {
 				for(Entity entity2 : entities) {
 					if(entity2 instanceof Block)
 					{
-						Block block = (Block) entity2;
 						Rectangle hitBoxBlock = entity2.getHitBox();
 						
 						if(	hitBoxPig.intersectsLine(hitBoxBlock.getX()+hitBoxBlock.getWidth(),
@@ -205,7 +198,6 @@ public class GameModel implements ActionListener {
 					}
 					if(entity2 instanceof Grass)
 					{
-						Grass block = (Grass) entity2;
 						Rectangle hitBoxGrass = entity2.getHitBox();
 						
 						if(hitBoxPig.intersectsLine(hitBoxGrass.getX(),
