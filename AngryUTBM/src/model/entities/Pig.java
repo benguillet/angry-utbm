@@ -9,8 +9,6 @@ import javax.swing.ImageIcon;
 public class Pig extends Enemy {
 
 	private Dimension frameSize;
-	private int timeSpeed;
-	private int pigSpeed;
 
 	
 	public Pig(int x, int y, int pigSpeed) {
@@ -20,11 +18,8 @@ public class Pig extends Enemy {
 		image = ii.getImage();
 		imageHeight = ii.getIconHeight();
 	    imageWidth = ii.getIconWidth();
-		speed = 3;
-		timeDirection = 0;
+		speed = pigSpeed;
 		timeDown = 0; 
-		timeSpeed = pigSpeed;
-		this.pigSpeed = pigSpeed;
 		back = false;
 		frameSize = GameFrame.getFrameSize();
 	}
@@ -35,19 +30,15 @@ public class Pig extends Enemy {
 		if (hitBox.x < 250)
 			back = false;
 
-		if(timeSpeed == 0)
-		{
 		if (!back)
 			hitBox.x += speed;
 		else
 			hitBox.x -= speed;
-		timeSpeed = pigSpeed;
-		}
+	
 		if(down)
 			hitBox.y+=(int) (speed+3);
 		timeDirection++;
 		timeDown++;
-		timeSpeed--;
 	}
 	public void moveDown(){
 		if(timeDown > 10)

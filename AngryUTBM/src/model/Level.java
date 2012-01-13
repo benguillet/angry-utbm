@@ -41,10 +41,10 @@ public class Level {
 	    block = bl.getImage();
 	   
 	    //la vitesse des cochons est fixe en fonction de la difficulte
-	    if(difficulty == "easy") pigSpeed=5;
-	    if(difficulty == "medium" ) pigSpeed=4;
-	    if(difficulty == "hard" ) pigSpeed=2;
-	    if(difficulty == "extreme" )pigSpeed=1;
+	    if(difficulty == "easy") pigSpeed=1;
+	    if(difficulty == "medium" ) pigSpeed=2;
+	    if(difficulty == "hard" ) pigSpeed=3;
+	    if(difficulty == "extreme" )pigSpeed=4;
 	    
 	    entities = new ArrayList<Entity>();
 	    
