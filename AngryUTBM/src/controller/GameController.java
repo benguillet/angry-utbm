@@ -48,16 +48,12 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 				if(!currentBird.isFlying())
 					currentBird.setAngle(currentBird.getAngle()-0.1);
 				break;
-			case KeyEvent.VK_M:
-				currentBird.launch();
-				break;
 			case KeyEvent.VK_S:
 				// On interdit le vol stationaire pour les moineaux
 				if(!(currentBird instanceof Sparrow))
 					currentBird.hovering();
 				break;
 			case KeyEvent.VK_SPACE:
-				//p.fire();	
 				if(currentBird.isFlying())
 					angryModel.addEgg();
 				break;
