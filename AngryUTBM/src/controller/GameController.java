@@ -6,6 +6,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.Locale;
+
+import javax.swing.JOptionPane;
 
 import main.GameFrame;
 import model.GameModel;
@@ -26,6 +29,8 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 	public GameController(GameFrame Frame){
 		angryFrame = Frame;
 		angryModel = Frame.getAngryModel();
+		
+		JOptionPane.setDefaultLocale(Locale.ENGLISH);
 	}
 	
 	@Override

@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
@@ -101,6 +102,8 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		for (JButton button : lvlButtons) {
 			button.addActionListener(this);
 		}
+		
+		JOptionPane.setDefaultLocale(Locale.ENGLISH);
 	}
 	
 	@Override
