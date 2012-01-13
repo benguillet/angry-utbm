@@ -1,5 +1,6 @@
 package main;
 import java.awt.Dimension;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
@@ -35,6 +36,10 @@ public class GameFrame extends JFrame {
 	public GameFrame(String name) {
 		winName = name;
 		
+		//creation du dossier de sauvegardes
+		File fb = new File("save/"); 
+		fb.mkdir();
+		
 		angryModel = new GameModel();
 		angryEntities = angryModel.getEntityList();
 		angryPlayers = angryModel.getPlayers();
@@ -69,7 +74,7 @@ public class GameFrame extends JFrame {
 		angryView.addMouseListener(angryController);
 		angryView.addMouseMotionListener(angryController);
 		angryModel.addListListener(angryView);
-		angryModel.addListListener(angryController);		
+		angryModel.addListListener(angryController);	
 
 		this.setContentPane(angryMenuHomeView);
 		

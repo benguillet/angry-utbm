@@ -87,8 +87,6 @@ public class Player implements Serializable {
 
 	public void save() {
 		try {
-			File folder = new File("save/");
-			folder.mkdir();
 			File file = new File("save/" + name + ".save");
 			file.delete();
 			file.createNewFile();
