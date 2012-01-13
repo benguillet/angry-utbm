@@ -200,6 +200,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				angryMenuDifficultyView.setParentPanel("newPanel");
 				angryMenuDifficultyView.requestFocus();
 				angryFrame.setVisible(true);
+				
 				ArrayList<Player> players = new ArrayList<Player>();
 				try{
 					File initial = new File ("save");
@@ -215,6 +216,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				{
 					e1.printStackTrace();
 				}
+				angryFrame.setPlayers(players);
 				angryMenuLoadView.setPlayersList(players);
 			}
 			
@@ -443,6 +445,11 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		if(angryFrame.getContentPane()==angryMenuNewView)
+			angryMenuNewView.requestFocus();
+		
+		if(angryFrame.getContentPane()==angryMenuLoadView)
+			angryMenuLoadView.requestFocus();
 
 	}
 
