@@ -29,7 +29,6 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 	public GameController(GameFrame Frame){
 		angryFrame = Frame;
 		angryModel = Frame.getAngryModel();
-		
 		JOptionPane.setDefaultLocale(Locale.ENGLISH);
 	}
 	

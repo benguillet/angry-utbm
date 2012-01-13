@@ -205,8 +205,8 @@ public class GameModel implements ActionListener {
 					}
 					if(entity2 instanceof Grass)
 					{
-						Grass block = (Grass) entity2;
-						Rectangle hitBoxGrass = entity2.getHitBox();
+						Grass grass = (Grass) entity2;
+						Rectangle hitBoxGrass = grass.getHitBox();
 						
 						if(hitBoxPig.intersectsLine(hitBoxGrass.getX(),
 								hitBoxGrass.getY(),
