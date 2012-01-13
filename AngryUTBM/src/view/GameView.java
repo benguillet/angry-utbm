@@ -59,7 +59,7 @@ public class GameView extends JPanel implements ListListener {
 		    	}
 	    		if(e == currentBird)
 	    		{
-	    			Egg egg = new Egg(0,0);
+	    			Egg egg = new Egg(0,0,28,30);
 	    			for (int j = 0; j < currentBird.getEggLeft(); ++j) {
 	        			g2d.drawImage(egg.getImage(), frameWidth-100+j*15, 20, this);
 		    		}

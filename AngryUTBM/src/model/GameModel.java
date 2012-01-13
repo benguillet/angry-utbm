@@ -104,7 +104,7 @@ public class GameModel implements ActionListener {
 		int eggLeft = currentBird.getEggLeft();
 		
 		if (eggLeft > 0) {
-			entities.add(new Egg((int)currentBird.getPosition().getX(), (int)currentBird.getPosition().getY()));
+			entities.add(new Egg((int)currentBird.getPosition().getX(), (int)currentBird.getPosition().getY(),28,30));
 			currentBird.setEggLeft(eggLeft-1);
     	}
     	else
@@ -228,7 +228,6 @@ public class GameModel implements ActionListener {
 						Rectangle hitBoxBlock = entity2.getHitBox();
 						if(hitBoxBird.intersects(hitBoxBlock))
 						{
-							bird.bounce();
 							toRemove.add(block);
 						}
 					}

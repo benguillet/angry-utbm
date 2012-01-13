@@ -16,25 +16,11 @@ public abstract class Bird extends Entity {
 	protected int startLocationY;
 	private long lastTime;
 	private long flyingTimeLeft;
-	private boolean bounce;
 	
-	public Bird(int x, int y, int width, int height) {
-		super(x,y,width,height);
-		isMoving = false;
-		isFlying = false;
-		time = 0.1;
-		accelX = 0;
-		startLocationX = x;
-		startLocationY = y;
-		accelY = 9.81;
-		flyingTimeLeft = 10000;
-		
-	}
-	
+	//l'oiseau est construit avec sa taille
 	public Bird(int width, int height) {
 		super(100,440,width,height);
 		isMoving = false;
-		bounce = false;
 		time = 0.1;
 		accelX = 0;
 		startLocationX = 100;
@@ -59,23 +45,17 @@ public abstract class Bird extends Entity {
 		return startLocationY;
 	}
 	
-	public abstract void hovering();
+	public abstract void hovering(); //methode redefinie seulement pour les oiseaux capables de vol stationnaire
 	
 	public boolean isFlying() {
 		return isFlying;
 	}
-	public void bounce()
-	{
-		bounce =!bounce;
-		speed=-speed;
-	}
-	
+
     public void move() {
     	if(isFlying)
     	{
 	    	if(isMoving)
 	    	{
-	    		
 		    	hitBox.x = (int) Math.round(speed*Math.cos(angle)*time+0.5*accelX*time*time+startLocationX);
 		    	hitBox.y = (int) Math.round(0.5*accelY*time*time-Math.sin(angle)*speed*time+startLocationY);
 		    	time+=0.1;

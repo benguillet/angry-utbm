@@ -1,6 +1,7 @@
 package controller;
 
 import main.GameFrame;
+import model.GameModel;
 import model.Level;
 import model.Player;
 import view.MenuDifficultyView;
@@ -37,6 +38,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 	private JButton easyButton,mediumButton,hardButton,extremeButton;
 	private ArrayList<JButton> lvlButtons;
 	private Player currentPlayer;
+	private ArrayList<Player> angryPlayers;
 	private JComboBox playersList;
 	private MenuHomeView angryMenuHomeView;
 	private MenuNewView angryMenuNewView;
@@ -46,10 +48,13 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 	private MenuLevelView angryMenuLevelView;
 	private GameFrame angryFrame;
 	private String difficulty = "";
+	private GameModel angryModel;
 	
 	public MenuController(GameFrame frame){
 		
 		angryFrame = frame;
+		angryModel = angryFrame.getAngryModel();
+		angryPlayers = angryModel.getPlayers();
 		
 		//on recupere les differentes vues du menu
 		angryMenuHomeView = frame.getAngryMenuHomeView();
@@ -187,14 +192,14 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				javax.swing.JOptionPane.showMessageDialog(null, "You must enter your name, please.");
 			}		
 			else 
-			{
-				//creation d'un nouveau joueur
-				currentPlayer = new Player(playerNameField.getText());
-				angryFrame.setCurrentPlayer(currentPlayer);
-				angryFrame.setDifficulty("");
-				angryFrame.setCurrentLevel(0);
+			{				
+		        //creation d'un nouveau joueur
+		       	currentPlayer = new Player(playerNameField.getText());
+		       	angryFrame.setCurrentPlayer(currentPlayer);
+		       	angryFrame.setDifficulty("");
+		       	angryFrame.setCurrentLevel(0);
 				angryFrame.setCurrentHighScore();
-				
+			
 				angryFrame.setContentPane(angryMenuDifficultyView);
 				angryMenuDifficultyView.setParentPanel("newPanel");
 				angryMenuDifficultyView.requestFocus();
@@ -218,6 +223,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				}
 				angryFrame.setPlayers(players);
 				angryMenuLoadView.setPlayersList(players);
+		        
 			}
 			
 		}

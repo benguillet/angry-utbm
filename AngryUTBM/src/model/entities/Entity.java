@@ -13,6 +13,7 @@ public abstract class Entity {
 	protected Rectangle hitBox;
 	protected double angle;
 
+	//une entite est cree avec sa position et sa taille
 	public Entity(int x, int y, int width, int height) {
 		hitBox = new Rectangle(x, y, width, height);
 		imageWidth=width;
@@ -27,6 +28,7 @@ public abstract class Entity {
         return this.image;
     }
 	
+	//la methode est redefinie dans les entites qui se deplacent
 	abstract public void move();
 	
 	public boolean isVisible() {
@@ -47,7 +49,6 @@ public abstract class Entity {
 	public int getImageHeight(){return imageHeight;}
 	
 	public void setPosition(int x, int y) {
-		// TODO Auto-generated method stub
 		hitBox.x = x;
 		hitBox.y = y;
 	}
