@@ -29,7 +29,7 @@ public class Level {
 	private Image block;
 	private boolean isLoaded;
 	private ArrayList<Entity> entities;
-	private float pigSpeed;
+	private int pigSpeed;
 	
 	public Level() {
 	    ImageIcon ii = new ImageIcon(backgroundImagePath);
@@ -45,10 +45,10 @@ public class Level {
 	    ImageIcon bl = new ImageIcon(blockImagePath);
 	    block = bl.getImage();
 	   
-	    if(difficulty == "easy") pigSpeed=1;
-	    if(difficulty == "medium" ) pigSpeed=1.5f;
+	    if(difficulty == "easy") pigSpeed=5;
+	    if(difficulty == "medium" ) pigSpeed=4;
 	    if(difficulty == "hard" ) pigSpeed=2;
-	    if(difficulty == "extreme" )pigSpeed=2.5f;
+	    if(difficulty == "extreme" )pigSpeed=1;
 	    
 	    entities = new ArrayList<Entity>();
 	    

@@ -28,8 +28,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class MenuController implements KeyListener, ActionListener, MouseListener {
-	
-
 
 	private JTextField playerNameField;
 	private JButton backfromNewButton, backfromLoadButton, backfromOptionsButton;
