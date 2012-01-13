@@ -98,8 +98,6 @@ public abstract class Bird extends Entity {
     public void moveLeft() {
     	accelX-=0.1;
     }
- 
-	public abstract void reload();
 	
 	public long getFlyingTimeLeft() {
 		return flyingTimeLeft;

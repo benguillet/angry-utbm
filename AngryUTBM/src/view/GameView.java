@@ -9,6 +9,7 @@ import java.awt.Shape;
 import java.awt.Toolkit;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -55,18 +56,19 @@ public class GameView extends JPanel implements ListListener {
        
 	    
 	    int k = 0;
-	    for(Entity e : entities) {
-	    	if(e instanceof Bird && e != currentBird) {
-	    		g2d.drawImage(e.getImage(), frameWidth*4/5+k*15, 100, this);
-	    		k++;
+	    for(int i = entities.size()-1; i >=0;i--) {
+	    	Entity e = entities.get(i);
+		    	if(e instanceof Bird && e != currentBird) {
+		    		g2d.drawImage(e.getImage(), frameWidth-100-k*15, 100,e.getImageWidth(),e.getImageHeight(), this);
+		    		k++;
+		    	}
+	    		if(e == currentBird)
+	    		{
+	    			Egg egg = new Egg(0,0);
+	    			for (int j = 0; j < currentBird.getEggLeft(); ++j) {
+	        			g2d.drawImage(egg.getImage(), frameWidth-100+j*15, 20, this);
+		    		}
 	    	}
-    		if(e == currentBird)
-    		{
-    			Egg egg = new Egg(0,0);
-    			for (int j = 0; j < currentBird.getEggLeft(); ++j) {
-        			g2d.drawImage(egg.getImage(), frameWidth*4/5+j*15, 20, this);
-	    		}
-    		}
 	    }
         
         for (Entity e : entities) {
@@ -80,7 +82,7 @@ public class GameView extends JPanel implements ListListener {
         		g2d.setStroke(new BasicStroke(7.0f));
         		g2d.setColor(new Color(54, 28, 13));
         		if(!currentBird.isFlying())g2d.drawLine(135,470, (int)e.getPosition().getX()+e.getImageWidth()/2, (int)e.getPosition().getY()+e.getImageHeight()/2);
-        		g2d.drawImage(e.getImage(), (int) e.getPosition().getX(), (int) e.getPosition().getY(), this);
+        		g2d.drawImage(e.getImage(), (int) e.getPosition().getX(), (int) e.getPosition().getY(),e.getImageWidth(),e.getImageHeight(), this);
         		if(!currentBird.isFlying())g2d.drawLine(120,470, (int)e.getPosition().getX()+e.getImageWidth()/2, (int)e.getPosition().getY()+e.getImageHeight()/2);
         		
         		if(!currentBird.isFlying()){

@@ -214,18 +214,6 @@ public class GameModel implements ActionListener {
 								hitBoxGrass.getY()))
 							moveDown=false;
 					}
-					/*if(entity2 instanceof Pig && entity2 != pig)
-					{
-						Pig pig1 = (Pig) entity2;
-						Rectangle hitBoxPig1 = entity2.getHitBox();
-						
-						if(hitBoxPig.intersects(hitBoxPig1))
-						{
-							pig1.changeDirection();
-							pig.changeDirection();
-						}
-							
-					}*/
 					if(moveDown)
 						pig.moveDown();
 					else pig.doNotMoveDown();
