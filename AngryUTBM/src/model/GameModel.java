@@ -121,6 +121,7 @@ public class GameModel implements ActionListener {
 		ArrayList<Entity> toRemove = new ArrayList<Entity>(); //On ne retire les entit�s de la liste qu'apr�s �tre sorti de la boucle
 		boolean birdTest = false;
 		boolean pigTest = false;
+		boolean eggTest = false;
 		
 		for(Entity entity : entities) {
 			int tabMap[][] = level.getTabMap();
@@ -278,6 +279,10 @@ public class GameModel implements ActionListener {
 				birdTest = true;
 			if(entity4 instanceof Pig)
 				pigTest = true;
+			if(entity4 instanceof Egg)
+			{
+				eggTest = true;
+			}
 		}
 		
 		if(!birdTest && pigTest)
