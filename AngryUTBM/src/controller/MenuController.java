@@ -200,6 +200,22 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				angryMenuDifficultyView.setParentPanel("newPanel");
 				angryMenuDifficultyView.requestFocus();
 				angryFrame.setVisible(true);
+				ArrayList<Player> players = new ArrayList<Player>();
+				try{
+					File initial = new File ("save");
+					for (File f:initial.listFiles())
+					{
+						FileInputStream fis = new FileInputStream(f);
+						ObjectInputStream ois = new ObjectInputStream(fis);
+						Player pl = (Player)ois.readObject();
+						players.add(pl);
+					}			
+				}
+				catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+				angryMenuLoadView.setPlayersList(players);
 			}
 			
 		}
