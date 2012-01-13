@@ -198,6 +198,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				angryMenuDifficultyView.setParentPanel("newPanel");
 				angryMenuDifficultyView.requestFocus();
 				angryFrame.setVisible(true);
+				
 				ArrayList<Player> players = new ArrayList<Player>();
 				try{
 					File initial = new File ("save");
@@ -213,6 +214,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				{
 					e1.printStackTrace();
 				}
+				angryFrame.setPlayers(players);
 				angryMenuLoadView.setPlayersList(players);
 			}
 			
@@ -230,6 +232,28 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			angryMenuDifficultyView.setParentPanel("loadPanel");
 			angryMenuDifficultyView.requestFocus();
 			angryFrame.setVisible(true);
+			
+			//mise a jour des players avec le nouveau...
+			ArrayList<Player> players = new ArrayList<Player>();
+			try{
+				File initial = new File ("save");
+				for (File f:initial.listFiles())
+				{
+					FileInputStream fis = new FileInputStream(f);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					Player pl = (Player)ois.readObject();
+					players.add(pl);
+				}			
+			}
+			catch(Exception e1)
+			{
+				e1.printStackTrace();
+			}
+
+			//...dans la liste de players...
+			angryFrame.setPlayers(players);
+			//...et dans la JComboBox.
+			angryMenuLoadView.setPlayersList(players);
 		}
 		
 		if(e.getSource().equals(deleteButton))
@@ -419,6 +443,11 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		if(angryFrame.getContentPane()==angryMenuNewView)
+			angryMenuNewView.requestFocus();
+		
+		if(angryFrame.getContentPane()==angryMenuLoadView)
+			angryMenuLoadView.requestFocus();
 
 	}
 
