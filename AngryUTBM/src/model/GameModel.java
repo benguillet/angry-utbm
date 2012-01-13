@@ -280,12 +280,10 @@ public class GameModel implements ActionListener {
 			if(entity4 instanceof Pig)
 				pigTest = true;
 			if(entity4 instanceof Egg)
-			{
 				eggTest = true;
-			}
 		}
 		
-		if(!birdTest && pigTest)
+		if(!birdTest && !eggTest && pigTest)
 			lose();
 					
 	}
