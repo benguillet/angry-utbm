@@ -13,12 +13,13 @@ public class Egg extends Entity {
 	    image = ii.getImage();
 	    imageHeight = ii.getIconHeight();
 	    imageWidth = ii.getIconWidth();
-		speed = 3; //vitesse de descente de l'oeuf
+		speed = 5; //vitesse de descente de l'oeuf
 	}
 
 	//l'oeuf ne se deplace que sur l'axe vertical (y)
 	public void move() {
 		hitBox.y += speed;
+		speed+=0.5f;
 	}
 }
 
