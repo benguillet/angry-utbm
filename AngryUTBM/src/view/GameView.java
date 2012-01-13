@@ -6,8 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import model.Level;
@@ -71,26 +69,15 @@ public class GameView extends JPanel implements ListListener {
         for (Entity e : entities) {
         	if (!(e instanceof Bird)) { // on affiche pas tous les oiseaux, juste le courant
         		g2d.drawImage(e.getImage(), (int) e.getPosition().getX(), (int) e.getPosition().getY(), this);
-        		//g2d.draw(e.getHitBox());
         	}
         		if(e== currentBird )
         	{
-        		//g2d.draw(e.getHitBox());
         		g2d.setStroke(new BasicStroke(7.0f));
         		g2d.setColor(new Color(54, 28, 13));
         		if(!currentBird.isFlying())g2d.drawLine(135,470, (int)e.getPosition().getX()+e.getImageWidth()/2, (int)e.getPosition().getY()+e.getImageHeight()/2);
         		g2d.drawImage(e.getImage(), (int) e.getPosition().getX(), (int) e.getPosition().getY(),e.getImageWidth(),e.getImageHeight(), this);
         		if(!currentBird.isFlying())g2d.drawLine(120,470, (int)e.getPosition().getX()+e.getImageWidth()/2, (int)e.getPosition().getY()+e.getImageHeight()/2);
         		
-        		if(!currentBird.isFlying()){
-	        		/*double time = 0.1;
-	                for(int i =0 ; i < 100 ; i++)
-	                {
-	                	g2d.drawOval((int) Math.round(currentBird.getSpeed()*Math.cos(45)*time+40+e.getImageWidth()/2),
-	                				 (int) Math.round(0.5*9.81f*time*time-Math.sin(45)*currentBird.getAngle()*time+440+e.getImageHeight()/2), 2, 2);
-	                	time+=0.3;
-	                }*/
-        		}
         	}
         		g2d.setStroke(new BasicStroke(7.0f));
         		g2d.setColor(new Color(54, 28, 13));
