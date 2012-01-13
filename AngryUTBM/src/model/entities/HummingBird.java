@@ -13,16 +13,12 @@ public class HummingBird extends Bird {
 	    imageHeight = ii.getIconHeight();
 	    imageWidth = ii.getIconWidth();
 	    eggs = new ArrayList<Egg>();
-	    reload();
+	    eggLeft = 1;
 	    frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
     
     public void hovering() {
     	isMoving = !isMoving;
-    }
-    
-    public void reload() {
-    	eggLeft = 1;
     }
     
     public ArrayList<Egg> getEggs() {

@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Locale;
+import javax.swing.JOptionPane;
 import main.GameFrame;
 import model.GameModel;
 import model.ListChangedEvent;
@@ -14,7 +16,6 @@ import model.entities.Sparrow;
 
 public class GameController implements KeyListener, ListListener, MouseListener,MouseMotionListener{
 	
-	//private GameView angryView;
 	private GameModel angryModel;
 	private GameFrame angryFrame;
 	
@@ -24,6 +25,8 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 	public GameController(GameFrame Frame){
 		angryFrame = Frame;
 		angryModel = Frame.getAngryModel();
+		
+		JOptionPane.setDefaultLocale(Locale.ENGLISH);
 	}
 	
 	@Override
@@ -57,10 +60,6 @@ public class GameController implements KeyListener, ListListener, MouseListener,
 			case KeyEvent.VK_ESCAPE:
 				angryFrame.setMenuLevel();
 				break;
-			// Plus de rechargement possible (trop facile sinon)	
-			/*case KeyEvent.VK_R:
-				currentBird.reload();
-				break;*/
 			default:
 				System.out.println("je gere pas cette touche !");
 		}

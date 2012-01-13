@@ -7,25 +7,21 @@ public class Pigeon extends Bird {
 	
 	
 	public Pigeon() {
-		super(60, 58);
+		super(50, 48);
 	    imagePath = "res/images/pigeon.png";
     	ImageIcon ii = new ImageIcon(imagePath);
 	    image = ii.getImage();
-	    imageHeight = ii.getIconHeight();
-	    imageWidth = ii.getIconWidth();
 	    speed = 100;
 	    eggs = new ArrayList<Egg>();
-	    reload();
+	    eggLeft = 3;
 	    frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
     
+	/** La fonction hovering stoppe la course de l'oiseau **/
     public void hovering() {
     	isMoving = !isMoving;
     }
     
-    public void reload() {
-    	eggLeft = 3;
-    }
     
     public ArrayList<Egg> getEggs() {
     	return eggs;

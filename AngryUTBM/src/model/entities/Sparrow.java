@@ -15,16 +15,12 @@ public class Sparrow extends Bird {
 	    imageWidth = ii.getIconWidth();
 	    speed = 100;
 	    eggs = new ArrayList<Egg>();
-	    reload();
+	    eggLeft = 1;
 	    frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
     
     public void hovering() {
     	
-    }
-    
-    public void reload() {
-    	eggLeft = 1;
     }
     
     public ArrayList<Egg> getEggs() {
