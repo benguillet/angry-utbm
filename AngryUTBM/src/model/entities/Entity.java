@@ -2,8 +2,6 @@ package model.entities;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
 
 public abstract class Entity {
 	protected float speed;

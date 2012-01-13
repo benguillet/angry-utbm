@@ -4,10 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Point;
-import java.awt.Shape;
 import java.awt.Toolkit;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 

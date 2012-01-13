@@ -1,8 +1,6 @@
 package view;
 
 import main.GameFrame;
-import model.Player;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
