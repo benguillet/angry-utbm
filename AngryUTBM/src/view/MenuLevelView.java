@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+import model.LevelNumber;
+
 @SuppressWarnings("serial")
 public class MenuLevelView extends GameViewMenu
 {
@@ -15,7 +17,7 @@ public class MenuLevelView extends GameViewMenu
         lvlButtons = new ArrayList<JButton>();
         
         //creation des differents boutons des niveaux
-        for (int lvlNumber = 0; lvlNumber < 5; ++lvlNumber) {
+        for (int lvlNumber = 0; lvlNumber < LevelNumber.getLevelNumber(); ++lvlNumber) {
         	lvlButtons.add(new JButton("" + (lvlNumber+1)));
         	lvlButtons.get(lvlNumber).setSize(60,60);
         	int lineNumber = lvlNumber / 5;
