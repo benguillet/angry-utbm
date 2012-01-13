@@ -10,7 +10,7 @@ import model.Player;
 @SuppressWarnings("serial")
 public class MenuLoadView extends GameViewMenu
 {
-
+	//declaration des attributs adaptes a la page de chargement de parties
 	private JComboBox playersList;
 	private JButton okLoadButton, deleteButton;
 
@@ -20,6 +20,7 @@ public class MenuLoadView extends GameViewMenu
         playersList.setSize(200,30);
         playersList.setLocation(frameWidth/2-100,150);
 
+        //ajout des joueurs dans la JComboBox
         for(Player p : players)
         {
         	playersList.addItem(p);
@@ -34,7 +35,7 @@ public class MenuLoadView extends GameViewMenu
         deleteButton.setLocation(frameWidth/2-100, 300);
         
         
-        
+        //ajout des attributs avec l'index 1 pour etre en premier plan
         this.add(playersList,new Integer(1));
         this.add(deleteButton, new Integer(1));
         this.add(okLoadButton,new Integer(1));

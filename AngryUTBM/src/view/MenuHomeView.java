@@ -5,7 +5,7 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class MenuHomeView extends GameViewMenu
 {
-	
+	//declaration des attributs adaptes a la page principale
 	private JButton newButton,loadButton,optionsButton,exitButton;
 	
 	public MenuHomeView() {
@@ -26,8 +26,9 @@ public class MenuHomeView extends GameViewMenu
         exitButton.setSize(200,30);
         exitButton.setLocation(frameWidth/2-100, 375);
         
-        backButton.setVisible(false);
+        backButton.setVisible(false); //pas de bouton de retour sur la page principale
         
+        //ajout des attributs avec l'index 1 pour etre en premier plan
    	 	this.add(newButton,new Integer(1));
    	 	this.add(loadButton,new Integer(1));
    	 	this.add(optionsButton,new Integer(1));

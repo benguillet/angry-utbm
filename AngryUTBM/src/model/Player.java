@@ -12,19 +12,19 @@ import java.util.ArrayList;
 public class Player implements Serializable {
 	private String name;
 	
-	// Scores par niveaux et difficultés
+	//scores par niveaux et difficultes
 	private ArrayList<Integer> easyScores;
 	private ArrayList<Integer> mediumScores;
 	private ArrayList<Integer> hardScores;
 	private ArrayList<Integer> extremeScores;
 	
-	// Meilleurs scores par niveaux et difficultés
+	//meilleurs scores par niveaux et difficultes
 	private ArrayList<Integer> highestEasyScores;
 	private ArrayList<Integer> highestMediumScores;
 	private ArrayList<Integer> highestHardScores;
 	private ArrayList<Integer> highestExtremeScores;
 	
-	// Niveaux débloqués
+	//niveaux debloques
 	private ArrayList<Integer> easy;
 	private ArrayList<Integer> medium;
 	private ArrayList<Integer> hard;
@@ -33,6 +33,7 @@ public class Player implements Serializable {
 	@SuppressWarnings("unused")
 	private int levelNumber;
 
+	//creation du joueur a partir son nom
 	public Player(String name) {
 
 		this.name = name;
@@ -53,7 +54,7 @@ public class Player implements Serializable {
 		highestExtremeScores = new ArrayList<Integer>();
 		
 		
-		// Permet de creer des listes de la bonne taille et ainsi d'eviter les OutOfBoundExceptions
+		//permet de creer des listes de la bonne taille et ainsi d'eviter les OutOfBoundExceptions
 		for (int i = 0; i < LevelNumber.getLevelNumber(); ++i) {
 			easyScores.add(0);
 			mediumScores.add(0);
@@ -67,15 +68,17 @@ public class Player implements Serializable {
 			
 		}
 		
+		//creation du fichier de sauvegarde
 		this.save();
 	}
 
+	//chargement d'un joueur
 	public static Player loadFromFile(String name) {
 		try {
 			FileInputStream fichier = new FileInputStream("save/" + name
 					+ ".save");
 			ObjectInputStream ois = new ObjectInputStream(fichier);
-			Player player = (Player) ois.readObject();
+			Player player = (Player) ois.readObject(); //on lit l'objet Player du fichier
 			return player;
 		} catch (java.io.IOException e) {
 			e.printStackTrace();
@@ -85,6 +88,7 @@ public class Player implements Serializable {
 		return null;
 	}
 
+	//creation du fichier de sauvegarde
 	public void save() {
 		try {
 			File file = new File("save/" + name + ".save");
@@ -93,7 +97,7 @@ public class Player implements Serializable {
 			
 			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(this);
+			oos.writeObject(this); // on ecrit l'objet Player correspondant dans le fichier
 			oos.flush();
 			oos.close();
 		} catch (java.io.IOException e) {
@@ -106,6 +110,7 @@ public class Player implements Serializable {
 		return name;
 	}
 
+	//retourne le numero du dernier level debloque
 	public boolean isFinished(int level, String difficulty) {
 		if (difficulty.equals("easy")) {
 			return easy.contains(level);
@@ -119,6 +124,7 @@ public class Player implements Serializable {
 		return false;
 	}
 
+	//actualise le numero du dernier niveau debloque avec le score effectue
 	public void finished(int level, String difficulty, int score) {
 		if (difficulty.equals("easy")) {
 			if (!(easy.contains(level)))
@@ -147,7 +153,7 @@ public class Player implements Serializable {
 			if (score > highestExtremeScores.get(level-1))
 				highestExtremeScores.set(level-1, score);
 		}
-		save();
+		save(); // actualisation de la sauvegarde
 	}
 	
 	public String getName() {

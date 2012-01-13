@@ -7,12 +7,14 @@ import javax.swing.JLabel;
 public class MenuDifficultyView extends GameViewMenu
 {
 
+	//declaration des attributs adaptes a la page de choix de difficulte
 	private JLabel difficultyLabel;
 	private JButton easyButton, mediumButton, hardButton, extremeButton;
 	private String parentPanel="";
 	
 	public MenuDifficultyView()
 	{
+		
         difficultyLabel = new JLabel("Choose difficulty :");
         difficultyLabel.setSize(200, 30);
         difficultyLabel.setLocation(frameWidth/2-100,150);
@@ -33,6 +35,7 @@ public class MenuDifficultyView extends GameViewMenu
         extremeButton.setSize(200,30);
         extremeButton.setLocation(frameWidth/2-100, 475);
         
+        //ajout des attributs avec l'index 1 pour etre en premier plan
    	 	this.add(difficultyLabel,new Integer(1));
    	 	this.add(easyButton,new Integer(1));
    	 	this.add(mediumButton,new Integer(1));

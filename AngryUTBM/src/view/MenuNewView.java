@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class MenuNewView extends GameViewMenu
 {
+	//declaration des attributs adaptes a la page creation de nouvelles parties
 	JLabel playernameLabel;
 	JTextField playernameField;
 	JButton okNewButton;
@@ -25,6 +26,7 @@ public class MenuNewView extends GameViewMenu
    	 	okNewButton.setSize(200,30);
    	 	okNewButton.setLocation(frameWidth/2-100, 350);
    	 	
+   	    //ajout des attributs avec l'index 1 pour etre en premier plan
         this.add(playernameLabel,new Integer(1));
    	 	this.add(playernameField,new Integer(1));
         this.add(okNewButton,new Integer(1));

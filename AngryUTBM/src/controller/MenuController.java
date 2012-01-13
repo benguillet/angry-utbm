@@ -188,6 +188,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			}		
 			else 
 			{
+				//creation d'un nouveau joueur
 				currentPlayer = new Player(playerNameField.getText());
 				angryFrame.setCurrentPlayer(currentPlayer);
 				angryFrame.setDifficulty("");
@@ -199,6 +200,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				angryMenuDifficultyView.requestFocus();
 				angryFrame.setVisible(true);
 				
+				//actualisation de la liste des joueurs
 				ArrayList<Player> players = new ArrayList<Player>();
 				try{
 					File initial = new File ("save");
@@ -222,6 +224,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		
 		if(e.getSource().equals(okLoadButton))
 		{
+			//chargement du joueur choisi
 			currentPlayer = (Player) playersList.getSelectedItem();
 			angryFrame.setCurrentPlayer(currentPlayer);
 			angryFrame.setDifficulty("");
@@ -233,7 +236,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			angryMenuDifficultyView.requestFocus();
 			angryFrame.setVisible(true);
 			
-			//mise a jour des players avec le nouveau...
+			//actualisation de la liste des joueurs
 			ArrayList<Player> players = new ArrayList<Player>();
 			try{
 				File initial = new File ("save");
@@ -250,9 +253,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 				e1.printStackTrace();
 			}
 
-			//...dans la liste de players...
 			angryFrame.setPlayers(players);
-			//...et dans la JComboBox.
 			angryMenuLoadView.setPlayersList(players);
 		}
 		
@@ -261,15 +262,13 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			int option = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirmation before suppression", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if(option == JOptionPane.OK_OPTION)
 			{
+				//suppression du fichier choisi
 				Player p = (Player) playersList.getSelectedItem();
 				playersList.removeItem(p);
-				
 				File file = new File("save/" + p.getName() + ".save"); 
 				file.delete();
 				
-				//System.out.println(p.getName());
-				
-				//mise a jour des players restants...
+				//actualisation de la liste des joueurs
 				ArrayList<Player> players = new ArrayList<Player>();
 				try{
 					File initial = new File ("save");
@@ -286,14 +285,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 					e1.printStackTrace();
 				}
 				
-				/*for(Player p1 : players)
-		        {
-		        	System.out.println(p1.getName());
-		        }*/
-
-				//...dans la liste de players...
 				angryFrame.setPlayers(players);
-				//...et dans la JComboBox.
 				angryMenuLoadView.setPlayersList(players);
 				
 				angryFrame.setContentPane(angryMenuLoadView);
@@ -303,7 +295,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 		}
 		
 
-		
+		//on actualise la variable difficulty
 		if (e.getSource().equals(easyButton))
 		{
 			difficulty = "easy";
@@ -327,6 +319,8 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			difficulty = "extreme";	
 		}
 		
+		//on affiche la page des niveaux
+		//selon la sauvegarde les boutons sont disponibles ou non
 		if (!difficulty.equals("") && (e.getSource().equals(easyButton) || e.getSource().equals(mediumButton) || e.getSource().equals(hardButton) || e.getSource().equals(extremeButton))) {
 			for (int lvlNumber = 0; lvlNumber < lvlButtons.size(); ++lvlNumber) {
 				lvlButtons.get(lvlNumber).setEnabled(false);
@@ -346,6 +340,7 @@ public class MenuController implements KeyListener, ActionListener, MouseListene
 			angryFrame.setVisible(true);
 		}
 		
+		//on lance le jeu correspondant au niveau choisi
 		for (int i = 0; i < lvlButtons.size(); ++i) {
 			if(e.getSource().equals(lvlButtons.get(i))) {
 				Level lvl = new Level("res/maps/lvl0" + (i+1) + ".txt", difficulty);

@@ -16,23 +16,25 @@ public abstract class GameViewMenu extends JLayeredPane {
 	final int frameWidth = GameFrame.getFrameSize().width;
 	final int frameHeight = GameFrame.getFrameSize().height;
 
+	//attribut pour realiser le fond de spages de menu
 	private String titleImagePath = "res/images/title.png";
 	private String backgroundImagePath = "res/images/background.png";
 	private Image image,title;
-	
 	private JPanel backPanel;
+	
+	//bouton de retour herite sur toutes les pages
 	protected JButton backButton;
 	
 	public GameViewMenu()
 	{
 
-		
 		ImageIcon ii = new ImageIcon(backgroundImagePath);
 	    image = ii.getImage();
 
 	    ImageIcon ti = new ImageIcon(titleImagePath);
 	    title = ti.getImage();
-	      
+	    
+	    //le panel est repeint avec le fond desire
 	    backPanel= new JPanel() {
 	    
 			public void paint(Graphics g) {
@@ -50,7 +52,7 @@ public abstract class GameViewMenu extends JLayeredPane {
         backButton.setSize(100,30);
         backButton.setLocation(1000, 500);
         
-        this.add(backPanel,new Integer(0));
+        this.add(backPanel,new Integer(0)); //le backPanel a un index de 0 pour etre en arriere plan de tous les autres objets qui auront un index de 1
         this.add(backButton,new Integer(1));
    	 	        
         this.setVisible(true);
