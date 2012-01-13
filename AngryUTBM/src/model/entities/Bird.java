@@ -71,18 +71,21 @@ public abstract class Bird extends Entity {
 	}
 	
     public void move() {
-    	if(isMoving && isFlying)
+    	if(isFlying)
     	{
-    		
-	    	hitBox.x = (int) Math.round(speed*Math.cos(angle)*time+0.5*accelX*time*time+startLocationX);
-	    	hitBox.y = (int) Math.round(0.5*accelY*time*time-Math.sin(angle)*speed*time+startLocationY);
-	    	time+=0.1;
+	    	if(isMoving)
+	    	{
+	    		
+		    	hitBox.x = (int) Math.round(speed*Math.cos(angle)*time+0.5*accelX*time*time+startLocationX);
+		    	hitBox.y = (int) Math.round(0.5*accelY*time*time-Math.sin(angle)*speed*time+startLocationY);
+		    	time+=0.1;
+	    	}
 	    	long currentTime = System.currentTimeMillis();
 	    	flyingTimeLeft -= (currentTime - lastTime);
 	    	lastTime = currentTime;
+    	}
 	    	if (hitBox.y > (int) frameSize.getHeight() || hitBox.x > (int) frameSize.getWidth() ||flyingTimeLeft <= 0 )
 	    		visible = false;
-    	}
     }
     
     public void launch(){
