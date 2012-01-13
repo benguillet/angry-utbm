@@ -230,6 +230,7 @@ public class GameModel implements ActionListener {
 						if(hitBoxBird.intersects(hitBoxBlock))
 						{
 							toRemove.add(block);
+							toRemove.add(bird);
 						}
 					}
 				}
